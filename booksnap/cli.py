@@ -74,11 +74,30 @@ def _pdf(args):
     print(f"pdf pages={n} -> {args.out}")
 
 
+def _audio(args):
+    from .audio import transcribe
+    segs = transcribe(args.audio, args.out, args.model)
+    print(f"transcript segments={len(segs)} -> {args.out}")
+
+
+def _spines(args):
+    from .spines import extract_spines
+    roi = tuple(int(v) for v in args.roi.split(",")) if args.roi else None
+    out = extract_spines(args.video, args.out, start=args.start, end=args.end,
+                         step=args.step, topk=args.topk, roi=roi, band=args.band,
+                         upscale=args.upscale)
+    print(f"spine reads={len(out)} -> {args.out}")
+    for r in out[:15]:
+        print(f"   {r['conf']:.2f} {r['text']}")
+
+
 def _compile(args):
     from .compile import compile_books
     data = compile_books(args.ocr, args.manifest, args.cover_ocr, args.scroll,
-                         args.out_json, args.out_md)
-    print(f"bibliography={len(data['bibliography'])} shown_covers={len(data['shown_covers'])}")
+                         args.out_json, args.out_md,
+                         audio_json=args.audio, spines_json=args.spines)
+    print(f"bibliography={len(data['bibliography'])} shown={len(data['shown_covers'])} "
+          f"audio_titles={len(data['audio_titles'])} heard={len(data['heard'])}")
 
 
 def _run(args):
@@ -103,12 +122,23 @@ def _run(args):
                                step=args.scroll_step, probe_step=2.0,
                                min_lines=args.min_lines, fps=args.fps))
     if not args.skip_pdf:
-        _pdf(argparse.Namespace(src=reps, out=os.path.join(work, "slides.pdf")))
+        _pdf(argparse.Namespace(src=reps, out=os.path.join(work, "slides.pdf"),
+                                width=1280, quality=4))
+    if args.audio:
+        _audio(argparse.Namespace(audio=args.audio, out=os.path.join(work, "transcript.json"),
+                                  model=args.audio_model))
+    if args.spines_start is not None and args.spines_end is not None:
+        _spines(argparse.Namespace(video=args.video, out=os.path.join(work, "spines.json"),
+                                   start=args.spines_start, end=args.spines_end,
+                                   step=1.0, topk=3, roi=args.spines_roi,
+                                   band=args.spines_band, upscale=4))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
         cover_ocr=os.path.join(covers, "cover_ocr.json"),
         scroll=os.path.join(work, "scroll_lines.json"),
+        audio=os.path.join(work, "transcript.json") if args.audio else None,
+        spines=os.path.join(work, "spines.json") if args.spines_start is not None else None,
         out_json=os.path.join(work, "books_candidates.json"),
         out_md=os.path.join(work, "books_candidates.md")))
     print(f"done. artifacts in {work}")
@@ -158,9 +188,25 @@ def main(argv=None):
     s.add_argument("--min-lines", type=int, default=12)
     s.set_defaults(fn=_scroll)
 
+    s = sub.add_parser("audio", help="ASR the soundtrack (faster-whisper)")
+    s.add_argument("audio"); s.add_argument("out")
+    s.add_argument("--model", default="base")
+    s.set_defaults(fn=_audio)
+
+    s = sub.add_parser("spines", help="extract book-spine text from shelf footage")
+    s.add_argument("video"); s.add_argument("out")
+    s.add_argument("--start", type=float); s.add_argument("--end", type=float)
+    s.add_argument("--step", type=float, default=1.0)
+    s.add_argument("--topk", type=int, default=3)
+    s.add_argument("--roi", help="x,y,w,h crop instead of top band")
+    s.add_argument("--band", type=float, default=0.22)
+    s.add_argument("--upscale", type=int, default=4)
+    s.set_defaults(fn=_spines)
+
     s = sub.add_parser("compile", help="merge artifacts into candidate book list")
     s.add_argument("--ocr"); s.add_argument("--manifest"); s.add_argument("--cover-ocr")
     s.add_argument("--scroll"); s.add_argument("--out-json"); s.add_argument("--out-md")
+    s.add_argument("--audio"); s.add_argument("--spines")
     s.set_defaults(fn=_compile)
 
     s = sub.add_parser("pdf", help="render representative frames as a PDF")
@@ -181,6 +227,10 @@ def main(argv=None):
     s.add_argument("--scroll-step", type=float, default=0.5)
     s.add_argument("--min-lines", type=int, default=12)
     s.add_argument("--skip-pdf", action="store_true")
+    s.add_argument("--audio", help="audio file (opus/m4a/wav) to ASR")
+    s.add_argument("--audio-model", default="base")
+    s.add_argument("--spines-start", type=float); s.add_argument("--spines-end", type=float)
+    s.add_argument("--spines-roi"); s.add_argument("--spines-band", type=float, default=0.22)
     s.set_defaults(fn=_run)
 
     args = p.parse_args(argv)
