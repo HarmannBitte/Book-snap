@@ -153,6 +153,25 @@ def heard_match(cand_text, audio_segments, thr=0.75, max_segs=400):
     return (best if best_r >= thr else None), round(best_r, 2)
 
 
+SURNAME_ONLY = None  # placeholder, replaced below
+
+
+def author_spine(c):
+    """A spine whose read is a single proper noun ("DENNETT", "COATES").
+
+    On a real shelf that is the *author* band of the spine, not the title. Such
+    reads are still evidence (they name a person whose books may be shelved)
+    but they must not be exported as verified book titles.
+    """
+    if c.get("source") != "spine":
+        return False
+    words = [w for w in re.findall(r"[A-Za-z][A-Za-z.']*", c.get("text") or "")]
+    if len(words) != 1:
+        return False
+    w = words[0]
+    return w[0].isupper() and (w.isupper() or w[1:].islower()) and len(w) >= 4
+
+
 def book_like(c):
     """Only fuse audio for candidates that could plausibly be a book title."""
     t = (c.get("text") or c.get("ocr") or "").strip()
@@ -306,12 +325,14 @@ def spine_alts(group, k=3):
     return out
 
 
-def cluster_spines(shown, thr=0.85):
+def cluster_spines(shown, thr=0.92):
     """Collapse OCR variants of the same spine ("Sapicns"/"Saptens"/"Sapiens").
 
     Keeps the highest-confidence reading as canonical and records the variants,
     so the gazetteer is queried once per physical book instead of once per
-    mis-read. Non-spine candidates pass through untouched.
+    mis-read. The threshold is deliberately tight (0.92): at 0.85 two different
+    spines merged ("LOSING THE RACE" + "LOSING GROUND") and the group inherited
+    the wrong book. Non-spine candidates pass through untouched.
     """
     out, groups = [], []
     for c in shown:
@@ -422,11 +443,34 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             if hit:
                 s_["gazetteer"] = {k: hit[k] for k in ("title", "authors", "year") if k in hit}
 
+    for s_ in shown:
+        if author_spine(s_):
+            s_["author_spine"] = True
     for g in gaz:
         if g.get("verified"):
-            g["status"] = tier(g)
+            # a single proper noun on a spine is the author band unless the
+            # matched book's main title IS that word ("Sapiens" -> Harari, but
+            # "DENNETT" -> "Daniel Dennett" is the author band of a Dennett book)
+            main = _norm_q((g.get("title") or "").split(":")[0].split("(")[0])
+            if (g.get("source") == "spine"
+                    and main != _norm_q(g["phrase"])
+                    and author_spine(dict(source="spine",
+                                          text=g.get("matched_as") or g["phrase"]))):
+                g["status"] = "author"
+            else:
+                g["status"] = tier(g)
     gaz_verified = dedupe([g for g in gaz if g.get("verified")])
-    exportable = [g for g in gaz_verified if g["status"] in ("confirmed", "verified")]
+    exportable = [g for g in gaz_verified
+                  if g["status"] in ("confirmed", "verified")]
+    verified_norm = {_norm_q(g["phrase"]) for g in gaz}  # incl. weak: it is a title hit
+    spoken_names = {w.lower() for seg in audio
+                    for w in re.findall(r"\b[A-Z][a-z]{2,}\b", seg["text"])}
+    author_reads = sorted(
+        {g["phrase"] for g in gaz_verified if g["status"] == "author"} |
+        {s_["text"] for s_ in shown
+         if s_.get("author_spine") and (s_.get("conf") or 0) >= 0.75
+         and _norm_q(s_["text"]) not in verified_norm
+         and (s_["text"] or "").lower() in spoken_names})
     if gazetteer:
         write_bibtex(exportable, out_bib or out_json.replace(".json", ".bib"))
         write_ris(exportable, out_ris or out_json.replace(".json", ".ris"))
@@ -438,7 +482,8 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                 audio_titles=audio_cands,
                 heard=[s for s in shown if s.get("heard")],
                 gazetteer=gaz_verified,
-                gazetteer_weak=[g for g in gaz_verified if g["status"] == "weak"])
+                gazetteer_weak=[g for g in gaz_verified if g["status"] == "weak"],
+                author_spines=author_reads)
     json.dump(data, open(out_json, "w"), indent=1)
 
     with open(out_md, "w") as f:
@@ -463,6 +508,9 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             f.write(f"- [{g['status']}] {g['phrase']}  ->  {g.get('title')} "
                     f"({auth}, {g.get('year')})  score={g.get('score')} "
                     f"({g.get('match_type')})  freq={g.get('freq')}\n")
+        f.write("\n## Author spines (evidence of shelved authors, not titles)\n\n")
+        for a in data.get("author_spines", []):
+            f.write(f"- {a}\n")
         f.write("\n## Weak (single uncorroborated mention - not exported)\n\n")
         for g in data.get("gazetteer", []):
             if g["status"] != "weak":

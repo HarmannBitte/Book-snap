@@ -145,6 +145,39 @@ outright; `Peter Singer` is caught by the middle-initial person rule.
 Tests: 42 passing (added fuzz, tiers, dedupe, BibTeX/RIS, resume-facing
 compile test, match-rule guards, variant retry, author hints, cache-poisoning).
 
+## Round 5 - first labelled benchmark (visual ground truth)
+
+The shelf frame was read visually at 1080p (shelf1080.mp4, t=10) and stored as
+`bench/spine_labels_v2.json` (9 confident books + 3 author bands). Scorer:
+`booksnap bench-spines` (strict, directional matcher). First honest recall
+numbers for the spine channel:
+
+| metric | value |
+|---|---|
+| books surfaced at all (any read) | 4/9 = 0.44 |
+| books verified to a catalogue record | 2/9 = 0.22 |
+| verified with the right record | 2/9 = 0.22 |
+| author bands surfaced / reported | 2/3 / 0 |
+
+Misses are instructive: *Losing the Race*, *A Testament of Hope*, *We Were
+Eight Years in Trouble*, *Wealth, Poverty and Politics*, *On the Origin of
+Species* are visible to the eye but their spine type is below OCR at 1080p, or
+the read is too mangled to query. Precision of the exported list stays 4/5
+(Sapiens, Losing Ground, Facing Reality, The Great Awakening correct;
+Philosophical Psychology is a journal-name false positive); the benchmark shows
+the real weakness is RECALL on shelves, not precision.
+
+The visual read also caught a bug the aggregate numbers hid: at clustering
+threshold 0.85 two different spines merged ("LOSING THE RACE" + "LOSING
+GROUND") and the group inherited Charles Murray's book. Threshold raised to
+0.92; the benchmark matcher is deliberately stricter than the pipeline's own
+fuzzy matcher so it cannot credit such accidents.
+
+Also this round: cached OpenLibrary lookups no longer consume the query budget
+(warm cache = every candidate verified; 23 matches, 18 correctly demoted to
+weak), and a new informational "author spines" channel reports single-surname
+reads only when the transcript also says the name (empty for this video).
+
 ## Bugs found & fixed during this round
 
 - `_raw_frame` hardcoded 1080×1920 → probed dimensions.

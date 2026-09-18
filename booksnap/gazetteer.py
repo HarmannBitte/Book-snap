@@ -308,7 +308,7 @@ def in_book_context(phrase, segments, window=80):
 
 
 def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
-                       strong_editions=3, author_hints=None):
+                       strong_editions=3, author_hints=None, counter=None):
     """Disk-cached lookup. The cache stores *raw* OpenLibrary records, not
     match decisions, so matching rules can be retuned without re-querying."""
     try:
@@ -320,6 +320,8 @@ def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
         key = _norm(phrase)
         entry = cache.get(key)
         if entry is None:
+            if counter is not None:  # only network fetches cost budget
+                counter["net"] = counter.get("net", 0) + 1
             docs = fetch_docs(phrase)
             if docs is None:  # failed fetch: do not poison the cache
                 return match_docs(phrase, [], fuzzy_thr=fuzzy_thr,
@@ -351,6 +353,13 @@ def verify(candidates, lookup=openlibrary_lookup, max_queries=60, pause=0.25):
     return out
 
 
+def _counted(lookup):
+    """True when this lookup closure charges the network budget. Cached lookups
+    are free, so a warm cache lets every candidate (visual and spoken) be
+    verified instead of the first N."""
+    return bool(getattr(lookup, "charges_network", True))
+
+
 def _corroborated(c, ctx):
     """A match to a thinly-held catalogue record (<3 editions) is only believed
     when something else supports it: >=2 significant words in the phrase, or a
@@ -375,20 +384,22 @@ def verify_all(candidates, lookup=openlibrary_lookup, max_queries=60, pause=0.25
     two are exported to BibTeX/RIS.
     """
     out, done, alts_done = [], 0, 0
-    alt_budget = max_queries // 2 if alt_budget is None else alt_budget
+    budget = {"primary": max_queries, "alt": max_queries // 2}
     for c in candidates:
         c2 = dict(c)
-        if done >= max_queries:
+        if done >= budget["primary"]:
             c2.update(verified=False, skipped=True)
             out.append(c2); continue
         meta = lookup(c["phrase"])
-        done += 1
+        if _counted(lookup):
+            done += 1
         matched_as = c["phrase"]
         for alt in (c.get("alts") or []):  # OCR variants / cleaned reads
-            if meta or alts_done >= alt_budget:
+            if meta or alts_done >= budget["alt"]:
                 break
             meta = lookup(alt)
-            alts_done += 1
+            if _counted(lookup):
+                alts_done += 1
             time.sleep(pause)
             if meta:
                 matched_as = alt

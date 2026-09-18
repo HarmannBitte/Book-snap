@@ -94,6 +94,13 @@ def _spines(args):
         print(f"   {r['conf']:.2f} [{r.get('preset')}] {r['text']}")
 
 
+def _bench_spines(args):
+    from .bench_spines import score
+    import json as _json
+    out = score(args.labels, args.spines, args.books)
+    print(_json.dumps(out, indent=1))
+
+
 def _compile(args):
     from .compile import compile_books
     data = compile_books(args.ocr, args.manifest, args.cover_ocr, args.scroll,
@@ -251,6 +258,10 @@ def main(argv=None):
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
+
+    s = sub.add_parser("bench-spines", help="score the spine channel vs labels")
+    s.add_argument("labels"); s.add_argument("spines"); s.add_argument("books")
+    s.set_defaults(fn=_bench_spines)
 
     s = sub.add_parser("pdf", help="render representative frames as a PDF")
     s.add_argument("src"); s.add_argument("out")

@@ -100,9 +100,11 @@ provenance (timestamp, source channel, confidence, evidence snippet).
    retuned offline (failed fetches are never cached).
 4. Dedup, provenance, BibTeX/RIS output (E8) - `compile.dedupe`, `.bib`/`.ris`
    writers, score/match-rule/provenance on every row.
-5. Bench harness with labelled videos and CI metrics (E6) - **still open**:
-   there is no ground-truth set yet, the numbers in `examples/TEST_REPORT.md`
-   are hand-judged on two videos.
+5. Bench harness - **STARTED**: `bench/spine_labels_v2.json` (one shelf frame
+   read visually at 1080p) + `booksnap bench-spines` scorer with a strict
+   directional matcher. First numbers: spine-channel recall 0.44 surfaced /
+   0.22 verified-to-record, exported precision 4/5. **Still open**: labels for
+   more shelves and for the v1 slide panels, and wiring the scorer into CI.
 
 **P1 — bigger levers, needs an API key or more RAM**
 6. VLM verification stage on candidate panels/crops (E4) — biggest single win.
@@ -133,6 +135,10 @@ provenance (timestamp, source channel, confidence, evidence snippet).
 Plus: every emitted row has provenance and a calibrated confidence; CI reports
 P/R per channel on the benchmark; a run is resumable and never exceeds the
 network rate budget.
+
+Current measured state (2026-09-18, two videos, one labelled shelf):
+exported precision 4/5 (v2) and 1/1 (v1); spine recall 0.22 verified;
+scroll/bibliography and slide channels remain the reliable ones.
 
 ## 5. Known constraints
 

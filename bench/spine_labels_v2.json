@@ -1,0 +1,24 @@
+{
+  "video": "uDS_URVc7Oc (Coleman Hughes / Nathan Cofnas)",
+  "clip": "shelf1080.mp4 (source 2550-2576 s), frame t=10, 1080p top band",
+  "method": "human visual read of the upscaled frame; 'confident' rows only are scored",
+  "books": [
+    {"title": "Sapiens", "author": "Yuval Noah Harari", "confident": true},
+    {"title": "Losing the Race", "author": "John McWhorter", "confident": true},
+    {"title": "A Testament of Hope", "author": "James H. Cone", "confident": true},
+    {"title": "We Were Eight Years in Trouble", "author": "Ta-Nehisi Coates", "confident": true},
+    {"title": "Losing Ground", "author": "Charles Murray", "confident": true},
+    {"title": "Wealth, Poverty and Politics", "author": "Thomas Sowell", "confident": true},
+    {"title": "Locked In", "author": null, "confident": true},
+    {"title": "On the Origin of Species", "author": "Charles Darwin", "confident": true},
+    {"title": "Victims", "author": null, "confident": true},
+    {"title": "Pathos of Power", "author": null, "confident": false},
+    {"title": "Late Admissions", "author": null, "confident": false},
+    {"title": "The Picture of Dorian Gray", "author": null, "confident": false}
+  ],
+  "author_bands": [
+    {"name": "Dennett", "confident": true},
+    {"name": "Barack Obama", "confident": true},
+    {"name": "James Q. Wilson", "confident": true}
+  ]
+}

@@ -384,3 +384,14 @@ def test_author_hints_pick_the_right_same_titled_record():
     hinted = match_docs("Facing Reality", docs, author_hints={"charles", "murray"})
     assert hinted["authors"] == ["Charles Murray"]   # transcript names the author
     assert hinted["title"] == "Facing Reality"
+
+
+def test_bench_matcher_is_directional_and_strict():
+    from booksnap.bench_spines import match_label
+    reads = ["Sapiens", "LOSING GROUND", "LOCKEDIN", "VYCYIMS", "LOSINCTHIRACE"]
+    assert match_label("Sapiens", reads)[0] == "Sapiens"
+    assert match_label("Locked In", reads)[0] == "LOCKEDIN"      # space-free norm
+    assert match_label("Losing Ground", reads)[0] == "LOSING GROUND"
+    assert match_label("Losing the Race", reads)[0] is None      # not Losing Ground
+    assert match_label("On the Origin of Species", reads)[0] is None
+    assert match_label("We Were Eight Years in Trouble", reads)[0] is None
