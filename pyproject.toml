@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "booksnap"
+version = "0.1.0"
+description = "Extract slides and book covers from presentation-style videos, then OCR them into a book list."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Book-snap contributors" }]
+dependencies = [
+    "numpy",
+    "opencv-python-headless",
+    "scipy",
+    "imagehash",
+    "pillow",
+    "rapidocr-onnxruntime",
+    "img2pdf",
+]
+
+[project.scripts]
+booksnap = "booksnap.cli:main"
+
+[tool.setuptools]
+packages = ["booksnap"]

@@ -1,0 +1,7 @@
+numpy
+opencv-python-headless
+scipy
+imagehash
+pillow
+rapidocr-onnxruntime
+img2pdf
