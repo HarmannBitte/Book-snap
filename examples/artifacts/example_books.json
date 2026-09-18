@@ -1,0 +1,184 @@
+[
+ {
+  "title": "Born Together-Reared Apart: The Landmark Minnesota Twin Study",
+  "author": "Nancy L. Segal",
+  "t": 595.7,
+  "cited": false,
+  "cover": "covers/01_segal_born_together_reared_apart.png"
+ },
+ {
+  "title": "Blueprint: How DNA Makes Us Who We Are",
+  "author": "Robert Plomin",
+  "t": 703.0,
+  "cited": true,
+  "cover": "covers/02_plomin_blueprint.png"
+ },
+ {
+  "title": "The Extended Phenotype: The Long Reach of the Gene",
+  "author": "Richard Dawkins",
+  "t": 839.2,
+  "cited": true,
+  "cover": "covers/03_dawkins_extended_phenotype.png"
+ },
+ {
+  "title": "The Enigma of Reason: A Natural History of Human Understanding",
+  "author": "Hugo Mercier & Dan Sperber",
+  "t": 899.9,
+  "cited": false,
+  "cover": "covers/04_mercier_sperber_enigma_of_reason.png"
+ },
+ {
+  "title": "The Righteous Mind: Why Good People Are Divided by Politics and Religion",
+  "author": "Jonathan Haidt",
+  "t": 899.9,
+  "cited": true,
+  "cover": "covers/05_haidt_righteous_mind.png"
+ },
+ {
+  "title": "Thinking, Fast and Slow",
+  "author": "Daniel Kahneman",
+  "t": 970.8,
+  "cited": true,
+  "cover": "covers/06_kahneman_thinking_fast_slow.png"
+ },
+ {
+  "title": "The Quest for Community",
+  "author": "Robert A. Nisbet",
+  "t": 1311.8,
+  "cited": false,
+  "cover": "covers/07_nisbet_quest_for_community.png"
+ },
+ {
+  "title": "Multicultural America: An Encyclopedia of the Newest Americans, vol. 1",
+  "author": "Ronald H. Bayor (ed.)",
+  "t": 1478.5,
+  "cited": false,
+  "cover": "covers/08_multicultural_america_encyclopedia.png"
+ },
+ {
+  "title": "Why Everyone (Else) Is a Hypocrite: Evolution and the Modular Mind",
+  "author": "Robert Kurzban",
+  "t": 1689.9,
+  "cited": true,
+  "cover": "covers/09_kurzban_why_everyone_else_is_a_hypocrite.png"
+ },
+ {
+  "title": "Beyond Good and Evil (Penguin Classics)",
+  "author": "Friedrich Nietzsche",
+  "t": 1603.9,
+  "cited": false,
+  "cover": "covers/10_nietzsche_beyond_good_and_evil.png"
+ },
+ {
+  "title": "The Biology of Moral Systems",
+  "author": "Richard D. Alexander",
+  "year": 1987,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "How Life Works: A User's Guide to the New Biology",
+  "author": "Philip Ball",
+  "year": 2023,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "Blueprint for Immortality: The Electric Patterns of Life",
+  "author": "Harold Saxton Burr",
+  "year": 1972,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The 10,000 Year Explosion: How Civilization Accelerated Human Evolution",
+  "author": "Gregory Cochran & Henry Harpending",
+  "year": 2010,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The Selfish Gene (2nd ed.)",
+  "author": "Richard Dawkins",
+  "year": 1989,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The Revolutionary Phenotype: The Amazing Story of How Life Begins and How it Ends",
+  "author": "J.F. Gariepy",
+  "year": 2019,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "How the Leopard Changed its Spots: The Evolution of Complexity",
+  "author": "Brian Goodwin",
+  "year": 2001,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "Multilevel Selection: Theoretical Foundations, Historical Examples, and Empirical Evidence",
+  "author": "Hertler, Figueredo & Penaherrera-Aguirre",
+  "year": 2020,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "Evolution 2.0: Breaking the Deadlock Between Darwin and Design",
+  "author": "Perry Marshall",
+  "year": 2015,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The Cultured Thug Handbook",
+  "author": "Mike Maxwell",
+  "year": 2024,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "Biological Realism",
+  "author": "Michael McConkey",
+  "year": 2020,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The Red Queen: Sex and the Evolution of Human Nature",
+  "author": "Matt Ridley",
+  "year": 2003,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "The Extended Organism: The Physiology of Animal-Built Structures",
+  "author": "J. Scott Turner",
+  "year": 2000,
+  "t": null,
+  "cited": true,
+  "cover": null
+ },
+ {
+  "title": "Demonic Males: Apes and the Origins of Human Violence",
+  "author": "Richard W. Wrangham & Dale Peterson",
+  "year": 1996,
+  "t": null,
+  "cited": true,
+  "cover": null
+ }
+]

@@ -68,6 +68,12 @@ def _scroll(args):
           f"unique_lines={len(ordered)} -> {args.out}")
 
 
+def _pdf(args):
+    from .pdf import make_pdf
+    n = make_pdf(args.src, args.out, args.width, args.quality)
+    print(f"pdf pages={n} -> {args.out}")
+
+
 def _compile(args):
     from .compile import compile_books
     data = compile_books(args.ocr, args.manifest, args.cover_ocr, args.scroll,
@@ -96,6 +102,8 @@ def _run(args):
                                start=args.scroll_start, end=args.scroll_end,
                                step=args.scroll_step, probe_step=2.0,
                                min_lines=args.min_lines, fps=args.fps))
+    if not args.skip_pdf:
+        _pdf(argparse.Namespace(src=reps, out=os.path.join(work, "slides.pdf")))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -155,6 +163,12 @@ def main(argv=None):
     s.add_argument("--scroll"); s.add_argument("--out-json"); s.add_argument("--out-md")
     s.set_defaults(fn=_compile)
 
+    s = sub.add_parser("pdf", help="render representative frames as a PDF")
+    s.add_argument("src"); s.add_argument("out")
+    s.add_argument("--width", type=int, default=1280)
+    s.add_argument("--quality", type=int, default=4)
+    s.set_defaults(fn=_pdf)
+
     s = sub.add_parser("run", help="run the whole pipeline")
     s.add_argument("video")
     s.add_argument("--workdir", default="booksnap_out")
@@ -166,6 +180,7 @@ def main(argv=None):
     s.add_argument("--scroll-start", type=float); s.add_argument("--scroll-end", type=float)
     s.add_argument("--scroll-step", type=float, default=0.5)
     s.add_argument("--min-lines", type=int, default=12)
+    s.add_argument("--skip-pdf", action="store_true")
     s.set_defaults(fn=_run)
 
     args = p.parse_args(argv)
