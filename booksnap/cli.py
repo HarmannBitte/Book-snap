@@ -95,9 +95,11 @@ def _compile(args):
     from .compile import compile_books
     data = compile_books(args.ocr, args.manifest, args.cover_ocr, args.scroll,
                          args.out_json, args.out_md,
-                         audio_json=args.audio, spines_json=args.spines)
+                         audio_json=args.audio, spines_json=args.spines,
+                         gazetteer=args.gazetteer)
     print(f"bibliography={len(data['bibliography'])} shown={len(data['shown_covers'])} "
-          f"audio_titles={len(data['audio_titles'])} heard={len(data['heard'])}")
+          f"audio_titles={len(data['audio_titles'])} heard={len(data['heard'])} "
+          f"gazetteer={len(data['gazetteer'])}")
 
 
 def _run(args):
@@ -139,6 +141,7 @@ def _run(args):
         scroll=os.path.join(work, "scroll_lines.json"),
         audio=os.path.join(work, "transcript.json") if args.audio else None,
         spines=os.path.join(work, "spines.json") if args.spines_start is not None else None,
+        gazetteer=args.gazetteer,
         out_json=os.path.join(work, "books_candidates.json"),
         out_md=os.path.join(work, "books_candidates.md")))
     print(f"done. artifacts in {work}")
@@ -207,6 +210,8 @@ def main(argv=None):
     s.add_argument("--ocr"); s.add_argument("--manifest"); s.add_argument("--cover-ocr")
     s.add_argument("--scroll"); s.add_argument("--out-json"); s.add_argument("--out-md")
     s.add_argument("--audio"); s.add_argument("--spines")
+    s.add_argument("--gazetteer", action="store_true")
+    s.add_argument("--max-queries", type=int, default=60)
     s.set_defaults(fn=_compile)
 
     s = sub.add_parser("pdf", help="render representative frames as a PDF")
@@ -231,6 +236,7 @@ def main(argv=None):
     s.add_argument("--audio-model", default="base")
     s.add_argument("--spines-start", type=float); s.add_argument("--spines-end", type=float)
     s.add_argument("--spines-roi"); s.add_argument("--spines-band", type=float, default=0.22)
+    s.add_argument("--gazetteer", action="store_true")
     s.set_defaults(fn=_run)
 
     args = p.parse_args(argv)

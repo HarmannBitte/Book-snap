@@ -49,6 +49,31 @@ Type: two-camera podcast with a physical bookshelf backdrop.
 5. Show/podcast logos on the set match the spoken show name; filtering
    programme titles vs book titles remains a curation step.
 
+## Round 3 - gazetteer verification (stage 11)
+
+`booksnap/gazetteer.py`: title-case n-gram candidates from the transcript
+(2-6 words, connectors allowed) + visual candidates, verified against
+OpenLibrary (`search.json?title=`) with prefix/equality matching, an
+author-name rejection (person != title), a junk-record rejection, a
+book-context window for audio-derived candidates, and a disk cache.
+
+| Video | Verified titles | Assessment |
+|---|---|---|
+| v1 | 0-1 ("The Princeton Guide to Evolution", Losos 2014 - flaky: depends on OL returning year/authors) | recall limited |
+| v2 | "Facing Reality" (Murray 2021) TRUE; "New York City" FP (place); "Philosophical Psychology" borderline (journal) | precision ~1/3 |
+
+Findings: cue-regexes (round 2) missed "Facing Reality"; the gazetteer finds
+it with no cue word - recall win. Precision is capped by entity ambiguity
+(places/journals/persons are also book titles) and by OpenLibrary catalogue
+noise; production use should add a proper NER/WORK_OF_ART model or a curated
+gazetteer. Rate-limiting: bursts of >~60 queries got us throttled (two runs
+timed out); the disk cache + `--max-queries` cap fix repeatability.
+
+**Critical bug found:** `title_candidates` infinite-looped on phrases like
+"In the" (trailing connector strip via `rsplit(None, 1)` is a no-op on a
+single token, and "in" is itself a connector). Fixed with a token-list pop +
+regression test. This bug silently killed two 20-25 min runs.
+
 ## Bugs found & fixed during this round
 
 - `_raw_frame` hardcoded 1080×1920 → probed dimensions.

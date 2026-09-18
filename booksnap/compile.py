@@ -52,6 +52,10 @@ def parse_bibliography(lines):
     return out
 
 
+def _norm_q(s):
+    return "".join(ch for ch in s.lower() if ch.isalnum())
+
+
 def tokens(s: str):
     return {t for t in re.findall(r"[a-z0-9]+", s.lower()) if len(t) > 3 and t not in STOP}
 
@@ -164,7 +168,8 @@ def fuse_audio(candidates, audio_segments, hear_thr=0.75):
 
 
 def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
-                  out_json, out_md, audio_json=None, spines_json=None):
+                  out_json, out_md, audio_json=None, spines_json=None,
+                  gazetteer=False, max_queries=60):
     ocr = json.load(open(ocr_json)) if ocr_json else {}
     manifest = json.load(open(cover_manifest_json)) if cover_manifest_json else []
     cover_ocr = json.load(open(cover_ocr_json)) if cover_ocr_json else {}
@@ -195,10 +200,31 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
     if audio:
         fuse_audio(shown, audio)
 
+    gaz = []
+    if gazetteer and audio:
+        from .gazetteer import title_candidates, verify_all, make_cached_lookup
+        lookup = make_cached_lookup(out_json + ".olcache.json")
+        cands = title_candidates(audio)
+        for s_ in shown:  # visual candidates join the verification queue
+            t = (s_.get("text") or "").strip()
+            if t and not any(c["phrase"].lower() == t.lower() for c in cands):
+                cands.append(dict(phrase=t, freq=0, source=s_.get("source")))
+        gaz = verify_all(cands[:max_queries + 20], lookup=lookup,
+                         max_queries=max_queries, segments=audio)
+        nq = _norm_q
+        for s_ in shown:
+            t = nq(s_.get("text") or "")
+            hit = next((g for g in gaz if g.get("verified") and
+                        (nq(g["phrase"]) == t or (len(t) >= 8 and t in nq(g["phrase"])))),
+                       None)
+            if hit:
+                s_["gazetteer"] = {k: hit[k] for k in ("title", "authors", "year") if k in hit}
+
     data = dict(bibliography=biblio, shown_covers=shown,
                 shown_only=[s for s in shown if not s["cited"]],
                 audio_titles=audio_cands,
-                heard=[s for s in shown if s.get("heard")])
+                heard=[s for s in shown if s.get("heard")],
+                gazetteer=[g for g in gaz if g.get("verified")])
     json.dump(data, open(out_json, "w"), indent=1)
 
     with open(out_md, "w") as f:
@@ -215,6 +241,11 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         f.write("\n## Book titles mentioned in audio\n\n")
         for a in data["audio_titles"]:
             f.write(f"- t={a['t']}: {a['phrase']}\n")
+        f.write("\n## Gazetteer-verified book titles\n\n")
+        for g in data.get("gazetteer", []):
+            auth = ", ".join(g.get("authors") or []) or "?"
+            f.write(f"- {g['phrase']}  ->  {g.get('title')} ({auth}, {g.get('year')})"
+                    f"  freq={g.get('freq')}\n")
         f.write("\n## Visual candidates confirmed by audio\n\n")
         for s in data["heard"]:
             f.write(f"- {s['text']!r} heard as {s['heard_as']!r} "
