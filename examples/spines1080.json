@@ -1,0 +1,794 @@
+[
+ {
+  "text": "Conversations",
+  "conf": 0.922,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 4778,
+  "y": 163
+ },
+ {
+  "text": "Sapiens",
+  "conf": 0.867,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 2402,
+  "y": 118
+ },
+ {
+  "text": "Goleman",
+  "conf": 0.852,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 4774,
+  "y": 268
+ },
+ {
+  "text": "AND PO",
+  "conf": 0.836,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3993,
+  "y": 421
+ },
+ {
+  "text": "Sapicns",
+  "conf": 0.836,
+  "t": 9.5,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 2409,
+  "y": 118
+ },
+ {
+  "text": "LOSINCTHIRACE",
+  "conf": 0.832,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 1671,
+  "y": 365
+ },
+ {
+  "text": "LOSIHC IIRACE",
+  "conf": 0.832,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 1671,
+  "y": 365
+ },
+ {
+  "text": "LOSING GROUND",
+  "conf": 0.825,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 1071,
+  "y": 108
+ },
+ {
+  "text": "onversations",
+  "conf": 0.821,
+  "t": 15.0,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 4865,
+  "y": 178
+ },
+ {
+  "text": "M LOSING GEOCND",
+  "conf": 0.819,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3070,
+  "y": 321
+ },
+ {
+  "text": "Coleman",
+  "conf": 0.816,
+  "t": 9.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 4781,
+  "y": 259
+ },
+ {
+  "text": "MO LOSING GROLND",
+  "conf": 0.814,
+  "t": 9.5,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3070,
+  "y": 325
+ },
+ {
+  "text": "MO LOSING GROCND",
+  "conf": 0.809,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 3069,
+  "y": 323
+ },
+ {
+  "text": "LOCKEDIN",
+  "conf": 0.801,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 1627,
+  "y": 174
+ },
+ {
+  "text": "WEALTTL",
+  "conf": 0.796,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 3934,
+  "y": 361
+ },
+ {
+  "text": "DARACK OGAMA",
+  "conf": 0.789,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 836,
+  "y": 198
+ },
+ {
+  "text": "DENNETT",
+  "conf": 0.787,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 967,
+  "y": 611
+ },
+ {
+  "text": "BARACK OEAMA",
+  "conf": 0.786,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 2507,
+  "y": 595
+ },
+ {
+  "text": "LOSINCTI RACE",
+  "conf": 0.784,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 1672,
+  "y": 366
+ },
+ {
+  "text": "NIELC",
+  "conf": 0.782,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 338,
+  "y": 188
+ },
+ {
+  "text": "Gdeman",
+  "conf": 0.781,
+  "t": 9.5,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 4748,
+  "y": 295
+ },
+ {
+  "text": "COATES",
+  "conf": 0.778,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 685,
+  "y": 200
+ },
+ {
+  "text": "LOSIHCTHI RACE",
+  "conf": 0.776,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 1672,
+  "y": 365
+ },
+ {
+  "text": "LOSINCIMIRACE",
+  "conf": 0.775,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 1671,
+  "y": 365
+ },
+ {
+  "text": "with",
+  "conf": 0.772,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 5067,
+  "y": 282
+ },
+ {
+  "text": "MO LOSING GEOCND",
+  "conf": 0.77,
+  "t": 9.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3070,
+  "y": 321
+ },
+ {
+  "text": "PAHOSOFPC",
+  "conf": 0.769,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2492,
+  "y": 360
+ },
+ {
+  "text": "HN LOSING GEOUND",
+  "conf": 0.768,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3072,
+  "y": 323
+ },
+ {
+  "text": "MON LOSING GROLND",
+  "conf": 0.768,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3070,
+  "y": 325
+ },
+ {
+  "text": "NIELG",
+  "conf": 0.767,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 999,
+  "y": 563
+ },
+ {
+  "text": "WFALTH,",
+  "conf": 0.767,
+  "t": 9.5,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3936,
+  "y": 361
+ },
+ {
+  "text": "PICTUR",
+  "conf": 0.765,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 1102,
+  "y": 145
+ },
+ {
+  "text": "PATHOSOFPOWE",
+  "conf": 0.764,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 829,
+  "y": 120
+ },
+ {
+  "text": "DKNNETT",
+  "conf": 0.756,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 964,
+  "y": 611
+ },
+ {
+  "text": "HUI LOSING GEOUND",
+  "conf": 0.752,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 3069,
+  "y": 324
+ },
+ {
+  "text": "DINNETT",
+  "conf": 0.749,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 965,
+  "y": 610
+ },
+ {
+  "text": "DAEHOSOFPC",
+  "conf": 0.746,
+  "t": 9.5,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2492,
+  "y": 360
+ },
+ {
+  "text": "AIHOSOFPC",
+  "conf": 0.745,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 2495,
+  "y": 360
+ },
+ {
+  "text": "M-N LOSISG GROUND",
+  "conf": 0.744,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3070,
+  "y": 326
+ },
+ {
+  "text": "LOCKEDN",
+  "conf": 0.739,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 4882,
+  "y": 522
+ },
+ {
+  "text": "GARACK OGAMA",
+  "conf": 0.737,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2506,
+  "y": 594
+ },
+ {
+  "text": "WEALT,",
+  "conf": 0.73,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3935,
+  "y": 362
+ },
+ {
+  "text": "PICTURI",
+  "conf": 0.72,
+  "t": 9.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 3305,
+  "y": 434
+ },
+ {
+  "text": "GARACK OEANA",
+  "conf": 0.713,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 2507,
+  "y": 595
+ },
+ {
+  "text": "ATHOSOFPO",
+  "conf": 0.713,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 2495,
+  "y": 361
+ },
+ {
+  "text": "BARACK OGAME",
+  "conf": 0.713,
+  "t": 9.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 2506,
+  "y": 593
+ },
+ {
+  "text": "WFALTT,",
+  "conf": 0.712,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 3936,
+  "y": 361
+ },
+ {
+  "text": "dleman",
+  "conf": 0.708,
+  "t": 15.0,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 4778,
+  "y": 306
+ },
+ {
+  "text": "WEALITI",
+  "conf": 0.707,
+  "t": 9.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3935,
+  "y": 362
+ },
+ {
+  "text": "WEALTTI",
+  "conf": 0.696,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3936,
+  "y": 362
+ },
+ {
+  "text": "GARACK OOAML",
+  "conf": 0.694,
+  "t": 9.5,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2506,
+  "y": 594
+ },
+ {
+  "text": "HUrN LOSING GEOUND",
+  "conf": 0.691,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 3071,
+  "y": 324
+ },
+ {
+  "text": "BARACK OGAMA",
+  "conf": 0.691,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 2507,
+  "y": 593
+ },
+ {
+  "text": "EIGHTYENBS",
+  "conf": 0.687,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 570,
+  "y": 206
+ },
+ {
+  "text": "GARACR ODAMA",
+  "conf": 0.685,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2507,
+  "y": 594
+ },
+ {
+  "text": "AIHOSOFP",
+  "conf": 0.684,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 2499,
+  "y": 361
+ },
+ {
+  "text": "PAEHOSOFPC",
+  "conf": 0.677,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 2488,
+  "y": 359
+ },
+ {
+  "text": "OSINC INIRACE",
+  "conf": 0.666,
+  "t": 9.5,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 1686,
+  "y": 368
+ },
+ {
+  "text": "VYCYIMS",
+  "conf": 0.65,
+  "t": 9.5,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 1703,
+  "y": 208
+ },
+ {
+  "text": "VYCIMS",
+  "conf": 0.647,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 1703,
+  "y": 209
+ },
+ {
+  "text": "The uk ",
+  "conf": 0.642,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 4249,
+  "y": 63
+ },
+ {
+  "text": "VYCYTMS",
+  "conf": 0.638,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 1703,
+  "y": 208
+ },
+ {
+  "text": "WEALTE",
+  "conf": 0.637,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 3935,
+  "y": 360
+ },
+ {
+  "text": "PICTUEN",
+  "conf": 0.635,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 3304,
+  "y": 432
+ },
+ {
+  "text": "PICTURE",
+  "conf": 0.628,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 3304,
+  "y": 432
+ },
+ {
+  "text": "DINNETY",
+  "conf": 0.625,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 966,
+  "y": 611
+ },
+ {
+  "text": "NIKLC",
+  "conf": 0.61,
+  "t": 15.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 1020,
+  "y": 569
+ },
+ {
+  "text": "DINAETT",
+  "conf": 0.604,
+  "t": 9.0,
+  "preset": "denoise",
+  "upscale": 3,
+  "x": 963,
+  "y": 610
+ },
+ {
+  "text": "OLAEDN",
+  "conf": 0.604,
+  "t": 9.5,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 4882,
+  "y": 522
+ },
+ {
+  "text": "GARACK",
+  "conf": 0.6,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 2509,
+  "y": 597
+ },
+ {
+  "text": "IHANU",
+  "conf": 0.595,
+  "t": 15.0,
+  "preset": "stack",
+  "upscale": 3,
+  "x": 1684,
+  "y": 18
+ },
+ {
+  "text": "LOSIHc In RAcE",
+  "conf": 0.591,
+  "t": 15.0,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 1679,
+  "y": 369
+ },
+ {
+  "text": "WEATTL",
+  "conf": 0.58,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 3934,
+  "y": 360
+ },
+ {
+  "text": "VYCAIMS",
+  "conf": 0.576,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 1701,
+  "y": 207
+ },
+ {
+  "text": "UENNETT",
+  "conf": 0.56,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 962,
+  "y": 610
+ },
+ {
+  "text": "VYEYIMS",
+  "conf": 0.555,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 1700,
+  "y": 207
+ },
+ {
+  "text": "HLAINE",
+  "conf": 0.534,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 5050,
+  "y": 53
+ },
+ {
+  "text": "10307",
+  "conf": 0.531,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 4878,
+  "y": 519
+ },
+ {
+  "text": "LOEDN",
+  "conf": 0.528,
+  "t": 15.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 4883,
+  "y": 522
+ },
+ {
+  "text": "CARACKOTY",
+  "conf": 0.526,
+  "t": 9.0,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 2504,
+  "y": 592
+ },
+ {
+  "text": "CUATNA",
+  "conf": 0.524,
+  "t": 9.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 2055,
+  "y": 597
+ },
+ {
+  "text": "Titin",
+  "conf": 0.522,
+  "t": 9.0,
+  "preset": "binarize",
+  "upscale": 3,
+  "x": 3689,
+  "y": 181
+ },
+ {
+  "text": "HLANEM K",
+  "conf": 0.519,
+  "t": 9.0,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 5050,
+  "y": 51
+ },
+ {
+  "text": "COATHA",
+  "conf": 0.519,
+  "t": 9.5,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 2055,
+  "y": 596
+ },
+ {
+  "text": "PI&TI",
+  "conf": 0.515,
+  "t": 15.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 4677,
+  "y": 531
+ },
+ {
+  "text": "The.Qunkil",
+  "conf": 0.509,
+  "t": 15.0,
+  "preset": "clahe",
+  "upscale": 3,
+  "x": 4264,
+  "y": 63
+ },
+ {
+  "text": "EIGIENEN",
+  "conf": 0.506,
+  "t": 9.5,
+  "preset": "lanczos",
+  "upscale": 3,
+  "x": 1711,
+  "y": 618
+ },
+ {
+  "text": "LOLNEDN",
+  "conf": 0.505,
+  "t": 9.0,
+  "preset": "unsharp",
+  "upscale": 3,
+  "x": 4882,
+  "y": 521
+ }
+]

@@ -86,17 +86,32 @@ provenance (timestamp, source channel, confidence, evidence snippet).
 
 ## 3. Prioritised plan
 
-**P0 — high impact, days of work, runs on this box**
-1. Fuzzy + phonetic matching in fusion and gazetteer (E2, E5).
-2. Corroboration rule + entity typing lite (E3): audio-only claims demoted to
-   `unverified` unless supported.
-3. Per-stage resume/checkpoint + backoff + pinned models (E7).
-4. Dedup, provenance, BibTeX/RIS output (E8).
-5. Bench harness with 3 labelled videos and CI metrics (E6, start small).
+**P0 — DONE (commit after `f390b58`)**
+1. Fuzzy + phonetic matching in fusion and gazetteer (E2, E5) - `booksnap/fuzz.py`:
+   token-set ratio, Metaphone, Jaro-Winkler; per-token phonetic alignment in
+   `gazetteer._align` recovers `LOSISG GROUND` -> *Losing Ground*.
+2. Corroboration rule + entity typing lite (E3) - `compile.tier`
+   (confirmed/verified/weak, only the first two exported), region /
+   demographic / institution / person-name (middle-initial) rejection,
+   edition-count gate with a corroboration requirement for thin records, and
+   author-hint disambiguation between same-titled catalogue records.
+3. Per-stage resume + backoff (E7) - `run --resume`, `_fetch_json` retries with
+   exponential backoff + jitter, raw-record disk cache so matching rules can be
+   retuned offline (failed fetches are never cached).
+4. Dedup, provenance, BibTeX/RIS output (E8) - `compile.dedupe`, `.bib`/`.ris`
+   writers, score/match-rule/provenance on every row.
+5. Bench harness with labelled videos and CI metrics (E6) - **still open**:
+   there is no ground-truth set yet, the numbers in `examples/TEST_REPORT.md`
+   are hand-judged on two videos.
 
 **P1 — bigger levers, needs an API key or more RAM**
 6. VLM verification stage on candidate panels/crops (E4) — biggest single win.
-7. Selective super-resolution + OCR retry (E1).
+7. Selective super-resolution + OCR retry (E1) - **DONE**: `booksnap/superres.py`
+   (5 enhancement presets + median frame stacking), spine clustering and
+   cleaned variant queries in `compile`. Measured on a real bookshelf pan:
+   19 reads (720p, one preset) -> 51 (720p, all presets) -> 88 (1080p),
+   which is what made *Losing Ground* and *Sapiens* verifiable. Downloading
+   1080p (`yt-dlp -f 137`) remains the single biggest lever for shelves.
 8. NER model for spoken candidates (E3).
 9. `small`/`medium` ASR with word timestamps when RAM allows (E2).
 
@@ -112,7 +127,7 @@ provenance (timestamp, source channel, confidence, evidence snippet).
 | Video class | Recall | Precision |
 |---|---|---|
 | Slide decks with bibliography | ≥ 0.95 | ≥ 0.95 |
-| Podcasts with bookshelf + spoken titles | ≥ 0.85 | ≥ 0.90 |
+| Podcasts with bookshelf + spoken titles | ≥ 0.85 | ≥ 0.90 (now 0.80 measured, 4/5) |
 | Reviews/vlogs (covers on screen) | ≥ 0.80 | ≥ 0.85 |
 
 Plus: every emitted row has provenance and a calibrated confidence; CI reports

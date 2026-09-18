@@ -74,6 +74,77 @@ timed out); the disk cache + `--max-queries` cap fix repeatability.
 single token, and "in" is itself a connector). Fixed with a token-list pop +
 regression test. This bug silently killed two 20-25 min runs.
 
+## Round 4 - P0 (fuzzy/phonetic matching, tiers, exports) + spine super-resolution
+
+### Spine super-resolution experiment
+
+Same 26 s bookshelf pan of video B (2550-2576 s), re-downloaded at both
+resolutions (formats 136 / 137) so the only variable is source resolution:
+
+| source | presets | reads | wall time |
+|---|---|---|---|
+| 720p | `unsharp` only (old default) | 19 | ~30 s |
+| 720p | 5 presets + median stack | 51 | 38 s |
+| 1080p | 5 presets + median stack, x3 | **88** | 67 s |
+
+1080p is where spines become legible: `LOSING GROUND`, `LOCKED IN`, `DENNETT`,
+`COATES`, `BARACK OBAMA`, `WEALTH...` appear, and clustering the 88 reads
+collapses them into 42 physical-spine groups (e.g. `Sapicns`/`Saptens`/`Sapiens`
+-> one group, canonical read by confidence).
+
+### P0 matching changes and their measured effect
+
+`booksnap/fuzz.py` (token-set ratio + Metaphone + Jaro-Winkler) is now used by
+both fusion and the gazetteer; spine reads are cleaned before querying
+(`M LOSING GEOCND` -> `LOSING GEOCND`) and matched by per-token phonetic
+alignment (`LOSISG GROUND` -> *Losing Ground*, `Ethnic DeLema` -> *The Ethnic
+Dilemma*); proper nouns spoken in the transcript disambiguate same-titled
+catalogue records; results are tiered and exported to BibTeX/RIS.
+
+Video B (podcast, 1080p spines) - exported tiers:
+
+| tier | phrase | matched record | judgement |
+|---|---|---|---|
+| confirmed | `Sapiens` | *Sapiens*, Yuval Noah Harari, 2011 (86 ed) | correct |
+| confirmed | `LOSINCTHIRACE` (alt-cleaned) | *Losing Ground*, Charles Murray, 2008 | correct |
+| verified | `Facing Reality` | *Facing Reality*, Charles A. Murray, 2021 | correct |
+| verified | `Great Awakening` | *The great awakening*, Thomas S. Kidd, 2006 | correct |
+| verified | `Philosophical Psychology` | *Philosophical psychology*, Donceel, 1955 | **FP** (journal) |
+
+Video A (slide deck, no books):
+
+| tier | phrase | matched record | judgement |
+|---|---|---|---|
+| verified | `Princeton Guide to Evolution` | *The Princeton Guide to Evolution*, Losos, 2013 | correct |
+| weak (not exported) | `Michael Moore`, `Cold War`, `New York Times` | person / event / newspaper FPs | correctly demoted |
+
+Precision of the exported list: **4/5 on video B, 1/1 on video A** (round 3 was
+1/3 on B and 0-1 on A). Author hints also fixed *record* selection: before,
+`Facing Reality` matched Eccles 1970 and `Losing Ground` matched Catherine
+Aird; the transcript names Charles Murray, and both now resolve to him.
+Region/demographic phrases (`West Africa`, `African Americans`) are rejected
+outright; `Peter Singer` is caught by the middle-initial person rule.
+
+### Bugs found & fixed this round
+
+* **Poisoned gazetteer cache**: a failed fetch was cached as an empty result,
+  permanently hiding real titles (`facingreality` had 0 docs cached). 69 stale
+  entries in video B and 18 in video A were purged; `fetch_docs` now returns
+  `None` on failure and only successful results are cached.
+* `looks_like_person` rejected ordinary two-word titles (*Losing Ground*).
+  Narrowed to the real signal: a middle initial (`Charles T. Murray`).
+* Alt (OCR-variant) lookups consumed the whole query budget, so spoken titles
+  were never verified. Alts now have their own sub-budget, the queue
+  interleaves visual/spoken, and cue-detected titles lead the spoken queue.
+* Phonetic fusion produced homophone-only false "heard" hits
+  (`COATES` ~ `cities`); a heard confirmation now needs >=2 significant words
+  or a near-exact spelling match.
+* A global fuzzy-score gate rejected pairs that per-token alignment had already
+  proven; alignment is now the criterion and the score is only reported.
+
+Tests: 42 passing (added fuzz, tiers, dedupe, BibTeX/RIS, resume-facing
+compile test, match-rule guards, variant retry, author hints, cache-poisoning).
+
 ## Bugs found & fixed during this round
 
 - `_raw_frame` hardcoded 1080×1920 → probed dimensions.

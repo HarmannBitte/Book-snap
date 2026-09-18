@@ -83,12 +83,15 @@ def _audio(args):
 def _spines(args):
     from .spines import extract_spines
     roi = tuple(int(v) for v in args.roi.split(",")) if args.roi else None
+    presets = tuple(p for p in (args.presets or "unsharp").split(",") if p)
     out = extract_spines(args.video, args.out, start=args.start, end=args.end,
                          step=args.step, topk=args.topk, roi=roi, band=args.band,
-                         upscale=args.upscale)
-    print(f"spine reads={len(out)} -> {args.out}")
+                         upscale=args.upscale, presets=presets, stack=args.stack,
+                         min_len=args.min_len)
+    strong = sum(1 for r in out if r["conf"] >= 0.8)
+    print(f"spine reads={len(out)} (conf>=0.80: {strong}) -> {args.out}")
     for r in out[:15]:
-        print(f"   {r['conf']:.2f} {r['text']}")
+        print(f"   {r['conf']:.2f} [{r.get('preset')}] {r['text']}")
 
 
 def _compile(args):
@@ -96,28 +99,51 @@ def _compile(args):
     data = compile_books(args.ocr, args.manifest, args.cover_ocr, args.scroll,
                          args.out_json, args.out_md,
                          audio_json=args.audio, spines_json=args.spines,
-                         gazetteer=args.gazetteer)
+                         gazetteer=args.gazetteer, max_queries=args.max_queries,
+                         fuzzy_thr=args.fuzzy_thr,
+                         out_bib=args.out_bib, out_ris=args.out_ris)
+    tiers = {}
+    for g in data["gazetteer"]:
+        tiers[g["status"]] = tiers.get(g["status"], 0) + 1
+    tstr = " ".join(f"{k}={v}" for k, v in sorted(tiers.items())) or "-"
     print(f"bibliography={len(data['bibliography'])} shown={len(data['shown_covers'])} "
           f"audio_titles={len(data['audio_titles'])} heard={len(data['heard'])} "
-          f"gazetteer={len(data['gazetteer'])}")
+          f"gazetteer={len(data['gazetteer'])} ({tstr})")
+
+
+def _have(path, resume):
+    """Resume support: skip a stage whose artifact already exists."""
+    ok = resume and os.path.exists(path) and os.path.getsize(path) > 0
+    if ok:
+        print(f"resume: reusing {path}")
+    return ok
 
 
 def _run(args):
     work = args.workdir
+    resume = getattr(args, "resume", False)
     os.makedirs(work, exist_ok=True)
     feat = os.path.join(work, "feat.npz")
     cuts = os.path.join(work, "cuts.npy")
     reps = os.path.join(work, "reps")
     covers = os.path.join(work, "covers")
 
-    _feat(argparse.Namespace(video=args.video, out=feat,
-                             proxy_width=args.proxy_width, fps=args.fps))
-    _seg(argparse.Namespace(features=feat, out=cuts, spike_thr=args.spike_thr,
-                            stable_max=args.stable_max, window_s=args.window_s))
-    _frames(argparse.Namespace(video=args.video, cuts=cuts, features=feat, out=reps))
-    _ocr(argparse.Namespace(src=reps, out=os.path.join(work, "ocr.json"), pattern="seg_*.png"))
-    _covers(argparse.Namespace(src=reps, out=covers, pattern="seg_*.png", ocr=True,
-                               attach_ocr=os.path.join(work, "ocr.json")))
+    if not _have(feat, resume):
+        _feat(argparse.Namespace(video=args.video, out=feat,
+                                 proxy_width=args.proxy_width, fps=args.fps))
+    if not _have(cuts, resume):
+        _seg(argparse.Namespace(features=feat, out=cuts, spike_thr=args.spike_thr,
+                                stable_max=args.stable_max, window_s=args.window_s))
+    if resume and os.path.isdir(reps) and os.listdir(reps):
+        print(f"resume: reusing {reps}/ ({len(os.listdir(reps))} frames)")
+    else:
+        _frames(argparse.Namespace(video=args.video, cuts=cuts, features=feat, out=reps))
+    ocr_json = os.path.join(work, "ocr.json")
+    if not _have(ocr_json, resume):
+        _ocr(argparse.Namespace(src=reps, out=ocr_json, pattern="seg_*.png"))
+    if not _have(os.path.join(covers, "manifest.json"), resume):
+        _covers(argparse.Namespace(src=reps, out=covers, pattern="seg_*.png", ocr=True,
+                                   attach_ocr=ocr_json))
     _scroll(argparse.Namespace(video=args.video, winmed=cuts.replace(".npy", "_winmed.npy"),
                                features=feat, out=os.path.join(work, "scroll_lines.json"),
                                start=args.scroll_start, end=args.scroll_end,
@@ -126,14 +152,17 @@ def _run(args):
     if not args.skip_pdf:
         _pdf(argparse.Namespace(src=reps, out=os.path.join(work, "slides.pdf"),
                                 width=1280, quality=4))
-    if args.audio:
+    if args.audio and not _have(os.path.join(work, "transcript.json"), resume):
         _audio(argparse.Namespace(audio=args.audio, out=os.path.join(work, "transcript.json"),
                                   model=args.audio_model))
-    if args.spines_start is not None and args.spines_end is not None:
+    if (args.spines_start is not None and args.spines_end is not None
+            and not _have(os.path.join(work, "spines.json"), resume)):
         _spines(argparse.Namespace(video=args.video, out=os.path.join(work, "spines.json"),
                                    start=args.spines_start, end=args.spines_end,
                                    step=1.0, topk=3, roi=args.spines_roi,
-                                   band=args.spines_band, upscale=4))
+                                   band=args.spines_band, upscale=4,
+                                   presets=args.spines_presets, stack=args.spines_stack,
+                                   min_len=4))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -141,7 +170,8 @@ def _run(args):
         scroll=os.path.join(work, "scroll_lines.json"),
         audio=os.path.join(work, "transcript.json") if args.audio else None,
         spines=os.path.join(work, "spines.json") if args.spines_start is not None else None,
-        gazetteer=args.gazetteer,
+        gazetteer=args.gazetteer, max_queries=args.max_queries,
+        fuzzy_thr=args.fuzzy_thr, out_bib=None, out_ris=None,
         out_json=os.path.join(work, "books_candidates.json"),
         out_md=os.path.join(work, "books_candidates.md")))
     print(f"done. artifacts in {work}")
@@ -204,6 +234,12 @@ def main(argv=None):
     s.add_argument("--roi", help="x,y,w,h crop instead of top band")
     s.add_argument("--band", type=float, default=0.22)
     s.add_argument("--upscale", type=int, default=4)
+    s.add_argument("--presets", default="unsharp",
+                   help="comma-separated enhancement presets: "
+                        "lanczos,unsharp,clahe,denoise,binarize")
+    s.add_argument("--stack", action="store_true",
+                   help="median-stack the sharpest frames before enhancing")
+    s.add_argument("--min-len", type=int, default=4)
     s.set_defaults(fn=_spines)
 
     s = sub.add_parser("compile", help="merge artifacts into candidate book list")
@@ -212,6 +248,8 @@ def main(argv=None):
     s.add_argument("--audio"); s.add_argument("--spines")
     s.add_argument("--gazetteer", action="store_true")
     s.add_argument("--max-queries", type=int, default=60)
+    s.add_argument("--fuzzy-thr", type=float, default=0.86)
+    s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
 
     s = sub.add_parser("pdf", help="render representative frames as a PDF")
@@ -236,7 +274,13 @@ def main(argv=None):
     s.add_argument("--audio-model", default="base")
     s.add_argument("--spines-start", type=float); s.add_argument("--spines-end", type=float)
     s.add_argument("--spines-roi"); s.add_argument("--spines-band", type=float, default=0.22)
+    s.add_argument("--spines-presets", default="unsharp")
+    s.add_argument("--spines-stack", action="store_true")
     s.add_argument("--gazetteer", action="store_true")
+    s.add_argument("--max-queries", type=int, default=60)
+    s.add_argument("--fuzzy-thr", type=float, default=0.86)
+    s.add_argument("--resume", action="store_true",
+                   help="skip stages whose artifacts already exist in --workdir")
     s.set_defaults(fn=_run)
 
     args = p.parse_args(argv)

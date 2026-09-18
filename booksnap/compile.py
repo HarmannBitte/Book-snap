@@ -22,6 +22,8 @@ import difflib
 import json
 import re
 
+from .fuzz import fuzzy_score, jaro_winkler, phonetic
+
 ENTRY_START = re.compile(r"^[A-Z][a-zA-Z'’-]+,")  # Chicago style: "Surname, First ..."
 ARTICLE = re.compile(r'["“”]|journal|proceedings|proc\.|nature|science|psychology|'
                      r'behaviour|behavior|entropy|genetics|ssrn|vol\.|no\.', re.I)
@@ -111,23 +113,29 @@ def _words(s):
 def heard_match(cand_text, audio_segments, thr=0.75, max_segs=400):
     """Fuzzy-search the transcript for a spoken form of `cand_text`.
 
-    Two-phase: match candidate words against the transcript vocabulary
-    (ratio >= 0.85) to shortlist segments, then slide a character window of
-    the candidate length over those segments.
+    Two-phase: shortlist segments whose vocabulary matches candidate words by
+    spelling (ratio >= 0.85) OR by phonetic code (Metaphone equality, so
+    "Goleman" shortlists a segment containing "Coleman"), then slide a
+    character window over those segments. A window is scored as
+    max(spelling ratio, phonetic Jaro-Winkler) - the phonetic term is only
+    computed for near-miss windows to keep it cheap.
     """
     c = cand_text.lower()
     cw = _words(c)
     if not cw:
         return None, 0.0
+    cp = {phonetic(w) for w in cw}
     vocab = {}
     for i, seg in enumerate(audio_segments):
         for w in set(_words(seg["text"])):
             vocab.setdefault(w, []).append(i)
     short = set()
     for w in cw:
+        pw = phonetic(w)
         for v, idxs in vocab.items():
-            if abs(len(v) - len(w)) <= 3 and difflib.SequenceMatcher(None, w, v,
-                                                                     autojunk=False).ratio() >= 0.85:
+            if (abs(len(v) - len(w)) <= 3 and
+                    (difflib.SequenceMatcher(None, w, v, autojunk=False).ratio() >= 0.85
+                     or phonetic(v) == pw)):
                 short.update(idxs)
     best, best_r = None, 0.0
     for i in sorted(short)[:max_segs]:
@@ -138,6 +146,8 @@ def heard_match(cand_text, audio_segments, thr=0.75, max_segs=400):
                 continue  # word-boundary only
             win = s[start:start + n + 1]
             r = difflib.SequenceMatcher(None, c, win, autojunk=False).ratio()
+            if 0.55 <= r < 0.98:  # near miss: allow a homophone match
+                r = max(r, jaro_winkler(phonetic(c), phonetic(win)))
             if r > best_r:
                 best_r, best = r, audio_segments[i]["text"][start:start + n + 1].strip()
     return (best if best_r >= thr else None), round(best_r, 2)
@@ -155,21 +165,183 @@ def book_like(c):
     return 1 <= len(words) <= 8 and len(t) <= 60 and not t.endswith(".")
 
 
+def _heard_is_meaningful(text, spoken, score, spelling_floor=0.75):
+    """Phonetic matching makes single short words collide ('COATES' ~ 'cities').
+
+    A heard-confirmation needs a near-exact spelling match, or >=2 significant
+    words, or one long word that also matches on spelling - a homophone alone
+    is not evidence. (Heard flags only matter for entries the gazetteer already
+    verified, so this guard protects the `confirmed` tier, not recall of text.)
+    """
+    import difflib
+    words = [w for w in _words(text) if w not in STOP]
+    if not words:
+        return False
+    spelling = difflib.SequenceMatcher(None, text.lower(), (spoken or "").lower(),
+                                       autojunk=False).ratio()
+    if spelling >= 0.9 or len(words) >= 2:
+        return True
+    return len(words[0]) >= 9 and spelling >= spelling_floor
+
+
 def fuse_audio(candidates, audio_segments, hear_thr=0.75):
     for c in candidates:
         if not book_like(c):
             c.update(heard=False, heard_as=None, heard_score=0.0)
             continue
-        phrase, r = heard_match(c.get("text") or c.get("ocr") or "", audio_segments, hear_thr)
+        text = c.get("text") or c.get("ocr") or ""
+        phrase, r = heard_match(text, audio_segments, hear_thr)
+        if phrase is not None and not _heard_is_meaningful(text, phrase, r):
+            phrase, r = None, r  # homophone-only hit on a short word: not evidence
         c["heard"] = phrase is not None
         c["heard_as"] = phrase
         c["heard_score"] = r
     return candidates
 
 
+def tier(entry):
+    """Corroboration tier for a gazetteer-verified candidate.
+
+    confirmed : visual evidence (cover/spine) or the title was also heard
+    verified  : spoken >=2 times, or spoken once inside a book-ish context
+    weak      : single spoken mention with no context -> reported, not exported
+    """
+    if entry.get("source") or entry.get("heard"):
+        return "confirmed"
+    if entry.get("freq", 0) >= 2 or entry.get("context_ok"):
+        return "verified"
+    return "weak"
+
+
+def dedupe(entries, thr=0.92):
+    """Merge near-duplicate titles, keeping the best evidence and provenance."""
+    out = []
+    for e in entries:
+        key = e.get("title") or e.get("phrase") or ""
+        hit = next((o for o in out
+                    if fuzzy_score(o.get("title") or o["phrase"], key) >= thr), None)
+        if hit is None:
+            e = dict(e)
+            e["provenance"] = [e.get("phrase")]
+            out.append(e)
+            continue
+        hit["provenance"] = sorted(set(hit["provenance"] + [e.get("phrase")]))
+        hit["freq"] = max(hit.get("freq", 0), e.get("freq", 0))
+        if (e.get("score") or 0) > (hit.get("score") or 0):
+            for k in ("title", "authors", "year", "score", "match_type"):
+                if e.get(k) is not None:
+                    hit[k] = e[k]
+        if e.get("source") and not hit.get("source"):
+            hit["source"] = e["source"]
+    return out
+
+
+def _bibkey(e):
+    a = (e.get("authors") or ["anon"])[0]
+    surname = re.sub(r"[^a-z]", "", a.split()[-1].lower()) or "anon"
+    return f"{surname}{e.get('year') or ''}"
+
+
+def write_bibtex(entries, path):
+    lines = []
+    for e in entries:
+        auth = " and ".join(e.get("authors") or []) or "Unknown"
+        lines.append(f"@book{{{_bibkey(e)},\n"
+                     f"  title  = {{{e.get('title') or e['phrase']}}},\n"
+                     f"  author = {{{auth}}},\n"
+                     f"  year   = {{{e.get('year') or ''}}},\n"
+                     f"  note   = {{score={e.get('score')} via {e.get('match_type')};"
+                     f" provenance={'; '.join(e.get('provenance') or [])}}}\n}}")
+    open(path, "w").write("\n\n".join(lines) + ("\n" if lines else ""))
+
+
+def write_ris(entries, path):
+    out = []
+    for e in entries:
+        out.append("TY  - BOOK")
+        out.append(f"TI  - {e.get('title') or e['phrase']}")
+        for a in e.get("authors") or []:
+            out.append(f"AU  - {a}")
+        if e.get("year"):
+            out.append(f"PY  - {e['year']}")
+        out.append(f"N1  - score={e.get('score')} match={e.get('match_type')}")
+        out.append("ER  - ")
+        out.append("")  # blank line between RIS records
+    open(path, "w").write("\n".join(out) + ("\n" if out else ""))
+
+
+def clean_spine_phrase(text):
+    """Strip the debris that spine OCR glues onto a title.
+
+    "M LOSING GEOCND" -> "LOSING GEOCND", "M-N LOSISG GROUND" -> "LOSISG GROUND".
+    Dropping leading 1-2 char junk tokens is what makes the *query* findable;
+    the remaining typos are handled by phonetic alignment in the gazetteer.
+    """
+    words = [w for w in re.split(r"\s+", (text or "").strip())
+             if re.sub(r"[^A-Za-z0-9]", "", w)]
+    while words and len(re.sub(r"[^A-Za-z0-9]", "", words[0])) <= 2:
+        words.pop(0)
+    while words and len(re.sub(r"[^A-Za-z0-9]", "", words[-1])) <= 1:
+        words.pop()
+    return " ".join(words).strip(" -,.")
+
+
+def spine_alts(group, k=3):
+    """Cleaned query variants for a spine group, most legible first.
+
+    Legibility proxy: more words, then higher OCR confidence - the canonical
+    (highest-confidence) read is often the least complete one.
+    """
+    canon = (group.get("text") or "").strip()
+    confs = group.get("variant_confs") or {}
+    variants = sorted(group.get("variants") or [],
+                      key=lambda v: (-len(v.split()), -confs.get(v, 0.0)))
+    out = []
+    for v in variants[:8]:
+        cv = clean_spine_phrase(v)
+        if cv and cv.lower() != canon.lower() and cv not in out:
+            out.append(cv)
+        if len(out) >= k:
+            break
+    return out
+
+
+def cluster_spines(shown, thr=0.85):
+    """Collapse OCR variants of the same spine ("Sapicns"/"Saptens"/"Sapiens").
+
+    Keeps the highest-confidence reading as canonical and records the variants,
+    so the gazetteer is queried once per physical book instead of once per
+    mis-read. Non-spine candidates pass through untouched.
+    """
+    out, groups = [], []
+    for c in shown:
+        if c.get("source") != "spine":
+            out.append(c)
+            continue
+        text = c.get("text") or ""
+        grp = next((g for g in groups if fuzzy_score(g["text"], text) >= thr), None)
+        if grp is None:
+            grp = dict(c)
+            grp["variants"] = [text]
+            grp["variant_confs"] = {text: c.get("conf") or 0.0}
+            groups.append(grp)
+            out.append(grp)
+            continue
+        grp["variants"] = sorted(set(grp["variants"] + [text]))
+        grp.setdefault("variant_confs", {})[text] = max(
+            grp["variant_confs"].get(text, 0.0), c.get("conf") or 0.0)
+        if (c.get("conf") or 0) > (grp.get("conf") or 0):
+            for k in ("text", "ocr", "conf", "preset", "t", "seg"):
+                if c.get(k) is not None:
+                    grp[k] = c[k] if k != "seg" else grp["seg"]
+            grp["ocr"] = grp["text"]
+    return out
+
+
 def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                   out_json, out_md, audio_json=None, spines_json=None,
-                  gazetteer=False, max_queries=60):
+                  gazetteer=False, max_queries=60, fuzzy_thr=0.86,
+                  out_bib=None, out_ris=None):
     ocr = json.load(open(ocr_json)) if ocr_json else {}
     manifest = json.load(open(cover_manifest_json)) if cover_manifest_json else []
     cover_ocr = json.load(open(cover_ocr_json)) if cover_ocr_json else {}
@@ -190,7 +362,9 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
     for sp in spines:
         shown.append(dict(cover=None, seg=f"spine@{sp.get('t')}", ar=None,
                           ocr=sp["text"], text=sp["text"], source="spine",
-                          conf=sp.get("conf")))
+                          conf=sp.get("conf"), preset=sp.get("preset")))
+    n_raw = len(spines)
+    shown = cluster_spines(shown)
     for s_ in shown:
         s_.setdefault("source", "cover")
     match_shown_to_bibliography(shown, biblio)
@@ -203,14 +377,42 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
     gaz = []
     if gazetteer and audio:
         from .gazetteer import title_candidates, verify_all, make_cached_lookup
-        lookup = make_cached_lookup(out_json + ".olcache.json")
-        cands = title_candidates(audio)
-        for s_ in shown:  # visual candidates join the verification queue
+        # Proper nouns the speaker actually says: used to pick between
+        # same-titled catalogue records ("Facing Reality": Murray vs Eccles).
+        hints = {w.lower() for seg in audio
+                 for w in re.findall(r"\b[A-Z][a-z]{2,}\b", seg["text"])}
+        lookup = make_cached_lookup(out_json + ".olcache.json", fuzzy_thr=fuzzy_thr,
+                                    author_hints=hints)
+        # Cue-detected titles ("...his book Facing Reality...") are the highest
+        # quality spoken evidence, so they lead the spoken queue ahead of the
+        # frequency-sorted n-gram scan.
+        cued = [dict(phrase=a["phrase"], freq=0, cued=True) for a in audio_cands]
+        seen_cued = {c["phrase"].lower() for c in cued}
+        spoken = cued + [c for c in title_candidates(audio)
+                         if c["phrase"].lower() not in seen_cued]
+        # Visual evidence is stronger than a spoken n-gram, but a wall of spine
+        # OCR must not starve the audio channel: reserve 40 % of the query
+        # budget for spoken candidates.
+        visual = []
+        for s_ in shown:
             t = (s_.get("text") or "").strip()
-            if t and not any(c["phrase"].lower() == t.lower() for c in cands):
-                cands.append(dict(phrase=t, freq=0, source=s_.get("source")))
-        gaz = verify_all(cands[:max_queries + 20], lookup=lookup,
-                         max_queries=max_queries, segments=audio)
+            if not t:
+                continue
+            alts = spine_alts(s_) if s_.get("source") == "spine" else []
+            visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts))
+        seen = {v["phrase"].lower() for v in visual}
+        spoken = [c for c in spoken if c["phrase"].lower() not in seen]
+        # interleave so neither channel can starve the other
+        queue, vi, si = [], 0, 0
+        while len(queue) < max_queries and (vi < len(visual) or si < len(spoken)):
+            if vi < len(visual):
+                queue.append(visual[vi]); vi += 1
+            if len(queue) >= max_queries:
+                break
+            if si < len(spoken):
+                queue.append(spoken[si]); si += 1
+        gaz = verify_all(queue, lookup=lookup, max_queries=max_queries,
+                         segments=audio)
         nq = _norm_q
         for s_ in shown:
             t = nq(s_.get("text") or "")
@@ -220,11 +422,23 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             if hit:
                 s_["gazetteer"] = {k: hit[k] for k in ("title", "authors", "year") if k in hit}
 
-    data = dict(bibliography=biblio, shown_covers=shown,
+    for g in gaz:
+        if g.get("verified"):
+            g["status"] = tier(g)
+    gaz_verified = dedupe([g for g in gaz if g.get("verified")])
+    exportable = [g for g in gaz_verified if g["status"] in ("confirmed", "verified")]
+    if gazetteer:
+        write_bibtex(exportable, out_bib or out_json.replace(".json", ".bib"))
+        write_ris(exportable, out_ris or out_json.replace(".json", ".ris"))
+
+    data = dict(spine_reads=n_raw if spines_json else 0,
+                spine_groups=len([s for s in shown if s.get("source") == "spine"]),
+                bibliography=biblio, shown_covers=shown,
                 shown_only=[s for s in shown if not s["cited"]],
                 audio_titles=audio_cands,
                 heard=[s for s in shown if s.get("heard")],
-                gazetteer=[g for g in gaz if g.get("verified")])
+                gazetteer=gaz_verified,
+                gazetteer_weak=[g for g in gaz_verified if g["status"] == "weak"])
     json.dump(data, open(out_json, "w"), indent=1)
 
     with open(out_md, "w") as f:
@@ -243,9 +457,18 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             f.write(f"- t={a['t']}: {a['phrase']}\n")
         f.write("\n## Gazetteer-verified book titles\n\n")
         for g in data.get("gazetteer", []):
+            if g["status"] == "weak":
+                continue
             auth = ", ".join(g.get("authors") or []) or "?"
-            f.write(f"- {g['phrase']}  ->  {g.get('title')} ({auth}, {g.get('year')})"
-                    f"  freq={g.get('freq')}\n")
+            f.write(f"- [{g['status']}] {g['phrase']}  ->  {g.get('title')} "
+                    f"({auth}, {g.get('year')})  score={g.get('score')} "
+                    f"({g.get('match_type')})  freq={g.get('freq')}\n")
+        f.write("\n## Weak (single uncorroborated mention - not exported)\n\n")
+        for g in data.get("gazetteer", []):
+            if g["status"] != "weak":
+                continue
+            f.write(f"- [weak] {g['phrase']} -> {g.get('title')} "
+                    f"({', '.join(g.get('authors') or [])}, {g.get('year')})\n")
         f.write("\n## Visual candidates confirmed by audio\n\n")
         for s in data["heard"]:
             f.write(f"- {s['text']!r} heard as {s['heard_as']!r} "
