@@ -46,6 +46,28 @@ def _density(raw: np.ndarray, x: int, y: int, w: int, h: int) -> float:
     return float(sub.mean()) if sub.size else 0.0
 
 
+def attach_panel_text(manifest, ocr_blocks_by_frame, margin=0.18):
+    """Attach full-frame OCR text to each panel (in place, returns manifest).
+
+    Cover titles are frequently typeset *outside* the artwork rectangle (a
+    caption band below the jacket, e.g. the Nietzsche Penguin Classics slide),
+    so OCR of the tight crop misses them. Instead, take the full-frame OCR
+    blocks whose centre falls inside the panel bbox expanded by `margin`
+    (fraction of panel height/width) and concatenate them in reading order.
+    """
+    for p in manifest:
+        blocks = ocr_blocks_by_frame.get(p["seg"] + ".png", [])
+        mx, my = p["w"] * margin, p["h"] * margin
+        x0, y0 = p["x"] - mx, p["y"] - my
+        x1, y1 = p["x"] + p["w"] + mx, p["y"] + p["h"] + my
+        inside = [b for b in blocks
+                  if x0 <= (b["box"][0] + b["box"][2]) / 2 <= x1
+                  and y0 <= (b["box"][1] + b["box"][3]) / 2 <= y1]
+        inside.sort(key=lambda b: (b["box"][1], b["box"][0]))
+        p["text"] = " | ".join(b["text"] for b in inside)
+    return manifest
+
+
 def detect_covers(src_dir: str, out_dir: str, pattern: str = "seg_*.png",
                   min_frame_frac=0.012, max_frame_frac=0.85, min_side=120,
                   wide_ar=1.15, split_wide=True, delta=10.0, min_density=0.6):

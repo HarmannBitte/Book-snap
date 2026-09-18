@@ -40,10 +40,17 @@ thresholds 1.0–3.0.
 | The Quest for Community | Robert A. Nisbet | 1311.8 | **no** |
 | Multicultural America (Encyclopedia of the Newest Americans) | Ronald H. Bayor (ed.) | 1478.5 | **no** |
 | Why Everyone (Else) Is a Hypocrite | Robert Kurzban | 1689.9 | yes |
+| Beyond Good and Evil (Penguin Classics) | Friedrich Nietzsche | 1603.9 | **no** |
 
-→ 4 shown books never appear in the reference list (Segal, Mercier & Sperber,
-Nisbet, Bayor). Union of cited + shown: **23 distinct books**.
+→ 5 shown books never appear in the reference list (Segal, Mercier & Sperber,
+Nisbet, Bayor, Nietzsche). Union of cited + shown: **24 distinct books**.
+
+The Nietzsche jacket's title sits in a caption band *below* the artwork
+rectangle, so tight-crop OCR misses it; `covers.attach_panel_text` recovers it
+by associating full-frame OCR blocks with a padded panel bbox.
 
 Detection edge cases handled: side-by-side covers merge into one wide panel
 (split at mid-line); the black Kurzban jacket is invisible to brightness-only
-panel detection (caught by the dark-textured mask).
+panel detection (caught by the background-difference + fill-density mask);
+caption-band titles outside the artwork rectangle (caught by
+`attach_panel_text`).

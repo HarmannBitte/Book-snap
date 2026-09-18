@@ -42,6 +42,10 @@ def _ocr(args):
 def _covers(args):
     from .covers import detect_covers
     m = detect_covers(args.src, args.out, args.pattern)
+    if args.attach_ocr and os.path.exists(args.attach_ocr):
+        from .covers import attach_panel_text
+        attach_panel_text(m, json.load(open(args.attach_ocr)))
+        json.dump(m, open(os.path.join(args.out, "manifest.json"), "w"), indent=1)
     print(f"panels={len(m)} -> {args.out}")
     if args.ocr:
         from .ocr import ocr_directory
@@ -85,7 +89,8 @@ def _run(args):
                             stable_max=args.stable_max, window_s=args.window_s))
     _frames(argparse.Namespace(video=args.video, cuts=cuts, features=feat, out=reps))
     _ocr(argparse.Namespace(src=reps, out=os.path.join(work, "ocr.json"), pattern="seg_*.png"))
-    _covers(argparse.Namespace(src=reps, out=covers, pattern="seg_*.png", ocr=True))
+    _covers(argparse.Namespace(src=reps, out=covers, pattern="seg_*.png", ocr=True,
+                               attach_ocr=os.path.join(work, "ocr.json")))
     _scroll(argparse.Namespace(video=args.video, winmed=cuts.replace(".npy", "_winmed.npy"),
                                features=feat, out=os.path.join(work, "scroll_lines.json"),
                                start=args.scroll_start, end=args.scroll_end,
@@ -132,6 +137,7 @@ def main(argv=None):
     s.add_argument("src"); s.add_argument("out")
     s.add_argument("--pattern", default="seg_*.png")
     s.add_argument("--ocr", action="store_true")
+    s.add_argument("--attach-ocr", help="full-frame ocr.json to associate panel captions")
     s.set_defaults(fn=_covers)
 
     s = sub.add_parser("scroll", help="recover scrolling credits/bibliography")
