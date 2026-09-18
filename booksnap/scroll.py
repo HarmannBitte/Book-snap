@@ -20,21 +20,20 @@ from __future__ import annotations
 import json
 import subprocess
 
+import cv2
 import numpy as np
 from scipy.ndimage import median_filter
 
-from .ffmpeg_utils import ffmpeg_bin
+from .ffmpeg_utils import ffmpeg_bin, probe as probe_video
 from .ocr import ocr_image
 
-FRAME_W = 1920  # raw frames are grabbed at full resolution
 
-
-def _raw_frame(video: str, t: float, height: int = 1080):
+def _raw_frame(video: str, t: float, width: int, height: int):
     raw = subprocess.run(
         [ffmpeg_bin(), "-v", "error", "-ss", f"{t}", "-i", video,
          "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "bgr24", "-"],
         capture_output=True).stdout
-    return np.frombuffer(raw, np.uint8).reshape(height, FRAME_W, 3)
+    return np.frombuffer(raw, np.uint8).reshape(height, width, 3)
 
 
 def moving_windows(win, fps, stable_max=1.0, min_s=3.0, max_window_s=180.0):
@@ -102,31 +101,42 @@ def stitch(frames, n_cols=2):
     return ordered
 
 
+def sharpness(img) -> float:
+    """Variance of the Laplacian - motion-blurred frames score low."""
+    g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return float(cv2.Laplacian(g, cv2.CV_64F).var())
+
+
 def capture_scroll(video, ocr, win, fps, out_json, start=None, end=None,
                    step=0.5, probe_step=2.0, min_lines=12, stable_max=1.0,
-                   max_window_s=180.0, n_cols=2):
+                   max_window_s=180.0, n_cols=2, card_max_s=10.0, sharp_topk=3):
+    info = probe_video(video)
+    W, H = int(info["width"]), int(info["height"])
     if start is not None and end is not None:
         ranges = [(float(start), float(end))]
     else:
         ranges = []
         for a, b in moving_windows(win, fps, stable_max, max_window_s=max_window_s):
-            probe = 0
+            nlines = 0
             t = a
             while t <= b:
-                probe = max(probe, len(ocr_image(ocr, _raw_frame(video, t))))
+                nlines = max(nlines, len(ocr_image(ocr, _raw_frame(video, t, W, H))))
                 t += probe_step
-            if probe >= min_lines:
+            if nlines >= min_lines:
                 ranges.append((a, b))
     frames = []
     for a, b in ranges:
-        t = a
-        while t <= b:
-            blocks = ocr_image(ocr, _raw_frame(video, t))
+        ts = np.arange(a, b + 1e-9, step)
+        if (b - a) <= card_max_s:
+            # animated title card: OCR only the sharpest frames (blur-resistant)
+            scores = [(t, sharpness(_raw_frame(video, float(t), W, H))) for t in ts]
+            ts = [t for t, _ in sorted(scores, key=lambda r: -r[1])[:sharp_topk]]
+        for t in ts:
+            blocks = ocr_image(ocr, _raw_frame(video, float(t), W, H))
             lines = [((b_["box"][1] + b_["box"][3]) / 2.0,
                       (b_["box"][0] + b_["box"][2]) / 2.0,
                       b_["text"], b_["conf"]) for b_ in blocks]
-            frames.append((t, lines))
-            t += step
+            frames.append((float(t), lines))
     ordered = stitch(frames, n_cols)
     json.dump(ordered, open(out_json, "w"), indent=1)
     return ordered, ranges
