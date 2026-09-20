@@ -429,7 +429,7 @@ def verify_all(candidates, lookup=openlibrary_lookup, max_queries=60, pause=0.25
     two are exported to BibTeX/RIS.
     """
     out, done, alts_done = [], 0, 0
-    budget = {"primary": max_queries, "alt": max_queries // 2}
+    budget = {"primary": max_queries, "alt": max_queries}
     for c in candidates:
         c2 = dict(c)
         if done >= budget["primary"]:
@@ -439,7 +439,7 @@ def verify_all(candidates, lookup=openlibrary_lookup, max_queries=60, pause=0.25
         if _counted(lookup):
             done += 1
         matched_as = c["phrase"]
-        for alt in (c.get("alts") or []):  # OCR variants / cleaned reads
+        for alt in (c.get("alts") or [])[:8]:  # capped: observed variants first
             if meta or alts_done >= budget["alt"]:
                 break
             meta = lookup(alt)

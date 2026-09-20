@@ -328,6 +328,16 @@ def spine_alts(group, k=3, vocab=None):
     variants = sorted(group.get("variants") or [],
                       key=lambda v: (-len(v.split()), -confs.get(v, 0.0)))
     out = []
+    # near-miss variants first: the canonical (highest-conf) read is often a
+    # garbled cousin of a cleaner lower-conf read of the same spine, and the
+    # variants list can be long enough that the clean one was cut off before
+    for v in sorted(group.get("variants") or [], key=lambda v: -confs.get(v, 0.0)):
+        cv = clean_spine_phrase(v)
+        if (cv and cv.lower() != canon.lower()
+                and fuzzy_score(cv, canon) >= 0.9 and cv not in out):
+            out.append(cv)
+        if len(out) >= 3:
+            break
     for v in variants[:8]:
         cv = clean_spine_phrase(v)
         if cv and cv.lower() != canon.lower() and cv not in out:
@@ -339,6 +349,19 @@ def spine_alts(group, k=3, vocab=None):
         for cand in split_candidates([canon] + variants, vocab, k=1):
             if cand not in out and len(out) < k + 1:
                 out.append(cand)
+    # glyph-confusion corrections ("LOSINC THE RACE" -> "LOSING THE RACE"):
+    # retrieval is exact-text, so one confused glyph otherwise hides a book.
+    # Degarble the variants too: the canon may be two glyphs from the truth
+    # while some variant is only one away.
+    from .degarble import candidates as degarble_candidates
+    for v in sorted(group.get("variants") or [], key=lambda v: -confs.get(v, 0.0))[:4]:
+        cv = clean_spine_phrase(v) or v
+        for cand in degarble_candidates(cv, k=3):
+            if cand not in out and len(out) < k + 9:
+                out.append(cand)
+    for cand in degarble_candidates(canon, k=8):
+        if cand not in out and len(out) < k + 9:
+            out.append(cand)
     return out
 
 
@@ -497,7 +520,11 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                     and (s_.get("text") or "").isupper()):
                 continue  # caps surname band: author evidence, not a title query
             alts = spine_alts(s_, vocab=vocab) if s_.get("source") == "spine" else []
-            visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts))
+            visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts,
+                               conf=s_.get("conf") or 0.0))
+        # multi-word phrases are title-like; single tokens (often junk or
+        # author bands) must not burn the shared alt-query budget first
+        visual.sort(key=lambda v: (-len(v["phrase"].split()), -v["conf"]))
         seen = {v["phrase"].lower() for v in visual}
         spoken = [c for c in spoken if c["phrase"].lower() not in seen]
         # interleave so neither channel can starve the other

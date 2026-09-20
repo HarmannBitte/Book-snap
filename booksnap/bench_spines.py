@@ -58,6 +58,9 @@ def score(labels_path, spines_json, books_json):
     books = json.load(open(books_json)) if books_json else {}
     reads = [r["text"] for r in spines]
     verified = {norm(g["phrase"]): g for g in books.get("gazetteer", [])}
+    for g in books.get("gazetteer", []):  # a garbled canon verified via a clean
+        if g.get("matched_as"):           # alt must count under the clean form
+            verified.setdefault(norm(g["matched_as"]), g)
     author_reads = set(books.get("author_spines", []))
     all_texts = reads + list(verified) + list(author_reads)
 

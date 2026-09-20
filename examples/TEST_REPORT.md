@@ -310,3 +310,22 @@ Bug found: the default 60-query gazetteer budget starves spine-dense runs
 (verified 0.11 at 60 vs 0.22 at 250). Default is now 250; CI passes explicit
 budgets. Artifacts: examples/spines1080_wide.json + books_spines1080_wide.json
 (reproduce the numbers offline).
+
+## Round 10 - typo-tolerant retrieval (degarble) + alt-plumbing fixes
+
+booksnap/degarble.py generates single-glyph confusion candidates (pair-major:
+C/G, G/B, B/R, A/R, Y/I, U/V, I/L, U/L, ...) offered as spine alts, because
+catalogue retrieval is exact-text: one confused glyph used to hide a book.
+Plumbing fixes the bench forced out: near-miss variants lead the alt list
+(the highest-conf canon is often a garbled cousin of a cleaner lower-conf
+read); degarble runs over variants too (canon may be two glyphs from truth);
+per-candidate alt cap 8; alt budget raised to max_queries (primaries keep
+their own budget - test updated); scorer counts a garbled canon verified
+under its clean matched_as form; visual queue sorts multi-word first.
+
+Measured result on the real shelf: verified 0.22 (Sapiens, Losing Ground) -
+and the third verified entry is BARACK OBAMA via degarble from GARACK OBAMA.
+"Losing the Race" is NOT recoverable by any degarble: OpenLibrary returns
+zero documents for the correct string - the residual gap is catalogue
+coverage plus glyph confusion, both now named and measured. Synthetic shelf
+unchanged (0.79). Tests 54.

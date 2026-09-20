@@ -278,7 +278,8 @@ def test_alt_lookups_do_not_starve_the_queue(monkeypatch):
     out = G.verify_all(cands, lookup=fake, max_queries=11)
     assert any(o.get("title") == "Facing Reality" for o in out)
     assert calls.count("SPINE 0") == 1
-    assert len([c for c in calls if c.startswith("ALT")]) <= 5  # sub-budget = 11//2
+    assert len([c for c in calls if c.startswith("ALT")]) <= 11  # alts own budget
+    assert calls.count("Facing Reality") == 1  # primaries never starve
 
 
 def test_regions_and_demographics_are_not_titles():
@@ -527,3 +528,18 @@ def test_synth_labels_schema():
     d = json.load(open(p))
     assert len(d["books"]) == 24 and all(b["confident"] for b in d["books"])
     assert len(d["author_bands"]) == 13
+
+
+def test_degarble_candidates():
+    from booksnap.degarble import candidates
+    c = candidates("LOSINC THE RACE")
+    assert "LOSING THE RACE" in c
+    assert all(x != "LOSINC THE RACE" for x in c)
+    assert len(c) <= 12
+
+
+def test_spine_alts_include_degarble():
+    from booksnap.compile import spine_alts
+    alts = spine_alts(dict(text="LOSINC THE RACE", variants=["LOSINC THE RACE"],
+                           variant_confs={"LOSINC THE RACE": 0.8}))
+    assert "LOSING THE RACE" in alts
