@@ -395,3 +395,101 @@ def test_bench_matcher_is_directional_and_strict():
     assert match_label("Losing the Race", reads)[0] is None      # not Losing Ground
     assert match_label("On the Origin of Species", reads)[0] is None
     assert match_label("We Were Eight Years in Trouble", reads)[0] is None
+
+
+def test_stitch_pan_recovers_shifted_content():
+    """A panning camera sees different content per frame; stitching must
+    produce a canvas wider than one frame that contains both."""
+    import numpy as np
+    from booksnap.superres import stitch_pan
+    rng = np.random.default_rng(1)
+    base = rng.integers(40, 200, (60, 400, 3)).astype(np.uint8)
+    base[20:40, 50:90] = 250      # marker A (left)
+    base[20:40, 330:370] = 10     # marker B (right, off-frame after shift)
+    f1 = base[:, 0:200]
+    f2 = base[:, 100:300]
+    f3 = base[:, 200:400]
+    pan = stitch_pan([f1, f2, f3])
+    assert pan.shape[1] >= 380
+    assert (pan[20:40, 50:90] > 200).mean() > 0.8    # marker A survived
+    assert (pan[20:40, 330:370] < 60).mean() > 0.8   # marker B survived
+
+
+def test_dp_split_recovers_clean_fusions_only():
+    from booksnap.splitwords import build_vocab, dp_split
+    vocab = build_vocab(["Murray losing ground", "losing the race"])
+    assert dp_split("LOSINGTHERACE", vocab) == "losing the race"
+    assert dp_split("LOSINGGROUND", vocab) == "losing ground"
+    assert dp_split("LOSINCTHIRACE", vocab) is None  # garbled G->C, not fused
+    assert dp_split("ATESTAMENTTEHOPE", vocab) is None   # mangled, not fused
+    assert dp_split("SAPIENS", vocab) is None             # already a word? no: not in vocab -> but single word split needs >=2 parts
+    assert dp_split("XY", vocab) is None
+
+
+def _norm_key(p):
+    from booksnap.gazetteer import _norm
+    return _norm(p)
+
+
+def test_crossref_serial_rejects_journal_mentions(monkeypatch):
+    from booksnap import gazetteer as G
+    import urllib.request
+
+    class R:
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def read(self):
+            return b'{"message":{"items":[{"type":"journal-article",' \
+                   b'"container-title":["Philosophical Psychology"]}]}}'
+
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *a, **k: R())
+    assert G.crossref_is_serial("Philosophical Psychology") is True
+    cache = {}
+    assert G.crossref_is_serial("Facing Reality", cache=cache) is False
+    assert cache[_norm_key("Facing Reality")] is False  # negative cached too
+
+
+def test_vlm_merge_adds_author_bands(tmp_path):
+    from booksnap.vlm import merge_review
+    books = tmp_path / "books.json"
+    books.write_text(json.dumps(dict(gazetteer=[])))
+    review = tmp_path / "review.json"
+    review.write_text(json.dumps(dict(entries=[
+        dict(verdict="author_band", title="Dennett", image="f.png"),
+        dict(verdict="book", title="Losing the Race", author="John McWhorter",
+             image="f.png")])))
+    fresh = merge_review(str(review), str(books), out_md=str(tmp_path / "b.md"))
+    out = json.loads(books.read_text())
+    assert [b["name"] for b in out["author_bands"]] == ["Dennett"]
+    assert fresh[0]["title"] == "Losing the Race"
+    assert "Author bands seen on shelf" in (tmp_path / "b.md").read_text()
+
+
+def test_vlm_api_reviewer_parses_completion(tmp_path, monkeypatch):
+    import base64
+    from booksnap import vlm as V
+    img = tmp_path / "shelf.png"
+    img.write_bytes(b"\x89PNG\r\n\x1a\n" + b"0" * 32)
+    bundle = tmp_path / "bundle.json"
+    bundle.write_text(json.dumps(dict(items=[dict(id=0, image=str(img),
+                                                  question="read the shelf")])))
+    completion = {"choices": [{"message": {"content": json.dumps([
+        {"title": "Losing Ground", "author": "Charles Murray", "kind": "book"},
+        {"title": "Dennett", "kind": "author_band"}])}}]}
+
+    class R:
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def read(self):
+            return json.dumps(completion).encode()
+
+    import urllib.request
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *a, **k: R())
+    entries = V.review_with_api(str(bundle), str(tmp_path / "review.json"),
+                                model="test", api_key="k")
+    assert [e["verdict"] for e in entries] == ["book", "author_band"]
+    assert entries[0]["title"] == "Losing Ground"

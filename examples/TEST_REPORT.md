@@ -178,6 +178,58 @@ Also this round: cached OpenLibrary lookups no longer consume the query budget
 weak), and a new informational "author spines" channel reports single-surname
 reads only when the transcript also says the name (empty for this video).
 
+## Round 6 - attacking spine recall: pan stitching, ROI crops, VLM loop
+
+Three experiments against the measured 0.22 verified recall:
+
+1. **Pan stitching** (`superres.stitch_pan`, `spines --panorama`): phase-
+   correlation showed ~0 px shift between the sharpest frames - the shelf is
+   NOT panning, the whole shelf is in every frame. Coverage was never the
+   limit; reads went 88 -> 116 (more frames/presets) but bench recall stayed
+   0.44/0.22. Honest negative result, kept because real pans exist.
+2. **Per-spine ROI at x6** on my visual coordinates: recovered 2 of 8 misses
+   (*A Testament of Hope* as fused `ATESTAMENTTEHOPE`, part of *Wealth,
+   Poverty and Politics*). Not integrated: it needs an automatic spine
+   detector to propose ROIs, and fused tokens still need word-splitting.
+3. **Vision-model review loop** (`booksnap/vlm.py`, `vlm-bundle` /
+   `vlm-merge`): open reading questions over shelf images, any vision model
+   fills them, results merge back as `confirmed` entries with provenance and
+   rewrite .md/.bib/.ris. Filled from my visual read of the labelled frame:
+   verified recall 0.22 -> 1.0 on that shelf, exported .bib 5 -> 13 entries.
+   **Circular by construction** (the reviewer is the ground truth here); the
+   channel's real accuracy must be measured on held-out shelves - that is the
+   next labelling task, not a claim.
+
+Conclusion: on 720-1080p shelves the OCR channel's ceiling is glyph size and
+fused tokens; the vision channel removes that ceiling and is now wired in.
+
+## Round 7 - the "other ones": serial guard, splits, author bands, API hook, held-out shelf
+
+* **Journal false positives closed**: `gazetteer.crossref_is_serial` consults
+  Crossref for the phrase; a journal-article hit in a same-named container
+  vetoes the book claim. "Philosophical Psychology" (the last exported FP on
+  video B) is gone; exported precision on B is now 4/4.
+* **Fused caps reads**: `splitwords.dp_split` segments clean fusions against a
+  domain-built vocabulary ("LOSINGTHERACE" -> LOSING THE RACE) and feeds them
+  as extra queries; mangled glyphs correctly refuse to segment. No live win
+  yet on video B (its fusions are mangled, not clean) - the mechanism is in
+  place for cleaner sources.
+* **Author bands**: `vlm-merge` records author_band verdicts; video B now
+  reports Dennett / Barack Obama / James Q. Wilson as shelved authors in
+  .json and .md alongside the book list.
+* **Optional API reviewer**: `vlm-run` fills a review bundle through any
+  OpenAI-compatible vision endpoint, only when VLM_API_KEY is set;
+  `audio --beam-size` exposes the beam for garbled proper nouns.
+* **Held-out shelf (JBP podcast, 720p)**: full spine+gazetteer run over the
+  visible shelf produced 0 reads and 0 title claims - matching the human
+  verdict that the shelf is illegible (depth-of-field blur, vertical spine
+  text). Precision guards hold out of sample; bokeh and vertical spines join
+  the documented failure modes. A third in-focus shelf could not be fetched
+  this session (YouTube bot-gated further downloads), so a title-level
+  held-out benchmark remains open.
+* CI (branch `ci`): pytest plus an offline `bench-spines` regression gate on
+  committed fixtures (recall_verified >= 0.2), no network needed.
+
 ## Bugs found & fixed during this round
 
 - `_raw_frame` hardcoded 1080×1920 → probed dimensions.

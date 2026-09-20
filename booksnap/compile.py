@@ -305,7 +305,7 @@ def clean_spine_phrase(text):
     return " ".join(words).strip(" -,.")
 
 
-def spine_alts(group, k=3):
+def spine_alts(group, k=3, vocab=None):
     """Cleaned query variants for a spine group, most legible first.
 
     Legibility proxy: more words, then higher OCR confidence - the canonical
@@ -322,6 +322,11 @@ def spine_alts(group, k=3):
             out.append(cv)
         if len(out) >= k:
             break
+    if vocab is not None:  # dictionary splits of fused caps tokens
+        from .splitwords import split_candidates
+        for cand in split_candidates([canon] + variants, vocab, k=1):
+            if cand not in out and len(out) < k + 1:
+                out.append(cand)
     return out
 
 
@@ -414,12 +419,17 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         # Visual evidence is stronger than a spoken n-gram, but a wall of spine
         # OCR must not starve the audio channel: reserve 40 % of the query
         # budget for spoken candidates.
+        from .splitwords import build_vocab
+        vocab = build_vocab(
+            [seg["text"] for seg in audio] +
+            [e["text"] for e in biblio] +
+            [s_.get("text") or "" for s_ in shown])
         visual = []
         for s_ in shown:
             t = (s_.get("text") or "").strip()
             if not t:
                 continue
-            alts = spine_alts(s_) if s_.get("source") == "spine" else []
+            alts = spine_alts(s_, vocab=vocab) if s_.get("source") == "spine" else []
             visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts))
         seen = {v["phrase"].lower() for v in visual}
         spoken = [c for c in spoken if c["phrase"].lower() not in seen]

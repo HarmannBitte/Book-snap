@@ -107,7 +107,11 @@ provenance (timestamp, source channel, confidence, evidence snippet).
    more shelves and for the v1 slide panels, and wiring the scorer into CI.
 
 **P1 — bigger levers, needs an API key or more RAM**
-6. VLM verification stage on candidate panels/crops (E4) — biggest single win.
+6. VLM verification stage (E4) - **LOOP BUILT** (`booksnap/vlm.py`,
+   `vlm-bundle`/`vlm-merge`): open questions over shelf images, results merged
+   as provenance-tracked `confirmed` entries; lifted labelled-shelf verified
+   recall 0.22 -> 1.0. Scaling it needs an API key (or an assistant session);
+   measuring it honestly needs held-out labelled shelves.
 7. Selective super-resolution + OCR retry (E1) - **DONE**: `booksnap/superres.py`
    (5 enhancement presets + median frame stacking), spine clustering and
    cleaned variant queries in `compile`. Measured on a real bookshelf pan:
@@ -136,8 +140,10 @@ Plus: every emitted row has provenance and a calibrated confidence; CI reports
 P/R per channel on the benchmark; a run is resumable and never exceeds the
 network rate budget.
 
-Current measured state (2026-09-18, two videos, one labelled shelf):
-exported precision 4/5 (v2) and 1/1 (v1); spine recall 0.22 verified;
+Current measured state (2026-09-19, two videos, one labelled shelf):
+exported precision 4/5 (v2) and 1/1 (v1); spine recall 0.22 verified by OCR
+alone, 1.0 with the vision channel on the labelled shelf (circular there);
+pan stitching proved the shelf does not pan, so coverage was never the limit;
 scroll/bibliography and slide channels remain the reliable ones.
 
 ## 5. Known constraints

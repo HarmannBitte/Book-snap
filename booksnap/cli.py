@@ -87,11 +87,27 @@ def _spines(args):
     out = extract_spines(args.video, args.out, start=args.start, end=args.end,
                          step=args.step, topk=args.topk, roi=roi, band=args.band,
                          upscale=args.upscale, presets=presets, stack=args.stack,
-                         min_len=args.min_len)
+                         min_len=args.min_len, panorama=args.panorama)
     strong = sum(1 for r in out if r["conf"] >= 0.8)
     print(f"spine reads={len(out)} (conf>=0.80: {strong}) -> {args.out}")
     for r in out[:15]:
         print(f"   {r['conf']:.2f} [{r.get('preset')}] {r['text']}")
+
+
+def _vlm_bundle(args):
+    from .vlm import write_bundle
+    items = write_bundle(args.images, args.out)
+    print(f"review bundle with {len(items)} image(s) -> {args.out}")
+
+
+def _vlm_merge(args):
+    from .vlm import merge_review
+    fresh = merge_review(args.review, args.books, out_json=args.out_json,
+                         out_md=args.out_md, out_bib=args.out_bib,
+                         out_ris=args.out_ris)
+    print(f"merged {len(fresh)} vision-model entries")
+    for g in fresh:
+        print(f"   [vlm] {g['title']} ({', '.join(g.get('authors') or [])})")
 
 
 def _bench_spines(args):
@@ -169,7 +185,7 @@ def _run(args):
                                    step=1.0, topk=3, roi=args.spines_roi,
                                    band=args.spines_band, upscale=4,
                                    presets=args.spines_presets, stack=args.spines_stack,
-                                   min_len=4))
+                                   min_len=4, panorama=args.spines_stack))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -230,7 +246,11 @@ def main(argv=None):
 
     s = sub.add_parser("audio", help="ASR the soundtrack (faster-whisper)")
     s.add_argument("audio"); s.add_argument("out")
-    s.add_argument("--model", default="base")
+    s.add_argument("--model", default="base",
+                   help="whisper size; 'small'/'medium' fix proper nouns but "
+                        "need more RAM (chunked, so ~1 GB ok for 'small')")
+    s.add_argument("--beam-size", type=int, default=1,
+                   help="beam >1 improves garbled titles at ~beam x runtime")
     s.set_defaults(fn=_audio)
 
     s = sub.add_parser("spines", help="extract book-spine text from shelf footage")
@@ -246,6 +266,8 @@ def main(argv=None):
                         "lanczos,unsharp,clahe,denoise,binarize")
     s.add_argument("--stack", action="store_true",
                    help="median-stack the sharpest frames before enhancing")
+    s.add_argument("--panorama", action="store_true",
+                   help="stitch the camera pan into one wide shelf image")
     s.add_argument("--min-len", type=int, default=4)
     s.set_defaults(fn=_spines)
 
@@ -258,6 +280,23 @@ def main(argv=None):
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
+
+    s = sub.add_parser("vlm-bundle", help="write a vision-model review bundle")
+    s.add_argument("out"); s.add_argument("images", nargs="+")
+    s.set_defaults(fn=_vlm_bundle)
+
+    s = sub.add_parser("vlm-run", help="fill a review bundle via a vision API")
+    s.add_argument("bundle"); s.add_argument("out")
+    s.add_argument("--model"); s.add_argument("--base-url")
+    s.set_defaults(fn=lambda a: print(
+        f"{len(__import__('booksnap.vlm', fromlist=['review_with_api'])
+              .review_with_api(a.bundle, a.out, a.model, a.base_url))} entries"))
+
+    s = sub.add_parser("vlm-merge", help="merge a filled vision review")
+    s.add_argument("review"); s.add_argument("books")
+    s.add_argument("--out-json"); s.add_argument("--out-md")
+    s.add_argument("--out-bib"); s.add_argument("--out-ris")
+    s.set_defaults(fn=_vlm_merge)
 
     s = sub.add_parser("bench-spines", help="score the spine channel vs labels")
     s.add_argument("labels"); s.add_argument("spines"); s.add_argument("books")

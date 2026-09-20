@@ -20,7 +20,8 @@ from .ffmpeg_utils import ffmpeg_bin, probe
 
 def transcribe(video: str, out_json: str, model_size: str = "tiny",
                device: str = "cpu", compute_type: str = "int8",
-               vad_filter: bool = True, chunk_s: float = 300.0):
+               vad_filter: bool = True, chunk_s: float = 300.0,
+               beam_size: int = 1):
     from faster_whisper import WhisperModel
     model = WhisperModel(model_size, device=device, compute_type=compute_type)
     total = float(probe(video).get("duration") or 0.0)
@@ -33,7 +34,8 @@ def transcribe(video: str, out_json: str, model_size: str = "tiny",
         subprocess.run([ffmpeg_bin(), "-v", "error", "-ss", f"{start}",
                         "-t", f"{dur}", "-i", video, "-ac", "1", "-ar", "16000",
                         tmp, "-y"], check=True)
-        segs, info = model.transcribe(tmp, vad_filter=vad_filter, beam_size=1,
+        segs, info = model.transcribe(tmp, vad_filter=vad_filter,
+                                      beam_size=beam_size,
                                       condition_on_previous_text=False)
         for s in segs:
             out.append(dict(start=round(start + float(s.start), 1),

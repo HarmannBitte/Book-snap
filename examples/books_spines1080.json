@@ -1,0 +1,3421 @@
+{
+ "spine_reads": 88,
+ "spine_groups": 53,
+ "bibliography": [
+  {
+   "text": "Sapiens LOSINCMRACE LOSINCWRACE nnversatinns onversations nnrarsahnns nntarsatnns nnersatinns WEALPO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALL,P MALTUL NY MEALTU PNY AND ROLTI WALRLPP WEALRLP WEALLPP MEALRGRP AND POT MEALRG R MEALRP MEAANY MEALNY WEALTL NY LOSIHCILRACE LOSING GRDUAD TWIRACE THIRACE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WTALTL, PO IXIRACE LOSINCORACE LOSINCURACE LOSINCRACI LOSINCPBACI LOSIHCORACE LOSINCAACI HOSOFHUWL LOSINC WLRACE ietins HOSOERUW LOSIMC AACE Viefims LOSINCDIRACI LOSINCIRACE HOSOFPOWER",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEAED,P LOSINCRACE LOSINCMRACI LOSIMCWRACE WIRACE HOSOFFOWEI WTALTELPO HOSOFFOWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTL,PO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTIL,R coleman ANDPOLI",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTIL,P ANDIOLI doleman AND POL ANDPOLN MEALANY WEALLNY WEAHITLN rolenan AND POLE WEAHTLIN THEDIS",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WILALTH,PO Caanan AND POLIT",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEAETTA, joleman",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEAETTA,P",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTB,P roleman WEALTDP ANTPOLI THEOIL",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTI,P HOSOFPOWEI uoleman HOSOFPORWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALT,PC AND POLT THEBISL",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALI,P",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTTA,P THEGIS Jonversations AFHOSOFPOR WEALTEI tioleman",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTER,PO voleman THEDIST HOSOFPOWH",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTRR,PO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTTI,I AND FOLO HOSOEHWL AND FOLD THERRN HHOSOFPOWE WEALTBPO HOSOFPUWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTIL,PO THEURN IHOSOFPOWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "IWEALTL,PO HHOSOFPOWER WEALITUPG wolemnan AND POLIL WEALTTIPO WEALTTL;PO oleman THEBIE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTH, PO +THEDEGMI ANDPOLM MARLLE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALIR,PO IHOSOFPOWER uolenan AND POLEIRS",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTTR,POT toienman AND POLIIRS XTHEPIRTSDELUSTO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTR,POT AND POLITR THEPIRATOELUSTON woieman",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTI,PG toleman AND ROL",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WTEALTII,PO HO5OFUWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALIH,PO +THE DMR HALAIMARAIES OFPOWE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTR,PO volenan AND POLTL HHOSOFPOWH THEDRE THERIEN olennan +THEO15F",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WENITI,PO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WENLTI,PO",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTI,PO LFIOICINY THEOIU-ERUS10N THEOIO-RUS1ON",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTIE,IN AND POII",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALT, PO THERIIN colenman THERISING WEALTHLPO +THEDEX",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTIH,PO THERIS THEBIS",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALTTL,IO ANDOLI",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "WEALIU, ioleman ANDFOLE",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "MEATHI,R",
+   "kind": "book",
+   "year": null
+  },
+  {
+   "text": "MEALTHI,R",
+   "kind": "book",
+   "year": null
+  }
+ ],
+ "shown_covers": [
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "Conversations",
+   "text": "Conversations",
+   "source": "spine",
+   "conf": 0.922,
+   "preset": "lanczos",
+   "variants": [
+    "Conversations",
+    "onversations"
+   ],
+   "variant_confs": {
+    "Conversations": 0.922,
+    "onversations": 0.821
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": true,
+   "heard_as": "Conversations",
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "Sapiens",
+   "text": "Sapiens",
+   "source": "spine",
+   "conf": 0.867,
+   "preset": "unsharp",
+   "variants": [
+    "Sapicns",
+    "Sapiens"
+   ],
+   "variant_confs": {
+    "Sapiens": 0.867,
+    "Sapicns": 0.836
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "Sapiens LOSINCMRACE LOSINCWRACE nnversatinns onversations nnrarsahnns nntarsatnns nnersatinns WEALPO",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "gazetteer": {
+    "title": "Sapiens",
+    "authors": [
+     "Yuval Noah Harari"
+    ],
+    "year": 2011
+   },
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "Goleman",
+   "text": "Goleman",
+   "source": "spine",
+   "conf": 0.852,
+   "preset": "clahe",
+   "variants": [
+    "Coleman",
+    "Goleman"
+   ],
+   "variant_confs": {
+    "Goleman": 0.852,
+    "Coleman": 0.816
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "AND PO",
+   "text": "AND PO",
+   "source": "spine",
+   "conf": 0.836,
+   "preset": "clahe",
+   "variants": [
+    "AND PO"
+   ],
+   "variant_confs": {
+    "AND PO": 0.836
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "LOSINCTHIRACE",
+   "text": "LOSINCTHIRACE",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "unsharp",
+   "variants": [
+    "LOSINCIMIRACE",
+    "LOSINCTHIRACE",
+    "LOSINCTI RACE"
+   ],
+   "variant_confs": {
+    "LOSINCTHIRACE": 0.832,
+    "LOSINCTI RACE": 0.784,
+    "LOSINCIMIRACE": 0.775
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOSIHC IIRACE",
+   "text": "LOSIHC IIRACE",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "denoise",
+   "variants": [
+    "LOSIHC IIRACE",
+    "LOSIHCTHI RACE",
+    "LOSIHc In RAcE"
+   ],
+   "variant_confs": {
+    "LOSIHC IIRACE": 0.832,
+    "LOSIHCTHI RACE": 0.776,
+    "LOSIHc In RAcE": 0.591
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOSING GROUND",
+   "text": "LOSING GROUND",
+   "source": "spine",
+   "conf": 0.825,
+   "preset": "stack",
+   "variants": [
+    "LOSING GROUND"
+   ],
+   "variant_confs": {
+    "LOSING GROUND": 0.825
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": true,
+   "heard_as": "moral grounds.",
+   "heard_score": 0.78,
+   "gazetteer": {
+    "title": "Losing Ground",
+    "authors": [
+     "Charles Murray"
+    ],
+    "year": 2008
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "M LOSING GEOCND",
+   "text": "M LOSING GEOCND",
+   "source": "spine",
+   "conf": 0.819,
+   "preset": "clahe",
+   "variants": [
+    "M LOSING GEOCND",
+    "MO LOSING GEOCND",
+    "MO LOSING GROCND",
+    "MO LOSING GROLND"
+   ],
+   "variant_confs": {
+    "M LOSING GEOCND": 0.819,
+    "MO LOSING GROLND": 0.814,
+    "MO LOSING GROCND": 0.809,
+    "MO LOSING GEOCND": 0.77
+   },
+   "cited": true,
+   "match_score": 0.5,
+   "match": "WEALL,P MALTUL NY MEALTU PNY AND ROLTI WALRLPP WEALRLP WEALLPP MEALRGRP AND POT MEALRG R MEALRP MEAANY MEALNY WEALTL NY LOSIHCILRACE LOSING GRDUAD TWIRACE THIRACE",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOCKEDIN",
+   "text": "LOCKEDIN",
+   "source": "spine",
+   "conf": 0.801,
+   "preset": "stack",
+   "variants": [
+    "LOCKEDIN",
+    "LOCKEDN"
+   ],
+   "variant_confs": {
+    "LOCKEDIN": 0.801,
+    "LOCKEDN": 0.739
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "WEALTTL",
+   "text": "WEALTTL",
+   "source": "spine",
+   "conf": 0.796,
+   "preset": "lanczos",
+   "variants": [
+    "WEALITI",
+    "WEALT,",
+    "WEALTE",
+    "WEALTTI",
+    "WEALTTL",
+    "WEATTL"
+   ],
+   "variant_confs": {
+    "WEALTTL": 0.796,
+    "WEALT,": 0.73,
+    "WEALITI": 0.707,
+    "WEALTTI": 0.696,
+    "WEALTE": 0.637,
+    "WEATTL": 0.58
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "IWEALTL,PO HHOSOFPOWER WEALITUPG wolemnan AND POLIL WEALTTIPO WEALTTL;PO oleman THEBIE",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "DARACK OGAMA",
+   "text": "DARACK OGAMA",
+   "source": "spine",
+   "conf": 0.789,
+   "preset": "stack",
+   "variants": [
+    "DARACK OGAMA"
+   ],
+   "variant_confs": {
+    "DARACK OGAMA": 0.789
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.48
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "DENNETT",
+   "text": "DENNETT",
+   "source": "spine",
+   "conf": 0.787,
+   "preset": "lanczos",
+   "variants": [
+    "DENNETT",
+    "DINAETT",
+    "DINNETT",
+    "DINNETY",
+    "DKNNETT"
+   ],
+   "variant_confs": {
+    "DENNETT": 0.787,
+    "DKNNETT": 0.756,
+    "DINNETT": 0.749,
+    "DINNETY": 0.625,
+    "DINAETT": 0.604
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.4,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "BARACK OEAMA",
+   "text": "BARACK OEAMA",
+   "source": "spine",
+   "conf": 0.786,
+   "preset": "lanczos",
+   "variants": [
+    "BARACK OEAMA",
+    "BARACK OGAMA",
+    "BARACK OGAME"
+   ],
+   "variant_confs": {
+    "BARACK OEAMA": 0.786,
+    "BARACK OGAME": 0.713,
+    "BARACK OGAMA": 0.691
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "NIELC",
+   "text": "NIELC",
+   "source": "spine",
+   "conf": 0.782,
+   "preset": "stack",
+   "variants": [
+    "NIELC"
+   ],
+   "variant_confs": {
+    "NIELC": 0.782
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "Gdeman",
+   "text": "Gdeman",
+   "source": "spine",
+   "conf": 0.781,
+   "preset": "binarize",
+   "variants": [
+    "CUATNA",
+    "Gdeman"
+   ],
+   "variant_confs": {
+    "Gdeman": 0.781,
+    "CUATNA": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "COATES",
+   "text": "COATES",
+   "source": "spine",
+   "conf": 0.778,
+   "preset": "stack",
+   "variants": [
+    "COATES"
+   ],
+   "variant_confs": {
+    "COATES": 0.778
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "with",
+   "text": "with",
+   "source": "spine",
+   "conf": 0.772,
+   "preset": "denoise",
+   "variants": [
+    "with"
+   ],
+   "variant_confs": {
+    "with": 0.772
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PAHOSOFPC",
+   "text": "PAHOSOFPC",
+   "source": "spine",
+   "conf": 0.769,
+   "preset": "denoise",
+   "variants": [
+    "PAEHOSOFPC",
+    "PAHOSOFPC"
+   ],
+   "variant_confs": {
+    "PAHOSOFPC": 0.769,
+    "PAEHOSOFPC": 0.677
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "HN LOSING GEOUND",
+   "text": "HN LOSING GEOUND",
+   "source": "spine",
+   "conf": 0.768,
+   "preset": "clahe",
+   "variants": [
+    "HN LOSING GEOUND",
+    "HUrN LOSING GEOUND"
+   ],
+   "variant_confs": {
+    "HN LOSING GEOUND": 0.768,
+    "HUrN LOSING GEOUND": 0.691
+   },
+   "cited": true,
+   "match_score": 0.5,
+   "match": "WEALL,P MALTUL NY MEALTU PNY AND ROLTI WALRLPP WEALRLP WEALLPP MEALRGRP AND POT MEALRG R MEALRP MEAANY MEALNY WEALTL NY LOSIHCILRACE LOSING GRDUAD TWIRACE THIRACE",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "MON LOSING GROLND",
+   "text": "MON LOSING GROLND",
+   "source": "spine",
+   "conf": 0.768,
+   "preset": "denoise",
+   "variants": [
+    "MON LOSING GROLND"
+   ],
+   "variant_confs": {
+    "MON LOSING GROLND": 0.768
+   },
+   "cited": true,
+   "match_score": 0.5,
+   "match": "WEALL,P MALTUL NY MEALTU PNY AND ROLTI WALRLPP WEALRLP WEALLPP MEALRGRP AND POT MEALRG R MEALRP MEAANY MEALNY WEALTL NY LOSIHCILRACE LOSING GRDUAD TWIRACE THIRACE",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "NIELG",
+   "text": "NIELG",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "clahe",
+   "variants": [
+    "NIELG"
+   ],
+   "variant_confs": {
+    "NIELG": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "WFALTH,",
+   "text": "WFALTH,",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "denoise",
+   "variants": [
+    "WFALTH,"
+   ],
+   "variant_confs": {
+    "WFALTH,": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PICTUR",
+   "text": "PICTUR",
+   "source": "spine",
+   "conf": 0.765,
+   "preset": "stack",
+   "variants": [
+    "PICTUR",
+    "PICTURE",
+    "PICTURI"
+   ],
+   "variant_confs": {
+    "PICTUR": 0.765,
+    "PICTURI": 0.72,
+    "PICTURE": 0.628
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": true,
+   "heard_as": "picture",
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PATHOSOFPOWE",
+   "text": "PATHOSOFPOWE",
+   "source": "spine",
+   "conf": 0.764,
+   "preset": "stack",
+   "variants": [
+    "PATHOSOFPOWE"
+   ],
+   "variant_confs": {
+    "PATHOSOFPOWE": 0.764
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "HUI LOSING GEOUND",
+   "text": "HUI LOSING GEOUND",
+   "source": "spine",
+   "conf": 0.752,
+   "preset": "lanczos",
+   "variants": [
+    "HUI LOSING GEOUND"
+   ],
+   "variant_confs": {
+    "HUI LOSING GEOUND": 0.752
+   },
+   "cited": true,
+   "match_score": 0.5,
+   "match": "WEALL,P MALTUL NY MEALTU PNY AND ROLTI WALRLPP WEALRLP WEALLPP MEALRGRP AND POT MEALRG R MEALRP MEAANY MEALNY WEALTL NY LOSIHCILRACE LOSING GRDUAD TWIRACE THIRACE",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "DAEHOSOFPC",
+   "text": "DAEHOSOFPC",
+   "source": "spine",
+   "conf": 0.746,
+   "preset": "denoise",
+   "variants": [
+    "DAEHOSOFPC"
+   ],
+   "variant_confs": {
+    "DAEHOSOFPC": 0.746
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "AIHOSOFPC",
+   "text": "AIHOSOFPC",
+   "source": "spine",
+   "conf": 0.745,
+   "preset": "lanczos",
+   "variants": [
+    "AIHOSOFP",
+    "AIHOSOFPC"
+   ],
+   "variant_confs": {
+    "AIHOSOFPC": 0.745,
+    "AIHOSOFP": 0.684
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "M-N LOSISG GROUND",
+   "text": "M-N LOSISG GROUND",
+   "source": "spine",
+   "conf": 0.744,
+   "preset": "denoise",
+   "variants": [
+    "M-N LOSISG GROUND"
+   ],
+   "variant_confs": {
+    "M-N LOSISG GROUND": 0.744
+   },
+   "cited": true,
+   "match_score": 0.5,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.51
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "GARACK OGAMA",
+   "text": "GARACK OGAMA",
+   "source": "spine",
+   "conf": 0.737,
+   "preset": "denoise",
+   "variants": [
+    "GARACK",
+    "GARACK OEANA",
+    "GARACK OGAMA",
+    "GARACK OOAML"
+   ],
+   "variant_confs": {
+    "GARACK OGAMA": 0.737,
+    "GARACK OEANA": 0.713,
+    "GARACK OOAML": 0.694,
+    "GARACK": 0.6
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "ATHOSOFPO",
+   "text": "ATHOSOFPO",
+   "source": "spine",
+   "conf": 0.713,
+   "preset": "lanczos",
+   "variants": [
+    "ATHOSOFPO"
+   ],
+   "variant_confs": {
+    "ATHOSOFPO": 0.713
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "WFALTT,",
+   "text": "WFALTT,",
+   "source": "spine",
+   "conf": 0.712,
+   "preset": "denoise",
+   "variants": [
+    "WFALTT,"
+   ],
+   "variant_confs": {
+    "WFALTT,": 0.712
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.53,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "dleman",
+   "text": "dleman",
+   "source": "spine",
+   "conf": 0.708,
+   "preset": "binarize",
+   "variants": [
+    "dleman"
+   ],
+   "variant_confs": {
+    "dleman": 0.708
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "EIGHTYENBS",
+   "text": "EIGHTYENBS",
+   "source": "spine",
+   "conf": 0.687,
+   "preset": "stack",
+   "variants": [
+    "EIGHTYENBS"
+   ],
+   "variant_confs": {
+    "EIGHTYENBS": 0.687
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "GARACR ODAMA",
+   "text": "GARACR ODAMA",
+   "source": "spine",
+   "conf": 0.685,
+   "preset": "denoise",
+   "variants": [
+    "GARACR ODAMA"
+   ],
+   "variant_confs": {
+    "GARACR ODAMA": 0.685
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "OSINC INIRACE",
+   "text": "OSINC INIRACE",
+   "source": "spine",
+   "conf": 0.666,
+   "preset": "binarize",
+   "variants": [
+    "OSINC INIRACE"
+   ],
+   "variant_confs": {
+    "OSINC INIRACE": 0.666
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "VYCYIMS",
+   "text": "VYCYIMS",
+   "source": "spine",
+   "conf": 0.65,
+   "preset": "denoise",
+   "variants": [
+    "VYCAIMS",
+    "VYCIMS",
+    "VYCYIMS",
+    "VYCYTMS",
+    "VYEYIMS"
+   ],
+   "variant_confs": {
+    "VYCYIMS": 0.65,
+    "VYCIMS": 0.647,
+    "VYCYTMS": 0.638,
+    "VYCAIMS": 0.576,
+    "VYEYIMS": 0.555
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "The uk ",
+   "text": "The uk ",
+   "source": "spine",
+   "conf": 0.642,
+   "preset": "lanczos",
+   "variants": [
+    "The uk "
+   ],
+   "variant_confs": {
+    "The uk ": 0.642
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "PICTUEN",
+   "text": "PICTUEN",
+   "source": "spine",
+   "conf": 0.635,
+   "preset": "unsharp",
+   "variants": [
+    "PICTUEN"
+   ],
+   "variant_confs": {
+    "PICTUEN": 0.635
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.88,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "NIKLC",
+   "text": "NIKLC",
+   "source": "spine",
+   "conf": 0.61,
+   "preset": "denoise",
+   "variants": [
+    "NIKLC"
+   ],
+   "variant_confs": {
+    "NIKLC": 0.61
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "OLAEDN",
+   "text": "OLAEDN",
+   "source": "spine",
+   "conf": 0.604,
+   "preset": "unsharp",
+   "variants": [
+    "OLAEDN"
+   ],
+   "variant_confs": {
+    "OLAEDN": 0.604
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "IHANU",
+   "text": "IHANU",
+   "source": "spine",
+   "conf": 0.595,
+   "preset": "stack",
+   "variants": [
+    "IHANU"
+   ],
+   "variant_confs": {
+    "IHANU": 0.595
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "UENNETT",
+   "text": "UENNETT",
+   "source": "spine",
+   "conf": 0.56,
+   "preset": "clahe",
+   "variants": [
+    "UENNETT"
+   ],
+   "variant_confs": {
+    "UENNETT": 0.56
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "HLAINE",
+   "text": "HLAINE",
+   "source": "spine",
+   "conf": 0.534,
+   "preset": "lanczos",
+   "variants": [
+    "HLAINE"
+   ],
+   "variant_confs": {
+    "HLAINE": 0.534
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "10307",
+   "text": "10307",
+   "source": "spine",
+   "conf": 0.531,
+   "preset": "clahe",
+   "variants": [
+    "10307"
+   ],
+   "variant_confs": {
+    "10307": 0.531
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOEDN",
+   "text": "LOEDN",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "lanczos",
+   "variants": [
+    "LOEDN"
+   ],
+   "variant_confs": {
+    "LOEDN": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "CARACKOTY",
+   "text": "CARACKOTY",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "binarize",
+   "variants": [
+    "CARACKOTY"
+   ],
+   "variant_confs": {
+    "CARACKOTY": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "Titin",
+   "text": "Titin",
+   "source": "spine",
+   "conf": 0.522,
+   "preset": "binarize",
+   "variants": [
+    "Titin"
+   ],
+   "variant_confs": {
+    "Titin": 0.522
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "HLANEM K",
+   "text": "HLANEM K",
+   "source": "spine",
+   "conf": 0.519,
+   "preset": "lanczos",
+   "variants": [
+    "HLANEM K"
+   ],
+   "variant_confs": {
+    "HLANEM K": 0.519
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "COATHA",
+   "text": "COATHA",
+   "source": "spine",
+   "conf": 0.519,
+   "preset": "clahe",
+   "variants": [
+    "COATHA"
+   ],
+   "variant_confs": {
+    "COATHA": 0.519
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PI&TI",
+   "text": "PI&TI",
+   "source": "spine",
+   "conf": 0.515,
+   "preset": "unsharp",
+   "variants": [
+    "PI&TI"
+   ],
+   "variant_confs": {
+    "PI&TI": 0.515
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "The.Qunkil",
+   "text": "The.Qunkil",
+   "source": "spine",
+   "conf": 0.509,
+   "preset": "clahe",
+   "variants": [
+    "The.Qunkil"
+   ],
+   "variant_confs": {
+    "The.Qunkil": 0.509
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "EIGIENEN",
+   "text": "EIGIENEN",
+   "source": "spine",
+   "conf": 0.506,
+   "preset": "lanczos",
+   "variants": [
+    "EIGIENEN"
+   ],
+   "variant_confs": {
+    "EIGIENEN": 0.506
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "LOLNEDN",
+   "text": "LOLNEDN",
+   "source": "spine",
+   "conf": 0.505,
+   "preset": "unsharp",
+   "variants": [
+    "LOLNEDN"
+   ],
+   "variant_confs": {
+    "LOLNEDN": 0.505
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  }
+ ],
+ "shown_only": [
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "Goleman",
+   "text": "Goleman",
+   "source": "spine",
+   "conf": 0.852,
+   "preset": "clahe",
+   "variants": [
+    "Coleman",
+    "Goleman"
+   ],
+   "variant_confs": {
+    "Goleman": 0.852,
+    "Coleman": 0.816
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "AND PO",
+   "text": "AND PO",
+   "source": "spine",
+   "conf": 0.836,
+   "preset": "clahe",
+   "variants": [
+    "AND PO"
+   ],
+   "variant_confs": {
+    "AND PO": 0.836
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "LOSINCTHIRACE",
+   "text": "LOSINCTHIRACE",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "unsharp",
+   "variants": [
+    "LOSINCIMIRACE",
+    "LOSINCTHIRACE",
+    "LOSINCTI RACE"
+   ],
+   "variant_confs": {
+    "LOSINCTHIRACE": 0.832,
+    "LOSINCTI RACE": 0.784,
+    "LOSINCIMIRACE": 0.775
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOSIHC IIRACE",
+   "text": "LOSIHC IIRACE",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "denoise",
+   "variants": [
+    "LOSIHC IIRACE",
+    "LOSIHCTHI RACE",
+    "LOSIHc In RAcE"
+   ],
+   "variant_confs": {
+    "LOSIHC IIRACE": 0.832,
+    "LOSIHCTHI RACE": 0.776,
+    "LOSIHc In RAcE": 0.591
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOCKEDIN",
+   "text": "LOCKEDIN",
+   "source": "spine",
+   "conf": 0.801,
+   "preset": "stack",
+   "variants": [
+    "LOCKEDIN",
+    "LOCKEDN"
+   ],
+   "variant_confs": {
+    "LOCKEDIN": 0.801,
+    "LOCKEDN": 0.739
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "DARACK OGAMA",
+   "text": "DARACK OGAMA",
+   "source": "spine",
+   "conf": 0.789,
+   "preset": "stack",
+   "variants": [
+    "DARACK OGAMA"
+   ],
+   "variant_confs": {
+    "DARACK OGAMA": 0.789
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.48
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "DENNETT",
+   "text": "DENNETT",
+   "source": "spine",
+   "conf": 0.787,
+   "preset": "lanczos",
+   "variants": [
+    "DENNETT",
+    "DINAETT",
+    "DINNETT",
+    "DINNETY",
+    "DKNNETT"
+   ],
+   "variant_confs": {
+    "DENNETT": 0.787,
+    "DKNNETT": 0.756,
+    "DINNETT": 0.749,
+    "DINNETY": 0.625,
+    "DINAETT": 0.604
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.4,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "BARACK OEAMA",
+   "text": "BARACK OEAMA",
+   "source": "spine",
+   "conf": 0.786,
+   "preset": "lanczos",
+   "variants": [
+    "BARACK OEAMA",
+    "BARACK OGAMA",
+    "BARACK OGAME"
+   ],
+   "variant_confs": {
+    "BARACK OEAMA": 0.786,
+    "BARACK OGAME": 0.713,
+    "BARACK OGAMA": 0.691
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "NIELC",
+   "text": "NIELC",
+   "source": "spine",
+   "conf": 0.782,
+   "preset": "stack",
+   "variants": [
+    "NIELC"
+   ],
+   "variant_confs": {
+    "NIELC": 0.782
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "Gdeman",
+   "text": "Gdeman",
+   "source": "spine",
+   "conf": 0.781,
+   "preset": "binarize",
+   "variants": [
+    "CUATNA",
+    "Gdeman"
+   ],
+   "variant_confs": {
+    "Gdeman": 0.781,
+    "CUATNA": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "with",
+   "text": "with",
+   "source": "spine",
+   "conf": 0.772,
+   "preset": "denoise",
+   "variants": [
+    "with"
+   ],
+   "variant_confs": {
+    "with": 0.772
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PAHOSOFPC",
+   "text": "PAHOSOFPC",
+   "source": "spine",
+   "conf": 0.769,
+   "preset": "denoise",
+   "variants": [
+    "PAEHOSOFPC",
+    "PAHOSOFPC"
+   ],
+   "variant_confs": {
+    "PAHOSOFPC": 0.769,
+    "PAEHOSOFPC": 0.677
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "NIELG",
+   "text": "NIELG",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "clahe",
+   "variants": [
+    "NIELG"
+   ],
+   "variant_confs": {
+    "NIELG": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "WFALTH,",
+   "text": "WFALTH,",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "denoise",
+   "variants": [
+    "WFALTH,"
+   ],
+   "variant_confs": {
+    "WFALTH,": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PICTUR",
+   "text": "PICTUR",
+   "source": "spine",
+   "conf": 0.765,
+   "preset": "stack",
+   "variants": [
+    "PICTUR",
+    "PICTURE",
+    "PICTURI"
+   ],
+   "variant_confs": {
+    "PICTUR": 0.765,
+    "PICTURI": 0.72,
+    "PICTURE": 0.628
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": true,
+   "heard_as": "picture",
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PATHOSOFPOWE",
+   "text": "PATHOSOFPOWE",
+   "source": "spine",
+   "conf": 0.764,
+   "preset": "stack",
+   "variants": [
+    "PATHOSOFPOWE"
+   ],
+   "variant_confs": {
+    "PATHOSOFPOWE": 0.764
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "DAEHOSOFPC",
+   "text": "DAEHOSOFPC",
+   "source": "spine",
+   "conf": 0.746,
+   "preset": "denoise",
+   "variants": [
+    "DAEHOSOFPC"
+   ],
+   "variant_confs": {
+    "DAEHOSOFPC": 0.746
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "AIHOSOFPC",
+   "text": "AIHOSOFPC",
+   "source": "spine",
+   "conf": 0.745,
+   "preset": "lanczos",
+   "variants": [
+    "AIHOSOFP",
+    "AIHOSOFPC"
+   ],
+   "variant_confs": {
+    "AIHOSOFPC": 0.745,
+    "AIHOSOFP": 0.684
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "GARACK OGAMA",
+   "text": "GARACK OGAMA",
+   "source": "spine",
+   "conf": 0.737,
+   "preset": "denoise",
+   "variants": [
+    "GARACK",
+    "GARACK OEANA",
+    "GARACK OGAMA",
+    "GARACK OOAML"
+   ],
+   "variant_confs": {
+    "GARACK OGAMA": 0.737,
+    "GARACK OEANA": 0.713,
+    "GARACK OOAML": 0.694,
+    "GARACK": 0.6
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "ATHOSOFPO",
+   "text": "ATHOSOFPO",
+   "source": "spine",
+   "conf": 0.713,
+   "preset": "lanczos",
+   "variants": [
+    "ATHOSOFPO"
+   ],
+   "variant_confs": {
+    "ATHOSOFPO": 0.713
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "WFALTT,",
+   "text": "WFALTT,",
+   "source": "spine",
+   "conf": 0.712,
+   "preset": "denoise",
+   "variants": [
+    "WFALTT,"
+   ],
+   "variant_confs": {
+    "WFALTT,": 0.712
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.53,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "dleman",
+   "text": "dleman",
+   "source": "spine",
+   "conf": 0.708,
+   "preset": "binarize",
+   "variants": [
+    "dleman"
+   ],
+   "variant_confs": {
+    "dleman": 0.708
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "EIGHTYENBS",
+   "text": "EIGHTYENBS",
+   "source": "spine",
+   "conf": 0.687,
+   "preset": "stack",
+   "variants": [
+    "EIGHTYENBS"
+   ],
+   "variant_confs": {
+    "EIGHTYENBS": 0.687
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "GARACR ODAMA",
+   "text": "GARACR ODAMA",
+   "source": "spine",
+   "conf": 0.685,
+   "preset": "denoise",
+   "variants": [
+    "GARACR ODAMA"
+   ],
+   "variant_confs": {
+    "GARACR ODAMA": 0.685
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "OSINC INIRACE",
+   "text": "OSINC INIRACE",
+   "source": "spine",
+   "conf": 0.666,
+   "preset": "binarize",
+   "variants": [
+    "OSINC INIRACE"
+   ],
+   "variant_confs": {
+    "OSINC INIRACE": 0.666
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "VYCYIMS",
+   "text": "VYCYIMS",
+   "source": "spine",
+   "conf": 0.65,
+   "preset": "denoise",
+   "variants": [
+    "VYCAIMS",
+    "VYCIMS",
+    "VYCYIMS",
+    "VYCYTMS",
+    "VYEYIMS"
+   ],
+   "variant_confs": {
+    "VYCYIMS": 0.65,
+    "VYCIMS": 0.647,
+    "VYCYTMS": 0.638,
+    "VYCAIMS": 0.576,
+    "VYEYIMS": 0.555
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "The uk ",
+   "text": "The uk ",
+   "source": "spine",
+   "conf": 0.642,
+   "preset": "lanczos",
+   "variants": [
+    "The uk "
+   ],
+   "variant_confs": {
+    "The uk ": 0.642
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "PICTUEN",
+   "text": "PICTUEN",
+   "source": "spine",
+   "conf": 0.635,
+   "preset": "unsharp",
+   "variants": [
+    "PICTUEN"
+   ],
+   "variant_confs": {
+    "PICTUEN": 0.635
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.88,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "NIKLC",
+   "text": "NIKLC",
+   "source": "spine",
+   "conf": 0.61,
+   "preset": "denoise",
+   "variants": [
+    "NIKLC"
+   ],
+   "variant_confs": {
+    "NIKLC": 0.61
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "OLAEDN",
+   "text": "OLAEDN",
+   "source": "spine",
+   "conf": 0.604,
+   "preset": "unsharp",
+   "variants": [
+    "OLAEDN"
+   ],
+   "variant_confs": {
+    "OLAEDN": 0.604
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "IHANU",
+   "text": "IHANU",
+   "source": "spine",
+   "conf": 0.595,
+   "preset": "stack",
+   "variants": [
+    "IHANU"
+   ],
+   "variant_confs": {
+    "IHANU": 0.595
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "UENNETT",
+   "text": "UENNETT",
+   "source": "spine",
+   "conf": 0.56,
+   "preset": "clahe",
+   "variants": [
+    "UENNETT"
+   ],
+   "variant_confs": {
+    "UENNETT": 0.56
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "HLAINE",
+   "text": "HLAINE",
+   "source": "spine",
+   "conf": 0.534,
+   "preset": "lanczos",
+   "variants": [
+    "HLAINE"
+   ],
+   "variant_confs": {
+    "HLAINE": 0.534
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "10307",
+   "text": "10307",
+   "source": "spine",
+   "conf": 0.531,
+   "preset": "clahe",
+   "variants": [
+    "10307"
+   ],
+   "variant_confs": {
+    "10307": 0.531
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOEDN",
+   "text": "LOEDN",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "lanczos",
+   "variants": [
+    "LOEDN"
+   ],
+   "variant_confs": {
+    "LOEDN": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "CARACKOTY",
+   "text": "CARACKOTY",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "binarize",
+   "variants": [
+    "CARACKOTY"
+   ],
+   "variant_confs": {
+    "CARACKOTY": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "Titin",
+   "text": "Titin",
+   "source": "spine",
+   "conf": 0.522,
+   "preset": "binarize",
+   "variants": [
+    "Titin"
+   ],
+   "variant_confs": {
+    "Titin": 0.522
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "HLANEM K",
+   "text": "HLANEM K",
+   "source": "spine",
+   "conf": 0.519,
+   "preset": "lanczos",
+   "variants": [
+    "HLANEM K"
+   ],
+   "variant_confs": {
+    "HLANEM K": 0.519
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "COATHA",
+   "text": "COATHA",
+   "source": "spine",
+   "conf": 0.519,
+   "preset": "clahe",
+   "variants": [
+    "COATHA"
+   ],
+   "variant_confs": {
+    "COATHA": 0.519
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PI&TI",
+   "text": "PI&TI",
+   "source": "spine",
+   "conf": 0.515,
+   "preset": "unsharp",
+   "variants": [
+    "PI&TI"
+   ],
+   "variant_confs": {
+    "PI&TI": 0.515
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "The.Qunkil",
+   "text": "The.Qunkil",
+   "source": "spine",
+   "conf": 0.509,
+   "preset": "clahe",
+   "variants": [
+    "The.Qunkil"
+   ],
+   "variant_confs": {
+    "The.Qunkil": 0.509
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "EIGIENEN",
+   "text": "EIGIENEN",
+   "source": "spine",
+   "conf": 0.506,
+   "preset": "lanczos",
+   "variants": [
+    "EIGIENEN"
+   ],
+   "variant_confs": {
+    "EIGIENEN": 0.506
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@9.0",
+   "ar": null,
+   "ocr": "LOLNEDN",
+   "text": "LOLNEDN",
+   "source": "spine",
+   "conf": 0.505,
+   "preset": "unsharp",
+   "variants": [
+    "LOLNEDN"
+   ],
+   "variant_confs": {
+    "LOLNEDN": 0.505
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
+  }
+ ],
+ "audio_titles": [
+  {
+   "phrase": "Facing Reality",
+   "t": 2086.8
+  },
+  {
+   "phrase": "Ethnic DeLema",
+   "t": 2668.2
+  },
+  {
+   "phrase": "Simon Barron Cohen",
+   "t": 5100.0
+  }
+ ],
+ "heard": [
+  {
+   "cover": null,
+   "seg": "spine@9.5",
+   "ar": null,
+   "ocr": "Conversations",
+   "text": "Conversations",
+   "source": "spine",
+   "conf": 0.922,
+   "preset": "lanczos",
+   "variants": [
+    "Conversations",
+    "onversations"
+   ],
+   "variant_confs": {
+    "Conversations": 0.922,
+    "onversations": 0.821
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": true,
+   "heard_as": "Conversations",
+   "heard_score": 1.0,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "LOSING GROUND",
+   "text": "LOSING GROUND",
+   "source": "spine",
+   "conf": 0.825,
+   "preset": "stack",
+   "variants": [
+    "LOSING GROUND"
+   ],
+   "variant_confs": {
+    "LOSING GROUND": 0.825
+   },
+   "cited": true,
+   "match_score": 1.0,
+   "match": "WEALSTL,PU MIRACE FHOSOFAUWE LOSING GROUND ATHOSOPPOWER RARACN ATHOSOFPOWER IMRACE ATHOSOFPOWE THOSOFPOWER COATES COATER LOSINCPRACE CRATES WEALTPU HOSOPUE WEALTLPU HIRACE IUPICTURE CONTES ATHOSOFPOWEI LOSING GROUSD THOSOFPOWEN IMIRACE HOSOFPOWE LOSINCSRACE LOSINC WSRACE THOSOFPOWE THEPIEN SARACEOSI TNOSOHTOVE JHOSOHPOWEI THEONT LOSINCTERACE LOSINCTRACE LOSINGRACI LOSING O RACE HOSOFPOWET SARACE CER LOSING GROUAD KI RACE LOSINC PMRACE LOSIMCDIRACI LOSIMGRACE LOSINGTRACE WEALTILO AND POLII \u9ed1FPCol Conversations JHOSCFPOWEP",
+   "heard": true,
+   "heard_as": "moral grounds.",
+   "heard_score": 0.78,
+   "gazetteer": {
+    "title": "Losing Ground",
+    "authors": [
+     "Charles Murray"
+    ],
+    "year": 2008
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@15.0",
+   "ar": null,
+   "ocr": "PICTUR",
+   "text": "PICTUR",
+   "source": "spine",
+   "conf": 0.765,
+   "preset": "stack",
+   "variants": [
+    "PICTUR",
+    "PICTURE",
+    "PICTURI"
+   ],
+   "variant_confs": {
+    "PICTUR": 0.765,
+    "PICTURI": 0.72,
+    "PICTURE": 0.628
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": true,
+   "heard_as": "picture",
+   "heard_score": 1.0,
+   "author_spine": true
+  }
+ ],
+ "gazetteer": [
+  {
+   "phrase": "Facing Reality",
+   "freq": 0,
+   "cued": true,
+   "verified": true,
+   "context_ok": true,
+   "title": "Facing Reality",
+   "authors": [
+    "Charles A. Murray"
+   ],
+   "year": 2021,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "verified",
+   "provenance": [
+    "Facing Reality"
+   ]
+  },
+  {
+   "phrase": "Sapiens",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Sapicns"
+   ],
+   "verified": true,
+   "context_ok": true,
+   "title": "Sapiens",
+   "authors": [
+    "Yuval Noah Harari"
+   ],
+   "year": 2011,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 86,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "Sapiens"
+   ]
+  },
+  {
+   "phrase": "LOSING GROUND",
+   "freq": 0,
+   "source": "spine",
+   "alts": [],
+   "verified": true,
+   "context_ok": true,
+   "title": "Losing Ground",
+   "authors": [
+    "Charles Murray"
+   ],
+   "year": 2008,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "LOSING GROUND"
+   ]
+  },
+  {
+   "phrase": "Great Awakening",
+   "freq": 2,
+   "verified": true,
+   "context_ok": false,
+   "title": "The great awakening",
+   "authors": [
+    "Thomas S. Kidd"
+   ],
+   "year": 2006,
+   "score": 0.968,
+   "match_type": "exact",
+   "editions": 7,
+   "low_support": false,
+   "status": "verified",
+   "provenance": [
+    "Great Awakening"
+   ]
+  },
+  {
+   "phrase": "Philosophical Psychology",
+   "freq": 1,
+   "verified": true,
+   "context_ok": true,
+   "title": "Philosophical psychology",
+   "authors": [
+    "J. F. Donceel"
+   ],
+   "year": 1955,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "verified",
+   "provenance": [
+    "Philosophical Psychology"
+   ]
+  },
+  {
+   "phrase": "Peter Singer",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Peter Singer and Christian Ethics",
+   "authors": [
+    "Charles C. Camosy"
+   ],
+   "year": 2012,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 5,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Peter Singer"
+   ]
+  },
+  {
+   "phrase": "Times Higher Education",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Part-time higher education",
+   "authors": [
+    "Tom Schuller",
+    "Brenda Morgan-Klein",
+    "Ian Clark"
+   ],
+   "year": 1998,
+   "score": 0.875,
+   "match_type": "fuzzy",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Times Higher Education"
+   ]
+  },
+  {
+   "phrase": "Russian Americans",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Russian Americans",
+   "authors": [
+    "Richard A. Bowen"
+   ],
+   "year": 2003,
+   "score": 0.971,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Russian Americans"
+   ]
+  },
+  {
+   "phrase": "Italian Americans",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Italian Americans",
+   "authors": [
+    "American Italian Historical Association. Conference",
+    "Paola A. Sensi Isolani",
+    "Anthony Julian Tamburri"
+   ],
+   "year": 1989,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 5,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Italian Americans"
+   ]
+  },
+  {
+   "phrase": "Arthur Jensen",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Arthur Jensen",
+   "authors": [
+    "Sohan Modgil",
+    "Celia Modgil"
+   ],
+   "year": 1987,
+   "score": 1.0,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Arthur Jensen"
+   ]
+  },
+  {
+   "phrase": "Soviet Union",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Soviet Union",
+   "authors": [
+    "W. A. Douglas Jackson"
+   ],
+   "year": 1962,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 9,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Soviet Union"
+   ]
+  },
+  {
+   "phrase": "Nobel Prizes",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Nobel Prize Winners",
+   "authors": [
+    "Frank N. Magill"
+   ],
+   "year": 1987,
+   "score": 0.774,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Nobel Prizes"
+   ]
+  },
+  {
+   "phrase": "Hoover Institution",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Hoover Institution on War, Revolution, and Peace",
+   "authors": [
+    "Hoover Institution on War, Revolution, and Peace"
+   ],
+   "year": 1964,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Hoover Institution"
+   ]
+  },
+  {
+   "phrase": "Black Rednecks",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Black Rednecks And White Liberals",
+   "authors": [
+    "Thomas Sowell"
+   ],
+   "year": 2005,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Black Rednecks"
+   ]
+  },
+  {
+   "phrase": "White Liberals",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Red, White & Liberal",
+   "authors": [
+    "Alan Colmes"
+   ],
+   "year": 2003,
+   "score": 0.841,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "White Liberals"
+   ]
+  },
+  {
+   "phrase": "So I'm",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "I'm so embarrassed!",
+   "authors": [
+    "Robert N. Munsch"
+   ],
+   "year": 2005,
+   "score": 0.923,
+   "match_type": "fuzzy",
+   "editions": 4,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "So I'm"
+   ]
+  },
+  {
+   "phrase": "National Review",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "National municipal review",
+   "authors": [
+    "National Municipal League"
+   ],
+   "year": 1912,
+   "score": 0.968,
+   "match_type": "fuzzy",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "National Review"
+   ]
+  },
+  {
+   "phrase": "John Stuart Mill",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "John Stuart Mill",
+   "authors": [
+    "Charles Mackinnon Douglas",
+    "Douglas, Charles",
+    "Charles Douglas"
+   ],
+   "year": 1895,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 13,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "John Stuart Mill"
+   ]
+  },
+  {
+   "phrase": "World War II",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "World War II",
+   "authors": [
+    "H. P. Willmott",
+    "Robin Cross",
+    "Charles Messenger"
+   ],
+   "year": 1989,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 10,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "World War II"
+   ]
+  },
+  {
+   "phrase": "Martin Luther King",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Martin Luther King",
+   "authors": [
+    "Ed Clayton",
+    "Ed Clayton"
+   ],
+   "year": 1968,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 13,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Martin Luther King",
+    "Martin Luther King Day"
+   ]
+  },
+  {
+   "phrase": "Civil Rights Act",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Civil Rights Act of 1964",
+   "authors": [
+    "Robert D. Loevy"
+   ],
+   "year": 1997,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Civil Rights Act"
+   ]
+  },
+  {
+   "phrase": "Voting Rights Act",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The voting rights act",
+   "authors": [
+    "United States Commission on Civil Rights."
+   ],
+   "year": 1965,
+   "score": 0.971,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Voting Rights Act"
+   ]
+  },
+  {
+   "phrase": "Hillary Clinton",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Hillary Clinton",
+   "authors": [
+    "Dan Kinney"
+   ],
+   "year": 2017,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 7,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Hillary Clinton"
+   ]
+  }
+ ],
+ "gazetteer_weak": [
+  {
+   "phrase": "Peter Singer",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Peter Singer and Christian Ethics",
+   "authors": [
+    "Charles C. Camosy"
+   ],
+   "year": 2012,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 5,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Peter Singer"
+   ]
+  },
+  {
+   "phrase": "Times Higher Education",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Part-time higher education",
+   "authors": [
+    "Tom Schuller",
+    "Brenda Morgan-Klein",
+    "Ian Clark"
+   ],
+   "year": 1998,
+   "score": 0.875,
+   "match_type": "fuzzy",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Times Higher Education"
+   ]
+  },
+  {
+   "phrase": "Russian Americans",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Russian Americans",
+   "authors": [
+    "Richard A. Bowen"
+   ],
+   "year": 2003,
+   "score": 0.971,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Russian Americans"
+   ]
+  },
+  {
+   "phrase": "Italian Americans",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Italian Americans",
+   "authors": [
+    "American Italian Historical Association. Conference",
+    "Paola A. Sensi Isolani",
+    "Anthony Julian Tamburri"
+   ],
+   "year": 1989,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 5,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Italian Americans"
+   ]
+  },
+  {
+   "phrase": "Arthur Jensen",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Arthur Jensen",
+   "authors": [
+    "Sohan Modgil",
+    "Celia Modgil"
+   ],
+   "year": 1987,
+   "score": 1.0,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Arthur Jensen"
+   ]
+  },
+  {
+   "phrase": "Soviet Union",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Soviet Union",
+   "authors": [
+    "W. A. Douglas Jackson"
+   ],
+   "year": 1962,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 9,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Soviet Union"
+   ]
+  },
+  {
+   "phrase": "Nobel Prizes",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Nobel Prize Winners",
+   "authors": [
+    "Frank N. Magill"
+   ],
+   "year": 1987,
+   "score": 0.774,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Nobel Prizes"
+   ]
+  },
+  {
+   "phrase": "Hoover Institution",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Hoover Institution on War, Revolution, and Peace",
+   "authors": [
+    "Hoover Institution on War, Revolution, and Peace"
+   ],
+   "year": 1964,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Hoover Institution"
+   ]
+  },
+  {
+   "phrase": "Black Rednecks",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Black Rednecks And White Liberals",
+   "authors": [
+    "Thomas Sowell"
+   ],
+   "year": 2005,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Black Rednecks"
+   ]
+  },
+  {
+   "phrase": "White Liberals",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Red, White & Liberal",
+   "authors": [
+    "Alan Colmes"
+   ],
+   "year": 2003,
+   "score": 0.841,
+   "match_type": "fuzzy",
+   "editions": 8,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "White Liberals"
+   ]
+  },
+  {
+   "phrase": "So I'm",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "I'm so embarrassed!",
+   "authors": [
+    "Robert N. Munsch"
+   ],
+   "year": 2005,
+   "score": 0.923,
+   "match_type": "fuzzy",
+   "editions": 4,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "So I'm"
+   ]
+  },
+  {
+   "phrase": "National Review",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "National municipal review",
+   "authors": [
+    "National Municipal League"
+   ],
+   "year": 1912,
+   "score": 0.968,
+   "match_type": "fuzzy",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "National Review"
+   ]
+  },
+  {
+   "phrase": "John Stuart Mill",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "John Stuart Mill",
+   "authors": [
+    "Charles Mackinnon Douglas",
+    "Douglas, Charles",
+    "Charles Douglas"
+   ],
+   "year": 1895,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 13,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "John Stuart Mill"
+   ]
+  },
+  {
+   "phrase": "World War II",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "World War II",
+   "authors": [
+    "H. P. Willmott",
+    "Robin Cross",
+    "Charles Messenger"
+   ],
+   "year": 1989,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 10,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "World War II"
+   ]
+  },
+  {
+   "phrase": "Martin Luther King",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Martin Luther King",
+   "authors": [
+    "Ed Clayton",
+    "Ed Clayton"
+   ],
+   "year": 1968,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 13,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Martin Luther King",
+    "Martin Luther King Day"
+   ]
+  },
+  {
+   "phrase": "Civil Rights Act",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The Civil Rights Act of 1964",
+   "authors": [
+    "Robert D. Loevy"
+   ],
+   "year": 1997,
+   "score": 0.99,
+   "match_type": "prefix",
+   "editions": 3,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Civil Rights Act"
+   ]
+  },
+  {
+   "phrase": "Voting Rights Act",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "The voting rights act",
+   "authors": [
+    "United States Commission on Civil Rights."
+   ],
+   "year": 1965,
+   "score": 0.971,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Voting Rights Act"
+   ]
+  },
+  {
+   "phrase": "Hillary Clinton",
+   "freq": 1,
+   "verified": true,
+   "context_ok": false,
+   "title": "Hillary Clinton",
+   "authors": [
+    "Dan Kinney"
+   ],
+   "year": 2017,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 7,
+   "low_support": false,
+   "status": "weak",
+   "provenance": [
+    "Hillary Clinton"
+   ]
+  }
+ ],
+ "author_spines": []
+}

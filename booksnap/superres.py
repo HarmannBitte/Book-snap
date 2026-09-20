@@ -73,6 +73,44 @@ def enhance(crop, preset="unsharp", scale=4):
     raise ValueError(f"unknown preset {preset!r} (choose from {PRESETS})")
 
 
+def stitch_pan(images, max_shift=600):
+    """Stitch a horizontal camera pan of a static scene into one panorama.
+
+    A bookshelf pan shows different books in different frames, so sampling a
+    few frames silently caps recall at the shelf area they cover. Consecutive
+    frames are registered by phase correlation (horizontal shift dominates),
+    then averaged into a canvas that spans the whole pan. Overlaps are averaged,
+    which also denoises; a locked-off shot degenerates to a plain average.
+    """
+    frames = [im for im in images if im is not None]
+    if len(frames) < 2:
+        return frames[0] if frames else None
+    h = min(im.shape[0] for im in frames)
+    w = min(im.shape[1] for im in frames)
+    frames = [im[:h, :w] for im in frames]
+    gray = [cv2.cvtColor(im, cv2.COLOR_BGR2GRAY).astype(np.float32) for im in frames]
+    win = (np.hanning(h)[:, None] * np.hanning(w)[None, :]).astype(np.float32)
+    xs, ys, cx, cy = [0.0], [0.0], 0.0, 0.0
+    for i in range(1, len(frames)):
+        (dx, dy), _ = cv2.phaseCorrelate(gray[i - 1], gray[i], win)
+        if abs(dx) > max_shift or abs(dy) > max_shift:
+            dx = dy = 0.0  # cut/scene change: do not smear
+        cx += dx
+        cy += dy
+        xs.append(cx)
+        ys.append(cy)
+    x0, y0 = min(xs), min(ys)
+    cw = int(round(max(xs) - x0)) + w
+    ch = int(round(max(ys) - y0)) + h
+    acc = np.zeros((ch, cw, 3), np.float32)
+    cnt = np.zeros((ch, cw, 1), np.float32)
+    for im, x, y in zip(frames, xs, ys):
+        xi, yi = int(round(x - x0)), int(round(y - y0))
+        acc[yi:yi + h, xi:xi + w] += im.astype(np.float32)
+        cnt[yi:yi + h, xi:xi + w] += 1
+    return np.clip(acc / np.maximum(cnt, 1), 0, 255).astype(np.uint8)
+
+
 def stack_median(images):
     """Per-pixel median across frames of the same (static) shot."""
     frames = [im for im in images if im is not None]

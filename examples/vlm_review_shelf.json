@@ -1,0 +1,82 @@
+{
+ "entries": [
+  {
+   "verdict": "book",
+   "title": "Sapiens",
+   "author": "Yuval Noah Harari",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "Losing the Race",
+   "author": "John McWhorter",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "A Testament of Hope",
+   "author": "James H. Cone",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "We Were Eight Years in Trouble",
+   "author": "Ta-Nehisi Coates",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "Losing Ground",
+   "author": "Charles Murray",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "Wealth, Poverty and Politics",
+   "author": "Thomas Sowell",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "Locked In",
+   "author": null,
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "On the Origin of Species",
+   "author": "Charles Darwin",
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "book",
+   "title": "Victims",
+   "author": null,
+   "image": "shelf_t10.png",
+   "note": "visual read, 1080p band"
+  },
+  {
+   "verdict": "author_band",
+   "title": "Dennett",
+   "image": "shelf_t10.png"
+  },
+  {
+   "verdict": "author_band",
+   "title": "Barack Obama",
+   "image": "shelf_t10.png"
+  },
+  {
+   "verdict": "author_band",
+   "title": "James Q. Wilson",
+   "image": "shelf_t10.png"
+  }
+ ]
+}

@@ -307,8 +307,48 @@ def in_book_context(phrase, segments, window=80):
     return False
 
 
+XREF = "https://api.crossref.org/works?rows=3&select=type,container-title&query.bibliographic="
+
+
+def crossref_is_serial(phrase, cache=None, timeout=5.0):
+    """True when Crossref knows this phrase as a *serial* (journal name).
+
+    OpenLibrary happily matches journal names to obscure same-titled books
+    ("Philosophical Psychology" -> a 1955 monograph), which is the last
+    remaining precision leak. Crossref is the authority on serials: if its top
+    hits are journal articles in a container of this name, the spoken mention
+    was a journal, not a book. Failures are cached as False, never as True.
+    """
+    key = _norm(phrase)
+    if cache is not None and key in cache:
+        return cache[key]
+    try:
+        with urllib.request.urlopen(XREF + urllib.parse.quote(phrase),
+                                    timeout=timeout) as r:
+            items = (json.load(r).get("message") or {}).get("items", [])
+    except Exception:
+        if cache is not None:
+            cache[key] = False
+        return False
+    n = _norm(phrase)
+    serial = False
+    for it in items:
+        if it.get("type") != "journal-article":
+            continue
+        for ct in it.get("container-title") or []:
+            if n and (n in _norm(ct) or _norm(ct) in n):
+                serial = True
+                break
+        if serial:
+            break
+    if cache is not None:
+        cache[key] = serial
+    return serial
+
+
 def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
-                       strong_editions=3, author_hints=None, counter=None):
+                       strong_editions=3, author_hints=None, counter=None,
+                       serial_check=True):
     """Disk-cached lookup. The cache stores *raw* OpenLibrary records, not
     match decisions, so matching rules can be retuned without re-querying."""
     try:
@@ -334,6 +374,11 @@ def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
                 pass
         m = match_docs(phrase, entry.get("docs") or [], fuzzy_thr=fuzzy_thr,
                        min_editions=min_editions, author_hints=author_hints)
+        if m and serial_check:
+            xkey = "_xref:" + _norm(phrase)
+            xcache = cache.setdefault(xkey, {})
+            if crossref_is_serial(phrase, cache=xcache):
+                return None  # journal mention, not a book
         if m:
             m["low_support"] = (m.get("editions") or 1) < strong_editions
         return m

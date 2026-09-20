@@ -46,9 +46,10 @@ def _crop(img, H, roi, band):
 
 def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                    topk=3, roi=None, band=0.22, upscale=4, tile_w=1400, ocr=None,
-                   presets=("unsharp",), stack=False, min_len=4):
+                   presets=("unsharp",), stack=False, min_len=4,
+                   panorama=False):
     from .ocr import RapidOCR, ocr_image
-    from .superres import enhance, stack_median
+    from .superres import enhance, stack_median, stitch_pan
     ocr = ocr or RapidOCR()
     info = probe(video)
     W, H = int(info["width"]), int(info["height"])
@@ -62,6 +63,11 @@ def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
     if stack and len(crops) > 1:
         variants.append((crops[0][0], "stack",
                          stack_median([c for _, c in crops])))
+    if panorama and len(crops) > 2:
+        # a pan covers more shelf than any single frame: stitch it, then enhance
+        pan = stitch_pan([c for _, c in crops])
+        if pan is not None:
+            variants.append((crops[0][0], "panorama", enhance(pan, "unsharp", upscale)))
     for t, crop in crops:
         for p in presets:
             variants.append((t, p, enhance(crop, p, upscale)))

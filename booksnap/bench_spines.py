@@ -56,7 +56,7 @@ def score(labels_path, spines_json, books_json):
     spines = json.load(open(spines_json)) if spines_json else []
     books = json.load(open(books_json)) if books_json else {}
     reads = [r["text"] for r in spines]
-    verified = {g["phrase"]: g for g in books.get("gazetteer", [])}
+    verified = {norm(g["phrase"]): g for g in books.get("gazetteer", [])}
     author_reads = set(books.get("author_spines", []))
     all_texts = reads + list(verified) + list(author_reads)
 
@@ -65,10 +65,11 @@ def score(labels_path, spines_json, books_json):
         if not b.get("confident"):
             continue
         hit, s = match_label(b["title"], all_texts)
-        g = verified.get(hit) if hit in verified else None
+        g = verified.get(norm(hit)) if hit else None
+        author_words = (b.get("author") or "").lower().split()
         right_record = bool(g) and (
-            (b.get("author") or "").split()[-1].lower() in
-            " ".join(g.get("authors") or []).lower()
+            (author_words[-1] in " ".join(g.get("authors") or []).lower()
+             if author_words else False)
             or fuzzy_score(b["title"], g.get("title") or "") >= 0.8)
         rows.append(dict(label=b["title"], found=hit, score=s,
                          verified=bool(g), right_record=right_record))
@@ -77,11 +78,10 @@ def score(labels_path, spines_json, books_json):
         if not a.get("confident"):
             continue
         hit, s = match_label(a["name"], all_texts)
+        gv = verified.get(norm(hit)) if hit else None
         arows.append(dict(label=a["name"], found=hit, score=s,
                           reported_author=bool(hit) and (hit in author_reads or
-                                                         any(v.get("status") == "author"
-                                                             for v in verified.values()
-                                                             if v["phrase"] == hit))))
+                                                         (gv or {}).get("status") == "author")))
     n = len(rows)
     found = sum(1 for r in rows if r["found"])
     rec = sum(1 for r in rows if r["verified"])
