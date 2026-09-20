@@ -20,9 +20,11 @@ from __future__ import annotations
 
 import difflib
 import json
+import os
 import re
 
 from .fuzz import fuzzy_score, jaro_winkler, phonetic
+from .gazetteer import CONNECTORS
 
 ENTRY_START = re.compile(r"^[A-Z][a-zA-Z'’-]+,")  # Chicago style: "Surname, First ..."
 ARTICLE = re.compile(r'["“”]|journal|proceedings|proc\.|nature|science|psychology|'
@@ -302,7 +304,17 @@ def clean_spine_phrase(text):
         words.pop(0)
     while words and len(re.sub(r"[^A-Za-z0-9]", "", words[-1])) <= 1:
         words.pop()
-    return " ".join(words).strip(" -,.")
+    # collapse OCR space garble inside a word: "Ma th" -> "Math". Short tokens
+    # that are connectors ("of", "in") are real words and stay put.
+    merged = []
+    for w in words:
+        bare = re.sub(r"[^A-Za-z0-9]", "", w)
+        prev = re.sub(r"[^A-Za-z0-9]", "", merged[-1]) if merged else ""
+        if prev and len(bare) <= 2 and len(prev) <= 2 and w.lower() not in CONNECTORS:
+            merged[-1] += w  # fragment chain: "Ma" + "th" -> "Math"
+        else:
+            merged.append(w)
+    return " ".join(merged).strip(" -,.")
 
 
 def spine_alts(group, k=3, vocab=None):
@@ -327,6 +339,55 @@ def spine_alts(group, k=3, vocab=None):
         for cand in split_candidates([canon] + variants, vocab, k=1):
             if cand not in out and len(out) < k + 1:
                 out.append(cand)
+    return out
+
+
+def group_spine_reads(spines):
+    """Join vertically stacked spine words into one phrase per book.
+
+    Spine titles are typeset one word per line, and OCR returns each line as
+    its own read - so multi-word titles never became candidates at all (the
+    synthetic shelf bench, round 8, made this measurable: single-word titles
+    scored, everything else could not). Reads whose boxes overlap horizontally
+    and sit within a line gap vertically are joined top-to-bottom; a trailing
+    ALL-CAPS single word (the author band) is split back off into its own
+    read so author_spine() still sees it. Reads without box geometry (files
+    written before this existed) pass through untouched.
+    """
+    cols = []
+    for r in sorted(spines, key=lambda r: r.get("y", 0)):
+        if not r.get("w") or not r.get("h"):
+            cols.append([r])
+            continue
+        placed = False
+        for c in cols:
+            a = c[-1]
+            if not a.get("w") or not a.get("h"):
+                continue
+            xov = min(a["x"] + a["w"], r["x"] + r["w"]) - max(a["x"], r["x"])
+            gap = r["y"] - (a["y"] + a["h"])
+            if xov > 0.5 * min(r["w"], a["w"]) and -0.2 * a["h"] <= gap <= 2.0 * a["h"]:
+                c.append(r)
+                placed = True
+                break
+        if not placed:
+            cols.append([r])
+    out = []
+    for c in cols:
+        c.sort(key=lambda r: r.get("y", 0))
+        if len(c) > 1 and c[-1]["text"].replace(" ", "").isupper() \
+                and c[-1]["text"].replace(" ", "").isalpha():
+            out.append(c.pop())  # author band stays its own read
+        if not c:
+            continue
+        if len(c) == 1:
+            out.append(c[0])
+            continue
+        m = dict(c[0])
+        m["text"] = " ".join(r["text"] for r in c)
+        m["conf"] = round(sum(r["conf"] for r in c) / len(c), 3)
+        m["grouped"] = len(c)
+        out.append(m)
     return out
 
 
@@ -385,6 +446,7 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             continue
         shown.append(dict(cover=p["file"], seg=p["seg"], ar=p["ar"], ocr=text, text=text))
     spines = json.load(open(spines_json)) if spines_json else []
+    spines = group_spine_reads(spines)
     for sp in spines:
         shown.append(dict(cover=None, seg=f"spine@{sp.get('t')}", ar=None,
                           ocr=sp["text"], text=sp["text"], source="spine",
@@ -401,7 +463,9 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         fuse_audio(shown, audio)
 
     gaz = []
-    if gazetteer and audio:
+    if gazetteer and (audio or spines):
+        # shelf-only runs (no audio track worth querying) still get their spine
+        # phrases verified; before round 8 the gazetteer silently skipped them
         from .gazetteer import title_candidates, verify_all, make_cached_lookup
         # Proper nouns the speaker actually says: used to pick between
         # same-titled catalogue records ("Facing Reality": Murray vs Eccles).
@@ -429,6 +493,9 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             t = (s_.get("text") or "").strip()
             if not t:
                 continue
+            if (s_.get("source") == "spine" and author_spine(s_)
+                    and (s_.get("text") or "").isupper()):
+                continue  # caps surname band: author evidence, not a title query
             alts = spine_alts(s_, vocab=vocab) if s_.get("source") == "spine" else []
             visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts))
         seen = {v["phrase"].lower() for v in visual}
@@ -480,7 +547,9 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         {s_["text"] for s_ in shown
          if s_.get("author_spine") and (s_.get("conf") or 0) >= 0.75
          and _norm_q(s_["text"]) not in verified_norm
-         and (s_["text"] or "").lower() in spoken_names})
+         # on shelf-only runs (no audio) the caps band is the only evidence;
+         # with audio, corroboration by a spoken mention is still required
+         and (not spoken_names or (s_["text"] or "").lower() in spoken_names)})
     if gazetteer:
         write_bibtex(exportable, out_bib or out_json.replace(".json", ".bib"))
         write_ris(exportable, out_ris or out_json.replace(".json", ".ris"))
@@ -496,6 +565,7 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                 author_spines=author_reads)
     json.dump(data, open(out_json, "w"), indent=1)
 
+    out_md = out_md or os.devnull  # md report is optional
     with open(out_md, "w") as f:
         f.write("# Book candidates\n\n## Bibliography entries (scroll OCR)\n\n")
         for e in biblio:

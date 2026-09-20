@@ -1,0 +1,266 @@
+{
+ "video": "synthetic (bench/make_synthetic_shelf.py, seed 8)",
+ "clip": "rendered 1920x1080 shelf, 3 boards, blur 0.7 + jpeg q72",
+ "method": "ground truth by construction; every row is 'confident'",
+ "books": [
+  {
+   "title": "Sapiens",
+   "author": "Harari",
+   "confident": true,
+   "shelf": 1,
+   "x": 12,
+   "w": 86
+  },
+  {
+   "title": "Thinking, Fast and Slow",
+   "author": "Kahneman",
+   "confident": true,
+   "shelf": 1,
+   "x": 101,
+   "w": 99
+  },
+  {
+   "title": "The Selfish Gene",
+   "author": "Dawkins",
+   "confident": true,
+   "shelf": 1,
+   "x": 203,
+   "w": 82
+  },
+  {
+   "title": "Consciousness Explained",
+   "author": "Dennett",
+   "confident": true,
+   "shelf": 1,
+   "x": 290,
+   "w": 93
+  },
+  {
+   "title": "The Origin of Species",
+   "author": null,
+   "confident": true,
+   "shelf": 1,
+   "x": 386,
+   "w": 79
+  },
+  {
+   "title": "A Brief History of Time",
+   "author": "Hawking",
+   "confident": true,
+   "shelf": 1,
+   "x": 468,
+   "w": 69
+  },
+  {
+   "title": "The Emperor's New Mind",
+   "author": "Penrose",
+   "confident": true,
+   "shelf": 1,
+   "x": 539,
+   "w": 78
+  },
+  {
+   "title": "Weapons of Math Destruction",
+   "author": null,
+   "confident": true,
+   "shelf": 1,
+   "x": 623,
+   "w": 63
+  },
+  {
+   "title": "Noise",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 12,
+   "w": 58
+  },
+  {
+   "title": "The Blank Slate",
+   "author": "Pinker",
+   "confident": true,
+   "shelf": 2,
+   "x": 73,
+   "w": 61
+  },
+  {
+   "title": "Predictably Irrational",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 140,
+   "w": 90
+  },
+  {
+   "title": "Antifragile",
+   "author": "Taleb",
+   "confident": true,
+   "shelf": 2,
+   "x": 232,
+   "w": 64
+  },
+  {
+   "title": "The Black Swan",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 300,
+   "w": 73
+  },
+  {
+   "title": "Fooled by Randomness",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 376,
+   "w": 83
+  },
+  {
+   "title": "Skin in the Game",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 465,
+   "w": 77
+  },
+  {
+   "title": "Silent Spring",
+   "author": null,
+   "confident": true,
+   "shelf": 2,
+   "x": 548,
+   "w": 69
+  },
+  {
+   "title": "The Double Helix",
+   "author": "Watson",
+   "confident": true,
+   "shelf": 3,
+   "x": 12,
+   "w": 94
+  },
+  {
+   "title": "Cosmos",
+   "author": "Sagan",
+   "confident": true,
+   "shelf": 3,
+   "x": 110,
+   "w": 60
+  },
+  {
+   "title": "Contact",
+   "author": null,
+   "confident": true,
+   "shelf": 3,
+   "x": 173,
+   "w": 99
+  },
+  {
+   "title": "The Demon-Haunted World",
+   "author": "Sagan",
+   "confident": true,
+   "shelf": 3,
+   "x": 277,
+   "w": 81
+  },
+  {
+   "title": "Flow",
+   "author": null,
+   "confident": true,
+   "shelf": 3,
+   "x": 362,
+   "w": 55
+  },
+  {
+   "title": "Guns, Germs, and Steel",
+   "author": "Diamond",
+   "confident": true,
+   "shelf": 3,
+   "x": 420,
+   "w": 62
+  },
+  {
+   "title": "Collapse",
+   "author": null,
+   "confident": true,
+   "shelf": 3,
+   "x": 484,
+   "w": 95
+  },
+  {
+   "title": "The Sixth Extinction",
+   "author": "Kolbert",
+   "confident": true,
+   "shelf": 3,
+   "x": 585,
+   "w": 56
+  }
+ ],
+ "author_bands": [
+  {
+   "name": "Harari",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Kahneman",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Dawkins",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Dennett",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Hawking",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Penrose",
+   "confident": true,
+   "shelf": 1
+  },
+  {
+   "name": "Pinker",
+   "confident": true,
+   "shelf": 2
+  },
+  {
+   "name": "Taleb",
+   "confident": true,
+   "shelf": 2
+  },
+  {
+   "name": "Watson",
+   "confident": true,
+   "shelf": 3
+  },
+  {
+   "name": "Sagan",
+   "confident": true,
+   "shelf": 3
+  },
+  {
+   "name": "Sagan",
+   "confident": true,
+   "shelf": 3
+  },
+  {
+   "name": "Diamond",
+   "confident": true,
+   "shelf": 3
+  },
+  {
+   "name": "Kolbert",
+   "confident": true,
+   "shelf": 3
+  }
+ ]
+}

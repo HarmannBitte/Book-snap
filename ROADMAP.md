@@ -156,3 +156,13 @@ scroll/bibliography and slide channels remain the reliable ones.
   `ci`; a token with that scope (or a manual add on github.com) unblocks CI.
 - OpenLibrary rate-limits bursts (~60 queries); any gazetteer growth must go
   through the disk cache or a local index.
+
+## Round 8 addition - synthetic shelf regression gate
+
+bench/make_synthetic_shelf.py + bench/spine_labels_synth.json +
+bench/synth_olcache.json give CI an offline title-level bench:
+current 0.79 surface / 0.79 verified / 0.79 right-record, bands 12/13.
+Gate: recall_verified >= 0.6 on the synthetic shelf, >= 0.2 on the real
+labelled shelf. The gap synthetic 0.79 vs real 0.22 measures realism
+(bokeh, angle, occlusion), not matcher quality - closing it is the
+super-res/detection workstream, not the matcher.

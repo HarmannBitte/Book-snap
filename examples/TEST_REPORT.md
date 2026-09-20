@@ -256,3 +256,38 @@ booksnap compile  --manifest runs/v2/covers/manifest.json \
                   --audio runs/v2/transcript.json --spines runs/v2/spines.json \
                   --out-json runs/v2/books_candidates.json --out-md runs/v2/books_candidates.md
 ```
+
+## Round 8 - synthetic held-out shelf + spine grouping (2026-09-20)
+
+Goal: a title-level held-out benchmark that needs no download and no network,
+after YouTube bot-gated searches and the JBP shelf proved illegible.
+
+Method: bench/make_synthetic_shelf.py renders a 1920x1080 shelf (3 boards,
+24 real titles as stacked spine words, 13 surname bands, gaussian blur 0.7,
+jpeg q72, noise, uneven light) plus its ground truth in the same schema as
+the human-labelled bench. bench/synth_olcache.json is a committed OpenLibrary
+cache so the gazetteer step runs offline in CI.
+
+Pipeline fixes the bench exposed (all tested):
+  1. spines accepts a still image (benchmarks, shelf photos).
+  2. reads carry box w/h; compile.group_spine_reads joins vertically stacked
+     spine words per column and splits a trailing ALL-CAPS author band -
+     before this, multi-word titles never became candidates at all.
+  3. compile --gazetteer verified NOTHING on spine-only inputs
+     (`if gazetteer and audio`); shelf-only runs now verify.
+  4. caps surname bands no longer consume title queries; author bands are
+     reported without audio corroboration when no audio exists.
+  5. clean_spine_phrase collapses space garble ("Ma th" -> "Math");
+     min_len 4 -> 3 so connectors survive OCR.
+  6. bench scorer: label sig words drop connectors and nlabel is
+     article-free; v2 surface recall 0.44 -> 0.56 is this scorer fairness,
+     verified/right_record unchanged at 0.22 (no pipeline regression).
+
+Results: SYNTH surface 0.79 / verified 0.79 / right_record 0.79,
+author bands 12/13 reported. Misses are honest OCR failures (space garble,
+a dropped word). V2 real shelf: 0.56 / 0.22 / 0.22 (unchanged verified).
+CI (branch ci) gains an offline synthetic-shelf gate: verified >= 0.6.
+
+Download probes: direct watch URLs still work (Test A re-fetched, 1280x500
+slide deck with shelf webcam corner = runs/v1); searches stay bot-gated;
+TKP #177 is a pure slideshow; sectioned downloads segfault imageio-ffmpeg.

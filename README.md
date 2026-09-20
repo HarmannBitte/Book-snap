@@ -154,7 +154,12 @@ booksnap/
   superres.py      selective crop upscaling + enhancement presets
   gazetteer.py     stage 11 OpenLibrary title verification
   fuzz.py          fuzzy + phonetic (Metaphone/Jaro-Winkler) matching
+  splitwords.py    dictionary DP split of fused caps OCR ("LOSINCTHIRACE")
+  vlm.py           vision-model review loop (bundle/run/merge, optional API)
   bench.py         dev: detector benchmark harness
+  bench_spines.py  scores the spine channel vs a labelled shelf
+bench/             labelled shelf v2 + synthetic shelf generator/labels/cache
+                   (`booksnap bench-spines`, `python bench/make_synthetic_shelf.py`)
 examples/          validation run + extracted book list
 ```
 

@@ -46,19 +46,27 @@ def _crop(img, H, roi, band):
 
 def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                    topk=3, roi=None, band=0.22, upscale=4, tile_w=1400, ocr=None,
-                   presets=("unsharp",), stack=False, min_len=4,
+                   presets=("unsharp",), stack=False, min_len=3,
                    panorama=False):
     from .ocr import RapidOCR, ocr_image
     from .superres import enhance, stack_median, stitch_pan
     ocr = ocr or RapidOCR()
-    info = probe(video)
-    W, H = int(info["width"]), int(info["height"])
-    if times is None:
-        times = np.arange(float(start), float(end) + 1e-9, float(step))
-    scored = sorted(((float(t), sharpness(_grab(video, float(t), W, H))) for t in times),
-                    key=lambda r: -r[1])[:topk]
+    if str(video).lower().endswith((".png", ".jpg", ".jpeg")):
+        # still-image mode: benchmarks and one-off shelf photos need no video
+        import cv2
+        img = cv2.imread(str(video))
+        if img is None:
+            raise ValueError(f"cannot read image {video}")
+        crops = [(0.0, _crop(img, img.shape[0], roi, band))]
+    else:
+        info = probe(video)
+        W, H = int(info["width"]), int(info["height"])
+        if times is None:
+            times = np.arange(float(start), float(end) + 1e-9, float(step))
+        scored = sorted(((float(t), sharpness(_grab(video, float(t), W, H))) for t in times),
+                        key=lambda r: -r[1])[:topk]
 
-    crops = [(t, _crop(_grab(video, t, W, H), H, roi, band)) for t, _ in scored]
+        crops = [(t, _crop(_grab(video, t, W, H), H, roi, band)) for t, _ in scored]
     variants = []
     if stack and len(crops) > 1:
         variants.append((crops[0][0], "stack",
@@ -84,7 +92,9 @@ def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                 if key not in reads or b["conf"] > reads[key]["conf"]:
                     reads[key] = dict(text=b["text"], conf=b["conf"], t=t,
                                       preset=preset, upscale=upscale,
-                                      x=int(b["box"][0] + i), y=int(b["box"][1]))
+                                      x=int(b["box"][0] + i), y=int(b["box"][1]),
+                                      w=int(b["box"][2] - b["box"][0]),
+                                      h=int(b["box"][3] - b["box"][1]))
     out = sorted(reads.values(), key=lambda r: -r["conf"])
     json.dump(out, open(out_json, "w"), indent=1)
     return out

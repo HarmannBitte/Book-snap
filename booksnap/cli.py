@@ -185,7 +185,7 @@ def _run(args):
                                    step=1.0, topk=3, roi=args.spines_roi,
                                    band=args.spines_band, upscale=4,
                                    presets=args.spines_presets, stack=args.spines_stack,
-                                   min_len=4, panorama=args.spines_stack))
+                                   min_len=3, panorama=args.spines_stack))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -268,7 +268,7 @@ def main(argv=None):
                    help="median-stack the sharpest frames before enhancing")
     s.add_argument("--panorama", action="store_true",
                    help="stitch the camera pan into one wide shelf image")
-    s.add_argument("--min-len", type=int, default=4)
+    s.add_argument("--min-len", type=int, default=3)
     s.set_defaults(fn=_spines)
 
     s = sub.add_parser("compile", help="merge artifacts into candidate book list")

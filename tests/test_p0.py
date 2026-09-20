@@ -493,3 +493,37 @@ def test_vlm_api_reviewer_parses_completion(tmp_path, monkeypatch):
                                 model="test", api_key="k")
     assert [e["verdict"] for e in entries] == ["book", "author_band"]
     assert entries[0]["title"] == "Losing Ground"
+
+
+def test_group_spine_reads_joins_stacked_words():
+    from booksnap.compile import group_spine_reads
+    reads = [
+        dict(text="Selfish", conf=.9, x=100, y=10, w=80, h=30),
+        dict(text="Gene", conf=.9, x=110, y=44, w=60, h=30),
+        dict(text="DAWKINS", conf=.9, x=105, y=300, w=70, h=18),
+        dict(text="Sapiens", conf=.9, x=400, y=10, w=90, h=30),
+    ]
+    g = {r["text"]: r for r in group_spine_reads(reads)}
+    assert "Selfish Gene" in g and g["Selfish Gene"]["grouped"] == 2
+    assert "DAWKINS" in g and "Sapiens" in g  # band + neighbour untouched
+
+
+def test_group_spine_reads_legacy_without_boxes():
+    from booksnap.compile import group_spine_reads
+    reads = [dict(text="Selfish", conf=.9, x=1, y=1), dict(text="Gene", conf=.9, x=1, y=2)]
+    out = group_spine_reads(reads)
+    assert [r["text"] for r in out] == ["Selfish", "Gene"]  # no geometry, no merge
+
+
+def test_clean_spine_phrase_collapses_garble():
+    from booksnap.compile import clean_spine_phrase
+    assert clean_spine_phrase("Weapons Ma th Destruction") == "Weapons Math Destruction"
+    assert clean_spine_phrase("Weapons of Math Destruction") == "Weapons of Math Destruction"
+
+
+def test_synth_labels_schema():
+    import json, os
+    p = os.path.join(os.path.dirname(__file__), "..", "bench", "spine_labels_synth.json")
+    d = json.load(open(p))
+    assert len(d["books"]) == 24 and all(b["confident"] for b in d["books"])
+    assert len(d["author_bands"]) == 13

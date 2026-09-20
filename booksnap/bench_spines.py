@@ -17,7 +17,7 @@ from __future__ import annotations
 import json
 
 from .fuzz import fuzzy_score, norm
-from .gazetteer import _align
+from .gazetteer import CONNECTORS, _align
 
 
 def _sig(words):
@@ -33,8 +33,9 @@ def match_label(label, texts, thr=0.7):
     ("Locked In" == "LOCKEDIN"). A loose bidirectional matcher would credit
     "On the Origin of Species" to a misread "Sapiens" and lie about recall.
     """
-    words = _sig([w for w in label.lower().replace(",", " ").split()])
-    nlabel = norm(label)
+    words = _sig([w for w in label.lower().replace(",", " ").split()
+                  if w not in CONNECTORS])
+    nlabel = norm(" ".join(words))  # article-free, like the verified keys
     best, best_t = 0.0, None
     for t in texts:
         tw = _sig([w for w in t.lower().replace(",", " ").split()])
