@@ -1,0 +1,3607 @@
+{
+ "spine_reads": 125,
+ "spine_groups": 84,
+ "bibliography": [],
+ "shown_covers": [
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "NING",
+   "text": "NING",
+   "source": "spine",
+   "conf": 0.505,
+   "preset": "stack",
+   "variants": [
+    "NING"
+   ],
+   "variant_confs": {
+    "NING": 0.505
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "The Qusk",
+   "text": "The Qusk",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "stack",
+   "variants": [
+    "The Qusk"
+   ],
+   "variant_confs": {
+    "The Qusk": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOCKEDIN",
+   "text": "LOCKEDIN",
+   "source": "spine",
+   "conf": 0.839,
+   "preset": "stack",
+   "variants": [
+    "LOCKEDIN",
+    "LOKEDNN"
+   ],
+   "variant_confs": {
+    "LOCKEDIN": 0.839,
+    "LOKEDNN": 0.601
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "HEPCotn",
+   "text": "HEPCotn",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "stack",
+   "variants": [
+    "HEPCotn"
+   ],
+   "variant_confs": {
+    "HEPCotn": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Sapiens",
+   "text": "Sapiens",
+   "source": "spine",
+   "conf": 0.871,
+   "preset": "stack",
+   "variants": [
+    "Sapicns",
+    "Sapiens",
+    "WSIEYPAN6"
+   ],
+   "variant_confs": {
+    "Sapiens": 0.871,
+    "Sapicns": 0.857,
+    "WSIEYPAN6": 0.542
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Sapiens",
+    "authors": [
+     "Yuval Noah Harari"
+    ],
+    "year": 2011
+   },
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Conversations 11.1",
+   "text": "Conversations 11.1",
+   "source": "spine",
+   "conf": 0.714,
+   "preset": "stack",
+   "variants": [
+    "Conversations 11.1"
+   ],
+   "variant_confs": {
+    "Conversations 11.1": 0.714
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LSOA F",
+   "text": "LSOA F",
+   "source": "spine",
+   "conf": 0.534,
+   "preset": "clahe",
+   "variants": [
+    "LSOA F"
+   ],
+   "variant_confs": {
+    "LSOA F": 0.534
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSINCTHIRACE",
+   "text": "LOSINCTHIRACE",
+   "source": "spine",
+   "conf": 0.865,
+   "preset": "clahe",
+   "variants": [
+    "LOSINC THE RACE",
+    "LOSINCTHIRACE",
+    "LOSINCTHRACE"
+   ],
+   "variant_confs": {
+    "LOSINC THE RACE": 0.862,
+    "LOSINCTHRACE": 0.772,
+    "LOSINCTHIRACE": 0.865
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "VYCTIMS",
+   "text": "VYCTIMS",
+   "source": "spine",
+   "conf": 0.692,
+   "preset": "clahe",
+   "variants": [
+    "VICIMS",
+    "VYCAIMS",
+    "VYCITMS",
+    "VYCTIMS",
+    "VYCTTMS",
+    "VYCYYMS",
+    "VYETTMS"
+   ],
+   "variant_confs": {
+    "VYCITMS": 0.611,
+    "VYCTIMS": 0.692,
+    "VYCYYMS": 0.564,
+    "VYCTTMS": 0.676,
+    "VYETTMS": 0.564,
+    "VICIMS": 0.513,
+    "VYCAIMS": 0.579
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TEEIROUIN",
+   "text": "TEEIROUIN",
+   "source": "spine",
+   "conf": 0.62,
+   "preset": "unsharp",
+   "variants": [
+    "TEEIROUIN"
+   ],
+   "variant_confs": {
+    "TEEIROUIN": 0.62
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "The",
+   "text": "The",
+   "source": "spine",
+   "conf": 0.588,
+   "preset": "clahe",
+   "variants": [
+    "The",
+    "Theo1"
+   ],
+   "variant_confs": {
+    "The": 0.588,
+    "Theo1": 0.555
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Theurk ls",
+   "text": "Theurk ls",
+   "source": "spine",
+   "conf": 0.541,
+   "preset": "clahe",
+   "variants": [
+    "Theurk ls"
+   ],
+   "variant_confs": {
+    "Theurk ls": 0.541
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "rryoGeye0",
+   "text": "rryoGeye0",
+   "source": "spine",
+   "conf": 0.506,
+   "preset": "stack",
+   "variants": [
+    "rryoGeye0"
+   ],
+   "variant_confs": {
+    "rryoGeye0": 0.506
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "THE D",
+   "text": "THE D",
+   "source": "spine",
+   "conf": 0.721,
+   "preset": "unsharp",
+   "variants": [
+    "THE D",
+    "The Duk"
+   ],
+   "variant_confs": {
+    "The Duk": 0.574,
+    "THE D": 0.721
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSING GROUND",
+   "text": "LOSING GROUND",
+   "source": "spine",
+   "conf": 0.865,
+   "preset": "unsharp",
+   "variants": [
+    "LOSING GIOUND",
+    "LOSING GROEND",
+    "LOSING GROUND",
+    "NG GROUND"
+   ],
+   "variant_confs": {
+    "NG GROUND": 0.763,
+    "LOSING GROUND": 0.865,
+    "LOSING GIOUND": 0.77,
+    "LOSING GROEND": 0.837
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Losing Ground",
+    "authors": [
+     "Catherine Aird"
+    ],
+    "year": 2007
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "WEALTIL,",
+   "text": "WEALTIL,",
+   "source": "spine",
+   "conf": 0.717,
+   "preset": "stack",
+   "variants": [
+    "WEALTIL,",
+    "WEALTT4",
+    "WEALTTL"
+   ],
+   "variant_confs": {
+    "WEALTIL,": 0.717,
+    "WEALTTL": 0.658,
+    "WEALTT4": 0.592
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "POWE",
+   "text": "POWE",
+   "source": "spine",
+   "conf": 0.712,
+   "preset": "stack",
+   "variants": [
+    "POWE"
+   ],
+   "variant_confs": {
+    "POWE": 0.712
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "THOSOFPOWEI",
+   "text": "THOSOFPOWEI",
+   "source": "spine",
+   "conf": 0.826,
+   "preset": "clahe",
+   "variants": [
+    "HOSOFPOWEI",
+    "THOSOFPOWEI"
+   ],
+   "variant_confs": {
+    "THOSOFPOWEI": 0.826,
+    "HOSOFPOWEI": 0.8
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "JmQW",
+   "text": "JmQW",
+   "source": "spine",
+   "conf": 0.653,
+   "preset": "stack",
+   "variants": [
+    "JmQ",
+    "JmQW"
+   ],
+   "variant_confs": {
+    "JmQW": 0.653,
+    "JmQ": 0.513
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "DENNETT",
+   "text": "DENNETT",
+   "source": "spine",
+   "conf": 0.777,
+   "preset": "stack",
+   "variants": [
+    "DENNETT"
+   ],
+   "variant_confs": {
+    "DENNETT": 0.777
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "NIELC",
+   "text": "NIELC",
+   "source": "spine",
+   "conf": 0.794,
+   "preset": "stack",
+   "variants": [
+    "NIELC"
+   ],
+   "variant_confs": {
+    "NIELC": 0.794
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "CARACK OBAMA",
+   "text": "CARACK OBAMA",
+   "source": "spine",
+   "conf": 0.797,
+   "preset": "unsharp",
+   "variants": [
+    "CARACK OBAMA",
+    "GARACK OBAMA"
+   ],
+   "variant_confs": {
+    "GARACK OBAMA": 0.794,
+    "CARACK OBAMA": 0.797
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "COATES",
+   "text": "COATES",
+   "source": "spine",
+   "conf": 0.824,
+   "preset": "stack",
+   "variants": [
+    "COATES"
+   ],
+   "variant_confs": {
+    "COATES": 0.824
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "EIGHT YESBS",
+   "text": "EIGHT YESBS",
+   "source": "spine",
+   "conf": 0.69,
+   "preset": "stack",
+   "variants": [
+    "EIGHT YESBS"
+   ],
+   "variant_confs": {
+    "EIGHT YESBS": 0.69
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "LOCREDNN",
+   "text": "LOCREDNN",
+   "source": "spine",
+   "conf": 0.677,
+   "preset": "clahe",
+   "variants": [
+    "LOCREDNN",
+    "LOOREDIN"
+   ],
+   "variant_confs": {
+    "LOCREDNN": 0.677,
+    "LOOREDIN": 0.64
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "Conversa Colen",
+   "text": "Conversa Colen",
+   "source": "spine",
+   "conf": 0.776,
+   "preset": "clahe",
+   "variants": [
+    "Conversa Colen"
+   ],
+   "variant_confs": {
+    "Conversa Colen": 0.776
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ions lan",
+   "text": "ions lan",
+   "source": "spine",
+   "conf": 0.671,
+   "preset": "clahe",
+   "variants": [
+    "ions lan"
+   ],
+   "variant_confs": {
+    "ions lan": 0.671
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "tions",
+   "text": "tions",
+   "source": "spine",
+   "conf": 0.802,
+   "preset": "unsharp",
+   "variants": [
+    "tions"
+   ],
+   "variant_confs": {
+    "tions": 0.802
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": ":DELUSIUn",
+   "text": ":DELUSIUn",
+   "source": "spine",
+   "conf": 0.566,
+   "preset": "stack",
+   "variants": [
+    ":DELUSIUn"
+   ],
+   "variant_confs": {
+    ":DELUSIUn": 0.566
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "THEDR",
+   "text": "THEDR",
+   "source": "spine",
+   "conf": 0.694,
+   "preset": "clahe",
+   "variants": [
+    "THEDIVER",
+    "THEDR"
+   ],
+   "variant_confs": {
+    "THEDIVER": 0.625,
+    "THEDR": 0.694
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOICXEDSIN",
+   "text": "LOICXEDSIN",
+   "source": "spine",
+   "conf": 0.645,
+   "preset": "clahe",
+   "variants": [
+    "LOICXEDSIN"
+   ],
+   "variant_confs": {
+    "LOICXEDSIN": 0.645
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "Conver with len",
+   "text": "Conver with len",
+   "source": "spine",
+   "conf": 0.765,
+   "preset": "binarize",
+   "variants": [
+    "Conver with len"
+   ],
+   "variant_confs": {
+    "Conver with len": 0.765
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "onver? Golem",
+   "text": "onver? Golem",
+   "source": "spine",
+   "conf": 0.684,
+   "preset": "binarize",
+   "variants": [
+    "onver? Golem"
+   ],
+   "variant_confs": {
+    "onver? Golem": 0.684
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "onvers",
+   "text": "onvers",
+   "source": "spine",
+   "conf": 0.745,
+   "preset": "binarize",
+   "variants": [
+    "onvers"
+   ],
+   "variant_confs": {
+    "onvers": 0.745
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOSINC II RACE",
+   "text": "LOSINC II RACE",
+   "source": "spine",
+   "conf": 0.789,
+   "preset": "binarize",
+   "variants": [
+    "LOSIHC INI RACE",
+    "LOSINC II RACE",
+    "LOSINC TNI RACE"
+   ],
+   "variant_confs": {
+    "LOSINC II RACE": 0.789,
+    "LOSINC TNI RACE": 0.764,
+    "LOSIHC INI RACE": 0.724
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "VYC+IMS",
+   "text": "VYC+IMS",
+   "source": "spine",
+   "conf": 0.584,
+   "preset": "unsharp",
+   "variants": [
+    "VYC+IMS"
+   ],
+   "variant_confs": {
+    "VYC+IMS": 0.584
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Vit'iihs",
+   "text": "Vit'iihs",
+   "source": "spine",
+   "conf": 0.521,
+   "preset": "binarize",
+   "variants": [
+    "Vit'iihs"
+   ],
+   "variant_confs": {
+    "Vit'iihs": 0.521
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LOOXEDIN",
+   "text": "LOOXEDIN",
+   "source": "spine",
+   "conf": 0.627,
+   "preset": "clahe",
+   "variants": [
+    "LOOXEDIN"
+   ],
+   "variant_confs": {
+    "LOOXEDIN": 0.627
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "Golen",
+   "text": "Golen",
+   "source": "spine",
+   "conf": 0.781,
+   "preset": "unsharp",
+   "variants": [
+    "Golen"
+   ],
+   "variant_confs": {
+    "Golen": 0.781
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ryo6",
+   "text": "ryo6",
+   "source": "spine",
+   "conf": 0.513,
+   "preset": "clahe",
+   "variants": [
+    "ryo6"
+   ],
+   "variant_confs": {
+    "ryo6": 0.513
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TERE E",
+   "text": "TERE E",
+   "source": "spine",
+   "conf": 0.597,
+   "preset": "clahe",
+   "variants": [
+    "TERE E"
+   ],
+   "variant_confs": {
+    "TERE E": 0.597
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOSING GROCND",
+   "text": "LOSING GROCND",
+   "source": "spine",
+   "conf": 0.849,
+   "preset": "clahe",
+   "variants": [
+    "LOSING GROCND"
+   ],
+   "variant_confs": {
+    "LOSING GROCND": 0.849
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "PICTURE",
+   "text": "PICTURE",
+   "source": "spine",
+   "conf": 0.79,
+   "preset": "unsharp",
+   "variants": [
+    "PICTER",
+    "PICTORS",
+    "PICTRE",
+    "PICTURE"
+   ],
+   "variant_confs": {
+    "PICTORS": 0.634,
+    "PICTER": 0.675,
+    "PICTRE": 0.763,
+    "PICTURE": 0.79
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSISGGIOUND",
+   "text": "LOSISGGIOUND",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "unsharp",
+   "variants": [
+    "LOSISGGIOUND"
+   ],
+   "variant_confs": {
+    "LOSISGGIOUND": 0.832
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TERE",
+   "text": "TERE",
+   "source": "spine",
+   "conf": 0.691,
+   "preset": "unsharp",
+   "variants": [
+    "TERE"
+   ],
+   "variant_confs": {
+    "TERE": 0.691
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LOSISGGROUNR",
+   "text": "LOSISGGROUNR",
+   "source": "spine",
+   "conf": 0.776,
+   "preset": "unsharp",
+   "variants": [
+    "LOSISGGROUNR"
+   ],
+   "variant_confs": {
+    "LOSISGGROUNR": 0.776
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "HOSOFPOWE",
+   "text": "HOSOFPOWE",
+   "source": "spine",
+   "conf": 0.884,
+   "preset": "clahe",
+   "variants": [
+    "HOSOFPOWE",
+    "HOSOFPOWER"
+   ],
+   "variant_confs": {
+    "HOSOFPOWER": 0.866,
+    "HOSOFPOWE": 0.884
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "PHOSOFPOWEI",
+   "text": "PHOSOFPOWEI",
+   "source": "spine",
+   "conf": 0.79,
+   "preset": "clahe",
+   "variants": [
+    "PHOSOFPOWEI"
+   ],
+   "variant_confs": {
+    "PHOSOFPOWEI": 0.79
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "OSOFPOWEI",
+   "text": "OSOFPOWEI",
+   "source": "spine",
+   "conf": 0.847,
+   "preset": "unsharp",
+   "variants": [
+    "OSOFPOWEI"
+   ],
+   "variant_confs": {
+    "OSOFPOWEI": 0.847
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALTTI AND PO JamQW",
+   "text": "WEALTTI AND PO JamQW",
+   "source": "spine",
+   "conf": 0.719,
+   "preset": "clahe",
+   "variants": [
+    "WEALTTI AND PO JamQW"
+   ],
+   "variant_confs": {
+    "WEALTTI AND PO JamQW": 0.719
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "WEALTH",
+   "text": "WEALTH",
+   "source": "spine",
+   "conf": 0.672,
+   "preset": "clahe",
+   "variants": [
+    "WEALTH",
+    "WEALTHI"
+   ],
+   "variant_confs": {
+    "WEALTH": 0.672,
+    "WEALTHI": 0.644
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "WEALII",
+   "text": "WEALII",
+   "source": "spine",
+   "conf": 0.683,
+   "preset": "unsharp",
+   "variants": [
+    "WEALII"
+   ],
+   "variant_confs": {
+    "WEALII": 0.683
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "OCHOPE",
+   "text": "OCHOPE",
+   "source": "spine",
+   "conf": 0.709,
+   "preset": "clahe",
+   "variants": [
+    "OCHOPE"
+   ],
+   "variant_confs": {
+    "OCHOPE": 0.709
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "RCYRURIRS",
+   "text": "RCYRURIRS",
+   "source": "spine",
+   "conf": 0.522,
+   "preset": "unsharp",
+   "variants": [
+    "RCYRURIRS"
+   ],
+   "variant_confs": {
+    "RCYRURIRS": 0.522
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "TILFDINATIPN",
+   "text": "TILFDINATIPN",
+   "source": "spine",
+   "conf": 0.51,
+   "preset": "unsharp",
+   "variants": [
+    "TILFDINATIPN"
+   ],
+   "variant_confs": {
+    "TILFDINATIPN": 0.51
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "SLENNANG",
+   "text": "SLENNANG",
+   "source": "spine",
+   "conf": 0.635,
+   "preset": "unsharp",
+   "variants": [
+    "SLENNANG"
+   ],
+   "variant_confs": {
+    "SLENNANG": 0.635
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "CNEYNAWB",
+   "text": "CNEYNAWB",
+   "source": "spine",
+   "conf": 0.59,
+   "preset": "unsharp",
+   "variants": [
+    "CNEYNAWB"
+   ],
+   "variant_confs": {
+    "CNEYNAWB": 0.59
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ASUEYRANG",
+   "text": "ASUEYRANG",
+   "source": "spine",
+   "conf": 0.666,
+   "preset": "unsharp",
+   "variants": [
+    "ASUEYRANG"
+   ],
+   "variant_confs": {
+    "ASUEYRANG": 0.666
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "ABLANNANG",
+   "text": "ABLANNANG",
+   "source": "spine",
+   "conf": 0.569,
+   "preset": "clahe",
+   "variants": [
+    "ABLANNANG"
+   ],
+   "variant_confs": {
+    "ABLANNANG": 0.569
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "ABEYNANB",
+   "text": "ABEYNANB",
+   "source": "spine",
+   "conf": 0.501,
+   "preset": "unsharp",
+   "variants": [
+    "ABEYNANB"
+   ],
+   "variant_confs": {
+    "ABEYNANB": 0.501
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ANEYNANB",
+   "text": "ANEYNANB",
+   "source": "spine",
+   "conf": 0.581,
+   "preset": "clahe",
+   "variants": [
+    "ANEYNANB"
+   ],
+   "variant_confs": {
+    "ANEYNANB": 0.581
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "AMEYNANE",
+   "text": "AMEYNANE",
+   "source": "spine",
+   "conf": 0.524,
+   "preset": "clahe",
+   "variants": [
+    "AMEYNANE"
+   ],
+   "variant_confs": {
+    "AMEYNANE": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ACHOPE",
+   "text": "ACHOPE",
+   "source": "spine",
+   "conf": 0.675,
+   "preset": "clahe",
+   "variants": [
+    "ACHOPE"
+   ],
+   "variant_confs": {
+    "ACHOPE": 0.675
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "OEHOPE",
+   "text": "OEHOPE",
+   "source": "spine",
+   "conf": 0.545,
+   "preset": "clahe",
+   "variants": [
+    "OEHOPE"
+   ],
+   "variant_confs": {
+    "OEHOPE": 0.545
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "AE HOPE",
+   "text": "AE HOPE",
+   "source": "spine",
+   "conf": 0.674,
+   "preset": "clahe",
+   "variants": [
+    "AE HOPE"
+   ],
+   "variant_confs": {
+    "AE HOPE": 0.674
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOCNEDN",
+   "text": "LOCNEDN",
+   "source": "spine",
+   "conf": 0.647,
+   "preset": "unsharp",
+   "variants": [
+    "LOCNEDN",
+    "LOICONEDIN"
+   ],
+   "variant_confs": {
+    "LOICONEDIN": 0.584,
+    "LOCNEDN": 0.647
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOLKEDIN",
+   "text": "LOLKEDIN",
+   "source": "spine",
+   "conf": 0.655,
+   "preset": "unsharp",
+   "variants": [
+    "LOLKEDIN"
+   ],
+   "variant_confs": {
+    "LOLKEDIN": 0.655
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "NETT",
+   "text": "NETT",
+   "source": "spine",
+   "conf": 0.774,
+   "preset": "clahe",
+   "variants": [
+    "NETT",
+    "NITT"
+   ],
+   "variant_confs": {
+    "NETT": 0.774,
+    "NITT": 0.658
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "IELG",
+   "text": "IELG",
+   "source": "spine",
+   "conf": 0.614,
+   "preset": "unsharp",
+   "variants": [
+    "IELG"
+   ],
+   "variant_confs": {
+    "IELG": 0.614
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "BARACK OGAMA",
+   "text": "BARACK OGAMA",
+   "source": "spine",
+   "conf": 0.822,
+   "preset": "unsharp",
+   "variants": [
+    "BAAACK OBAMA",
+    "BARACK OBAMA",
+    "BARACK OGAMA"
+   ],
+   "variant_confs": {
+    "BARACK OBAMA": 0.806,
+    "BAAACK OBAMA": 0.792,
+    "BARACK OGAMA": 0.822
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Barack Obama",
+    "authors": [
+     "Catherine Nichols"
+    ],
+    "year": 2009
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "Cokorm",
+   "text": "Cokorm",
+   "source": "spine",
+   "conf": 0.524,
+   "preset": "binarize",
+   "variants": [
+    "Cokorm"
+   ],
+   "variant_confs": {
+    "Cokorm": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "oxorr :",
+   "text": "oxorr :",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "binarize",
+   "variants": [
+    "oxorr :"
+   ],
+   "variant_confs": {
+    "oxorr :": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "DATUN",
+   "text": "DATUN",
+   "source": "spine",
+   "conf": 0.584,
+   "preset": "clahe",
+   "variants": [
+    "DATNHEE",
+    "DATUN"
+   ],
+   "variant_confs": {
+    "DATUN": 0.584,
+    "DATNHEE": 0.545
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "DATES",
+   "text": "DATES",
+   "source": "spine",
+   "conf": 0.597,
+   "preset": "clahe",
+   "variants": [
+    "DATES"
+   ],
+   "variant_confs": {
+    "DATES": 0.597
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ioBeiusiun",
+   "text": "ioBeiusiun",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "clahe",
+   "variants": [
+    "ioBeiusiun"
+   ],
+   "variant_confs": {
+    "ioBeiusiun": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "THE DIYR",
+   "text": "THE DIYR",
+   "source": "spine",
+   "conf": 0.623,
+   "preset": "clahe",
+   "variants": [
+    "THE DIHLR",
+    "THE DIVIR",
+    "THE DIYR"
+   ],
+   "variant_confs": {
+    "THE DIYR": 0.623,
+    "THE DIHLR": 0.59,
+    "THE DIVIR": 0.584
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "THEDIO",
+   "text": "THEDIO",
+   "source": "spine",
+   "conf": 0.679,
+   "preset": "unsharp",
+   "variants": [
+    "THEDIEE",
+    "THEDIO"
+   ],
+   "variant_confs": {
+    "THEDIO": 0.679,
+    "THEDIEE": 0.631
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "THEDIRLR",
+   "text": "THEDIRLR",
+   "source": "spine",
+   "conf": 0.572,
+   "preset": "clahe",
+   "variants": [
+    "THEDIRLR"
+   ],
+   "variant_confs": {
+    "THEDIRLR": 0.572
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "MAAIT A\u00b7M08",
+   "text": "MAAIT A\u00b7M08",
+   "source": "spine",
+   "conf": 0.564,
+   "preset": "clahe",
+   "variants": [
+    "MAAIT A\u00b7M08"
+   ],
+   "variant_confs": {
+    "MAAIT A\u00b7M08": 0.564
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LATEADMISIEN",
+   "text": "LATEADMISIEN",
+   "source": "spine",
+   "conf": 0.775,
+   "preset": "clahe",
+   "variants": [
+    "LATEADMISIEN",
+    "LATEADMISSEN",
+    "LATEADMNSE",
+    "LATUADM0S3"
+   ],
+   "variant_confs": {
+    "LATEADMISIEN": 0.775,
+    "LATEADMISSEN": 0.725,
+    "LATUADM0S3": 0.667,
+    "LATEADMNSE": 0.503
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "LATE AMISEU8",
+   "text": "LATE AMISEU8",
+   "source": "spine",
+   "conf": 0.63,
+   "preset": "clahe",
+   "variants": [
+    "LATE AMISEU8"
+   ],
+   "variant_confs": {
+    "LATE AMISEU8": 0.63
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LATEAMISEI",
+   "text": "LATEAMISEI",
+   "source": "spine",
+   "conf": 0.75,
+   "preset": "clahe",
+   "variants": [
+    "LATEAMISEI"
+   ],
+   "variant_confs": {
+    "LATEAMISEI": 0.75
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "\u7696AIEADMSI",
+   "text": "\u7696AIEADMSI",
+   "source": "spine",
+   "conf": 0.613,
+   "preset": "unsharp",
+   "variants": [
+    "\u7696AIEADMSI"
+   ],
+   "variant_confs": {
+    "\u7696AIEADMSI": 0.613
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "\u7696\u00b7M08",
+   "text": "\u7696\u00b7M08",
+   "source": "spine",
+   "conf": 0.547,
+   "preset": "unsharp",
+   "variants": [
+    "\u7696\u00b7M08"
+   ],
+   "variant_confs": {
+    "\u7696\u00b7M08": 0.547
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  }
+ ],
+ "shown_only": [
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "NING",
+   "text": "NING",
+   "source": "spine",
+   "conf": 0.505,
+   "preset": "stack",
+   "variants": [
+    "NING"
+   ],
+   "variant_confs": {
+    "NING": 0.505
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "The Qusk",
+   "text": "The Qusk",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "stack",
+   "variants": [
+    "The Qusk"
+   ],
+   "variant_confs": {
+    "The Qusk": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOCKEDIN",
+   "text": "LOCKEDIN",
+   "source": "spine",
+   "conf": 0.839,
+   "preset": "stack",
+   "variants": [
+    "LOCKEDIN",
+    "LOKEDNN"
+   ],
+   "variant_confs": {
+    "LOCKEDIN": 0.839,
+    "LOKEDNN": 0.601
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "HEPCotn",
+   "text": "HEPCotn",
+   "source": "spine",
+   "conf": 0.528,
+   "preset": "stack",
+   "variants": [
+    "HEPCotn"
+   ],
+   "variant_confs": {
+    "HEPCotn": 0.528
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Sapiens",
+   "text": "Sapiens",
+   "source": "spine",
+   "conf": 0.871,
+   "preset": "stack",
+   "variants": [
+    "Sapicns",
+    "Sapiens",
+    "WSIEYPAN6"
+   ],
+   "variant_confs": {
+    "Sapiens": 0.871,
+    "Sapicns": 0.857,
+    "WSIEYPAN6": 0.542
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Sapiens",
+    "authors": [
+     "Yuval Noah Harari"
+    ],
+    "year": 2011
+   },
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Conversations 11.1",
+   "text": "Conversations 11.1",
+   "source": "spine",
+   "conf": 0.714,
+   "preset": "stack",
+   "variants": [
+    "Conversations 11.1"
+   ],
+   "variant_confs": {
+    "Conversations 11.1": 0.714
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LSOA F",
+   "text": "LSOA F",
+   "source": "spine",
+   "conf": 0.534,
+   "preset": "clahe",
+   "variants": [
+    "LSOA F"
+   ],
+   "variant_confs": {
+    "LSOA F": 0.534
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSINCTHIRACE",
+   "text": "LOSINCTHIRACE",
+   "source": "spine",
+   "conf": 0.865,
+   "preset": "clahe",
+   "variants": [
+    "LOSINC THE RACE",
+    "LOSINCTHIRACE",
+    "LOSINCTHRACE"
+   ],
+   "variant_confs": {
+    "LOSINC THE RACE": 0.862,
+    "LOSINCTHRACE": 0.772,
+    "LOSINCTHIRACE": 0.865
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "VYCTIMS",
+   "text": "VYCTIMS",
+   "source": "spine",
+   "conf": 0.692,
+   "preset": "clahe",
+   "variants": [
+    "VICIMS",
+    "VYCAIMS",
+    "VYCITMS",
+    "VYCTIMS",
+    "VYCTTMS",
+    "VYCYYMS",
+    "VYETTMS"
+   ],
+   "variant_confs": {
+    "VYCITMS": 0.611,
+    "VYCTIMS": 0.692,
+    "VYCYYMS": 0.564,
+    "VYCTTMS": 0.676,
+    "VYETTMS": 0.564,
+    "VICIMS": 0.513,
+    "VYCAIMS": 0.579
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TEEIROUIN",
+   "text": "TEEIROUIN",
+   "source": "spine",
+   "conf": 0.62,
+   "preset": "unsharp",
+   "variants": [
+    "TEEIROUIN"
+   ],
+   "variant_confs": {
+    "TEEIROUIN": 0.62
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "The",
+   "text": "The",
+   "source": "spine",
+   "conf": 0.588,
+   "preset": "clahe",
+   "variants": [
+    "The",
+    "Theo1"
+   ],
+   "variant_confs": {
+    "The": 0.588,
+    "Theo1": 0.555
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Theurk ls",
+   "text": "Theurk ls",
+   "source": "spine",
+   "conf": 0.541,
+   "preset": "clahe",
+   "variants": [
+    "Theurk ls"
+   ],
+   "variant_confs": {
+    "Theurk ls": 0.541
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "rryoGeye0",
+   "text": "rryoGeye0",
+   "source": "spine",
+   "conf": 0.506,
+   "preset": "stack",
+   "variants": [
+    "rryoGeye0"
+   ],
+   "variant_confs": {
+    "rryoGeye0": 0.506
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "THE D",
+   "text": "THE D",
+   "source": "spine",
+   "conf": 0.721,
+   "preset": "unsharp",
+   "variants": [
+    "THE D",
+    "The Duk"
+   ],
+   "variant_confs": {
+    "The Duk": 0.574,
+    "THE D": 0.721
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSING GROUND",
+   "text": "LOSING GROUND",
+   "source": "spine",
+   "conf": 0.865,
+   "preset": "unsharp",
+   "variants": [
+    "LOSING GIOUND",
+    "LOSING GROEND",
+    "LOSING GROUND",
+    "NG GROUND"
+   ],
+   "variant_confs": {
+    "NG GROUND": 0.763,
+    "LOSING GROUND": 0.865,
+    "LOSING GIOUND": 0.77,
+    "LOSING GROEND": 0.837
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Losing Ground",
+    "authors": [
+     "Catherine Aird"
+    ],
+    "year": 2007
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "WEALTIL,",
+   "text": "WEALTIL,",
+   "source": "spine",
+   "conf": 0.717,
+   "preset": "stack",
+   "variants": [
+    "WEALTIL,",
+    "WEALTT4",
+    "WEALTTL"
+   ],
+   "variant_confs": {
+    "WEALTIL,": 0.717,
+    "WEALTTL": 0.658,
+    "WEALTT4": 0.592
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "POWE",
+   "text": "POWE",
+   "source": "spine",
+   "conf": 0.712,
+   "preset": "stack",
+   "variants": [
+    "POWE"
+   ],
+   "variant_confs": {
+    "POWE": 0.712
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "THOSOFPOWEI",
+   "text": "THOSOFPOWEI",
+   "source": "spine",
+   "conf": 0.826,
+   "preset": "clahe",
+   "variants": [
+    "HOSOFPOWEI",
+    "THOSOFPOWEI"
+   ],
+   "variant_confs": {
+    "THOSOFPOWEI": 0.826,
+    "HOSOFPOWEI": 0.8
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "JmQW",
+   "text": "JmQW",
+   "source": "spine",
+   "conf": 0.653,
+   "preset": "stack",
+   "variants": [
+    "JmQ",
+    "JmQW"
+   ],
+   "variant_confs": {
+    "JmQW": 0.653,
+    "JmQ": 0.513
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "DENNETT",
+   "text": "DENNETT",
+   "source": "spine",
+   "conf": 0.777,
+   "preset": "stack",
+   "variants": [
+    "DENNETT"
+   ],
+   "variant_confs": {
+    "DENNETT": 0.777
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "NIELC",
+   "text": "NIELC",
+   "source": "spine",
+   "conf": 0.794,
+   "preset": "stack",
+   "variants": [
+    "NIELC"
+   ],
+   "variant_confs": {
+    "NIELC": 0.794
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "CARACK OBAMA",
+   "text": "CARACK OBAMA",
+   "source": "spine",
+   "conf": 0.797,
+   "preset": "unsharp",
+   "variants": [
+    "CARACK OBAMA",
+    "GARACK OBAMA"
+   ],
+   "variant_confs": {
+    "GARACK OBAMA": 0.794,
+    "CARACK OBAMA": 0.797
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "COATES",
+   "text": "COATES",
+   "source": "spine",
+   "conf": 0.824,
+   "preset": "stack",
+   "variants": [
+    "COATES"
+   ],
+   "variant_confs": {
+    "COATES": 0.824
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "EIGHT YESBS",
+   "text": "EIGHT YESBS",
+   "source": "spine",
+   "conf": 0.69,
+   "preset": "stack",
+   "variants": [
+    "EIGHT YESBS"
+   ],
+   "variant_confs": {
+    "EIGHT YESBS": 0.69
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "LOCREDNN",
+   "text": "LOCREDNN",
+   "source": "spine",
+   "conf": 0.677,
+   "preset": "clahe",
+   "variants": [
+    "LOCREDNN",
+    "LOOREDIN"
+   ],
+   "variant_confs": {
+    "LOCREDNN": 0.677,
+    "LOOREDIN": 0.64
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "Conversa Colen",
+   "text": "Conversa Colen",
+   "source": "spine",
+   "conf": 0.776,
+   "preset": "clahe",
+   "variants": [
+    "Conversa Colen"
+   ],
+   "variant_confs": {
+    "Conversa Colen": 0.776
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ions lan",
+   "text": "ions lan",
+   "source": "spine",
+   "conf": 0.671,
+   "preset": "clahe",
+   "variants": [
+    "ions lan"
+   ],
+   "variant_confs": {
+    "ions lan": 0.671
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "tions",
+   "text": "tions",
+   "source": "spine",
+   "conf": 0.802,
+   "preset": "unsharp",
+   "variants": [
+    "tions"
+   ],
+   "variant_confs": {
+    "tions": 0.802
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": ":DELUSIUn",
+   "text": ":DELUSIUn",
+   "source": "spine",
+   "conf": 0.566,
+   "preset": "stack",
+   "variants": [
+    ":DELUSIUn"
+   ],
+   "variant_confs": {
+    ":DELUSIUn": 0.566
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "THEDR",
+   "text": "THEDR",
+   "source": "spine",
+   "conf": 0.694,
+   "preset": "clahe",
+   "variants": [
+    "THEDIVER",
+    "THEDR"
+   ],
+   "variant_confs": {
+    "THEDIVER": 0.625,
+    "THEDR": 0.694
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOICXEDSIN",
+   "text": "LOICXEDSIN",
+   "source": "spine",
+   "conf": 0.645,
+   "preset": "clahe",
+   "variants": [
+    "LOICXEDSIN"
+   ],
+   "variant_confs": {
+    "LOICXEDSIN": 0.645
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "Conver with len",
+   "text": "Conver with len",
+   "source": "spine",
+   "conf": 0.765,
+   "preset": "binarize",
+   "variants": [
+    "Conver with len"
+   ],
+   "variant_confs": {
+    "Conver with len": 0.765
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "onver? Golem",
+   "text": "onver? Golem",
+   "source": "spine",
+   "conf": 0.684,
+   "preset": "binarize",
+   "variants": [
+    "onver? Golem"
+   ],
+   "variant_confs": {
+    "onver? Golem": 0.684
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "onvers",
+   "text": "onvers",
+   "source": "spine",
+   "conf": 0.745,
+   "preset": "binarize",
+   "variants": [
+    "onvers"
+   ],
+   "variant_confs": {
+    "onvers": 0.745
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOSINC II RACE",
+   "text": "LOSINC II RACE",
+   "source": "spine",
+   "conf": 0.789,
+   "preset": "binarize",
+   "variants": [
+    "LOSIHC INI RACE",
+    "LOSINC II RACE",
+    "LOSINC TNI RACE"
+   ],
+   "variant_confs": {
+    "LOSINC II RACE": 0.789,
+    "LOSINC TNI RACE": 0.764,
+    "LOSIHC INI RACE": 0.724
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "VYC+IMS",
+   "text": "VYC+IMS",
+   "source": "spine",
+   "conf": 0.584,
+   "preset": "unsharp",
+   "variants": [
+    "VYC+IMS"
+   ],
+   "variant_confs": {
+    "VYC+IMS": 0.584
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "Vit'iihs",
+   "text": "Vit'iihs",
+   "source": "spine",
+   "conf": 0.521,
+   "preset": "binarize",
+   "variants": [
+    "Vit'iihs"
+   ],
+   "variant_confs": {
+    "Vit'iihs": 0.521
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LOOXEDIN",
+   "text": "LOOXEDIN",
+   "source": "spine",
+   "conf": 0.627,
+   "preset": "clahe",
+   "variants": [
+    "LOOXEDIN"
+   ],
+   "variant_confs": {
+    "LOOXEDIN": 0.627
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "Golen",
+   "text": "Golen",
+   "source": "spine",
+   "conf": 0.781,
+   "preset": "unsharp",
+   "variants": [
+    "Golen"
+   ],
+   "variant_confs": {
+    "Golen": 0.781
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ryo6",
+   "text": "ryo6",
+   "source": "spine",
+   "conf": 0.513,
+   "preset": "clahe",
+   "variants": [
+    "ryo6"
+   ],
+   "variant_confs": {
+    "ryo6": 0.513
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TERE E",
+   "text": "TERE E",
+   "source": "spine",
+   "conf": 0.597,
+   "preset": "clahe",
+   "variants": [
+    "TERE E"
+   ],
+   "variant_confs": {
+    "TERE E": 0.597
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOSING GROCND",
+   "text": "LOSING GROCND",
+   "source": "spine",
+   "conf": 0.849,
+   "preset": "clahe",
+   "variants": [
+    "LOSING GROCND"
+   ],
+   "variant_confs": {
+    "LOSING GROCND": 0.849
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "PICTURE",
+   "text": "PICTURE",
+   "source": "spine",
+   "conf": 0.79,
+   "preset": "unsharp",
+   "variants": [
+    "PICTER",
+    "PICTORS",
+    "PICTRE",
+    "PICTURE"
+   ],
+   "variant_confs": {
+    "PICTORS": 0.634,
+    "PICTER": 0.675,
+    "PICTRE": 0.763,
+    "PICTURE": 0.79
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOSISGGIOUND",
+   "text": "LOSISGGIOUND",
+   "source": "spine",
+   "conf": 0.832,
+   "preset": "unsharp",
+   "variants": [
+    "LOSISGGIOUND"
+   ],
+   "variant_confs": {
+    "LOSISGGIOUND": 0.832
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "TERE",
+   "text": "TERE",
+   "source": "spine",
+   "conf": 0.691,
+   "preset": "unsharp",
+   "variants": [
+    "TERE"
+   ],
+   "variant_confs": {
+    "TERE": 0.691
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "LOSISGGROUNR",
+   "text": "LOSISGGROUNR",
+   "source": "spine",
+   "conf": 0.776,
+   "preset": "unsharp",
+   "variants": [
+    "LOSISGGROUNR"
+   ],
+   "variant_confs": {
+    "LOSISGGROUNR": 0.776
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "HOSOFPOWE",
+   "text": "HOSOFPOWE",
+   "source": "spine",
+   "conf": 0.884,
+   "preset": "clahe",
+   "variants": [
+    "HOSOFPOWE",
+    "HOSOFPOWER"
+   ],
+   "variant_confs": {
+    "HOSOFPOWER": 0.866,
+    "HOSOFPOWE": 0.884
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "PHOSOFPOWEI",
+   "text": "PHOSOFPOWEI",
+   "source": "spine",
+   "conf": 0.79,
+   "preset": "clahe",
+   "variants": [
+    "PHOSOFPOWEI"
+   ],
+   "variant_confs": {
+    "PHOSOFPOWEI": 0.79
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "OSOFPOWEI",
+   "text": "OSOFPOWEI",
+   "source": "spine",
+   "conf": 0.847,
+   "preset": "unsharp",
+   "variants": [
+    "OSOFPOWEI"
+   ],
+   "variant_confs": {
+    "OSOFPOWEI": 0.847
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALTTI AND PO JamQW",
+   "text": "WEALTTI AND PO JamQW",
+   "source": "spine",
+   "conf": 0.719,
+   "preset": "clahe",
+   "variants": [
+    "WEALTTI AND PO JamQW"
+   ],
+   "variant_confs": {
+    "WEALTTI AND PO JamQW": 0.719
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "WEALTH",
+   "text": "WEALTH",
+   "source": "spine",
+   "conf": 0.672,
+   "preset": "clahe",
+   "variants": [
+    "WEALTH",
+    "WEALTHI"
+   ],
+   "variant_confs": {
+    "WEALTH": 0.672,
+    "WEALTHI": 0.644
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "WEALII",
+   "text": "WEALII",
+   "source": "spine",
+   "conf": 0.683,
+   "preset": "unsharp",
+   "variants": [
+    "WEALII"
+   ],
+   "variant_confs": {
+    "WEALII": 0.683
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "OCHOPE",
+   "text": "OCHOPE",
+   "source": "spine",
+   "conf": 0.709,
+   "preset": "clahe",
+   "variants": [
+    "OCHOPE"
+   ],
+   "variant_confs": {
+    "OCHOPE": 0.709
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "RCYRURIRS",
+   "text": "RCYRURIRS",
+   "source": "spine",
+   "conf": 0.522,
+   "preset": "unsharp",
+   "variants": [
+    "RCYRURIRS"
+   ],
+   "variant_confs": {
+    "RCYRURIRS": 0.522
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "TILFDINATIPN",
+   "text": "TILFDINATIPN",
+   "source": "spine",
+   "conf": 0.51,
+   "preset": "unsharp",
+   "variants": [
+    "TILFDINATIPN"
+   ],
+   "variant_confs": {
+    "TILFDINATIPN": 0.51
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "SLENNANG",
+   "text": "SLENNANG",
+   "source": "spine",
+   "conf": 0.635,
+   "preset": "unsharp",
+   "variants": [
+    "SLENNANG"
+   ],
+   "variant_confs": {
+    "SLENNANG": 0.635
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "CNEYNAWB",
+   "text": "CNEYNAWB",
+   "source": "spine",
+   "conf": 0.59,
+   "preset": "unsharp",
+   "variants": [
+    "CNEYNAWB"
+   ],
+   "variant_confs": {
+    "CNEYNAWB": 0.59
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ASUEYRANG",
+   "text": "ASUEYRANG",
+   "source": "spine",
+   "conf": 0.666,
+   "preset": "unsharp",
+   "variants": [
+    "ASUEYRANG"
+   ],
+   "variant_confs": {
+    "ASUEYRANG": 0.666
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "ABLANNANG",
+   "text": "ABLANNANG",
+   "source": "spine",
+   "conf": 0.569,
+   "preset": "clahe",
+   "variants": [
+    "ABLANNANG"
+   ],
+   "variant_confs": {
+    "ABLANNANG": 0.569
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "ABEYNANB",
+   "text": "ABEYNANB",
+   "source": "spine",
+   "conf": 0.501,
+   "preset": "unsharp",
+   "variants": [
+    "ABEYNANB"
+   ],
+   "variant_confs": {
+    "ABEYNANB": 0.501
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ANEYNANB",
+   "text": "ANEYNANB",
+   "source": "spine",
+   "conf": 0.581,
+   "preset": "clahe",
+   "variants": [
+    "ANEYNANB"
+   ],
+   "variant_confs": {
+    "ANEYNANB": 0.581
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "AMEYNANE",
+   "text": "AMEYNANE",
+   "source": "spine",
+   "conf": 0.524,
+   "preset": "clahe",
+   "variants": [
+    "AMEYNANE"
+   ],
+   "variant_confs": {
+    "AMEYNANE": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "ACHOPE",
+   "text": "ACHOPE",
+   "source": "spine",
+   "conf": 0.675,
+   "preset": "clahe",
+   "variants": [
+    "ACHOPE"
+   ],
+   "variant_confs": {
+    "ACHOPE": 0.675
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "OEHOPE",
+   "text": "OEHOPE",
+   "source": "spine",
+   "conf": 0.545,
+   "preset": "clahe",
+   "variants": [
+    "OEHOPE"
+   ],
+   "variant_confs": {
+    "OEHOPE": 0.545
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "AE HOPE",
+   "text": "AE HOPE",
+   "source": "spine",
+   "conf": 0.674,
+   "preset": "clahe",
+   "variants": [
+    "AE HOPE"
+   ],
+   "variant_confs": {
+    "AE HOPE": 0.674
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LOCNEDN",
+   "text": "LOCNEDN",
+   "source": "spine",
+   "conf": 0.647,
+   "preset": "unsharp",
+   "variants": [
+    "LOCNEDN",
+    "LOICONEDIN"
+   ],
+   "variant_confs": {
+    "LOICONEDIN": 0.584,
+    "LOCNEDN": 0.647
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LOLKEDIN",
+   "text": "LOLKEDIN",
+   "source": "spine",
+   "conf": 0.655,
+   "preset": "unsharp",
+   "variants": [
+    "LOLKEDIN"
+   ],
+   "variant_confs": {
+    "LOLKEDIN": 0.655
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "NETT",
+   "text": "NETT",
+   "source": "spine",
+   "conf": 0.774,
+   "preset": "clahe",
+   "variants": [
+    "NETT",
+    "NITT"
+   ],
+   "variant_confs": {
+    "NETT": 0.774,
+    "NITT": 0.658
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "IELG",
+   "text": "IELG",
+   "source": "spine",
+   "conf": 0.614,
+   "preset": "unsharp",
+   "variants": [
+    "IELG"
+   ],
+   "variant_confs": {
+    "IELG": 0.614
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "BARACK OGAMA",
+   "text": "BARACK OGAMA",
+   "source": "spine",
+   "conf": 0.822,
+   "preset": "unsharp",
+   "variants": [
+    "BAAACK OBAMA",
+    "BARACK OBAMA",
+    "BARACK OGAMA"
+   ],
+   "variant_confs": {
+    "BARACK OBAMA": 0.806,
+    "BAAACK OBAMA": 0.792,
+    "BARACK OGAMA": 0.822
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "gazetteer": {
+    "title": "Barack Obama",
+    "authors": [
+     "Catherine Nichols"
+    ],
+    "year": 2009
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "Cokorm",
+   "text": "Cokorm",
+   "source": "spine",
+   "conf": 0.524,
+   "preset": "binarize",
+   "variants": [
+    "Cokorm"
+   ],
+   "variant_confs": {
+    "Cokorm": 0.524
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "oxorr :",
+   "text": "oxorr :",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "binarize",
+   "variants": [
+    "oxorr :"
+   ],
+   "variant_confs": {
+    "oxorr :": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "DATUN",
+   "text": "DATUN",
+   "source": "spine",
+   "conf": 0.584,
+   "preset": "clahe",
+   "variants": [
+    "DATNHEE",
+    "DATUN"
+   ],
+   "variant_confs": {
+    "DATUN": 0.584,
+    "DATNHEE": 0.545
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "DATES",
+   "text": "DATES",
+   "source": "spine",
+   "conf": 0.597,
+   "preset": "clahe",
+   "variants": [
+    "DATES"
+   ],
+   "variant_confs": {
+    "DATES": 0.597
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "ioBeiusiun",
+   "text": "ioBeiusiun",
+   "source": "spine",
+   "conf": 0.526,
+   "preset": "clahe",
+   "variants": [
+    "ioBeiusiun"
+   ],
+   "variant_confs": {
+    "ioBeiusiun": 0.526
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "THE DIYR",
+   "text": "THE DIYR",
+   "source": "spine",
+   "conf": 0.623,
+   "preset": "clahe",
+   "variants": [
+    "THE DIHLR",
+    "THE DIVIR",
+    "THE DIYR"
+   ],
+   "variant_confs": {
+    "THE DIYR": 0.623,
+    "THE DIHLR": 0.59,
+    "THE DIVIR": 0.584
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "THEDIO",
+   "text": "THEDIO",
+   "source": "spine",
+   "conf": 0.679,
+   "preset": "unsharp",
+   "variants": [
+    "THEDIEE",
+    "THEDIO"
+   ],
+   "variant_confs": {
+    "THEDIO": 0.679,
+    "THEDIEE": 0.631
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "THEDIRLR",
+   "text": "THEDIRLR",
+   "source": "spine",
+   "conf": 0.572,
+   "preset": "clahe",
+   "variants": [
+    "THEDIRLR"
+   ],
+   "variant_confs": {
+    "THEDIRLR": 0.572
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@4.0",
+   "ar": null,
+   "ocr": "MAAIT A\u00b7M08",
+   "text": "MAAIT A\u00b7M08",
+   "source": "spine",
+   "conf": 0.564,
+   "preset": "clahe",
+   "variants": [
+    "MAAIT A\u00b7M08"
+   ],
+   "variant_confs": {
+    "MAAIT A\u00b7M08": 0.564
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "LATEADMISIEN",
+   "text": "LATEADMISIEN",
+   "source": "spine",
+   "conf": 0.775,
+   "preset": "clahe",
+   "variants": [
+    "LATEADMISIEN",
+    "LATEADMISSEN",
+    "LATEADMNSE",
+    "LATUADM0S3"
+   ],
+   "variant_confs": {
+    "LATEADMISIEN": 0.775,
+    "LATEADMISSEN": 0.725,
+    "LATUADM0S3": 0.667,
+    "LATEADMNSE": 0.503
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "LATE AMISEU8",
+   "text": "LATE AMISEU8",
+   "source": "spine",
+   "conf": 0.63,
+   "preset": "clahe",
+   "variants": [
+    "LATE AMISEU8"
+   ],
+   "variant_confs": {
+    "LATE AMISEU8": 0.63
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "LATEAMISEI",
+   "text": "LATEAMISEI",
+   "source": "spine",
+   "conf": 0.75,
+   "preset": "clahe",
+   "variants": [
+    "LATEAMISEI"
+   ],
+   "variant_confs": {
+    "LATEAMISEI": 0.75
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@16.0",
+   "ar": null,
+   "ocr": "\u7696AIEADMSI",
+   "text": "\u7696AIEADMSI",
+   "source": "spine",
+   "conf": 0.613,
+   "preset": "unsharp",
+   "variants": [
+    "\u7696AIEADMSI"
+   ],
+   "variant_confs": {
+    "\u7696AIEADMSI": 0.613
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "author_spine": true
+  },
+  {
+   "cover": null,
+   "seg": "spine@14.0",
+   "ar": null,
+   "ocr": "\u7696\u00b7M08",
+   "text": "\u7696\u00b7M08",
+   "source": "spine",
+   "conf": 0.547,
+   "preset": "unsharp",
+   "variants": [
+    "\u7696\u00b7M08"
+   ],
+   "variant_confs": {
+    "\u7696\u00b7M08": 0.547
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null
+  }
+ ],
+ "audio_titles": [],
+ "heard": [],
+ "gazetteer": [
+  {
+   "phrase": "Sapiens",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Sapicns",
+    "WSIEYPAN6"
+   ],
+   "verified": true,
+   "context_ok": true,
+   "title": "Sapiens",
+   "authors": [
+    "Yuval Noah Harari"
+   ],
+   "year": 2011,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 86,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "Sapiens"
+   ]
+  },
+  {
+   "phrase": "LOSING GROUND",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "LOSING GROEND",
+    "LOSING GIOUND",
+    "GROUND"
+   ],
+   "verified": true,
+   "context_ok": true,
+   "title": "Losing Ground",
+   "authors": [
+    "Catherine Aird"
+   ],
+   "year": 2007,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 8,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "LOSING GROUND"
+   ]
+  },
+  {
+   "phrase": "BARACK OGAMA",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "BARACK OBAMA",
+    "BAAACK OBAMA"
+   ],
+   "matched_as": "BARACK OBAMA",
+   "verified": true,
+   "context_ok": true,
+   "title": "Barack Obama",
+   "authors": [
+    "Catherine Nichols"
+   ],
+   "year": 2009,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 10,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "BARACK OGAMA"
+   ]
+  }
+ ],
+ "gazetteer_weak": [],
+ "author_spines": [
+  "COATES",
+  "DENNETT",
+  "HOSOFPOWE",
+  "LATEADMISIEN",
+  "LATEAMISEI",
+  "LOCKEDIN",
+  "LOSINCTHIRACE",
+  "LOSISGGIOUND",
+  "LOSISGGROUNR",
+  "NETT",
+  "NIELC",
+  "OSOFPOWEI",
+  "PHOSOFPOWEI",
+  "PICTURE",
+  "THOSOFPOWEI"
+ ]
+}

@@ -291,3 +291,22 @@ CI (branch ci) gains an offline synthetic-shelf gate: verified >= 0.6.
 Download probes: direct watch URLs still work (Test A re-fetched, 1280x500
 slide deck with shelf webcam corner = runs/v1); searches stay bot-gated;
 TKP #177 is a pure slideshow; sectioned downloads segfault imageio-ffmpeg.
+
+## Round 9 - real shelf re-run with the grouping pipeline (2026-09-20)
+
+Test B's 1080p source was re-fetched (direct watch URL; 846 MB) and the
+labelled window (2550-2576 s) re-extracted with box-carrying reads, 5 frames,
+4 presets + median stack: 165 reads, first real multi-word spine groups
+("LOSINC THE RACE", "GARACK OBAMA", "Conversations ...").
+
+Result vs the human labels: surface 0.56 / verified 0.22 / right 0.22 -
+verified unchanged from baseline (Sapiens + Losing Ground; the Dennett band
+now reports as author). "Losing the Race" stays unverified: every read of
+that spine confuses C/G ("LOSINC"), and OpenLibrary cannot retrieve docs for
+garbled strings - the ceiling here is glyph confusion, i.e. the super-res /
+learned-OCR workstream, not the matcher.
+
+Bug found: the default 60-query gazetteer budget starves spine-dense runs
+(verified 0.11 at 60 vs 0.22 at 250). Default is now 250; CI passes explicit
+budgets. Artifacts: examples/spines1080_wide.json + books_spines1080_wide.json
+(reproduce the numbers offline).

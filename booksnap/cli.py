@@ -276,7 +276,8 @@ def main(argv=None):
     s.add_argument("--scroll"); s.add_argument("--out-json"); s.add_argument("--out-md")
     s.add_argument("--audio"); s.add_argument("--spines")
     s.add_argument("--gazetteer", action="store_true")
-    s.add_argument("--max-queries", type=int, default=60)
+    s.add_argument("--max-queries", type=int, default=250,
+                   help="OpenLibrary query budget; spine-dense shelves need hundreds")
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
@@ -327,7 +328,8 @@ def main(argv=None):
     s.add_argument("--spines-presets", default="unsharp")
     s.add_argument("--spines-stack", action="store_true")
     s.add_argument("--gazetteer", action="store_true")
-    s.add_argument("--max-queries", type=int, default=60)
+    s.add_argument("--max-queries", type=int, default=250,
+                   help="OpenLibrary query budget; spine-dense shelves need hundreds")
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--resume", action="store_true",
                    help="skip stages whose artifacts already exist in --workdir")

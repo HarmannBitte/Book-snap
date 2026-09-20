@@ -427,7 +427,7 @@ def cluster_spines(shown, thr=0.92):
 
 def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                   out_json, out_md, audio_json=None, spines_json=None,
-                  gazetteer=False, max_queries=60, fuzzy_thr=0.86,
+                  gazetteer=False, max_queries=250, fuzzy_thr=0.86,
                   out_bib=None, out_ris=None):
     ocr = json.load(open(ocr_json)) if ocr_json else {}
     manifest = json.load(open(cover_manifest_json)) if cover_manifest_json else []
