@@ -350,3 +350,25 @@ DOIs, so Crossref closes almost nothing here - a bundled catalogue dump
 (Wikidata subset) would be the next infra step, deliberately out of scope
 for a dependency-light repo. Benches unchanged: v2 wide 0.56/0.22/0.22,
 synth 0.79/0.79/0.79. Tests 56.
+
+## Round 12 - YouTube unlock via JS runtime (Agent-Reach takeaway) + held-out attempt (2026-09-21)
+
+Takeaway from github.com/Panniantong/Agent-Reach (its YouTube channel is a
+yt-dlp wrapper whose doctor insists on a JS runtime): modern yt-dlp needs
+deno/node for YouTube extraction, and this sandbox had none - which is what
+the "bot gate" partly was. With deno 2.9.7 (kept in .cache/bin, excluded from
+snapshots) and --js-runtimes deno, yt-dlp SEARCH works again: candidate
+hunting for held-out shelves is now cheap instead of impossible.
+
+Held-out attempt with the unlock: a different episode of the same show as the
+labelled shelf (Conversations with Coleman, JcMvSCHGqtE, 1080p) - same
+physical books, unseen footage, labels reusable. Result: 0 spine reads at
+every angle/preset; a x6 clahe crop shows pure depth-of-field bokeh, no
+glyphs at all. The shelf cam's focus varies by episode, so same-show reuse
+is not a guaranteed holdout. Artifact: examples/heldout_coleman_klein_spines.json
+(empty, with this note). Probes also logged: Cowen studio = curtain, DarkHorse
+= painted backdrop, Politics&Prose event = wood wall (no shelves).
+
+Status: search gate GONE (documented recipe: deno + --js-runtimes), focus
+gate remains the selector for future held-out shelves. Benches and code
+unchanged this round; tests 56.
