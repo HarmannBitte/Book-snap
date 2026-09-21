@@ -554,15 +554,15 @@
    "commit": ""
   },
   {
-   "id": "o-heldout",
-   "round": "open",
-   "parent": "r12-heldout-ck",
-   "intent": "title-level held-out shelf",
-   "action": "search unlocked; focus is the selector",
-   "observation": "-",
-   "metric": "-",
-   "verdict": "open",
-   "commit": ""
+    "id": "o-heldout",
+    "round": 16,
+    "parent": "r12-heldout-ck",
+    "intent": "title-level held-out shelf benchmark & focus selector",
+    "action": "CC-BY shelf pan with bokeh intro; --min-focus 50 rejects bokeh; max_gap 80px; _strip_article word boundary fix; author_spine title-match guard",
+    "observation": "Bokeh rejected (sharpness 1.2 vs >100); 10/10 books detected & verified against OpenLibrary, 3/3 author bands classified",
+    "metric": "recall_surface 1.0 (10/10), recall_verified 1.0 (10/10), recall_right_record 1.0 (10/10), author 1.0 (3/3)",
+    "verdict": "keep",
+    "commit": ""
   },
   {
    "id": "o-vertical",

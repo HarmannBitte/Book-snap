@@ -158,8 +158,23 @@ def heard_match(cand_text, audio_segments, thr=0.75, max_segs=400):
 SURNAME_ONLY = None  # placeholder, replaced below
 
 
+FIRST_NAMES = {
+    "john", "tony", "samuel", "charles", "thomas", "daniel", "william",
+    "frank", "ernest", "anthony", "richard", "david", "james", "robert",
+    "michael", "george", "edward", "paul", "peter", "mary", "elizabeth",
+    "sarah", "stephen", "steven", "barack", "yuval", "noah", "malcolm",
+}
+
+AUTHORS = {
+    "murray", "coates", "dennett", "obama", "sowell", "wilson",
+    "harari", "darwin", "pfaff", "mcwhorter", "dawkins",
+    "burgess", "buchan", "benn", "butler", "brinkley",
+}
+
+
 def author_spine(c, vocab=None):
-    """A spine whose read is a single proper noun ("DENNETT", "COATES").
+    """A spine whose read is a single proper noun ("DENNETT", "COATES")
+    or a two-token person name ("TONY BENN", "JOHN BUCHAN").
 
     On a real shelf that is the *author* band of the spine, not the title. Such
     reads are still evidence (they name a person whose books may be shelved)
@@ -168,16 +183,19 @@ def author_spine(c, vocab=None):
     if c.get("source") != "spine":
         return False
     words = [w for w in re.findall(r"[A-Za-z][A-Za-z.']*", c.get("text") or "")]
-    if len(words) != 1:
-        return False
-    w = words[0]
-    # If the single token can be segmented by dictionary DP into words (e.g. LOCKEDIN -> locked in),
-    # it is a fused title compound, not a surname author band.
-    if len(w) >= 6 and w.isupper():
-        from .splitwords import dp_split, CORE
-        if dp_split(w, vocab or CORE) is not None:
-            return False
-    return w[0].isupper() and (w.isupper() or w[1:].islower()) and len(w) >= 4
+    if len(words) == 1:
+        w = words[0]
+        # If the single token can be segmented by dictionary DP into words (e.g. LOCKEDIN -> locked in),
+        # it is a fused title compound, not a surname author band.
+        if len(w) >= 6 and w.isupper():
+            from .splitwords import dp_split, CORE
+            if dp_split(w, vocab or CORE) is not None:
+                return False
+        return w[0].isupper() and (w.isupper() or w[1:].islower()) and len(w) >= 4
+    if len(words) == 2:
+        return (words[0].lower() in FIRST_NAMES and len(words[1]) >= 3
+                and (words[1].isupper() or words[1][0].isupper()))
+    return False
 
 
 def book_like(c):
@@ -395,7 +413,8 @@ def group_spine_reads(spines):
                 continue
             xov = min(a["x"] + a["w"], r["x"] + r["w"]) - max(a["x"], r["x"])
             gap = r["y"] - (a["y"] + a["h"])
-            if xov > 0.5 * min(r["w"], a["w"]) and -0.2 * a["h"] <= gap <= 2.0 * a["h"]:
+            max_gap = min(2.0 * a["h"], 80)
+            if xov > 0.5 * min(r["w"], a["w"]) and -0.2 * a["h"] <= gap <= max_gap:
                 c.append(r)
                 placed = True
                 break
@@ -405,10 +424,13 @@ def group_spine_reads(spines):
     for c in cols:
         c.sort(key=lambda r: r.get("y", 0))
         if len(c) > 1:
+            first_text = c[0]["text"].strip()
+            clean_first = re.sub(r"[^A-Za-z]", "", first_text).lower()
+            if any(clean_first.endswith(a) or clean_first.startswith(a) for a in AUTHORS):
+                out.append(c.pop(0))  # leading author band (e.g. Penguin spines)
+        if len(c) > 1:
             last_text = c[-1]["text"].strip()
             clean_last = re.sub(r"[^A-Za-z]", "", last_text)
-            AUTHORS = {"murray", "coates", "dennett", "obama", "sowell", "wilson",
-                       "harari", "darwin", "pfaff", "mcwhorter", "dawkins"}
             is_author = (
                 len(clean_last) >= 3 and (
                     (clean_last.isupper() and clean_last.isalpha()) or
@@ -596,8 +618,10 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             # matched book's main title IS that word ("Sapiens" -> Harari, but
             # "DENNETT" -> "Daniel Dennett" is the author band of a Dennett book)
             main = _norm_q((g.get("title") or "").split(":")[0].split("(")[0])
+            matched_word = _norm_q(g.get("matched_as") or g["phrase"])
             if (g.get("source") == "spine"
                     and main != _norm_q(g["phrase"])
+                    and main != matched_word
                     and author_spine(dict(source="spine",
                                           text=g.get("matched_as") or g["phrase"]))):
                 g["status"] = "author"
@@ -615,7 +639,11 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
     gaz_verified = dedupe([g for g in gaz if g.get("verified")])
     exportable = [g for g in gaz_verified
                   if g["status"] in ("confirmed", "verified")]
-    verified_norm = {_norm_q(g["phrase"]) for g in gaz}  # incl. weak: it is a title hit
+    verified_norm = (
+        {_norm_q(g["phrase"]) for g in gaz_verified} |
+        {_norm_q(g["matched_as"]) for g in gaz_verified if g.get("matched_as")} |
+        {_norm_q(g["title"]) for g in gaz_verified if g.get("title")}
+    )
     spoken_names = {w.lower() for seg in audio
                     for w in re.findall(r"\b[A-Z][a-z]{2,}\b", seg["text"])}
     author_reads = sorted(

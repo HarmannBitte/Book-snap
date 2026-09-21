@@ -207,6 +207,15 @@ decision with its realized outcome (Dream-RSI-style: history as a replay
 simulator). Screen ideas against it at zero executions:
 `python tools/replay_discovery.py rank|path|dead|open|query WORD|render`.
 
+## Open Frontiers
+
+The project tracks active exploration frontiers (screenable with `python tools/replay_discovery.py open`):
+- **`o-heldout` [Resolved - Round 16]** — Out-of-sample shelf video benchmark with bokeh rejection: 10/10 books verified (1.0 right record) on real Penguin shelf video benchmark.
+- **`o-vertical`** — Vertical spine typography & 90° rotated reading passes.
+- **`o-catalog`** — Bundled offline catalogue (compact SQLite subset of OpenLibrary/Wikidata) for instant zero-network verification.
+- **`o-llmkey`** — Headless CI automation for the optional LLM gate (`--llm-titles`, `LLM_API_KEY`).
+- **`o-asr`** — Compute-gated ASR upgrade (Whisper `small`/`medium` with word timestamps on systems with >= 4 GB RAM).
+
 ## License
 
 MIT — see `LICENSE`.

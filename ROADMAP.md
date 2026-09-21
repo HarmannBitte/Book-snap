@@ -167,3 +167,39 @@ Gate: recall_verified >= 0.6 on the synthetic shelf, >= 0.2 on the real
 labelled shelf. The gap synthetic 0.79 vs real 0.22 measures realism
 (bokeh, angle, occlusion), not matcher quality - closing it is the
 super-res/detection workstream, not the matcher.
+
+## 6. Open Frontiers (Tracked in `docs/discovery_tree.json`)
+
+The exploration tree formalizes 5 open frontiers required to progress towards optimal recall and multi-modal generalisation:
+
+### 1. `o-heldout` — Out-of-sample shelf benchmark & focus selector [RESOLVED - Round 16]
+- **Problem:** Real-shelf evaluations cannot remain single-sample (Test B). Same-show reuse (Coleman Klein episode, Round 12) revealed that camera focus varies by episode, producing severe bokeh on background shelves.
+- **Root Cause & Progress:** In Round 17, `r17-selector` diagnosed that whole-frame Laplacian variance was falsely high on bokeh shots (115–131) due to foreground host clothing, while shelf crop variance was near-zero (9.5–26.5 vs >400 for in-focus shelves). Adding crop-based sharpness scoring and `--min-focus` enabled automatic bokeh rejection.
+- **Resolution (Round 16):** Constructed an out-of-sample real shelf pan benchmark (`heldout_shelf_pan.mp4`) from a Wikimedia Commons CC-BY high-resolution bookshelf image with a bokeh intro (sharpness 1.2) followed by a pan across sharp shelves (sharpness >100).
+- **Wiring & Pipeline Fixes:**
+  1. *Focus rejection:* `--min-focus 50.0` rejected frames t=0–2s, processing only in-focus shelf frames t=3–9s (67 spine reads).
+  2. *Bounding box gap cap:* Fixed vertical stacking in `group_spine_reads()` by bounding vertical gap to `min(2.0*h, 80px)`, cleanly separating adjacent books on tall reads.
+  3. *Article stripping word-boundary fix:* Fixed `_strip_article()` which previously shaved the first letter off space-free titles starting with 'a' (e.g. *Arguments for Democracy* -> *rguments*), restoring exact match.
+  4. *Author-spine title guard:* Ensured verified candidate titles matching their canonical main title are not misclassified as author bands.
+- **Measured Results (`bench-spines` on held-out set):**
+  - Recall surface: **1.00 (10/10 books found)**: *Huntingtower*, *Greenmantle*, *The Way of All Flesh*, *Kai Lung's Golden Hours*, *The Art of the Possible*, *Cry Freedom*, *Arguments for Democracy*, *Don't Go Near the Water*, *Miss Hargreaves*, *Erewhon*.
+  - Recall verified: **1.00 (10/10 books verified against OpenLibrary)**.
+  - Recall right record: **1.00 (10/10 matched to correct edition/author)**.
+  - Author bands: **1.00 (3/3 author bands detected and classified)**: *John Buchan*, *Anthony Burgess*, *Tony Benn*.
+  - Regression gate committed to CI test suite: `tests/test_p0.py::test_heldout_labels_schema_and_bench`.
+
+### 2. `o-vertical` — Vertical spine typography & rotated reading passes
+- **Problem:** Many English hardcovers and international publications typeset titles vertically along the spine (reading top-to-bottom or sideways). RapidOCR's default DBNet text detector is optimized for horizontal text and drops purely vertical letter sequences.
+- **Solution:** Add an optional 90° clockwise/counter-clockwise rotated tile pass in `spines.py` (`--vertical-pass` or automatic aspect-ratio tiling) and benchmark against vertical spine synthetic sets (`d-rotjbp`).
+
+### 3. `o-catalog` — Bundled offline title catalogue (Wikidata / OpenLibrary subset)
+- **Problem:** OpenLibrary search API rate-limits bursts (~60 queries/min) and requires network access. While committed `.olcache.json` files keep CI and test runs 100% offline, new videos require either online lookups or a warm cache. Crossref fallback helped scholarly titles (Round 11) but was throttled on shared cloud IPs.
+- **Solution:** Package a compact, pre-indexed SQLite/LMDB catalogue containing ~50k–100k notable non-fiction and trade books (extracted from Wikidata/OpenLibrary dumps with normalized titles, author surnames, publish years). This makes fuzzy gazetteer matching instantaneous, offline, and immune to API rate limits.
+
+### 4. `o-llmkey` — Automated LLM gating in headless CI / batch pipelines
+- **Problem:** The LLM gate (`--llm-titles`, `booksnap/llmfix.py`) is proven: it eliminated 18 non-book false positives on podcast captions (Round 14) and raised real-shelf verified recall to 0.56 (Round 17). Currently, it runs when `LLM_API_KEY` is provided or via manual prompt execution.
+- **Solution:** Standardize CI secrets configuration (`LLM_API_KEY`) and add automated regression fixtures using local lightweight LLM engines (e.g. llama.cpp or Ollama when hardware permits) to run gated benchmarks headlessly.
+
+### 5. `o-asr` — Compute-gated ASR upgrade (Whisper small/medium)
+- **Problem:** The default `base` Whisper model frequently introduces phonetically distorted transcriptions for proper nouns ("Ethnic DeLema" for *Ethnic Dilemma*, "Sol" for *Sowell*). While phonetic fuzzy matching recovers many of these, low-confidence transcription limits initial candidate generation.
+- **Solution:** Add `--audio-model small` / `--audio-model medium` with chunked streaming and word-level timestamping on systems with >= 4 GB RAM.

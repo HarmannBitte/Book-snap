@@ -35,3 +35,18 @@ def test_verify_all_flags_verified_and_rejected():
     assert ver["Facing Reality"]["verified"] is True
     assert ver["Facing Reality"]["authors"] == ["Charles Murray"]
     assert ver["Nathan Cofnas"]["verified"] is False
+
+
+def test_strip_article_preserves_words_starting_with_a():
+    from booksnap.gazetteer import _strip_article, match_docs
+    # "Antifragile" and "Arguments for democracy" must not have initial 'a' stripped
+    assert _strip_article("Antifragile") == "antifragile"
+    assert _strip_article("Arguments for Democracy") == "argumentsfordemocracy"
+    assert _strip_article("The Way of All Flesh") == "wayofallflesh"
+    assert _strip_article("A Brief History of Time") == "briefhistoryoftime"
+
+    docs = [dict(title="Arguments for democracy", author_name=["Tony Benn"],
+                 first_publish_year=1981, edition_count=2)]
+    m = match_docs("Arguments for democracy", docs)
+    assert m is not None
+    assert m["match_type"] == "exact" and m["title"] == "Arguments for democracy"

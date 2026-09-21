@@ -61,6 +61,8 @@ def score(labels_path, spines_json, books_json):
     for g in books.get("gazetteer", []):  # a garbled canon verified via a clean
         if g.get("matched_as"):           # alt must count under the clean form
             verified.setdefault(norm(g["matched_as"]), g)
+        if g.get("title"):
+            verified.setdefault(norm(g["title"]), g)
     author_reads = set(books.get("author_spines", []))
     verified_texts = ([g["phrase"] for g in books.get("gazetteer", [])]
                       + [g["matched_as"] for g in books.get("gazetteer", [])

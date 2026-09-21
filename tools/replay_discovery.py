@@ -48,6 +48,7 @@ IMPACT = {
     "r10-degarble": 0.05,  # +Obama via corrected garble; robustness
     "r13-llmfix": 0.30,    # gate that makes captions safe
     "r14-manual-llm": 0.11,  # the pass that moved .22 -> .33
+    "o-heldout": 0.45,     # held-out real shelf benchmark (10/10 verified, 1.0 right record)
 }
 
 
@@ -105,7 +106,10 @@ def cmd_render(d):
          "replay simulator - screen ideas with `tools/replay_discovery.py`",
          "instead of re-running them. Verdicts: kept / dropped / open.",
          ""]
-    for rnd in sorted({n["round"] for n in d["nodes"]}, key=lambda r: (r == "x", r == "open", r)):
+    def _rnd_key(r):
+        return (r == "x", r == "open", int(r) if isinstance(r, int) or str(r).isdigit() else 999, str(r))
+
+    for rnd in sorted({n["round"] for n in d["nodes"]}, key=_rnd_key):
         title = {"x": "Dead ends (tried, dropped, why)",
                  "open": "Declared-open fronts"}.get(rnd, f"Round {rnd}")
         L.append(f"## {title}")

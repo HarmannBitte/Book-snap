@@ -537,6 +537,22 @@ def test_synth_labels_schema():
     assert len(d["author_bands"]) == 13
 
 
+def test_heldout_labels_schema_and_bench():
+    import json, os
+    from booksnap.bench_spines import score
+    lab_p = os.path.join(os.path.dirname(__file__), "..", "bench", "spine_labels_heldout.json")
+    sp_p = os.path.join(os.path.dirname(__file__), "..", "examples", "heldout_penguin_spines.json")
+    bk_p = os.path.join(os.path.dirname(__file__), "..", "examples", "heldout_penguin_books.json")
+    lab = json.load(open(lab_p))
+    assert len(lab["books"]) == 10 and all(b["confident"] for b in lab["books"])
+    assert len(lab["author_bands"]) == 3
+    sc = score(lab_p, sp_p, bk_p)
+    assert sc["recall_surface"] == 1.0
+    assert sc["recall_verified"] == 1.0
+    assert sc["recall_right_record"] == 1.0
+    assert all(a["reported_author"] for a in sc["author_bands"])
+
+
 def test_degarble_candidates():
     from booksnap.degarble import candidates
     c = candidates("LOSINC THE RACE")

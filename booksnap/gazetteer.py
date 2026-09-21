@@ -169,11 +169,11 @@ def looks_like_person(s):
     return any(len(w.rstrip(".")) == 1 for w in words)  # middle initial
 
 
-def _strip_article(nt):
-    for art in ARTICLES:
-        if nt.startswith(art):
-            return nt[len(art):]
-    return nt
+def _strip_article(text):
+    words = (text or "").split()
+    if words and words[0].lower() in ARTICLES:
+        return _norm(" ".join(words[1:]))
+    return _norm(text)
 
 
 RULE_RANK = {"exact": 0, "prefix": 1, "fuzzy": 2}
@@ -222,7 +222,7 @@ def match_docs(phrase, docs, fuzzy_thr=0.86, min_editions=2, author_hints=None):
     words = [w for w in re.findall(r"[A-Za-z0-9']+", phrase or "")]
     if not words or all(w.lower() in CAND_STOP for w in words):
         return None
-    n = _norm(phrase)
+    n = _strip_article(phrase)
     sig = [w for w in words if w.lower() not in CAND_STOP and w.lower() not in CONNECTORS]
     best = None
     for d in docs:
@@ -238,7 +238,7 @@ def match_docs(phrase, docs, fuzzy_thr=0.86, min_editions=2, author_hints=None):
             t = d.get(field) or ""
             if "|" in t or looks_like_person(t):
                 continue
-            nt = _strip_article(_norm(t))
+            nt = _strip_article(t)
             twords = set(re.findall(r"[a-z0-9]+", t.lower()))
             pwords = set(w.lower() for w in words)
             score = fuzzy_score(phrase, t)

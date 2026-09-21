@@ -1,0 +1,676 @@
+{
+ "spine_reads": 67,
+ "spine_groups": 61,
+ "shown_covers": [
+  {
+   "text": "TONY BENN",
+   "source": "spine",
+   "conf": 0.842,
+   "author_spine": true
+  },
+  {
+   "text": "ANTHONYBURGESS",
+   "source": "spine",
+   "conf": 0.879,
+   "author_spine": true
+  },
+  {
+   "text": "Preatee leha",
+   "source": "spine",
+   "conf": 0.565
+  },
+  {
+   "text": "JOHN BUCHAN",
+   "source": "spine",
+   "conf": 0.773,
+   "author_spine": true
+  },
+  {
+   "text": "JOHN BUCHAN GREENMANTLE",
+   "source": "spine",
+   "conf": 0.874
+  },
+  {
+   "text": "IOHN BUCHAN GREENMANTLE",
+   "source": "spine",
+   "conf": 0.875
+  },
+  {
+   "text": "IOHN BUCHAN",
+   "source": "spine",
+   "conf": 0.818
+  },
+  {
+   "text": " W'ALlEt OF KAI LUNG",
+   "source": "spine",
+   "conf": 0.615
+  },
+  {
+   "text": "VBENN",
+   "source": "spine",
+   "conf": 0.688,
+   "author_spine": true
+  },
+  {
+   "text": "VRENN",
+   "source": "spine",
+   "conf": 0.768,
+   "author_spine": true
+  },
+  {
+   "text": "JOHN BRIL FY CRYFREEDOM",
+   "source": "spine",
+   "conf": 0.884
+  },
+  {
+   "text": "Gwendol line",
+   "source": "spine",
+   "conf": 0.705
+  },
+  {
+   "text": "Gendoline",
+   "source": "spine",
+   "conf": 0.774,
+   "author_spine": true
+  },
+  {
+   "text": "Gendoll Jine Butier",
+   "source": "spine",
+   "conf": 0.647
+  },
+  {
+   "text": "Gwendoline Buler",
+   "source": "spine",
+   "conf": 0.7
+  },
+  {
+   "text": "COU",
+   "source": "spine",
+   "conf": 0.701
+  },
+  {
+   "text": "lonn ARGUMENTS FOR DEM",
+   "source": "spine",
+   "conf": 0.755
+  },
+  {
+   "text": "lon",
+   "source": "spine",
+   "conf": 0.648
+  },
+  {
+   "text": "ERNESTERA",
+   "source": "spine",
+   "conf": 0.778,
+   "author_spine": true
+  },
+  {
+   "text": "Cin",
+   "source": "spine",
+   "conf": 0.514
+  },
+  {
+   "text": "Can",
+   "source": "spine",
+   "conf": 0.67
+  },
+  {
+   "text": "ARGUMENTSFORDEMG",
+   "source": "spine",
+   "conf": 0.885,
+   "author_spine": true
+  },
+  {
+   "text": "Butler",
+   "source": "spine",
+   "conf": 0.803,
+   "author_spine": true
+  },
+  {
+   "text": "Pretrar lohn",
+   "source": "spine",
+   "conf": 0.688
+  },
+  {
+   "text": "ERNES1",
+   "source": "spine",
+   "conf": 0.644,
+   "author_spine": true
+  },
+  {
+   "text": "The",
+   "source": "spine",
+   "conf": 0.709
+  },
+  {
+   "text": "Thne",
+   "source": "spine",
+   "conf": 0.562,
+   "author_spine": true
+  },
+  {
+   "text": "Ihe.",
+   "source": "spine",
+   "conf": 0.511,
+   "author_spine": true
+  },
+  {
+   "text": "MIS HARGREAVE",
+   "source": "spine",
+   "conf": 0.799
+  },
+  {
+   "text": "Winam Brirkey",
+   "source": "spine",
+   "conf": 0.695
+  },
+  {
+   "text": "Wunam Brinkley",
+   "source": "spine",
+   "conf": 0.674
+  },
+  {
+   "text": "MISSHARGREA",
+   "source": "spine",
+   "conf": 0.745,
+   "author_spine": true
+  },
+  {
+   "text": "Winen Brtekley",
+   "source": "spine",
+   "conf": 0.658
+  },
+  {
+   "text": "namBrinkley",
+   "source": "spine",
+   "conf": 0.633
+  },
+  {
+   "text": "nem B-irkley",
+   "source": "spine",
+   "conf": 0.679
+  },
+  {
+   "text": "ham Brikley",
+   "source": "spine",
+   "conf": 0.654
+  },
+  {
+   "text": "Antof the Passible",
+   "source": "spine",
+   "conf": 0.838
+  },
+  {
+   "text": "Art of the Passible",
+   "source": "spine",
+   "conf": 0.825
+  },
+  {
+   "text": "Huntingtower",
+   "source": "spine",
+   "conf": 0.889,
+   "author_spine": true
+  },
+  {
+   "text": "Prerrar lohn",
+   "source": "spine",
+   "conf": 0.657
+  },
+  {
+   "text": "KAILUNG'S GOLOEN HOURS",
+   "source": "spine",
+   "conf": 0.828
+  },
+  {
+   "text": "AI LUNG'S GOLDEN HOURS",
+   "source": "spine",
+   "conf": 0.745
+  },
+  {
+   "text": "THE WAY OFALL FLESH ohn Buchao",
+   "source": "spine",
+   "conf": 0.855
+  },
+  {
+   "text": "GREENMANTLE",
+   "source": "spine",
+   "conf": 0.863,
+   "author_spine": true
+  },
+  {
+   "text": "NSO",
+   "source": "spine",
+   "conf": 0.567
+  },
+  {
+   "text": "MITS HARGREAWE",
+   "source": "spine",
+   "conf": 0.652
+  },
+  {
+   "text": "EREWHON",
+   "source": "spine",
+   "conf": 0.866,
+   "author_spine": true
+  },
+  {
+   "text": "NOH",
+   "source": "spine",
+   "conf": 0.611
+  },
+  {
+   "text": "ERE",
+   "source": "spine",
+   "conf": 0.738
+  },
+  {
+   "text": "HSIVM",
+   "source": "spine",
+   "conf": 0.516,
+   "author_spine": true
+  },
+  {
+   "text": "HON",
+   "source": "spine",
+   "conf": 0.735
+  },
+  {
+   "text": "ALE",
+   "source": "spine",
+   "conf": 0.628
+  },
+  {
+   "text": "BELLY",
+   "source": "spine",
+   "conf": 0.689,
+   "author_spine": true
+  },
+  {
+   "text": "Doe't Go Near",
+   "source": "spine",
+   "conf": 0.802
+  },
+  {
+   "text": "Do't Go Near u",
+   "source": "spine",
+   "conf": 0.749
+  },
+  {
+   "text": "Doele Go Near",
+   "source": "spine",
+   "conf": 0.715
+  },
+  {
+   "text": "Docle Go Near t",
+   "source": "spine",
+   "conf": 0.685
+  },
+  {
+   "text": "Do Go Near u",
+   "source": "spine",
+   "conf": 0.75
+  },
+  {
+   "text": "Dore Go Nearu",
+   "source": "spine",
+   "conf": 0.664
+  },
+  {
+   "text": "AVA",
+   "source": "spine",
+   "conf": 0.526
+  },
+  {
+   "text": "ohn Buchan",
+   "source": "spine",
+   "conf": 0.811
+  }
+ ],
+ "gazetteer": [
+  {
+   "phrase": "IOHN BUCHAN GREENMANTLE",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "JOHN BUCHAN GREENMANTLE",
+    "GREENMANTLE",
+    "IOHN BUCHAN",
+    "IOHN BUGHAN GREENMANTLE",
+    "IOHN BUCHAN CREENMANTLE",
+    "IOHN GUCHAN GREENMANTLE",
+    "JOHN BUGHAN GREENMANTLE",
+    "JOHN BUCHAN CREENMANTLE",
+    "JOHN GUCHAN GREENMANTLE",
+    "CREENMANTLE",
+    "BREENMANTLE",
+    "GBEENMANTLE"
+   ],
+   "conf": 0.875,
+   "matched_as": "GREENMANTLE",
+   "verified": true,
+   "context_ok": true,
+   "title": "Greenmantle",
+   "authors": [
+    "John Buchan"
+   ],
+   "year": 1915,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 521,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "IOHN BUCHAN GREENMANTLE"
+   ]
+  },
+  {
+   "phrase": "JOHN BRIL FY CRYFREEDOM",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Cry Freedom",
+    "JOHN BRIL FY GRYFREEDOM",
+    "JOHN GRIL FY CRYFREEDOM",
+    "JOHN RRIL FY CRYFREEDOM",
+    "JOHN BBIL FY CRYFREEDOM",
+    "JOHN BRIL FY CBYFREEDOM",
+    "JOHN BRIL FY CRYFBEEDOM",
+    "JOHN BAIL FY CRYFREEDOM",
+    "JOHN BRIL FY CAYFREEDOM"
+   ],
+   "conf": 0.884,
+   "matched_as": "Cry Freedom",
+   "verified": true,
+   "context_ok": true,
+   "title": "Cry Freedom",
+   "authors": [
+    "John Briley"
+   ],
+   "year": 1987,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "JOHN BRIL FY CRYFREEDOM"
+   ]
+  },
+  {
+   "phrase": "lonn ARGUMENTS FOR DEM",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Arguments for Democracy",
+    "lonn ARCUMENTS FOR DEM",
+    "lonn ARBUMENTS FOR DEM",
+    "lonn ABGUMENTS FOR DEM",
+    "lonn ARGUMENTS FOB DEM",
+    "lonn RRGUMENTS FOR DEM",
+    "lonn AAGUMENTS FOR DEM",
+    "lonn ARGUMENTS FOA DEM",
+    "lonn ARGVMENTS FOR DEM"
+   ],
+   "conf": 0.755,
+   "matched_as": "Arguments for Democracy",
+   "verified": true,
+   "context_ok": true,
+   "title": "Arguments for democracy",
+   "authors": [
+    "Tony Benn"
+   ],
+   "year": 1981,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 2,
+   "low_support": true,
+   "status": "confirmed",
+   "provenance": [
+    "lonn ARGUMENTS FOR DEM"
+   ]
+  },
+  {
+   "phrase": "MIS HARGREAVE",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Miss Hargreaves",
+    "MIS HARCREAVE",
+    "MIS HARBREAVE",
+    "MIS HABGREAVE",
+    "MIS HARGBEAVE",
+    "MIS HRRGREAVE",
+    "MIS HAAGREAVE",
+    "MIS HARGAEAVE",
+    "MIS HARGRERVE"
+   ],
+   "conf": 0.799,
+   "matched_as": "Miss Hargreaves",
+   "verified": true,
+   "context_ok": true,
+   "title": "Miss Hargreaves",
+   "authors": [
+    "Baker, Frank"
+   ],
+   "year": 1940,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "MIS HARGREAVE",
+    "MISSHARGREA"
+   ]
+  },
+  {
+   "phrase": "Antof the Passible",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "The Art of the Possible",
+    "Antof the Passigle",
+    "Antof the Passirle",
+    "Rntof the Passible",
+    "Antof the Prssible",
+    "Antof the Passyble",
+    "Antof the Passlble",
+    "Antof the Passibie",
+    "Antof the Passibue"
+   ],
+   "conf": 0.838,
+   "matched_as": "The Art of the Possible",
+   "verified": true,
+   "context_ok": true,
+   "title": "Art of the Possible",
+   "authors": [
+    "Kevern J. Verney"
+   ],
+   "year": 2013,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 6,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "Antof the Passible",
+    "Art of the Passible"
+   ]
+  },
+  {
+   "phrase": "Huntingtower",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Huntinctower",
+    "Huntinbtower",
+    "Huntingtoweb",
+    "Huntingtowea",
+    "Huntyngtower",
+    "Hvntingtower",
+    "Huntlngtower",
+    "Hlntingtower"
+   ],
+   "conf": 0.889,
+   "verified": true,
+   "context_ok": true,
+   "title": "Huntingtower",
+   "authors": [
+    "John Buchan"
+   ],
+   "year": 1910,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 293,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "Huntingtower"
+   ]
+  },
+  {
+   "phrase": "KAILUNG'S GOLOEN HOURS",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Kai Lung's Golden Hours",
+    "KAILUNC'S GOLOEN HOURS",
+    "KAILUNG'S COLOEN HOURS",
+    "KAILUNB'S GOLOEN HOURS",
+    "KAILUNG'S BOLOEN HOURS",
+    "KAILUNG'S GOLOEN HOUBS",
+    "KRILUNG'S GOLOEN HOURS",
+    "KAILUNG'S GOLOEN HOUAS",
+    "KAYLUNG'S GOLOEN HOURS"
+   ],
+   "conf": 0.828,
+   "matched_as": "Kai Lung's Golden Hours",
+   "verified": true,
+   "context_ok": true,
+   "title": "Kai Lung's Golden Hours",
+   "authors": [
+    "Ernest Bramah"
+   ],
+   "year": 1922,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 95,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "AI LUNG'S GOLDEN HOURS",
+    "KAILUNG'S GOLOEN HOURS"
+   ]
+  },
+  {
+   "phrase": "THE WAY OFALL FLESH ohn Buchao",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "The Way of All Flesh",
+    "THE WAY OFALL FLESH ohn Bughao",
+    "THE WAY OFALL FLESH ohn Guchao",
+    "THE WAY OFALL FLESH ohn Ruchao",
+    "THE WRY OFALL FLESH ohn Buchao",
+    "THE WAY OFRLL FLESH ohn Buchao",
+    "THE WAY OFALL FLESH ohn Buchro",
+    "THE WAI OFALL FLESH ohn Buchao",
+    "THE WAY OFALL FLESH ohn Bvchao"
+   ],
+   "conf": 0.855,
+   "matched_as": "The Way of All Flesh",
+   "verified": true,
+   "context_ok": true,
+   "title": "The way of all flesh",
+   "authors": [
+    "Samuel Butler"
+   ],
+   "year": 1900,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 132,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "THE WAY OFALL FLESH ohn Buchao"
+   ]
+  },
+  {
+   "phrase": "EREWHON",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "EBEWHON",
+    "EAEWHON",
+    "EREWHQN",
+    "EREWHDN",
+    "FREWHON",
+    "ERFWHON",
+    "EREWHOM"
+   ],
+   "conf": 0.866,
+   "verified": true,
+   "context_ok": true,
+   "title": "Erewhon",
+   "authors": [
+    "Samuel Butler"
+   ],
+   "year": 1700,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 338,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "EREWHON"
+   ]
+  },
+  {
+   "phrase": "Doe't Go Near",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Don't Go Near the Water",
+    "Do't Go Near",
+    "Docle Go Near",
+    "Doe't Co Near",
+    "Doe't Bo Near",
+    "Doe't Go Neab",
+    "Do't Co Near",
+    "Do't Bo Near",
+    "Do't Go Neab",
+    "Dogle Go Near",
+    "Docle Co Near",
+    "Docle Bo Near",
+    "Doe't Go Nerr"
+   ],
+   "conf": 0.802,
+   "matched_as": "Don't Go Near the Water",
+   "verified": true,
+   "context_ok": true,
+   "title": "Don't go near the water",
+   "authors": [
+    "William Brinkley"
+   ],
+   "year": 1956,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 4,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "Doe't Go Near"
+   ]
+  }
+ ],
+ "author_spines": [
+  "ANTHONYBURGESS",
+  "ARGUMENTSFORDEMG",
+  "Butler",
+  "ERNESTERA",
+  "Gendoline",
+  "JOHN BUCHAN",
+  "TONY BENN",
+  "VRENN"
+ ]
+}

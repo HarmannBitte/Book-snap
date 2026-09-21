@@ -1,0 +1,736 @@
+{
+ "huntingtower": {
+  "docs": [
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 293,
+    "first_publish_year": 1910,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower",
+    "ratings_average": 4.0
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 7,
+    "first_publish_year": 2014,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 5,
+    "first_publish_year": 2015,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 5,
+    "first_publish_year": 2014,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2015,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2017,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2015,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2018,
+    "title": "Huntingtower",
+    "title_suggest": "Huntingtower"
+   }
+  ]
+ },
+ "greenmantle": {
+  "docs": [
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 521,
+    "first_publish_year": 1915,
+    "title": "Greenmantle",
+    "title_suggest": "Greenmantle",
+    "ratings_average": 3.642857
+   },
+   {
+    "author_name": [
+     "Charles de Lint"
+    ],
+    "edition_count": 6,
+    "first_publish_year": 1988,
+    "title": "Greenmantle",
+    "title_suggest": "Greenmantle",
+    "ratings_average": 3.5
+   },
+   {
+    "author_name": [
+     "John Buchan",
+     "Yordi Abreu"
+    ],
+    "edition_count": 8,
+    "first_publish_year": 2014,
+    "title": "Greenmantle",
+    "title_suggest": "Greenmantle"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 9,
+    "first_publish_year": 2010,
+    "title": "The 39 Steps / Greenmantle / Mr. Standfast",
+    "title_suggest": "The 39 Steps / Greenmantle / Mr. Standfast",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Jocelyne Villeneuve"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 1988,
+    "title": "Greenmantle",
+    "title_suggest": "Greenmantle"
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 9,
+    "first_publish_year": 1988,
+    "title": "The Thirty-Nine Steps / Greenmantle",
+    "title_suggest": "The Thirty-Nine Steps / Greenmantle",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "John Buchan"
+    ],
+    "edition_count": 11,
+    "first_publish_year": 1930,
+    "title": "The four adventures of Richard Hannay (The Thirty-Nine Steps / Greenmantle / Mr. Standfast / The Three Hostages)",
+    "title_suggest": "The four adventures of Richard Hannay (The Thirty-Nine Steps / Greenmantle / Mr. Standfast / The Three Hostages)",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Margaret FitzHerbert"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1983,
+    "title": "The man who was Greenmantle",
+    "title_suggest": "The man who was Greenmantle"
+   }
+  ]
+ },
+ "wayofallflesh": {
+  "docs": [
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 132,
+    "first_publish_year": 1900,
+    "title": "The way of all flesh",
+    "title_suggest": "The way of all flesh",
+    "ratings_average": 3.5714285
+   },
+   {
+    "author_name": [
+     "Ambrose Parry"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2018,
+    "title": "The way of all flesh",
+    "title_suggest": "The way of all flesh",
+    "ratings_average": 3.0
+   },
+   {
+    "author_name": [
+     "Samuel Butler",
+     "Antony Ferguson"
+    ],
+    "edition_count": 21,
+    "first_publish_year": 1971,
+    "title": "The Way of All Flesh",
+    "title_suggest": "The Way of All Flesh"
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 18,
+    "first_publish_year": 1916,
+    "title": "The Way of All Flesh",
+    "title_suggest": "The Way of All Flesh"
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 13,
+    "first_publish_year": 1916,
+    "title": "The Way of All Flesh",
+    "title_suggest": "The Way of All Flesh"
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 10,
+    "first_publish_year": 1936,
+    "title": "The way of all flesh,",
+    "title_suggest": "The way of all flesh,"
+   },
+   {
+    "author_name": [
+     "G. D. H. (George Douglas Howard) Cole"
+    ],
+    "edition_count": 8,
+    "first_publish_year": 1947,
+    "title": "Samuel Butler and The way of all flesh",
+    "title_suggest": "Samuel Butler and The way of all flesh"
+   },
+   {
+    "author_name": [
+     "Roger E. Parsell"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1974,
+    "title": "The Way of All Flesh",
+    "title_suggest": "The Way of All Flesh"
+   }
+  ]
+ },
+ "kailungsgoldenhours": {
+  "docs": [
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 95,
+    "first_publish_year": 1922,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Ernest Smith"
+    ],
+    "edition_count": 16,
+    "first_publish_year": 2015,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours"
+   },
+   {
+    "author_name": [
+     "Ernest Bramah Smith"
+    ],
+    "edition_count": 13,
+    "first_publish_year": 2016,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours"
+   },
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 7,
+    "first_publish_year": 2014,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 6,
+    "first_publish_year": 2011,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 6,
+    "first_publish_year": 2014,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2020,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours"
+   },
+   {
+    "author_name": [
+     "Ernest Bramah"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2008,
+    "title": "Kai Lung's Golden Hours",
+    "title_suggest": "Kai Lung's Golden Hours"
+   }
+  ]
+ },
+ "artofthepossible": {
+  "docs": [
+   {
+    "author_name": [
+     "Adrienne Rich"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 2001,
+    "title": "Arts of the Possible",
+    "title_suggest": "Arts of the Possible",
+    "ratings_average": 4.0
+   },
+   {
+    "author_name": [
+     "Alexandra Stoddard"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 1995,
+    "title": "The art of the possible",
+    "title_suggest": "The art of the possible"
+   },
+   {
+    "author_name": [
+     "Dawna Markova"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1991,
+    "title": "The art of the possible",
+    "title_suggest": "The art of the possible"
+   },
+   {
+    "author_name": [
+     "Kevern J. Verney"
+    ],
+    "edition_count": 6,
+    "first_publish_year": 2013,
+    "title": "Art of the Possible",
+    "title_suggest": "Art of the Possible"
+   },
+   {
+    "author_name": [
+     "Amanda Sussman"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2007,
+    "title": "The art of the possible",
+    "title_suggest": "The art of the possible"
+   },
+   {
+    "author_name": [
+     "Kenneth Koch"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2004,
+    "title": "The Art of the Possible!",
+    "title_suggest": "The Art of the Possible!"
+   },
+   {
+    "author_name": [
+     "Butler, Richard Austen Butler Baron",
+     "R. A. Butler",
+     "Richard Austen Butler Of Saffron Walden"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 1971,
+    "title": "The art of the possible",
+    "title_suggest": "The art of the possible"
+   },
+   {
+    "author_name": [
+     "Daniel M. Jacobs"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 2010,
+    "title": "The art of the possible",
+    "title_suggest": "The art of the possible"
+   }
+  ]
+ },
+ "cryfreedom": {
+  "docs": [
+   {
+    "author_name": [
+     "James M. McPherson"
+    ],
+    "edition_count": 16,
+    "first_publish_year": 1988,
+    "title": "Battle Cry of Freedom Part 1 of 3",
+    "title_suggest": "Battle Cry of Freedom Part 1 of 3",
+    "ratings_average": 4.571429
+   },
+   {
+    "author_name": [
+     "John Briley"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1987,
+    "title": "Cry freedom",
+    "title_suggest": "Cry freedom"
+   },
+   {
+    "author_name": [
+     "John Briley"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 1987,
+    "title": "Cry Freedom",
+    "title_suggest": "Cry Freedom",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Ian Talbot"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 1996,
+    "title": "Freedom's cry",
+    "title_suggest": "Freedom's cry"
+   },
+   {
+    "author_name": [
+     "John Briley"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1987,
+    "title": "Cry Freedom",
+    "title_suggest": "Cry Freedom"
+   },
+   {
+    "author_name": [
+     "Gretchen Woelfle"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2016,
+    "title": "Answering the cry for freedom",
+    "title_suggest": "Answering the cry for freedom"
+   },
+   {
+    "author_name": [
+     "John Briley"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1987,
+    "title": "Cry freedom",
+    "title_suggest": "Cry freedom"
+   },
+   {
+    "author_name": [
+     "Lida Vashchenko"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1987,
+    "title": "Cry freedom",
+    "title_suggest": "Cry freedom"
+   }
+  ]
+ },
+ "argumentsfordemocracy": {
+  "docs": [
+   {
+    "author_name": [
+     "Tony Benn"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1981,
+    "title": "Arguments for democracy",
+    "title_suggest": "Arguments for democracy"
+   },
+   {
+    "edition_count": 1,
+    "title": "Arguments for Democracy by Tony Benn (1981-09-03)",
+    "title_suggest": "Arguments for Democracy by Tony Benn (1981-09-03)"
+   },
+   {
+    "author_name": [
+     "Anonym"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 2017,
+    "title": "Swiss Popular Initiative Against Mass Immigration. Arguments for Direct Democracy",
+    "title_suggest": "Swiss Popular Initiative Against Mass Immigration. Arguments for Direct Democracy"
+   }
+  ]
+ },
+ "dontgonearthewater": {
+  "docs": [
+   {
+    "author_name": [
+     "William Brinkley"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 1956,
+    "title": "Don't go near the water",
+    "title_suggest": "Don't go near the water"
+   },
+   {
+    "author_name": [
+     "William Brinkley"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 1956,
+    "title": "Don't go near the water",
+    "title_suggest": "Don't go near the water"
+   },
+   {
+    "author_name": [
+     "Carolyn Sloan"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1988,
+    "title": "Don't go near the water",
+    "title_suggest": "Don't go near the water"
+   },
+   {
+    "author_name": [
+     "Veronika Martenova Charles"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2002,
+    "title": "Don't Go Near the Water! (Easy-to-Read Spooky Tales)",
+    "title_suggest": "Don't Go Near the Water! (Easy-to-Read Spooky Tales)",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Natasha Deen"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 2023,
+    "title": "Don't Go near the Water!",
+    "title_suggest": "Don't Go near the Water!"
+   },
+   {
+    "author_name": [
+     "random house"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1956,
+    "title": "don't go near the water",
+    "title_suggest": "don't go near the water"
+   },
+   {
+    "author_name": [
+     "william brinkley"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 1957,
+    "title": "don't go near the water",
+    "title_suggest": "don't go near the water"
+   },
+   {
+    "author_name": [
+     "Mervyn Eggleston"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 2010,
+    "title": "Don't go near the water",
+    "title_suggest": "Don't go near the water"
+   }
+  ]
+ },
+ "misshargreaves": {
+  "docs": [
+   {
+    "author_name": [
+     "Frank Baker"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 2009,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   },
+   {
+    "author_name": [
+     "Frank Baker"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 2009,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   },
+   {
+    "author_name": [
+     "Baker, Frank"
+    ],
+    "edition_count": 4,
+    "first_publish_year": 1940,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   },
+   {
+    "author_name": [
+     "Frank Baker"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 2010,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   },
+   {
+    "author_name": [
+     "Frank Baker"
+    ],
+    "edition_count": 2,
+    "first_publish_year": 1950,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   },
+   {
+    "author_name": [
+     "Rachel Malik"
+    ],
+    "edition_count": 3,
+    "first_publish_year": 2017,
+    "title": "Miss Boston and Miss Hargreaves",
+    "title_suggest": "Miss Boston and Miss Hargreaves",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Frank & Glen Cavalieor (introduction) Baker"
+    ],
+    "edition_count": 1,
+    "first_publish_year": 2004,
+    "title": "MISS HARGREAVES",
+    "title_suggest": "MISS HARGREAVES"
+   },
+   {
+    "edition_count": 1,
+    "title": "Miss Hargreaves",
+    "title_suggest": "Miss Hargreaves"
+   }
+  ]
+ },
+ "erewhon": {
+  "docs": [
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 338,
+    "first_publish_year": 1700,
+    "title": "Erewhon",
+    "title_suggest": "Erewhon",
+    "ratings_average": 2.6
+   },
+   {
+    "author_name": [
+     "Samuel Butler",
+     "Samuel Butler"
+    ],
+    "edition_count": 48,
+    "first_publish_year": 1927,
+    "title": "Erewhon / Erewhon revisited",
+    "title_suggest": "Erewhon / Erewhon revisited",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Samuel Butler",
+     "Samuel Butler"
+    ],
+    "edition_count": 118,
+    "first_publish_year": 1901,
+    "title": "Erewhon Revisited",
+    "title_suggest": "Erewhon Revisited",
+    "ratings_average": 0.0
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 11,
+    "first_publish_year": 2017,
+    "title": "Erewhon",
+    "title_suggest": "Erewhon"
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 11,
+    "first_publish_year": 2011,
+    "title": "Erewhon",
+    "title_suggest": "Erewhon"
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 9,
+    "first_publish_year": 2013,
+    "title": "Erewhon",
+    "title_suggest": "Erewhon"
+   },
+   {
+    "author_name": [
+     "Henry Festing Jones"
+    ],
+    "edition_count": 20,
+    "first_publish_year": 1919,
+    "title": "Samuel Butler, author of Erewhon (1835-1902) a memoir",
+    "title_suggest": "Samuel Butler, author of Erewhon (1835-1902) a memoir",
+    "ratings_average": 3.5
+   },
+   {
+    "author_name": [
+     "Samuel Butler"
+    ],
+    "edition_count": 6,
+    "first_publish_year": 2010,
+    "title": "Erewhon",
+    "title_suggest": "Erewhon"
+   }
+  ]
+ }
+}

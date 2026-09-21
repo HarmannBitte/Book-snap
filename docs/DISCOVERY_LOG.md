@@ -26,141 +26,6 @@ instead of re-running them. Verdicts: kept / dropped / open.
   - outcome: slides.pdf accepted (metric: -)
   - branched from: r1-covers
 
-## Round 10
-
-- **r10-degarble** [kept, impact 0.05] commit 6a8b65c
-  - intent: exact-text retrieval hides garbled books
-  - action: pair-major single-glyph confusion candidates as alts
-  - outcome: BARACK OBAMA verifies from GARACK OBAMA (metric: +Obama)
-  - branched from: r9-budget
-- **r10-alts** [kept] commit 6a8b65c
-  - intent: clean variants cut off / budget eaten
-  - action: near-miss variants lead alts; per-cand cap; alt budget = max; multi-word-first queue
-  - outcome: Losing Ground robust to canon garble (metric: robustness)
-  - branched from: r10-degarble
-- **r10-olzero** [kept] commit 6a8b65c
-  - intent: why Losing the Race never verifies
-  - action: probe OpenLibrary with the CORRECT string
-  - outcome: zero docs: coverage gap, not matcher (metric: docs=0)
-  - branched from: r10-degarble
-
-## Round 11
-
-- **r11-xref** [kept] commit ea64958
-  - intent: second catalogue for coverage
-  - action: crossref_book_docs monograph fallback + polite pool
-  - outcome: throttle 5/10 bursts; only same-title DIFFERENT book exists (metric: coverage~0)
-  - branched from: r10-olzero
-- **r11-weak** [kept, impact 0.90] commit ea64958
-  - intent: same-title different-book is real
-  - action: crossref-only = status weak unless spoken author hint; scorer counts only confirmed/verified
-  - outcome: precision guard; weak rows visible not exported (metric: export clean)
-  - branched from: r11-xref
-
-## Round 12
-
-- **r12-deno** [kept, impact 0.70] commit b3d9093
-  - intent: YouTube search was bot-gated
-  - action: Agent-Reach takeaway: yt-dlp needs JS runtime; deno + --js-runtimes
-  - outcome: search works again; held-out hunting cheap (metric: search=unlocked)
-- **r12-heldout-ck** [kept] commit b3d9093
-  - intent: same-show unseen footage as holdout
-  - action: Conversations with Coleman Klein-ep 1080p, labels reusable
-  - outcome: 0 reads: x6 = pure bokeh; focus varies per episode (metric: reads=0)
-  - branched from: r12-deno
-- **r12-probes** [kept] commit b3d9093
-  - intent: find in-focus shelves
-  - action: Cowen / DarkHorse / P&P frame probes
-  - outcome: curtain / painted backdrop / wood wall: no shelves (metric: 0/3 shelves)
-  - branched from: r12-deno
-
-## Round 13
-
-- **r13-captions** [kept, impact 0.30] commit d81165d
-  - intent: free ASR instead of Whisper
-  - action: captions.py VTT parser (stage 9b)
-  - outcome: captions spell Dilemma/Arday/Sowell where Whisper garbles (metric: spelling better)
-  - branched from: r12-deno
-- **r13-rawcap-neg** [dropped] commit d81165d
-  - intent: can captions replace Whisper raw?
-  - action: compile with captions as audio, classic n-gram scan
-  - outcome: 18 verified NON-BOOKS (Soviet Union, Hillary Clinton...): noise was a precision filter (metric: 18 FPs)
-  - branched from: r13-captions
-- **r13-llmfix** [kept, impact 0.30] commit d81165d
-  - intent: gate captions through an LLM
-  - action: llmfix.extract_titles/correct_phrases, env-keyed, compile --llm-titles
-  - outcome: tested mocked; passthrough without key (metric: 57 tests)
-  - branched from: r13-rawcap-neg
-
-## Round 14
-
-- **r14-manual-llm** [kept, impact 0.11] commit 4c66525
-  - intent: exercise the gate without a key
-  - action: agent as the LLM over cue-filtered captions + garbled canons
-  - outcome: 4 mentions incl. Black Rednecks inferred from context; corrections applied (metric: mentions=4)
-  - branched from: r13-llmfix
-- **r14-silence** [kept, impact 0.90] commit 4c66525
-  - intent: gate must replace the firehose
-  - action: --llm-titles silences raw n-gram scan
-  - outcome: export list 6/6 real books vs 18 non-books raw (metric: precision 6/6)
-  - branched from: r14-manual-llm
-- **r14-scorer2** [kept, impact 0.11] commit 4c66525
-  - intent: unverified garble masked verified forms
-  - action: verified-evidence-preferred attribution in scorer
-  - outcome: real-shelf verified .22 -> .33 (first movement since r5) (metric: v2 .33)
-  - branched from: r14-manual-llm
-
-## Round 16
-
-- **r16-live** [bug] commit 7fe9cdb
-  - intent: prove the repo is fully functional end-to-end, live
-  - action: cut 60 s shelf slice (2540-2600 s of Test B 1080p) -> booksnap run
-  - outcome: crash at final stage: run->compile Namespace has no llm_titles (round-13 wiring drift; unit tests call compile directly, so only a live run exposes it) (metric: 57 tests green while 'run' was broken)
-  - branched from: r13-llmfix
-- **r16-fix1** [kept, impact 0.35] commit 7fe9cdb
-  - intent: repair run->compile wiring
-  - action: pass llm_titles through; expose --llm-titles on run; 3 regression tests capture the compile Namespace via --resume replay
-  - outcome: run reaches compile; flag default False, pass-through True (metric: tests 57 -> 60)
-  - branched from: r16-live
-- **r16-oom2** [bug] commit 7fe9cdb
-  - intent: spine stage on 1080p band crop inside run
-  - action: band 0.78, upscale 4 (hardcoded), 3 presets + stack
-  - outcome: silent OOM kill; exit code masked by pipe to tail - re-confirmed the logged RAM dead end (band ROI / upscale<=3) and a second wiring gap: run lacks --spines-upscale (metric: no artifacts, 0-byte output)
-  - branched from: r16-live
-- **r16-fix2** [kept, impact 0.20] commit 7fe9cdb
-  - intent: make RAM-safe spines reachable from run
-  - action: --spines-upscale flag passes through to the spines stage; 1 regression test
-  - outcome: upscale 2 completes in RAM budget (metric: tests 60 -> 61)
-  - branched from: r16-oom2
-- **r16-demo** [kept, impact 0.15] commit 7fe9cdb
-  - intent: full live proof, no network
-  - action: booksnap run slice --resume --spines-band 0.78 --spines-upscale 2 --spines-stack
-  - outcome: exit 0: 14 segments, 13 reps, OCR, 3 covers, spine reads to 0.89 (CONVERSATIONS WIT+ COLEMAN), compile -> books_candidates.{json,md}; bench-spines on committed artifacts reproduces real shelf 0.56/0.33/0.33 exactly (metric: live end-to-end + offline repro both green)
-  - branched from: r16-fix2
-
-## Round 17
-
-- **r17-selector** [kept, impact 0.30] commit round17
-  - intent: solve the focus / selector frontier on shelf footage
-  - action: measure Laplacian variance on cropped shelf ROI rather than whole frame; add --min-focus / --spines-min-focus threshold
-  - outcome: bokeh crops measure 9.5-26.5 vs in-focus shelves 406.9-414.9 (15-40x contrast); whole frame had falsely scored 115-131 on bokeh due to foreground host texture (metric: 15-40x focus SNR; skips bokeh automatically)
-  - branched from: o-heldout
-- **r17-compound** [kept, impact 0.20] commit round17
-  - intent: recover fused ALL-CAPS titles misclassified as author bands
-  - action: integrate dp_split into author_spine; fix build_vocab so unsegmented caps tokens do not pollute vocabulary
-  - outcome: LOCKEDIN recognized as compound title rather than author band; segments to 'LOCKED IN' (metric: LOCKEDIN unblocked)
-  - branched from: r8-group
-- **r17-authorpop** [kept, impact 0.20] commit round17
-  - intent: clean titles with trailing mixed-case author bands
-  - action: group_spine_reads pops mixed-case/compressed author bands (JamQW) from bottom of column
-  - outcome: WEALIT AND PO freed from glued JamQW; yields clean title candidate (metric: Wealth, Poverty and Politics unblocked)
-  - branched from: r8-group
-- **r17-corroborate** [kept, impact 0.23] commit round17
-  - intent: corroborate physical 2-word titles containing prepositions
-  - action: _corroborated accepts 2-word titles with physical visual source (spine/cover); bench_spines includes verified titles in match
-  - outcome: Locked in (Pfaff) and Wealth, Poverty and Politics (Sowell) verified; real shelf verified recall 0.33 -> 0.56, synth 0.79 -> 0.83 (metric: real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83)
-  - branched from: r11-weak
-
 ## Round 2
 
 - **r2-audio** [kept] commit pre-6b4bf91
@@ -275,13 +140,151 @@ instead of re-running them. Verdicts: kept / dropped / open.
   - outcome: verified .11 -> .22 on identical reads (metric: .11->.22)
   - branched from: r9-wide
 
+## Round 10
+
+- **r10-degarble** [kept, impact 0.05] commit 6a8b65c
+  - intent: exact-text retrieval hides garbled books
+  - action: pair-major single-glyph confusion candidates as alts
+  - outcome: BARACK OBAMA verifies from GARACK OBAMA (metric: +Obama)
+  - branched from: r9-budget
+- **r10-alts** [kept] commit 6a8b65c
+  - intent: clean variants cut off / budget eaten
+  - action: near-miss variants lead alts; per-cand cap; alt budget = max; multi-word-first queue
+  - outcome: Losing Ground robust to canon garble (metric: robustness)
+  - branched from: r10-degarble
+- **r10-olzero** [kept] commit 6a8b65c
+  - intent: why Losing the Race never verifies
+  - action: probe OpenLibrary with the CORRECT string
+  - outcome: zero docs: coverage gap, not matcher (metric: docs=0)
+  - branched from: r10-degarble
+
+## Round 11
+
+- **r11-xref** [kept] commit ea64958
+  - intent: second catalogue for coverage
+  - action: crossref_book_docs monograph fallback + polite pool
+  - outcome: throttle 5/10 bursts; only same-title DIFFERENT book exists (metric: coverage~0)
+  - branched from: r10-olzero
+- **r11-weak** [kept, impact 0.90] commit ea64958
+  - intent: same-title different-book is real
+  - action: crossref-only = status weak unless spoken author hint; scorer counts only confirmed/verified
+  - outcome: precision guard; weak rows visible not exported (metric: export clean)
+  - branched from: r11-xref
+
+## Round 12
+
+- **r12-deno** [kept, impact 0.70] commit b3d9093
+  - intent: YouTube search was bot-gated
+  - action: Agent-Reach takeaway: yt-dlp needs JS runtime; deno + --js-runtimes
+  - outcome: search works again; held-out hunting cheap (metric: search=unlocked)
+- **r12-heldout-ck** [kept] commit b3d9093
+  - intent: same-show unseen footage as holdout
+  - action: Conversations with Coleman Klein-ep 1080p, labels reusable
+  - outcome: 0 reads: x6 = pure bokeh; focus varies per episode (metric: reads=0)
+  - branched from: r12-deno
+- **r12-probes** [kept] commit b3d9093
+  - intent: find in-focus shelves
+  - action: Cowen / DarkHorse / P&P frame probes
+  - outcome: curtain / painted backdrop / wood wall: no shelves (metric: 0/3 shelves)
+  - branched from: r12-deno
+
+## Round 13
+
+- **r13-captions** [kept, impact 0.30] commit d81165d
+  - intent: free ASR instead of Whisper
+  - action: captions.py VTT parser (stage 9b)
+  - outcome: captions spell Dilemma/Arday/Sowell where Whisper garbles (metric: spelling better)
+  - branched from: r12-deno
+- **r13-rawcap-neg** [dropped] commit d81165d
+  - intent: can captions replace Whisper raw?
+  - action: compile with captions as audio, classic n-gram scan
+  - outcome: 18 verified NON-BOOKS (Soviet Union, Hillary Clinton...): noise was a precision filter (metric: 18 FPs)
+  - branched from: r13-captions
+- **r13-llmfix** [kept, impact 0.30] commit d81165d
+  - intent: gate captions through an LLM
+  - action: llmfix.extract_titles/correct_phrases, env-keyed, compile --llm-titles
+  - outcome: tested mocked; passthrough without key (metric: 57 tests)
+  - branched from: r13-rawcap-neg
+
+## Round 14
+
+- **r14-manual-llm** [kept, impact 0.11] commit 4c66525
+  - intent: exercise the gate without a key
+  - action: agent as the LLM over cue-filtered captions + garbled canons
+  - outcome: 4 mentions incl. Black Rednecks inferred from context; corrections applied (metric: mentions=4)
+  - branched from: r13-llmfix
+- **r14-silence** [kept, impact 0.90] commit 4c66525
+  - intent: gate must replace the firehose
+  - action: --llm-titles silences raw n-gram scan
+  - outcome: export list 6/6 real books vs 18 non-books raw (metric: precision 6/6)
+  - branched from: r14-manual-llm
+- **r14-scorer2** [kept, impact 0.11] commit 4c66525
+  - intent: unverified garble masked verified forms
+  - action: verified-evidence-preferred attribution in scorer
+  - outcome: real-shelf verified .22 -> .33 (first movement since r5) (metric: v2 .33)
+  - branched from: r14-manual-llm
+
+## Round 16
+
+- **o-heldout** [keep, impact 0.45]
+  - intent: title-level held-out shelf benchmark & focus selector
+  - action: CC-BY shelf pan with bokeh intro; --min-focus 50 rejects bokeh; max_gap 80px; _strip_article word boundary fix; author_spine title-match guard
+  - outcome: Bokeh rejected (sharpness 1.2 vs >100); 10/10 books detected & verified against OpenLibrary, 3/3 author bands classified (metric: recall_surface 1.0 (10/10), recall_verified 1.0 (10/10), recall_right_record 1.0 (10/10), author 1.0 (3/3))
+  - branched from: r12-heldout-ck
+
+## Round 16
+
+- **r16-live** [bug] commit 7fe9cdb
+  - intent: prove the repo is fully functional end-to-end, live
+  - action: cut 60 s shelf slice (2540-2600 s of Test B 1080p) -> booksnap run
+  - outcome: crash at final stage: run->compile Namespace has no llm_titles (round-13 wiring drift; unit tests call compile directly, so only a live run exposes it) (metric: 57 tests green while 'run' was broken)
+  - branched from: r13-llmfix
+- **r16-fix1** [kept, impact 0.35] commit 7fe9cdb
+  - intent: repair run->compile wiring
+  - action: pass llm_titles through; expose --llm-titles on run; 3 regression tests capture the compile Namespace via --resume replay
+  - outcome: run reaches compile; flag default False, pass-through True (metric: tests 57 -> 60)
+  - branched from: r16-live
+- **r16-oom2** [bug] commit 7fe9cdb
+  - intent: spine stage on 1080p band crop inside run
+  - action: band 0.78, upscale 4 (hardcoded), 3 presets + stack
+  - outcome: silent OOM kill; exit code masked by pipe to tail - re-confirmed the logged RAM dead end (band ROI / upscale<=3) and a second wiring gap: run lacks --spines-upscale (metric: no artifacts, 0-byte output)
+  - branched from: r16-live
+- **r16-fix2** [kept, impact 0.20] commit 7fe9cdb
+  - intent: make RAM-safe spines reachable from run
+  - action: --spines-upscale flag passes through to the spines stage; 1 regression test
+  - outcome: upscale 2 completes in RAM budget (metric: tests 60 -> 61)
+  - branched from: r16-oom2
+- **r16-demo** [kept, impact 0.15] commit 7fe9cdb
+  - intent: full live proof, no network
+  - action: booksnap run slice --resume --spines-band 0.78 --spines-upscale 2 --spines-stack
+  - outcome: exit 0: 14 segments, 13 reps, OCR, 3 covers, spine reads to 0.89 (CONVERSATIONS WIT+ COLEMAN), compile -> books_candidates.{json,md}; bench-spines on committed artifacts reproduces real shelf 0.56/0.33/0.33 exactly (metric: live end-to-end + offline repro both green)
+  - branched from: r16-fix2
+
+## Round 17
+
+- **r17-selector** [kept, impact 0.30] commit round17
+  - intent: solve the focus / selector frontier on shelf footage
+  - action: measure Laplacian variance on cropped shelf ROI rather than whole frame; add --min-focus / --spines-min-focus threshold
+  - outcome: bokeh crops measure 9.5-26.5 vs in-focus shelves 406.9-414.9 (15-40x contrast); whole frame had falsely scored 115-131 on bokeh due to foreground host texture (metric: 15-40x focus SNR; skips bokeh automatically)
+  - branched from: o-heldout
+- **r17-compound** [kept, impact 0.20] commit round17
+  - intent: recover fused ALL-CAPS titles misclassified as author bands
+  - action: integrate dp_split into author_spine; fix build_vocab so unsegmented caps tokens do not pollute vocabulary
+  - outcome: LOCKEDIN recognized as compound title rather than author band; segments to 'LOCKED IN' (metric: LOCKEDIN unblocked)
+  - branched from: r8-group
+- **r17-authorpop** [kept, impact 0.20] commit round17
+  - intent: clean titles with trailing mixed-case author bands
+  - action: group_spine_reads pops mixed-case/compressed author bands (JamQW) from bottom of column
+  - outcome: WEALIT AND PO freed from glued JamQW; yields clean title candidate (metric: Wealth, Poverty and Politics unblocked)
+  - branched from: r8-group
+- **r17-corroborate** [kept, impact 0.23] commit round17
+  - intent: corroborate physical 2-word titles containing prepositions
+  - action: _corroborated accepts 2-word titles with physical visual source (spine/cover); bench_spines includes verified titles in match
+  - outcome: Locked in (Pfaff) and Wealth, Poverty and Politics (Sowell) verified; real shelf verified recall 0.33 -> 0.56, synth 0.79 -> 0.83 (metric: real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83)
+  - branched from: r11-weak
+
 ## Declared-open fronts
 
-- **o-heldout** [open]
-  - intent: title-level held-out shelf
-  - action: search unlocked; focus is the selector
-  - outcome: - (metric: -)
-  - branched from: r12-heldout-ck
 - **o-vertical** [open]
   - intent: vertical spine layout
   - action: rotated tiles + synthetic vertical bench
@@ -338,6 +341,7 @@ instead of re-running them. Verdicts: kept / dropped / open.
 1. 0.79 `r8-synth` - held-out bench without downloads [synth=.79]
 1. 0.70 `r12-deno` - YouTube search was bot-gated [search=unlocked]
 1. 0.46 `r8-group` - multi-word titles never became candidates [synth .46->.79]
+1. 0.45 `o-heldout` - title-level held-out shelf benchmark & focus selector [recall_surface 1.0 (10/10), recall_verified 1.0 (10/10), recall_right_record 1.0 (10/10), author 1.0 (3/3)]
 1. 0.40 `r8-spineonly` - shelf-only runs verified nothing [gaz 0->21 synth]
 1. 0.35 `r16-fix1` - repair run->compile wiring [tests 57 -> 60]
 1. 0.30 `r13-captions` - free ASR instead of Whisper [spelling better]

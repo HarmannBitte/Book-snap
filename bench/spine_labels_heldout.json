@@ -1,0 +1,22 @@
+{
+  "video": "Wikimedia Commons CC-BY-SA Bookshelf of orange Penguin books",
+  "clip": "heldout_shelf_pan.mp4 (top row pan t=3-9s, bokeh intro t=0-3s)",
+  "method": "human visual read of the 1080p pan frames and high-res source photo",
+  "books": [
+    {"title": "Huntingtower", "author": "John Buchan", "confident": true},
+    {"title": "Greenmantle", "author": "John Buchan", "confident": true},
+    {"title": "The Way of All Flesh", "author": "Samuel Butler", "confident": true},
+    {"title": "Kai Lung's Golden Hours", "author": "Ernest Bramah", "confident": true},
+    {"title": "The Art of the Possible", "author": "Kevern J. Verney", "confident": true},
+    {"title": "Cry Freedom", "author": "John Briley", "confident": true},
+    {"title": "Arguments for Democracy", "author": "Tony Benn", "confident": true},
+    {"title": "Don't Go Near the Water", "author": "William Brinkley", "confident": true},
+    {"title": "Miss Hargreaves", "author": "Frank Baker", "confident": true},
+    {"title": "Erewhon", "author": "Samuel Butler", "confident": true}
+  ],
+  "author_bands": [
+    {"name": "John Buchan", "confident": true},
+    {"name": "Anthony Burgess", "confident": true},
+    {"name": "Tony Benn", "confident": true}
+  ]
+}
