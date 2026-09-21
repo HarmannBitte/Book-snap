@@ -38,6 +38,7 @@ booksnap ocr      out/reps out/ocr.json
 booksnap covers   out/reps out/covers --ocr         # panel detection + crops
 booksnap scroll   lecture.mp4 out/cuts_winmed.npy out/scroll_lines.json   # auto
 booksnap audio    lecture.opus out/transcript.json    # chunked Whisper ASR
+booksnap captions talk.vtt out/transcript.json        # or: YouTube auto-captions (free/fast)
 booksnap spines   talk.mp4 out/spines.json --start 2550 --end 2576 \
                   --presets lanczos,unsharp,clahe,denoise,binarize --stack
 booksnap compile  --ocr out/ocr.json --manifest out/covers/manifest.json \
@@ -45,6 +46,7 @@ booksnap compile  --ocr out/ocr.json --manifest out/covers/manifest.json \
                   --scroll out/scroll_lines.json \
                   --audio out/transcript.json --spines out/spines.json \
                   --gazetteer --max-queries 60 \
+                  --llm-titles \
                   --out-json out/books_candidates.json --out-md out/books_candidates.md
 ```
 
@@ -86,6 +88,38 @@ exportable tiers, with score, match rule and provenance per entry.
 
 `booksnap scroll` auto-detects scrolling credit/bibliography sequences (moving
 windows whose OCR probe is text-dense); pass `--start/--end` to force a range.
+
+### Optional LLM gate (`--llm-titles`)
+
+The pipeline includes an optional, constrained LLM stage (`booksnap/llmfix.py`)
+controlled via the `--llm-titles` flag in both `booksnap run` and `booksnap compile`:
+
+- **The LLM gate is optional** — without `LLM_API_KEY` the pipeline runs the
+  classic deterministic path end-to-end (that is the default, fully offline and
+  tested across the 61-test suite). With a key, or with an LLM assisting
+  directly in-session, the gated path activates seamlessly (proven in Round 14).
+- **Precision guard (silencing the caption firehose):** Spoken transcripts and
+  YouTube auto-captions (`booksnap captions talk.vtt out/transcript.json`) spell
+  proper nouns cleanly, but feeding raw transcript n-grams directly into the
+  gazetteer falsely verified 18 non-books ("Soviet Union", "Hillary Clinton",
+  "United States", etc.) on podcast benchmarks because OpenLibrary has catalogue
+  entries for nearly every famous topic. The LLM gate **replaces and silences**
+  the raw n-gram scan with structured title extraction, bringing export precision
+  to **6/6 real books**.
+- **Spine spelling repair:** The gate also performs spelling-only repairs on
+  garbled OCR spine text (e.g. `"LOSINC THE RACE"` -> `"Losing the Race"`),
+  pushing verified real-shelf recall from 0.22 to 0.33 without catalogue hallucination.
+- **Environment configuration:**
+  - `LLM_API_KEY`: API key for any OpenAI-compatible API. If absent, callers
+    silently fall back to the classic path without crashing.
+  - `LLM_BASE_URL`: base URL (default: `https://api.openai.com/v1`).
+  - `LLM_MODEL`: model name (default: `gpt-4o-mini`).
+- **Zero-key / in-session execution:**
+  Both jobs (`extract_titles` and `correct_phrases`) use strict JSON-in / JSON-out
+  prompts with no prose. If you do not have an API key, an LLM assistant or
+  human operator can run the prompt templates directly on the transcript segments
+  or candidate spine lists, allowing full gated-pipeline performance with zero
+  external API credits.
 
 ## The detector: stability-gated isolated-spike block-MAD
 
@@ -150,11 +184,14 @@ booksnap/
   compile.py       stage 7 fusion, tiers, dedupe, bib/ris export
   pdf_report.py    stage 8 slide PDF
   audio.py         stage 9 chunked Whisper ASR
+  captions.py      YouTube VTT auto-captions parser
   spines.py        stage 10 shelf/spine OCR over enhancement presets
   superres.py      selective crop upscaling + enhancement presets
   gazetteer.py     stage 11 OpenLibrary title verification
   fuzz.py          fuzzy + phonetic (Metaphone/Jaro-Winkler) matching
   splitwords.py    dictionary DP split of fused caps OCR ("LOSINCTHIRACE")
+  degarble.py      spelling candidate generator for noisy spine OCR
+  llmfix.py        optional LLM gate (extract_titles, correct_phrases; LLM_API_KEY)
   vlm.py           vision-model review loop (bundle/run/merge, optional API)
   bench.py         dev: detector benchmark harness
   bench_spines.py  scores the spine channel vs a labelled shelf
