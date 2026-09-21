@@ -499,16 +499,21 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         # Cue-detected titles ("...his book Facing Reality...") are the highest
         # quality spoken evidence, so they lead the spoken queue ahead of the
         # frequency-sorted n-gram scan.
+        llm_gate = False
         if llm_titles:  # captions/ASR through the constrained LLM gate
             from . import llmfix
             got = llmfix.extract_titles(audio)
             if got:
                 audio_cands = [dict(phrase=g["title"], t=g.get("t") or 0)
                                for g in got]
+                llm_gate = True  # the gate REPLACES the n-gram firehose:
+                # raw title-case n-grams over clean captions verify Soviet
+                # Unions and Hillary Clintons (round 13 measurement)
         cued = [dict(phrase=a["phrase"], freq=0, cued=True) for a in audio_cands]
         seen_cued = {c["phrase"].lower() for c in cued}
-        spoken = cued + [c for c in title_candidates(audio)
-                         if c["phrase"].lower() not in seen_cued]
+        spoken = cued if llm_gate else cued + [
+            c for c in title_candidates(audio)
+            if c["phrase"].lower() not in seen_cued]
         # Visual evidence is stronger than a spoken n-gram, but a wall of spine
         # OCR must not starve the audio channel: reserve 40 % of the query
         # budget for spoken candidates.

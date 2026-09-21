@@ -398,3 +398,28 @@ Verdict: Whisper stays the default (works on any local file, no platform
 tie-in); captions + LLM gate are the YouTube-side upgrade once a key exists.
 Bench numbers unchanged (v2 0.56/0.22/0.22, synth 0.79) - the LLM stage is
 off by default and never overrides the gazetteer.
+
+## Round 14 - the LLM gate exercised by an actual LLM (the agent) (2026-09-21)
+
+Ran the round-13 gate manually: the agent acted as llmfix over cue-filtered
+caption segments (36 of 2222) and as correct_phrases over garbled spine
+canons. Extraction: The End of Race Politics, Facing Reality, Ethnic
+Dilemma, Black Rednecks and White Liberals - the last inferred from
+"Thomas Sowell's book on that", a title never spoken verbatim; people,
+journals and essays excluded.
+
+Architecture fix the run exposed: with --llm-titles the raw title-case n-gram
+scan must go SILENT (the gate replaces the firehose, else captions still
+verify Soviet Unions alongside it). And the bench scorer now attributes
+verified recall to verified evidence (a higher-scoring unverified garble like
+LOSINCTHE RACE no longer masks a verified form of the same title).
+
+Result on the real shelf: verified recall 0.22 -> 0.33 (Sapiens, Losing
+Ground, Losing the Race) - first movement since round 5. Losing the Race
+verifies via the LLM-corrected spelling against McWhorter's same-titled book
+(title right, record ambiguity documented; right_record credits title
+identity). Export list: 6 entries, all real books/bands - precision holds
+where raw captions produced 18 non-books. Classic offline gate unchanged
+(0.22), synth 0.79/0.83 (scorer correctness gain). Artifacts:
+examples/captions_uDS.json, examples/llm_mentions_v2.json,
+examples/books_spines1080_wide_llm.json (+ cache). Tests 57.

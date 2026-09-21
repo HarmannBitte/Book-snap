@@ -63,6 +63,12 @@ def score(labels_path, spines_json, books_json):
             verified.setdefault(norm(g["matched_as"]), g)
     author_reads = set(books.get("author_spines", []))
     all_texts = reads + list(verified) + list(author_reads)
+    # verified attribution prefers verified evidence: a higher-scoring but
+    # unverified garble read must not mask a verified form of the same title
+    verified_texts = ([g["phrase"] for g in books.get("gazetteer", [])]
+                      + [g["matched_as"] for g in books.get("gazetteer", [])
+                         if g.get("matched_as")]
+                      + list(author_reads))
 
     rows = []
     for b in labels.get("books", []):
@@ -70,6 +76,9 @@ def score(labels_path, spines_json, books_json):
             continue
         hit, s = match_label(b["title"], all_texts)
         g = verified.get(norm(hit)) if hit else None
+        if g is None:
+            vhit, _ = match_label(b["title"], verified_texts)
+            g = verified.get(norm(vhit)) if vhit else None
         if g is not None and g.get("status") not in ("confirmed", "verified"):
             g = None  # weak/author-tier records are not verified recall
         author_words = (b.get("author") or "").lower().split()
