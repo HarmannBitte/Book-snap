@@ -561,6 +561,15 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                     and author_spine(dict(source="spine",
                                           text=g.get("matched_as") or g["phrase"]))):
                 g["status"] = "author"
+            elif (g.get("match_type") == "crossref"
+                  and not any(w.lower() in hints
+                              for a in (g.get("authors") or [])
+                              for w in re.findall(r"[A-Za-z']+", a)
+                              if len(w) > 2)):
+                # title-only Crossref monograph: same-title different-book is
+                # real (two "Losing the Race" monographs exist) - report weak,
+                # export only when a spoken author hint corroborates the record
+                g["status"] = "weak"
             else:
                 g["status"] = tier(g)
     gaz_verified = dedupe([g for g in gaz if g.get("verified")])

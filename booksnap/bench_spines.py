@@ -70,6 +70,8 @@ def score(labels_path, spines_json, books_json):
             continue
         hit, s = match_label(b["title"], all_texts)
         g = verified.get(norm(hit)) if hit else None
+        if g is not None and g.get("status") not in ("confirmed", "verified"):
+            g = None  # weak/author-tier records are not verified recall
         author_words = (b.get("author") or "").lower().split()
         right_record = bool(g) and (
             (author_words[-1] in " ".join(g.get("authors") or []).lower()

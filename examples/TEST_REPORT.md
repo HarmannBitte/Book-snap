@@ -329,3 +329,24 @@ and the third verified entry is BARACK OBAMA via degarble from GARACK OBAMA.
 zero documents for the correct string - the residual gap is catalogue
 coverage plus glyph confusion, both now named and measured. Synthetic shelf
 unchanged (0.79). Tests 54.
+
+## Round 11 - Crossref monograph fallback (catalogue coverage)
+
+OpenLibrary returning zero docs for "Losing the Race" (round 10) motivated a
+second catalogue: gazetteer.crossref_book_docs fetches Crossref book/monograph
+DOIs when OL misses; matches are tagged match_type=crossref and demoted to
+status=weak (reported, never exported) unless a spoken author hint
+corroborates the record - because same-title different-book monographs are
+real (Crossref's only "Losing the Race" is Gadd & Dixon 2018, not Murray
+2000). Bench scorer now counts only confirmed/verified statuses as verified
+recall, so weak rows can never inflate recall.
+
+Measurements: Crossref throttles shared IPs hard (5/10 burst success at 0.5 s
+spacing; responses degrade to empty under load), so bench/warm_crossref.py
+warms the fallback cache politely and the result is committed
+(examples/books_spines1080_wide.json.olcache.json) keeping runs and CI
+offline. Final verdict on the coverage gap: trade-press books largely lack
+DOIs, so Crossref closes almost nothing here - a bundled catalogue dump
+(Wikidata subset) would be the next infra step, deliberately out of scope
+for a dependency-light repo. Benches unchanged: v2 wide 0.56/0.22/0.22,
+synth 0.79/0.79/0.79. Tests 56.

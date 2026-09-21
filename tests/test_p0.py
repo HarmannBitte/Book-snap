@@ -543,3 +543,40 @@ def test_spine_alts_include_degarble():
     alts = spine_alts(dict(text="LOSINC THE RACE", variants=["LOSINC THE RACE"],
                            variant_confs={"LOSINC THE RACE": 0.8}))
     assert "LOSING THE RACE" in alts
+
+
+def test_crossref_monograph_fallback(monkeypatch):
+    """OL empty + Crossref monograph -> verified as match_type crossref."""
+    from booksnap import gazetteer as G
+    payload = {"message": {"items": [
+        {"type": "book", "title": ["Losing the Race"],
+         "author": [{"given": "Charles", "family": "Murray"}],
+         "issued": {"date-parts": [[2000]]}, "publisher": "Free Press"},
+        {"type": "journal-article", "title": ["Losing the Race?"],
+         "issued": {"date-parts": [[2001]]}},
+    ]}}
+    monkeypatch.setattr(G, "_fetch_json", lambda url, **kw: payload)
+    docs = G.crossref_book_docs("Losing the Race", cache={})
+    assert len(docs) == 1 and docs[0]["author_name"] == ["Charles Murray"]
+    cache = {}
+    lk = G.make_cached_lookup("/nonexistent-cache.json")
+    monkeypatch.setattr(G, "fetch_docs", lambda p: [])
+    monkeypatch.setattr(G, "crossref_book_docs", lambda p, cache=None: docs)
+    m = lk("Losing the Race")
+    assert m and m["match_type"] == "crossref" and m["year"] == 2000
+
+
+def test_weak_records_are_not_verified_recall():
+    import json, tempfile
+    from booksnap.bench_spines import score
+    lab = tempfile.mktemp(suffix=".json")
+    sp = tempfile.mktemp(suffix=".json")
+    bk = tempfile.mktemp(suffix=".json")
+    json.dump({"books": [{"title": "Losing the Race", "author": "Charles Murray",
+                          "confident": True}]}, open(lab, "w"))
+    json.dump([{"text": "LOSING THE RACE", "conf": 0.8}], open(sp, "w"))
+    json.dump({"gazetteer": [{"phrase": "LOSING THE RACE", "status": "weak",
+                              "title": "Losing the Race", "authors": ["David Gadd"]}]},
+              open(bk, "w"))
+    d = score(lab, sp, bk)
+    assert d["recall_surface"] == 1.0 and d["recall_verified"] == 0.0

@@ -346,6 +346,54 @@ def crossref_is_serial(phrase, cache=None, timeout=5.0):
     return serial
 
 
+def crossref_book_docs(phrase, cache=None, timeout=6.0):
+    """Monograph records from Crossref when OpenLibrary has nothing.
+
+    Round 10 measured the case: OL returned ZERO documents for "Losing the
+    Race", a real book on a real shelf, so no amount of degarbling could
+    verify it. Crossref holds book/monograph DOIs from many academic presses.
+    Only type book/monograph passes (chapters and serials stay out; serial
+    vetoes remain crossref_is_serial's job). An empty hit list is a real
+    answer and is cached; a network failure is not.
+    """
+    key = "_crdocs:" + _norm(phrase)
+    if cache is not None and key in cache:
+        return (cache[key] or {}).get("docs") or []
+    sig = [w for w in re.findall(r"[A-Za-z0-9']+", phrase or "")
+           if w.lower() not in CONNECTORS and len(w) > 2]
+    if len(sig) < 2:
+        return []  # single tokens: junk/author bands, not worth the quota
+    time.sleep(0.5)  # Crossref polite pool: anonymous bursts get 429ed
+    url = ("https://api.crossref.org/works?query.bibliographic="
+           + urllib.parse.quote(phrase or "")
+           + "&rows=8&select=title,author,issued,publisher,type"
+           + "&mailto=HarmannBitte%40users.noreply.github.com")  # polite pool
+    data = _fetch_json(url, timeout=timeout)
+    if data is None:
+        return []
+    docs = []
+    for it in data.get("message", {}).get("items", []) or []:
+        if it.get("type") not in ("book", "monograph"):
+            continue
+        titles = it.get("title") or []
+        if not titles:
+            continue
+        year = None
+        issued = (it.get("issued") or {}).get("date-parts") or []
+        if issued and issued[0]:
+            year = issued[0][0]
+        docs.append(dict(
+            title=titles[0],
+            author_name=[f"{a.get('given', '')} {a.get('family', '')}".strip()
+                         for a in (it.get("author") or [])],
+            first_publish_year=year,
+            edition_count=3,  # a deposited monograph is support enough
+            publisher=(it.get("publisher") or "")[:80]))
+    if cache is not None:
+        cache[key] = dict(docs=docs)
+    return docs
+
+
 def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
                        strong_editions=3, author_hints=None, counter=None,
                        serial_check=True):
@@ -374,6 +422,18 @@ def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
                 pass
         m = match_docs(phrase, entry.get("docs") or [], fuzzy_thr=fuzzy_thr,
                        min_editions=min_editions, author_hints=author_hints)
+        if m is None:  # catalogue-coverage fallback (round 11)
+            cr = crossref_book_docs(phrase, cache=cache)
+            if cr:
+                m = match_docs(phrase, cr, fuzzy_thr=fuzzy_thr,
+                               min_editions=min_editions,
+                               author_hints=author_hints)
+                if m:
+                    m["match_type"] = "crossref"
+                    try:
+                        json.dump(cache, open(cache_path, "w"))
+                    except Exception:
+                        pass
         if m and serial_check:
             xkey = "_xref:" + _norm(phrase)
             xcache = cache.setdefault(xkey, {})
