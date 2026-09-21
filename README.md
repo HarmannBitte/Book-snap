@@ -163,6 +163,13 @@ bench/             labelled shelf v2 + synthetic shelf generator/labels/cache
 examples/          validation run + extracted book list
 ```
 
+## Discovery log
+
+`docs/discovery_tree.json` + `docs/DISCOVERY_LOG.md` record every exploration
+decision with its realized outcome (Dream-RSI-style: history as a replay
+simulator). Screen ideas against it at zero executions:
+`python tools/replay_discovery.py rank|path|dead|open|query WORD|render`.
+
 ## License
 
 MIT — see `LICENSE`.
