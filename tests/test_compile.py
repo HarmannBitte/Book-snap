@@ -33,3 +33,33 @@ def test_match_flags_cited_and_shown_only():
 def test_tokens_drop_stopwords():
     assert "the" not in tokens("The Righteous Mind")
     assert "righteous" in tokens("The Righteous Mind")
+
+
+def test_author_spine_fused_compound_not_author():
+    from booksnap.compile import author_spine
+    assert author_spine(dict(source="spine", text="DENNETT")) is True
+    assert author_spine(dict(source="spine", text="OBAMA")) is True
+    # Fused caps compound that segments via dp_split is a title, not an author surname
+    assert author_spine(dict(source="spine", text="LOCKEDIN")) is False
+
+
+def test_group_spine_reads_pops_mixed_case_author_band():
+    from booksnap.compile import group_spine_reads
+    reads = [
+        dict(text="WEALIT", conf=0.75, x=3935, y=358, w=226, h=51),
+        dict(text="AND PO", conf=0.84, x=3993, y=420, w=204, h=52),
+        dict(text="JamQW", conf=0.70, x=3974, y=507, w=209, h=49),
+    ]
+    grouped = group_spine_reads(reads)
+    texts = [g["text"] for g in grouped]
+    assert "WEALIT AND PO" in texts
+    assert "JamQW" in texts
+
+
+def test_corroborated_allows_two_word_title_with_preposition():
+    from booksnap.gazetteer import _corroborated
+    # Real 2-word title with physical spine evidence: corroborated
+    assert _corroborated(dict(phrase="Locked In", source="spine"), False) is True
+    # Single stop word or single token without 2 words: rejected
+    assert _corroborated(dict(phrase="IN", source="spine"), False) is False
+    assert _corroborated(dict(phrase="THE", source="spine"), False) is False

@@ -455,6 +455,50 @@
    "commit": "7fe9cdb"
   },
   {
+   "id": "r17-selector",
+   "round": "17",
+   "parent": "o-heldout",
+   "intent": "solve the focus / selector frontier on shelf footage",
+   "action": "measure Laplacian variance on cropped shelf ROI rather than whole frame; add --min-focus / --spines-min-focus threshold",
+   "observation": "bokeh crops measure 9.5-26.5 vs in-focus shelves 406.9-414.9 (15-40x contrast); whole frame had falsely scored 115-131 on bokeh due to foreground host texture",
+   "metric": "15-40x focus SNR; skips bokeh automatically",
+   "verdict": "kept",
+   "commit": "round17"
+  },
+  {
+   "id": "r17-compound",
+   "round": "17",
+   "parent": "r8-group",
+   "intent": "recover fused ALL-CAPS titles misclassified as author bands",
+   "action": "integrate dp_split into author_spine; fix build_vocab so unsegmented caps tokens do not pollute vocabulary",
+   "observation": "LOCKEDIN recognized as compound title rather than author band; segments to 'LOCKED IN'",
+   "metric": "LOCKEDIN unblocked",
+   "verdict": "kept",
+   "commit": "round17"
+  },
+  {
+   "id": "r17-authorpop",
+   "round": "17",
+   "parent": "r8-group",
+   "intent": "clean titles with trailing mixed-case author bands",
+   "action": "group_spine_reads pops mixed-case/compressed author bands (JamQW) from bottom of column",
+   "observation": "WEALIT AND PO freed from glued JamQW; yields clean title candidate",
+   "metric": "Wealth, Poverty and Politics unblocked",
+   "verdict": "kept",
+   "commit": "round17"
+  },
+  {
+   "id": "r17-corroborate",
+   "round": "17",
+   "parent": "r11-weak",
+   "intent": "corroborate physical 2-word titles containing prepositions",
+   "action": "_corroborated accepts 2-word titles with physical visual source (spine/cover); bench_spines includes verified titles in match",
+   "observation": "Locked in (Pfaff) and Wealth, Poverty and Politics (Sowell) verified; real shelf verified recall 0.33 -> 0.56, synth 0.79 -> 0.83",
+   "metric": "real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83",
+   "verdict": "kept",
+   "commit": "round17"
+  },
+  {
    "id": "d-stack",
    "round": "x",
    "parent": "r1-seg",

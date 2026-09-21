@@ -62,13 +62,13 @@ def score(labels_path, spines_json, books_json):
         if g.get("matched_as"):           # alt must count under the clean form
             verified.setdefault(norm(g["matched_as"]), g)
     author_reads = set(books.get("author_spines", []))
-    all_texts = reads + list(verified) + list(author_reads)
-    # verified attribution prefers verified evidence: a higher-scoring but
-    # unverified garble read must not mask a verified form of the same title
     verified_texts = ([g["phrase"] for g in books.get("gazetteer", [])]
                       + [g["matched_as"] for g in books.get("gazetteer", [])
                          if g.get("matched_as")]
+                      + [g.get("title") for g in books.get("gazetteer", [])
+                         if g.get("title")]
                       + list(author_reads))
+    all_texts = reads + verified_texts
 
     rows = []
     for b in labels.get("books", []):

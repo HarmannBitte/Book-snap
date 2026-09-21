@@ -93,3 +93,25 @@ def test_run_spines_upscale_passes_through(tmp_path, monkeypatch):
     cli.main(["run", vid, "--workdir", wd, "--resume", "--skip-pdf",
               "--spines-start", "0", "--spines-end", "10", "--spines-upscale", "2"])
     assert captured["ns"].upscale == 2
+
+
+def test_run_spines_min_focus_passes_through(tmp_path, monkeypatch):
+    wd = str(tmp_path / "w")
+    os.makedirs(wd, exist_ok=True)
+    _stub_artifacts(wd)
+    vid = os.path.join(wd, "video.mp4")
+    with open(vid, "wb") as f:
+        f.write(b"x")
+    captured = {}
+    monkeypatch.setattr(cli, "_scroll", lambda a: None)
+    monkeypatch.setattr(cli, "_compile", lambda a: None)
+
+    def fake_spines(a):
+        captured["ns"] = a
+        with open(a.out, "w") as f:
+            json.dump([], f)
+
+    monkeypatch.setattr(cli, "_spines", fake_spines)
+    cli.main(["run", vid, "--workdir", wd, "--resume", "--skip-pdf",
+              "--spines-start", "0", "--spines-end", "10", "--spines-min-focus", "35.0"])
+    assert captured["ns"].min_focus == 35.0

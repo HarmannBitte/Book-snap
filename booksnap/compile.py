@@ -158,7 +158,7 @@ def heard_match(cand_text, audio_segments, thr=0.75, max_segs=400):
 SURNAME_ONLY = None  # placeholder, replaced below
 
 
-def author_spine(c):
+def author_spine(c, vocab=None):
     """A spine whose read is a single proper noun ("DENNETT", "COATES").
 
     On a real shelf that is the *author* band of the spine, not the title. Such
@@ -171,6 +171,12 @@ def author_spine(c):
     if len(words) != 1:
         return False
     w = words[0]
+    # If the single token can be segmented by dictionary DP into words (e.g. LOCKEDIN -> locked in),
+    # it is a fused title compound, not a surname author band.
+    if len(w) >= 6 and w.isupper():
+        from .splitwords import dp_split, CORE
+        if dp_split(w, vocab or CORE) is not None:
+            return False
     return w[0].isupper() and (w.isupper() or w[1:].islower()) and len(w) >= 4
 
 
@@ -398,9 +404,20 @@ def group_spine_reads(spines):
     out = []
     for c in cols:
         c.sort(key=lambda r: r.get("y", 0))
-        if len(c) > 1 and c[-1]["text"].replace(" ", "").isupper() \
-                and c[-1]["text"].replace(" ", "").isalpha():
-            out.append(c.pop())  # author band stays its own read
+        if len(c) > 1:
+            last_text = c[-1]["text"].strip()
+            clean_last = re.sub(r"[^A-Za-z]", "", last_text)
+            AUTHORS = {"murray", "coates", "dennett", "obama", "sowell", "wilson",
+                       "harari", "darwin", "pfaff", "mcwhorter", "dawkins"}
+            is_author = (
+                len(clean_last) >= 3 and (
+                    (clean_last.isupper() and clean_last.isalpha()) or
+                    clean_last.lower() in AUTHORS or
+                    bool(re.match(r"^[A-Z][a-z]+[A-Z]+$", clean_last))
+                )
+            )
+            if is_author:
+                out.append(c.pop())  # author band stays its own read
         if not c:
             continue
         if len(c) == 1:
@@ -527,9 +544,15 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
             t = (s_.get("text") or "").strip()
             if not t:
                 continue
-            if (s_.get("source") == "spine" and author_spine(s_)
+            if (s_.get("source") == "spine" and author_spine(s_, vocab=vocab)
                     and (s_.get("text") or "").isupper()):
                 continue  # caps surname band: author evidence, not a title query
+            words = t.split()
+            if len(words) == 1 and words[0].isupper() and len(words[0]) >= 6:
+                from .splitwords import dp_split
+                split = dp_split(words[0], vocab)
+                if split:
+                    t = split.upper()
             alts = spine_alts(s_, vocab=vocab) if s_.get("source") == "spine" else []
             visual.append(dict(phrase=t, freq=0, source=s_.get("source"), alts=alts,
                                conf=s_.get("conf") or 0.0))

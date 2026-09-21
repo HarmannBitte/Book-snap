@@ -162,6 +162,13 @@ def test_spines_records_preset_and_keeps_best(monkeypatch, tmp_path):
     assert len(out) == 1
     assert out[0]["preset"] == "binarize" and out[0]["conf"] == 0.93
 
+    # With min_focus set higher than sharpness (1.0), it skips out-of-focus footage
+    out_filtered = SP.extract_spines("fake.mp4", str(tmp_path / "spines2.json"),
+                                     start=0, end=1, step=1.0, topk=1, band=1.0,
+                                     upscale=1, presets=("lanczos",),
+                                     min_focus=10.0)
+    assert out_filtered == []
+
 
 def test_match_rules_reject_people_places_institutions():
     from booksnap.gazetteer import match_docs

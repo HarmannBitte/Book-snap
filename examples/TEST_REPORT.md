@@ -455,3 +455,53 @@ Offline repro of the committed artifacts reproduces the real-shelf bench
 exactly: recall_surface 0.56, recall_verified 0.33, recall_right_record 0.33
 (Sapiens verified 1.0). Discovery tree: nodes r16-live, r16-fix1, r16-oom2,
 r16-fix2, r16-demo (51 nodes).
+
+## Round 17 - the shelf focus selector + recall frontier leap (0.33 -> 0.56 real, 0.79 -> 0.83 synth) (2026-09-21)
+
+Tackled the open `o-heldout` / selector and recall frontiers directly:
+
+1. **Shelf ROI focus selector (`r17-selector`):**
+   Previously, `spines.py` picked the sharpest frames using whole-frame Laplacian
+   variance. On podcast sets with shallow depth of field, foreground hosts and
+   textured clothing scored deceptively high (115–131) even when the background
+   shelf was pure bokeh (9.5–26.5), as observed in Round 12. Conversely, wide shots
+   where the shelf was actually sharp were penalized. `spines.py` now evaluates
+   sharpness directly on the cropped shelf ROI/band (`_crop(...)`), providing a
+   **15–40x SNR contrast ratio** (bokeh < 30 vs in-focus > 400). Added `--min-focus`
+   (and `--spines-min-focus` on `run`) to reject out-of-focus footage before
+   wasting super-resolution and OCR resources.
+
+2. **Unblocking fused caps titles (`r17-compound`):**
+   `author_spine` previously treated any single uppercase token >= 4 chars as an
+   author surname band and dropped it from title queries. `dp_split` dictionary
+   segmentation is now integrated: `LOCKEDIN` segments to `"LOCKED IN"`, which is
+   recognized as a title compound rather than a surname. In the process, a subtle
+   bug in `build_vocab` was uncovered: it previously ingested raw unsegmented OCR
+   tokens into the vocabulary, causing `dp_split` to abort because `t in vocab`
+   was true. Fused caps tokens now no longer pollute the vocabulary.
+
+3. **Popping mixed-case author bands (`r17-authorpop`):**
+   `group_spine_reads` previously required `.isupper()` to pop a trailing author
+   band from a vertical spine column. When OCR read `JamQW` (James Q. Wilson)
+   below `WEALIT AND PO`, it remained glued as `WEALIT AND PO JamQW`, corrupting
+   `Wealth, Poverty and Politics`. Now pops trailing author tokens cleanly.
+
+4. **Corroborating 2-word titles with prepositions (`r17-corroborate`):**
+   `_corroborated` in `gazetteer.py` dropped titles like `"Locked In"` because
+   `"In"` was stripped as a stop word, leaving only 1 word. Now recognizes 2-word
+   titles with physical visual evidence (`source="spine"` or `"cover"`).
+
+**Results:**
+- **Real shelf benchmark (`bench/spine_labels_v2.json`):**
+  - `recall_surface`: **0.56 -> 0.67**
+  - `recall_verified`: **0.33 -> 0.56**
+  - `recall_right_record`: **0.33 -> 0.56**
+  - 5 verified real books: *Sapiens* (Harari), *Losing the Race* (McWhorter),
+    *Losing Ground* (Murray), *Wealth, Poverty, and Politics* (Sowell), *Locked In* (Pfaff).
+- **Synthetic shelf benchmark (`bench/spine_labels_synth.json`):**
+  - `recall_surface`: **0.79 -> 0.88**
+  - `recall_verified`: **0.79 -> 0.83**
+  - `recall_right_record`: **0.79 -> 0.83**
+- **Test suite:** **65 passing** (up from 61).
+- **Discovery tree:** 55 nodes (new: `r17-selector`, `r17-compound`, `r17-authorpop`, `r17-corroborate`).
+

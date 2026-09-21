@@ -140,10 +140,11 @@ Plus: every emitted row has provenance and a calibrated confidence; CI reports
 P/R per channel on the benchmark; a run is resumable and never exceeds the
 network rate budget.
 
-Current measured state (2026-09-19, two videos, one labelled shelf):
-exported precision 4/5 (v2) and 1/1 (v1); spine recall 0.22 verified by OCR
-alone, 1.0 with the vision channel on the labelled shelf (circular there);
-pan stitching proved the shelf does not pan, so coverage was never the limit;
+Current measured state (2026-09-21, two videos, one labelled shelf):
+exported precision 6/6 real books; real-shelf spine recall **0.56 verified**
+(5/9 confident books, 5/9 right-record: Sapiens, Losing the Race, Losing Ground,
+Wealth, Poverty and Politics, Locked In); synthetic shelf bench **0.83 verified /
+0.88 surface**; shelf crop focus selector separates bokeh (<30) from sharp shelves (>400);
 scroll/bibliography and slide channels remain the reliable ones.
 
 ## 5. Known constraints

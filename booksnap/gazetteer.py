@@ -473,10 +473,12 @@ def _corroborated(c, ctx):
     This is what separates 'Facing Reality' (cued, 2 words -> keep) from
     'LOCKEDIN' (one mangled caps token from a spine -> drop).
     """
-    words = [w for w in re.findall(r"[A-Za-z0-9']+", c.get("phrase") or "")
+    all_w = re.findall(r"[A-Za-z0-9']+", c.get("matched_as") or c.get("phrase") or "")
+    sig_w = [w for w in all_w
              if w.lower() not in CAND_STOP and w.lower() not in CONNECTORS]
-    return len(words) >= 2 and bool(c.get("source") or c.get("cued") or
-                                    c.get("freq", 0) >= 2 or ctx)
+    has_support = bool(c.get("source") or c.get("cued") or
+                       c.get("freq", 0) >= 2 or ctx)
+    return ((len(sig_w) >= 2) or (len(all_w) >= 2 and len(sig_w) >= 1)) and has_support
 
 
 def verify_all(candidates, lookup=openlibrary_lookup, max_queries=60, pause=0.25,

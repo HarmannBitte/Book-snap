@@ -44,9 +44,13 @@ CORE = {
 def build_vocab(extra_texts=()):
     vocab = set(CORE)
     for text in extra_texts:
-        for w in re.findall(r"[a-z]+", (text or "").lower()):
-            if 2 <= len(w) <= 24:
-                vocab.add(w)
+        for w in (text or "").split():
+            clean = re.sub(r"[^A-Za-z]", "", w)
+            if clean.isupper() and len(clean) >= 6:
+                continue
+            lw = clean.lower()
+            if 2 <= len(lw) <= 24:
+                vocab.add(lw)
     return vocab
 
 
@@ -57,7 +61,7 @@ def dp_split(token, vocab, max_parts=4, min_part=2):
     be in the vocabulary, so garbage cannot leak through.
     """
     t = (token or "").lower()
-    if not t.isalpha() or len(t) < 6 or t in vocab:
+    if not t.isalpha() or len(t) < 6 or t in CORE:
         return None
     n = len(t)
     best = [None] * (n + 1)

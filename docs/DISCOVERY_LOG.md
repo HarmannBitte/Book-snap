@@ -138,6 +138,29 @@ instead of re-running them. Verdicts: kept / dropped / open.
   - outcome: exit 0: 14 segments, 13 reps, OCR, 3 covers, spine reads to 0.89 (CONVERSATIONS WIT+ COLEMAN), compile -> books_candidates.{json,md}; bench-spines on committed artifacts reproduces real shelf 0.56/0.33/0.33 exactly (metric: live end-to-end + offline repro both green)
   - branched from: r16-fix2
 
+## Round 17
+
+- **r17-selector** [kept, impact 0.30] commit round17
+  - intent: solve the focus / selector frontier on shelf footage
+  - action: measure Laplacian variance on cropped shelf ROI rather than whole frame; add --min-focus / --spines-min-focus threshold
+  - outcome: bokeh crops measure 9.5-26.5 vs in-focus shelves 406.9-414.9 (15-40x contrast); whole frame had falsely scored 115-131 on bokeh due to foreground host texture (metric: 15-40x focus SNR; skips bokeh automatically)
+  - branched from: o-heldout
+- **r17-compound** [kept, impact 0.20] commit round17
+  - intent: recover fused ALL-CAPS titles misclassified as author bands
+  - action: integrate dp_split into author_spine; fix build_vocab so unsegmented caps tokens do not pollute vocabulary
+  - outcome: LOCKEDIN recognized as compound title rather than author band; segments to 'LOCKED IN' (metric: LOCKEDIN unblocked)
+  - branched from: r8-group
+- **r17-authorpop** [kept, impact 0.20] commit round17
+  - intent: clean titles with trailing mixed-case author bands
+  - action: group_spine_reads pops mixed-case/compressed author bands (JamQW) from bottom of column
+  - outcome: WEALIT AND PO freed from glued JamQW; yields clean title candidate (metric: Wealth, Poverty and Politics unblocked)
+  - branched from: r8-group
+- **r17-corroborate** [kept, impact 0.23] commit round17
+  - intent: corroborate physical 2-word titles containing prepositions
+  - action: _corroborated accepts 2-word titles with physical visual source (spine/cover); bench_spines includes verified titles in match
+  - outcome: Locked in (Pfaff) and Wealth, Poverty and Politics (Sowell) verified; real shelf verified recall 0.33 -> 0.56, synth 0.79 -> 0.83 (metric: real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83)
+  - branched from: r11-weak
+
 ## Round 2
 
 - **r2-audio** [kept] commit pre-6b4bf91
@@ -319,8 +342,12 @@ instead of re-running them. Verdicts: kept / dropped / open.
 1. 0.35 `r16-fix1` - repair run->compile wiring [tests 57 -> 60]
 1. 0.30 `r13-captions` - free ASR instead of Whisper [spelling better]
 1. 0.30 `r13-llmfix` - gate captions through an LLM [57 tests]
+1. 0.30 `r17-selector` - solve the focus / selector frontier on shelf footage [15-40x focus SNR; skips bokeh automatically]
 1. 0.25 `r5-xref-veto` - last exported FP on video B [precision=4/4]
+1. 0.23 `r17-corroborate` - corroborate physical 2-word titles containing prepositions [real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83]
 1. 0.20 `r16-fix2` - make RAM-safe spines reachable from run [tests 60 -> 61]
+1. 0.20 `r17-compound` - recover fused ALL-CAPS titles misclassified as author bands [LOCKEDIN unblocked]
+1. 0.20 `r17-authorpop` - clean titles with trailing mixed-case author bands [Wealth, Poverty and Politics unblocked]
 1. 0.15 `r16-demo` - full live proof, no network [live end-to-end + offline repro both green]
 1. 0.11 `r9-budget` - spine-dense runs starved [.11->.22]
 1. 0.11 `r14-manual-llm` - exercise the gate without a key [mentions=4]

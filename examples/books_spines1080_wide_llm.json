@@ -1,6 +1,6 @@
 {
- "spine_reads": 152,
- "spine_groups": 96,
+ "spine_reads": 155,
+ "spine_groups": 97,
  "bibliography": [],
  "shown_covers": [
   {
@@ -24,7 +24,13 @@
    "heard": false,
    "heard_as": null,
    "heard_score": 0.0,
-   "author_spine": true
+   "gazetteer": {
+    "title": "Locked in",
+    "authors": [
+     "John F. Pfaff"
+    ],
+    "year": 2017
+   }
   },
   {
    "cover": null,
@@ -1041,49 +1047,116 @@
   },
   {
    "cover": null,
-   "seg": "spine@10.0",
+   "seg": "spine@14.0",
    "ar": null,
-   "ocr": "WEALIT AND PO JamQW",
-   "text": "WEALIT AND PO JamQW",
+   "ocr": "JamQW",
+   "text": "JamQW",
    "source": "spine",
-   "conf": 0.765,
-   "preset": "clahe",
+   "conf": 0.702,
+   "preset": "lanczos",
    "variants": [
-    "WEALIT AND PO JamQW"
+    "JamQW",
+    "JameQW",
+    "JamuQW"
    ],
    "variant_confs": {
-    "WEALIT AND PO JamQW": 0.765
+    "JamQW": 0.702,
+    "JameQW": 0.616,
+    "JamuQW": 0.566
    },
    "cited": false,
    "match_score": 0.0,
    "match": null,
    "heard": false,
    "heard_as": null,
-   "heard_score": 0.51
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALIT AND PO",
+   "text": "WEALIT AND PO",
+   "source": "spine",
+   "conf": 0.796,
+   "preset": "clahe",
+   "variants": [
+    "WEALIT AND PO"
+   ],
+   "variant_confs": {
+    "WEALIT AND PO": 0.796
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.9,
+   "gazetteer": {
+    "title": "Wealth, Poverty, and Politics",
+    "authors": [
+     "Thomas Sowell"
+    ],
+    "year": 2015
+   }
   },
   {
    "cover": null,
    "seg": "spine@4.0",
    "ar": null,
-   "ocr": "WEALTI O NV JameQW",
-   "text": "WEALTI O NV JameQW",
+   "ocr": "WEALTI O NV",
+   "text": "WEALTI O NV",
    "source": "spine",
-   "conf": 0.628,
+   "conf": 0.634,
    "preset": "unsharp",
    "variants": [
-    "WEALT115 JamuQW",
-    "WEALTI O NV JameQW"
+    "WEALTI O NV"
    ],
    "variant_confs": {
-    "WEALTI O NV JameQW": 0.628,
-    "WEALT115 JamuQW": 0.573
+    "WEALTI O NV": 0.634
    },
    "cited": false,
    "match_score": 0.0,
    "match": null,
    "heard": false,
    "heard_as": null,
-   "heard_score": 0.49
+   "heard_score": 0.55,
+   "gazetteer": {
+    "title": "Wealth, Poverty, and Politics",
+    "authors": [
+     "Thomas Sowell"
+    ],
+    "year": 2015
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALTIL,",
+   "text": "WEALTIL,",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "lanczos",
+   "variants": [
+    "WEALITL.",
+    "WEALT115",
+    "WEALTIL,",
+    "WEALTTL,"
+   ],
+   "variant_confs": {
+    "WEALT115": 0.581,
+    "WEALITL.": 0.646,
+    "WEALTTL,": 0.73,
+    "WEALTIL,": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
   },
   {
    "cover": null,
@@ -1149,33 +1222,6 @@
    "variant_confs": {
     "OSOFPC": 0.679,
     "OSOFPO": 0.67
-   },
-   "cited": false,
-   "match_score": 0.0,
-   "match": null,
-   "heard": false,
-   "heard_as": null,
-   "heard_score": 0.0,
-   "author_spine": true
-  },
-  {
-   "cover": null,
-   "seg": "spine@16.0",
-   "ar": null,
-   "ocr": "WEALTIL,",
-   "text": "WEALTIL,",
-   "source": "spine",
-   "conf": 0.767,
-   "preset": "lanczos",
-   "variants": [
-    "WEALITL.",
-    "WEALTIL,",
-    "WEALTTL,"
-   ],
-   "variant_confs": {
-    "WEALITL.": 0.646,
-    "WEALTTL,": 0.73,
-    "WEALTIL,": 0.767
    },
    "cited": false,
    "match_score": 0.0,
@@ -2355,7 +2401,13 @@
    "heard": false,
    "heard_as": null,
    "heard_score": 0.0,
-   "author_spine": true
+   "gazetteer": {
+    "title": "Locked in",
+    "authors": [
+     "John F. Pfaff"
+    ],
+    "year": 2017
+   }
   },
   {
    "cover": null,
@@ -3372,49 +3424,116 @@
   },
   {
    "cover": null,
-   "seg": "spine@10.0",
+   "seg": "spine@14.0",
    "ar": null,
-   "ocr": "WEALIT AND PO JamQW",
-   "text": "WEALIT AND PO JamQW",
+   "ocr": "JamQW",
+   "text": "JamQW",
    "source": "spine",
-   "conf": 0.765,
-   "preset": "clahe",
+   "conf": 0.702,
+   "preset": "lanczos",
    "variants": [
-    "WEALIT AND PO JamQW"
+    "JamQW",
+    "JameQW",
+    "JamuQW"
    ],
    "variant_confs": {
-    "WEALIT AND PO JamQW": 0.765
+    "JamQW": 0.702,
+    "JameQW": 0.616,
+    "JamuQW": 0.566
    },
    "cited": false,
    "match_score": 0.0,
    "match": null,
    "heard": false,
    "heard_as": null,
-   "heard_score": 0.51
+   "heard_score": 0.0
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALIT AND PO",
+   "text": "WEALIT AND PO",
+   "source": "spine",
+   "conf": 0.796,
+   "preset": "clahe",
+   "variants": [
+    "WEALIT AND PO"
+   ],
+   "variant_confs": {
+    "WEALIT AND PO": 0.796
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.9,
+   "gazetteer": {
+    "title": "Wealth, Poverty, and Politics",
+    "authors": [
+     "Thomas Sowell"
+    ],
+    "year": 2015
+   }
   },
   {
    "cover": null,
    "seg": "spine@4.0",
    "ar": null,
-   "ocr": "WEALTI O NV JameQW",
-   "text": "WEALTI O NV JameQW",
+   "ocr": "WEALTI O NV",
+   "text": "WEALTI O NV",
    "source": "spine",
-   "conf": 0.628,
+   "conf": 0.634,
    "preset": "unsharp",
    "variants": [
-    "WEALT115 JamuQW",
-    "WEALTI O NV JameQW"
+    "WEALTI O NV"
    ],
    "variant_confs": {
-    "WEALTI O NV JameQW": 0.628,
-    "WEALT115 JamuQW": 0.573
+    "WEALTI O NV": 0.634
    },
    "cited": false,
    "match_score": 0.0,
    "match": null,
    "heard": false,
    "heard_as": null,
-   "heard_score": 0.49
+   "heard_score": 0.55,
+   "gazetteer": {
+    "title": "Wealth, Poverty, and Politics",
+    "authors": [
+     "Thomas Sowell"
+    ],
+    "year": 2015
+   }
+  },
+  {
+   "cover": null,
+   "seg": "spine@10.0",
+   "ar": null,
+   "ocr": "WEALTIL,",
+   "text": "WEALTIL,",
+   "source": "spine",
+   "conf": 0.767,
+   "preset": "lanczos",
+   "variants": [
+    "WEALITL.",
+    "WEALT115",
+    "WEALTIL,",
+    "WEALTTL,"
+   ],
+   "variant_confs": {
+    "WEALT115": 0.581,
+    "WEALITL.": 0.646,
+    "WEALTTL,": 0.73,
+    "WEALTIL,": 0.767
+   },
+   "cited": false,
+   "match_score": 0.0,
+   "match": null,
+   "heard": false,
+   "heard_as": null,
+   "heard_score": 0.0,
+   "author_spine": true
   },
   {
    "cover": null,
@@ -3480,33 +3599,6 @@
    "variant_confs": {
     "OSOFPC": 0.679,
     "OSOFPO": 0.67
-   },
-   "cited": false,
-   "match_score": 0.0,
-   "match": null,
-   "heard": false,
-   "heard_as": null,
-   "heard_score": 0.0,
-   "author_spine": true
-  },
-  {
-   "cover": null,
-   "seg": "spine@16.0",
-   "ar": null,
-   "ocr": "WEALTIL,",
-   "text": "WEALTIL,",
-   "source": "spine",
-   "conf": 0.767,
-   "preset": "lanczos",
-   "variants": [
-    "WEALITL.",
-    "WEALTIL,",
-    "WEALTTL,"
-   ],
-   "variant_confs": {
-    "WEALITL.": 0.646,
-    "WEALTTL,": 0.73,
-    "WEALTIL,": 0.767
    },
    "cited": false,
    "match_score": 0.0,
@@ -4823,26 +4915,6 @@
  ],
  "gazetteer": [
   {
-   "phrase": "Facing Reality",
-   "freq": 0,
-   "cued": true,
-   "verified": true,
-   "context_ok": true,
-   "title": "Facing Reality",
-   "authors": [
-    "Charles A. Murray"
-   ],
-   "year": 2021,
-   "score": 1.0,
-   "match_type": "exact",
-   "editions": 3,
-   "low_support": false,
-   "status": "verified",
-   "provenance": [
-    "Facing Reality"
-   ]
-  },
-  {
    "phrase": "Mry LOSING GROUND",
    "freq": 0,
    "source": "spine",
@@ -4877,6 +4949,60 @@
    "status": "confirmed",
    "provenance": [
     "Mry LOSING GROUND"
+   ]
+  },
+  {
+   "phrase": "Facing Reality",
+   "freq": 0,
+   "cued": true,
+   "verified": true,
+   "context_ok": true,
+   "title": "Facing Reality",
+   "authors": [
+    "Charles A. Murray"
+   ],
+   "year": 2021,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "verified",
+   "provenance": [
+    "Facing Reality"
+   ]
+  },
+  {
+   "phrase": "WEALIT AND PO",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Wealth, Poverty and Politics",
+    "WERLIT AND PO",
+    "WEALIT RND PO",
+    "WEALYT AND PO",
+    "WEAIIT AND PO",
+    "WEALLT AND PO",
+    "WEAUIT AND PO",
+    "WEALIT AND PQ",
+    "WEALIT ANO PO"
+   ],
+   "conf": 0.796,
+   "matched_as": "Wealth, Poverty and Politics",
+   "verified": true,
+   "context_ok": true,
+   "title": "Wealth, Poverty, and Politics",
+   "authors": [
+    "Thomas Sowell"
+   ],
+   "year": 2015,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 3,
+   "low_support": false,
+   "status": "confirmed",
+   "provenance": [
+    "WEALIT AND PO",
+    "WEALTI O NV"
    ]
   },
   {
@@ -4931,6 +5057,39 @@
    "provenance": [
     "LOSINC III RACE",
     "LOSINC TMIRACE"
+   ]
+  },
+  {
+   "phrase": "LOCKED IN",
+   "freq": 0,
+   "source": "spine",
+   "alts": [
+    "Locked In",
+    "LOCKED IN",
+    "LOGKEDIN",
+    "LOCKEDYN",
+    "IOCKEDIN",
+    "LOCKEDLN",
+    "UOCKEDIN",
+    "LQCKEDIN",
+    "LDCKEDIN",
+    "LOCKEOIN"
+   ],
+   "conf": 0.854,
+   "verified": true,
+   "context_ok": true,
+   "title": "Locked in",
+   "authors": [
+    "John F. Pfaff"
+   ],
+   "year": 2017,
+   "score": 1.0,
+   "match_type": "exact",
+   "editions": 2,
+   "low_support": true,
+   "status": "confirmed",
+   "provenance": [
+    "LOCKED IN"
    ]
   },
   {

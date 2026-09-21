@@ -27,7 +27,11 @@
   "Mry LOSING GROUND": "Losing Ground",
   "GARACK OBAMA": "Barack Obama",
   "BAAACK OBAMA": "Barack Obama",
-  "VYCTIMS": "Victims"
+  "VYCTIMS": "Victims",
+  "LOCKED IN": "Locked In",
+  "LOCKEDIN": "Locked In",
+  "WEALIT AND PO": "Wealth, Poverty and Politics",
+  "WEALTI O NV": "Wealth, Poverty and Politics"
  },
- "note": "manual LLM pass (the agent itself) over cue-filtered caption segments, round 14; stands in for llmfix.extract_titles/correct_phrases until an LLM_API_KEY exists"
+ "note": "manual LLM pass (the agent itself) over cue-filtered caption segments, round 14 & 17; stands in for llmfix.extract_titles/correct_phrases until an LLM_API_KEY exists"
 }

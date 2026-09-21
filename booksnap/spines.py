@@ -47,7 +47,7 @@ def _crop(img, H, roi, band):
 def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                    topk=3, roi=None, band=0.22, upscale=4, tile_w=1400, ocr=None,
                    presets=("unsharp",), stack=False, min_len=3,
-                   panorama=False):
+                   panorama=False, min_focus=0.0):
     from .ocr import RapidOCR, ocr_image
     from .superres import enhance, stack_median, stitch_pan
     ocr = ocr or RapidOCR()
@@ -57,17 +57,34 @@ def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
         img = cv2.imread(str(video))
         if img is None:
             raise ValueError(f"cannot read image {video}")
-        crops = [(0.0, _crop(img, img.shape[0], roi, band))]
+        crop = _crop(img, img.shape[0], roi, band)
+        crops = [(0.0, crop)]
     else:
         info = probe(video)
         W, H = int(info["width"]), int(info["height"])
         if times is None:
             times = np.arange(float(start), float(end) + 1e-9, float(step))
-        scored = sorted(((float(t), sharpness(_grab(video, float(t), W, H))) for t in times),
-                        key=lambda r: -r[1])[:topk]
-
-        crops = [(t, _crop(_grab(video, t, W, H), H, roi, band)) for t, _ in scored]
+        time_crops = []
+        for t in times:
+            frame = _grab(video, float(t), W, H)
+            cr = _crop(frame, H, roi, band)
+            # Evaluate focus on the shelf crop itself, not the whole frame
+            # (which is often dominated by foreground actors/clothing bokeh)
+            s = sharpness(cr)
+            time_crops.append((float(t), s, cr))
+        time_crops.sort(key=lambda r: -r[1])
+        if min_focus > 0.0:
+            kept = [tc for tc in time_crops if tc[1] >= min_focus]
+            if not kept:
+                import sys
+                print(f"warning: shelf crop sharpness ({time_crops[0][1]:.1f} max) below min-focus ({min_focus}); "
+                      "skipping out-of-focus footage", file=sys.stderr)
+            time_crops = kept
+        crops = [(t, cr) for t, _, cr in time_crops[:topk]]
     variants = []
+    if not crops:
+        json.dump([], open(out_json, "w"), indent=1)
+        return []
     if stack and len(crops) > 1:
         variants.append((crops[0][0], "stack",
                          stack_median([c for _, c in crops])))

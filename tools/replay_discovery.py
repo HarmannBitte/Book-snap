@@ -28,6 +28,10 @@ TREE = os.path.join(HERE, "..", "docs", "discovery_tree.json")
 # curated impact: verified-recall points on the real shelf first, then
 # precision guards, then capability unlocks (evidence in node.metric)
 IMPACT = {
+    "r17-corroborate": 0.23, # real-shelf verified .33 -> .56, synth .79 -> .83
+    "r17-selector": 0.30,   # shelf ROI focus selector (15-40x SNR)
+    "r17-compound": 0.20,   # fused caps compound unblocked (LOCKEDIN)
+    "r17-authorpop": 0.20,  # mixed-case trailing author popped (WEALIT AND PO)
     "r16-fix1": 0.35,      # 'run' (the advertised one-shot path) worked again
     "r16-fix2": 0.20,      # RAM-safe spines reachable from run
     "r16-demo": 0.15,      # live end-to-end + offline repro both green

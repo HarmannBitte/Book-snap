@@ -84,10 +84,12 @@ def _spines(args):
     from .spines import extract_spines
     roi = tuple(int(v) for v in args.roi.split(",")) if args.roi else None
     presets = tuple(p for p in (args.presets or "unsharp").split(",") if p)
+    min_focus = getattr(args, "min_focus", 0.0)
     out = extract_spines(args.video, args.out, start=args.start, end=args.end,
                          step=args.step, topk=args.topk, roi=roi, band=args.band,
                          upscale=args.upscale, presets=presets, stack=args.stack,
-                         min_len=args.min_len, panorama=args.panorama)
+                         min_len=args.min_len, panorama=args.panorama,
+                         min_focus=min_focus)
     strong = sum(1 for r in out if r["conf"] >= 0.8)
     print(f"spine reads={len(out)} (conf>=0.80: {strong}) -> {args.out}")
     for r in out[:15]:
@@ -187,7 +189,8 @@ def _run(args):
                                    band=args.spines_band,
                                    upscale=getattr(args, "spines_upscale", 4),
                                    presets=args.spines_presets, stack=args.spines_stack,
-                                   min_len=3, panorama=args.spines_stack))
+                                   min_len=3, panorama=args.spines_stack,
+                                   min_focus=getattr(args, "spines_min_focus", 0.0)))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -276,6 +279,8 @@ def main(argv=None):
     s.add_argument("--panorama", action="store_true",
                    help="stitch the camera pan into one wide shelf image")
     s.add_argument("--min-len", type=int, default=3)
+    s.add_argument("--min-focus", type=float, default=0.0,
+                   help="minimum shelf crop sharpness; skips bokeh/blurred footage")
     s.set_defaults(fn=_spines)
 
     s = sub.add_parser("compile", help="merge artifacts into candidate book list")
@@ -338,6 +343,8 @@ def main(argv=None):
                    help="OCR upscale factor; use 2-3 on 1080p band crops to stay in RAM budget")
     s.add_argument("--spines-presets", default="unsharp")
     s.add_argument("--spines-stack", action="store_true")
+    s.add_argument("--spines-min-focus", type=float, default=0.0,
+                   help="minimum shelf crop sharpness; skips bokeh/blurred footage")
     s.add_argument("--gazetteer", action="store_true")
     s.add_argument("--max-queries", type=int, default=250,
                    help="OpenLibrary query budget; spine-dense shelves need hundreds")
