@@ -110,6 +110,34 @@ instead of re-running them. Verdicts: kept / dropped / open.
   - outcome: real-shelf verified .22 -> .33 (first movement since r5) (metric: v2 .33)
   - branched from: r14-manual-llm
 
+## Round 16
+
+- **r16-live** [bug] commit 7fe9cdb
+  - intent: prove the repo is fully functional end-to-end, live
+  - action: cut 60 s shelf slice (2540-2600 s of Test B 1080p) -> booksnap run
+  - outcome: crash at final stage: run->compile Namespace has no llm_titles (round-13 wiring drift; unit tests call compile directly, so only a live run exposes it) (metric: 57 tests green while 'run' was broken)
+  - branched from: r13-llmfix
+- **r16-fix1** [kept, impact 0.35] commit 7fe9cdb
+  - intent: repair run->compile wiring
+  - action: pass llm_titles through; expose --llm-titles on run; 3 regression tests capture the compile Namespace via --resume replay
+  - outcome: run reaches compile; flag default False, pass-through True (metric: tests 57 -> 60)
+  - branched from: r16-live
+- **r16-oom2** [bug] commit 7fe9cdb
+  - intent: spine stage on 1080p band crop inside run
+  - action: band 0.78, upscale 4 (hardcoded), 3 presets + stack
+  - outcome: silent OOM kill; exit code masked by pipe to tail - re-confirmed the logged RAM dead end (band ROI / upscale<=3) and a second wiring gap: run lacks --spines-upscale (metric: no artifacts, 0-byte output)
+  - branched from: r16-live
+- **r16-fix2** [kept, impact 0.20] commit 7fe9cdb
+  - intent: make RAM-safe spines reachable from run
+  - action: --spines-upscale flag passes through to the spines stage; 1 regression test
+  - outcome: upscale 2 completes in RAM budget (metric: tests 60 -> 61)
+  - branched from: r16-oom2
+- **r16-demo** [kept, impact 0.15] commit 7fe9cdb
+  - intent: full live proof, no network
+  - action: booksnap run slice --resume --spines-band 0.78 --spines-upscale 2 --spines-stack
+  - outcome: exit 0: 14 segments, 13 reps, OCR, 3 covers, spine reads to 0.89 (CONVERSATIONS WIT+ COLEMAN), compile -> books_candidates.{json,md}; bench-spines on committed artifacts reproduces real shelf 0.56/0.33/0.33 exactly (metric: live end-to-end + offline repro both green)
+  - branched from: r16-fix2
+
 ## Round 2
 
 - **r2-audio** [kept] commit pre-6b4bf91
@@ -288,9 +316,12 @@ instead of re-running them. Verdicts: kept / dropped / open.
 1. 0.70 `r12-deno` - YouTube search was bot-gated [search=unlocked]
 1. 0.46 `r8-group` - multi-word titles never became candidates [synth .46->.79]
 1. 0.40 `r8-spineonly` - shelf-only runs verified nothing [gaz 0->21 synth]
+1. 0.35 `r16-fix1` - repair run->compile wiring [tests 57 -> 60]
 1. 0.30 `r13-captions` - free ASR instead of Whisper [spelling better]
 1. 0.30 `r13-llmfix` - gate captions through an LLM [57 tests]
 1. 0.25 `r5-xref-veto` - last exported FP on video B [precision=4/4]
+1. 0.20 `r16-fix2` - make RAM-safe spines reachable from run [tests 60 -> 61]
+1. 0.15 `r16-demo` - full live proof, no network [live end-to-end + offline repro both green]
 1. 0.11 `r9-budget` - spine-dense runs starved [.11->.22]
 1. 0.11 `r14-manual-llm` - exercise the gate without a key [mentions=4]
 1. 0.11 `r14-scorer2` - unverified garble masked verified forms [v2 .33]

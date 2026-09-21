@@ -400,6 +400,61 @@
    "commit": "4c66525"
   },
   {
+   "id": "r16-live",
+   "round": "16",
+   "parent": "r13-llmfix",
+   "intent": "prove the repo is fully functional end-to-end, live",
+   "action": "cut 60 s shelf slice (2540-2600 s of Test B 1080p) -> booksnap run",
+   "observation": "crash at final stage: run->compile Namespace has no llm_titles (round-13 wiring drift; unit tests call compile directly, so only a live run exposes it)",
+   "metric": "57 tests green while 'run' was broken",
+   "verdict": "bug",
+   "commit": "7fe9cdb"
+  },
+  {
+   "id": "r16-fix1",
+   "round": "16",
+   "parent": "r16-live",
+   "intent": "repair run->compile wiring",
+   "action": "pass llm_titles through; expose --llm-titles on run; 3 regression tests capture the compile Namespace via --resume replay",
+   "observation": "run reaches compile; flag default False, pass-through True",
+   "metric": "tests 57 -> 60",
+   "verdict": "kept",
+   "commit": "7fe9cdb"
+  },
+  {
+   "id": "r16-oom2",
+   "round": "16",
+   "parent": "r16-live",
+   "intent": "spine stage on 1080p band crop inside run",
+   "action": "band 0.78, upscale 4 (hardcoded), 3 presets + stack",
+   "observation": "silent OOM kill; exit code masked by pipe to tail - re-confirmed the logged RAM dead end (band ROI / upscale<=3) and a second wiring gap: run lacks --spines-upscale",
+   "metric": "no artifacts, 0-byte output",
+   "verdict": "bug",
+   "commit": "7fe9cdb"
+  },
+  {
+   "id": "r16-fix2",
+   "round": "16",
+   "parent": "r16-oom2",
+   "intent": "make RAM-safe spines reachable from run",
+   "action": "--spines-upscale flag passes through to the spines stage; 1 regression test",
+   "observation": "upscale 2 completes in RAM budget",
+   "metric": "tests 60 -> 61",
+   "verdict": "kept",
+   "commit": "7fe9cdb"
+  },
+  {
+   "id": "r16-demo",
+   "round": "16",
+   "parent": "r16-fix2",
+   "intent": "full live proof, no network",
+   "action": "booksnap run slice --resume --spines-band 0.78 --spines-upscale 2 --spines-stack",
+   "observation": "exit 0: 14 segments, 13 reps, OCR, 3 covers, spine reads to 0.89 (CONVERSATIONS WIT+ COLEMAN), compile -> books_candidates.{json,md}; bench-spines on committed artifacts reproduces real shelf 0.56/0.33/0.33 exactly",
+   "metric": "live end-to-end + offline repro both green",
+   "verdict": "kept",
+   "commit": "7fe9cdb"
+  },
+  {
    "id": "d-stack",
    "round": "x",
    "parent": "r1-seg",

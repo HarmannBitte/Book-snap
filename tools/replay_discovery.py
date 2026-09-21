@@ -28,6 +28,9 @@ TREE = os.path.join(HERE, "..", "docs", "discovery_tree.json")
 # curated impact: verified-recall points on the real shelf first, then
 # precision guards, then capability unlocks (evidence in node.metric)
 IMPACT = {
+    "r16-fix1": 0.35,      # 'run' (the advertised one-shot path) worked again
+    "r16-fix2": 0.20,      # RAM-safe spines reachable from run
+    "r16-demo": 0.15,      # live end-to-end + offline repro both green
     "r14-scorer2": 0.11,   # real-shelf verified .22 -> .33
     "r9-budget": 0.11,     # spine-dense verified .11 -> .22
     "r8-group": 0.46,      # synth verified 0 -> .46 (multi-word candidates exist)

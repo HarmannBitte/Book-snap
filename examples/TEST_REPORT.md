@@ -423,3 +423,35 @@ where raw captions produced 18 non-books. Classic offline gate unchanged
 (0.22), synth 0.79/0.83 (scorer correctness gain). Artifacts:
 examples/captions_uDS.json, examples/llm_mentions_v2.json,
 examples/books_spines1080_wide_llm.json (+ cache). Tests 57.
+
+## Round 16 - live end-to-end functional proof; two run-wiring bugs found & fixed (2026-09-21)
+
+Question: "is it fully functional?" - answered by doing, not asserting. A 60 s
+slice of the Test B shelf (2540-2600 s) was cut locally and pushed through
+`booksnap run` with no network.
+
+Two real bugs surfaced immediately (commit 7fe9cdb):
+
+1. **run -> compile Namespace drift.** Round 13 added `--llm-titles` to the
+   `compile` subparser but `run` builds its own Namespace internally and never
+   set the attribute, so every `booksnap run` crashed at the final stage with
+   `AttributeError: 'Namespace' object has no attribute 'llm_titles'`. 57 unit
+   tests stayed green because they call `compile_books` directly. Fixed by
+   plumbing `llm_titles` (and exposing `--llm-titles` on `run`).
+2. **run hardcoded spines `upscale=4`.** On a 1080p band crop with stack +
+   3 presets this silently OOM-killed the process (exit code masked by piping
+   to `tail`). This re-confirmed the logged RAM dead end (band ROI /
+   upscale<=3). `run` now exposes `--spines-upscale`.
+
+New `tests/test_cli_run.py` (4 regressions, tests 57 -> 61): replays `run`
+with `--resume` against pre-seeded artifacts and captures the Namespaces
+handed to `_compile`/`_spines`, asserting every attribute `_compile` reads is
+present - future stage-wiring drift now fails in CI, not in the field.
+
+Live proof (post-fix, offline, exit 0): 14 segments, 13 representative
+frames, OCR, 3 cover panels, spine reads up to conf 0.89
+("CONVERSATIONS WIT+ COLEMAN"), compiled `books_candidates.{json,md}`.
+Offline repro of the committed artifacts reproduces the real-shelf bench
+exactly: recall_surface 0.56, recall_verified 0.33, recall_right_record 0.33
+(Sapiens verified 1.0). Discovery tree: nodes r16-live, r16-fix1, r16-oom2,
+r16-fix2, r16-demo (51 nodes).
