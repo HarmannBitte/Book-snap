@@ -490,7 +490,9 @@ def cluster_spines(shown, thr=0.92):
 def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                   out_json, out_md, audio_json=None, spines_json=None,
                   gazetteer=False, max_queries=250, fuzzy_thr=0.86,
-                  out_bib=None, out_ris=None, llm_titles=False):
+                  out_bib=None, out_ris=None, llm_titles=False,
+                  catalog=True, llm_fixture=None, llm_api_key=None,
+                  llm_base_url=None, llm_model=None):
     ocr = json.load(open(ocr_json)) if ocr_json else {}
     manifest = json.load(open(cover_manifest_json)) if cover_manifest_json else []
     cover_ocr = json.load(open(cover_ocr_json)) if cover_ocr_json else {}
@@ -534,14 +536,16 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         hints = {w.lower() for seg in audio
                  for w in re.findall(r"\b[A-Z][a-z]{2,}\b", seg["text"])}
         lookup = make_cached_lookup(out_json + ".olcache.json", fuzzy_thr=fuzzy_thr,
-                                    author_hints=hints)
+                                    author_hints=hints, use_catalog=catalog)
         # Cue-detected titles ("...his book Facing Reality...") are the highest
         # quality spoken evidence, so they lead the spoken queue ahead of the
         # frequency-sorted n-gram scan.
         llm_gate = False
         if llm_titles:  # captions/ASR through the constrained LLM gate
             from . import llmfix
-            got = llmfix.extract_titles(audio)
+            got = llmfix.extract_titles(audio, fixture_path=llm_fixture,
+                                        api_key=llm_api_key, base_url=llm_base_url,
+                                        model=llm_model)
             if got:
                 audio_cands = [dict(phrase=g["title"], t=g.get("t") or 0)
                                for g in got]
@@ -582,7 +586,10 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         # author bands) must not burn the shared alt-query budget first
         if llm_titles:  # spelling-only LLM repair as first alt per spine
             from . import llmfix
-            fixed = llmfix.correct_phrases([v["phrase"] for v in visual])
+            fixed = llmfix.correct_phrases([v["phrase"] for v in visual],
+                                           fixture_path=llm_fixture,
+                                           api_key=llm_api_key, base_url=llm_base_url,
+                                           model=llm_model)
             for v, f in zip(visual, fixed):
                 if f and f != v["phrase"]:
                     v["alts"] = [f] + (v.get("alts") or [])

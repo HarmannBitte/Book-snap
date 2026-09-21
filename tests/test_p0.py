@@ -636,3 +636,20 @@ def test_llmfix_extract_and_correct(monkeypatch):
     monkeypatch.delenv("LLM_API_KEY")
     assert L.extract_titles([{"t": 0, "text": "x"}]) == []
     assert L.correct_phrases(["A"]) == ["A"]  # no key -> passthrough
+
+
+def test_llmfix_with_fixture(tmp_path):
+    from booksnap import llmfix as L
+    fix_p = tmp_path / "fixture.json"
+    data = {
+        "mentions": [{"phrase": "his book Facing Reality", "title": "Facing Reality", "t": 12}],
+        "corrections": {"LOSINC THE RACE": "Losing the Race", "BARAGK OBAMA": "Barack Obama"}
+    }
+    fix_p.write_text(json.dumps(data))
+
+    # Test extract_titles and correct_phrases with fixture_path
+    titles = L.extract_titles([{"t": 12, "text": "his book Facing Reality"}], fixture_path=str(fix_p))
+    assert titles == [{"phrase": "his book Facing Reality", "title": "Facing Reality", "t": 12}]
+
+    fixed = L.correct_phrases(["LOSINC THE RACE", "UNTOUCHED"], fixture_path=str(fix_p))
+    assert fixed == ["Losing the Race", "UNTOUCHED"]

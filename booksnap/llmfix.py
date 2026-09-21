@@ -40,13 +40,13 @@ SYS_CORRECT = (
     "return the input string unchanged. No prose, no markdown.")
 
 
-def _client():
-    key = os.environ.get("LLM_API_KEY")
+def _client(api_key=None, base_url=None, model=None):
+    key = api_key or os.environ.get("LLM_API_KEY")
     if not key:
         return None
-    base = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    model = os.environ.get("LLM_MODEL", "gpt-4o-mini")
-    return key, base, model
+    base = (base_url or os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")).rstrip("/")
+    m = model or os.environ.get("LLM_MODEL", "gpt-4o-mini")
+    return key, base, m
 
 
 def _chat(client, system, user, timeout=60):
@@ -73,8 +73,18 @@ def _json_list(text):
     return json.loads(text.strip())
 
 
-def extract_titles(segments, chunk_segs=80):
-    client = _client()
+def extract_titles(segments, chunk_segs=80, api_key=None, base_url=None,
+                   model=None, fixture_path=None):
+    fix = fixture_path or os.environ.get("LLM_FIXTURE")
+    if fix and os.path.exists(fix):
+        try:
+            d = json.load(open(fix))
+            m = d.get("mentions") or d.get("extract_titles") or (d if isinstance(d, list) else [])
+            return [dict(phrase=g.get("phrase") or g["title"], title=g["title"], t=g.get("t"))
+                    for g in m if isinstance(g, dict) and g.get("title")]
+        except Exception:
+            pass
+    client = _client(api_key, base_url, model)
     if not client:
         return []
     out = []
@@ -93,8 +103,20 @@ def extract_titles(segments, chunk_segs=80):
     return out
 
 
-def correct_phrases(phrases, chunk=40):
-    client = _client()
+def correct_phrases(phrases, chunk=40, api_key=None, base_url=None,
+                    model=None, fixture_path=None):
+    fix = fixture_path or os.environ.get("LLM_FIXTURE")
+    if fix and os.path.exists(fix):
+        try:
+            d = json.load(open(fix))
+            c = d.get("corrections") or d.get("correct_phrases") or (d if isinstance(d, dict) else {})
+            if isinstance(c, dict):
+                return [c.get(p, p) for p in phrases]
+            elif isinstance(c, list) and len(c) == len(phrases):
+                return c
+        except Exception:
+            pass
+    client = _client(api_key, base_url, model)
     if not client:
         return list(phrases)
     out = list(phrases)

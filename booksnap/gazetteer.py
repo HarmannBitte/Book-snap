@@ -396,7 +396,7 @@ def crossref_book_docs(phrase, cache=None, timeout=6.0):
 
 def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
                        strong_editions=3, author_hints=None, counter=None,
-                       serial_check=True):
+                       serial_check=True, use_catalog=False):
     """Disk-cached lookup. The cache stores *raw* OpenLibrary records, not
     match decisions, so matching rules can be retuned without re-querying."""
     try:
@@ -408,18 +408,29 @@ def make_cached_lookup(cache_path, fuzzy_thr=0.86, min_editions=2,
         key = _norm(phrase)
         entry = cache.get(key)
         if entry is None:
-            if counter is not None:  # only network fetches cost budget
-                counter["net"] = counter.get("net", 0) + 1
-            docs = fetch_docs(phrase)
-            if docs is None:  # failed fetch: do not poison the cache
-                return match_docs(phrase, [], fuzzy_thr=fuzzy_thr,
-                                  min_editions=min_editions, author_hints=author_hints)
-            entry = dict(docs=docs)
-            cache[key] = entry
-            try:
-                json.dump(cache, open(cache_path, "w"))
-            except Exception:
-                pass
+            cat_docs = []
+            if use_catalog:
+                try:
+                    from .catalog import lookup_catalog
+                    cat_docs = lookup_catalog(phrase)
+                except Exception:
+                    cat_docs = []
+            if cat_docs:
+                entry = dict(docs=cat_docs, source="catalog")
+                cache[key] = entry
+            else:
+                if counter is not None:  # only network fetches cost budget
+                    counter["net"] = counter.get("net", 0) + 1
+                docs = fetch_docs(phrase)
+                if docs is None:  # failed fetch: do not poison the cache
+                    return match_docs(phrase, [], fuzzy_thr=fuzzy_thr,
+                                      min_editions=min_editions, author_hints=author_hints)
+                entry = dict(docs=docs)
+                cache[key] = entry
+                try:
+                    json.dump(cache, open(cache_path, "w"))
+                except Exception:
+                    pass
         m = match_docs(phrase, entry.get("docs") or [], fuzzy_thr=fuzzy_thr,
                        min_editions=min_editions, author_hints=author_hints)
         if m is None:  # catalogue-coverage fallback (round 11)

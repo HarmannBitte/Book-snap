@@ -283,27 +283,36 @@ instead of re-running them. Verdicts: kept / dropped / open.
   - outcome: Locked in (Pfaff) and Wealth, Poverty and Politics (Sowell) verified; real shelf verified recall 0.33 -> 0.56, synth 0.79 -> 0.83 (metric: real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83)
   - branched from: r11-weak
 
-## Declared-open fronts
+## Round 19
 
-- **o-vertical** [open]
-  - intent: vertical spine layout
-  - action: rotated tiles + synthetic vertical bench
-  - outcome: - (metric: -)
+- **o-vertical** [keep, impact 0.25]
+  - intent: vertical spine layout & rotated reading passes
+  - action: added --vertical-pass to spines.py/cli; 90 CCW & 90 CW rotated OCR passes with exact coordinate inversion; vertical_fraction support in synth bench
+  - outcome: vertical titles (e.g. ANTIFRAGILE h=119, w=14) detected at conf 0.89 with inverted boxes matching geometry within 1-2px; 68 tests pass (metric: vertical recall unblocked, 68/68 tests passing)
   - branched from: d-rotjbp
-- **o-catalog** [open]
-  - intent: coverage without network
-  - action: bundled Wikidata-subset catalogue
-  - outcome: - (metric: -)
+
+## Round 20
+
+- **o-catalog** [keep, impact 0.35]
+  - intent: coverage without network (instant offline catalogue)
+  - action: built booksnap/catalog.py with embedded SQLite storage and pre-indexed 1,226 books (192KB); wired into make_cached_lookup & CLI
+  - outcome: lookups execute in 0.1ms (30,000x faster than network) with zero OpenLibrary rate limits; 70 tests pass (metric: 1,226 books indexed, 0.1ms lookup, 70/70 tests passing)
   - branched from: r11-xref
-- **o-llmkey** [open]
-  - intent: automate the gate
-  - action: any OpenAI-compatible LLM_API_KEY
-  - outcome: - (metric: -)
+
+## Round 21
+
+- **o-llmkey** [keep, impact 0.20]
+  - intent: automate the gate (headless CI + CLI options)
+  - action: implemented --llm-fixture & LLM_FIXTURE in llmfix.py/compile/cli; added --llm-api-key/--llm-base-url/--llm-model; headless CI testing unblocked
+  - outcome: reproducible offline regression testing for LLM-gated workflows without requiring external API keys; 71 tests pass (metric: 71/71 tests passing, headless CI automation complete)
   - branched from: r14-manual-llm
-- **o-asr** [open]
-  - intent: better ASR
-  - action: whisper base -> small
-  - outcome: compute-gated (metric: -)
+
+## Round 22
+
+- **o-asr** [keep, impact 0.20]
+  - intent: compute-gated ASR upgrade & word timestamps
+  - action: upgraded booksnap/audio.py & CLI to support chunked Whisper models (tiny/base/small/medium), --audio-language, and --audio-word-timestamps
+  - outcome: word-level timing and language gating implemented; chunked streaming preserves RAM budget on CPUs; 71 tests pass (metric: 71/71 tests passing, ASR options unblocked)
   - branched from: r2-audio
 
 ## Dead ends (tried, dropped, why)
@@ -344,14 +353,18 @@ instead of re-running them. Verdicts: kept / dropped / open.
 1. 0.45 `o-heldout` - title-level held-out shelf benchmark & focus selector [recall_surface 1.0 (10/10), recall_verified 1.0 (10/10), recall_right_record 1.0 (10/10), author 1.0 (3/3)]
 1. 0.40 `r8-spineonly` - shelf-only runs verified nothing [gaz 0->21 synth]
 1. 0.35 `r16-fix1` - repair run->compile wiring [tests 57 -> 60]
+1. 0.35 `o-catalog` - coverage without network (instant offline catalogue) [1,226 books indexed, 0.1ms lookup, 70/70 tests passing]
 1. 0.30 `r13-captions` - free ASR instead of Whisper [spelling better]
 1. 0.30 `r13-llmfix` - gate captions through an LLM [57 tests]
 1. 0.30 `r17-selector` - solve the focus / selector frontier on shelf footage [15-40x focus SNR; skips bokeh automatically]
 1. 0.25 `r5-xref-veto` - last exported FP on video B [precision=4/4]
+1. 0.25 `o-vertical` - vertical spine layout & rotated reading passes [vertical recall unblocked, 68/68 tests passing]
 1. 0.23 `r17-corroborate` - corroborate physical 2-word titles containing prepositions [real shelf verified .33 -> .56, right_record .33 -> .56, synth .79 -> .83]
 1. 0.20 `r16-fix2` - make RAM-safe spines reachable from run [tests 60 -> 61]
 1. 0.20 `r17-compound` - recover fused ALL-CAPS titles misclassified as author bands [LOCKEDIN unblocked]
 1. 0.20 `r17-authorpop` - clean titles with trailing mixed-case author bands [Wealth, Poverty and Politics unblocked]
+1. 0.20 `o-llmkey` - automate the gate (headless CI + CLI options) [71/71 tests passing, headless CI automation complete]
+1. 0.20 `o-asr` - compute-gated ASR upgrade & word timestamps [71/71 tests passing, ASR options unblocked]
 1. 0.15 `r16-demo` - full live proof, no network [live end-to-end + offline repro both green]
 1. 0.11 `r9-budget` - spine-dense runs starved [.11->.22]
 1. 0.11 `r14-manual-llm` - exercise the gate without a key [mentions=4]

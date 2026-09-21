@@ -47,7 +47,7 @@ def _crop(img, H, roi, band):
 def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                    topk=3, roi=None, band=0.22, upscale=4, tile_w=1400, ocr=None,
                    presets=("unsharp",), stack=False, min_len=3,
-                   panorama=False, min_focus=0.0):
+                   panorama=False, min_focus=0.0, vertical_pass=False):
     from .ocr import RapidOCR, ocr_image
     from .superres import enhance, stack_median, stitch_pan
     ocr = ocr or RapidOCR()
@@ -112,6 +112,50 @@ def extract_spines(video, out_json, times=None, start=None, end=None, step=1.0,
                                       x=int(b["box"][0] + i), y=int(b["box"][1]),
                                       w=int(b["box"][2] - b["box"][0]),
                                       h=int(b["box"][3] - b["box"][1]))
+
+        if vertical_pass:
+            import cv2
+            # 1. Rotated 90 deg CCW: English top-to-bottom vertical spine titles
+            rot_ccw = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            rch, rcw = rot_ccw.shape[:2]
+            for j in range(0, rcw, tile_w):
+                tile = rot_ccw[:, j:j + tile_w]
+                for b in ocr_image(ocr, tile):
+                    key = _norm(b["text"])
+                    if len(key) < min_len:
+                        continue
+                    rx0, ry0 = b["box"][0] + j, b["box"][1]
+                    rx1, ry1 = b["box"][2] + j, b["box"][3]
+                    orig_x0 = cw - 1 - ry1
+                    orig_y0 = rx0
+                    orig_w = ry1 - ry0
+                    orig_h = rx1 - rx0
+                    if key not in reads or b["conf"] > reads[key]["conf"]:
+                        reads[key] = dict(text=b["text"], conf=b["conf"], t=t,
+                                          preset=f"{preset}_rotccw", upscale=upscale,
+                                          x=int(orig_x0), y=int(orig_y0),
+                                          w=int(orig_w), h=int(orig_h))
+
+            # 2. Rotated 90 deg CW: Continental European bottom-to-top vertical spine titles
+            rot_cw = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            rch, rcw = rot_cw.shape[:2]
+            for j in range(0, rcw, tile_w):
+                tile = rot_cw[:, j:j + tile_w]
+                for b in ocr_image(ocr, tile):
+                    key = _norm(b["text"])
+                    if len(key) < min_len:
+                        continue
+                    rx0, ry0 = b["box"][0] + j, b["box"][1]
+                    rx1, ry1 = b["box"][2] + j, b["box"][3]
+                    orig_x0 = ry0
+                    orig_y0 = ch - 1 - rx1
+                    orig_w = ry1 - ry0
+                    orig_h = rx1 - rx0
+                    if key not in reads or b["conf"] > reads[key]["conf"]:
+                        reads[key] = dict(text=b["text"], conf=b["conf"], t=t,
+                                          preset=f"{preset}_rotcw", upscale=upscale,
+                                          x=int(orig_x0), y=int(orig_y0),
+                                          w=int(orig_w), h=int(orig_h))
     out = sorted(reads.values(), key=lambda r: -r["conf"])
     json.dump(out, open(out_json, "w"), indent=1)
     return out

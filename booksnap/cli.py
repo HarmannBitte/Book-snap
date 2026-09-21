@@ -76,7 +76,9 @@ def _pdf(args):
 
 def _audio(args):
     from .audio import transcribe
-    segs = transcribe(args.audio, args.out, args.model)
+    segs = transcribe(args.audio, args.out, model_size=args.model,
+                      language=getattr(args, "language", "en"),
+                      word_timestamps=getattr(args, "word_timestamps", False))
     print(f"transcript segments={len(segs)} -> {args.out}")
 
 
@@ -85,11 +87,12 @@ def _spines(args):
     roi = tuple(int(v) for v in args.roi.split(",")) if args.roi else None
     presets = tuple(p for p in (args.presets or "unsharp").split(",") if p)
     min_focus = getattr(args, "min_focus", 0.0)
+    vertical_pass = getattr(args, "vertical_pass", False)
     out = extract_spines(args.video, args.out, start=args.start, end=args.end,
                          step=args.step, topk=args.topk, roi=roi, band=args.band,
                          upscale=args.upscale, presets=presets, stack=args.stack,
                          min_len=args.min_len, panorama=args.panorama,
-                         min_focus=min_focus)
+                         min_focus=min_focus, vertical_pass=vertical_pass)
     strong = sum(1 for r in out if r["conf"] >= 0.8)
     print(f"spine reads={len(out)} (conf>=0.80: {strong}) -> {args.out}")
     for r in out[:15]:
@@ -125,9 +128,14 @@ def _compile(args):
                          args.out_json, args.out_md,
                          audio_json=args.audio, spines_json=args.spines,
                          gazetteer=args.gazetteer, max_queries=args.max_queries,
-                                   llm_titles=args.llm_titles,
+                         llm_titles=args.llm_titles,
                          fuzzy_thr=args.fuzzy_thr,
-                         out_bib=args.out_bib, out_ris=args.out_ris)
+                         out_bib=args.out_bib, out_ris=args.out_ris,
+                         catalog=getattr(args, "catalog", True),
+                         llm_fixture=getattr(args, "llm_fixture", None),
+                         llm_api_key=getattr(args, "llm_api_key", None),
+                         llm_base_url=getattr(args, "llm_base_url", None),
+                         llm_model=getattr(args, "llm_model", None))
     tiers = {}
     for g in data["gazetteer"]:
         tiers[g["status"]] = tiers.get(g["status"], 0) + 1
@@ -180,7 +188,9 @@ def _run(args):
                                 width=1280, quality=4))
     if args.audio and not _have(os.path.join(work, "transcript.json"), resume):
         _audio(argparse.Namespace(audio=args.audio, out=os.path.join(work, "transcript.json"),
-                                  model=args.audio_model))
+                                  model=args.audio_model,
+                                  language=getattr(args, "audio_language", "en"),
+                                  word_timestamps=getattr(args, "audio_word_timestamps", False)))
     if (args.spines_start is not None and args.spines_end is not None
             and not _have(os.path.join(work, "spines.json"), resume)):
         _spines(argparse.Namespace(video=args.video, out=os.path.join(work, "spines.json"),
@@ -190,7 +200,8 @@ def _run(args):
                                    upscale=getattr(args, "spines_upscale", 4),
                                    presets=args.spines_presets, stack=args.spines_stack,
                                    min_len=3, panorama=args.spines_stack,
-                                   min_focus=getattr(args, "spines_min_focus", 0.0)))
+                                   min_focus=getattr(args, "spines_min_focus", 0.0),
+                                   vertical_pass=getattr(args, "spines_vertical_pass", False)))
     _compile(argparse.Namespace(
         ocr=os.path.join(work, "ocr.json"),
         manifest=os.path.join(covers, "manifest.json"),
@@ -200,6 +211,11 @@ def _run(args):
         spines=os.path.join(work, "spines.json") if args.spines_start is not None else None,
         gazetteer=args.gazetteer, max_queries=args.max_queries,
         llm_titles=getattr(args, "llm_titles", False),
+        llm_fixture=getattr(args, "llm_fixture", None),
+        llm_api_key=getattr(args, "llm_api_key", None),
+        llm_base_url=getattr(args, "llm_base_url", None),
+        llm_model=getattr(args, "llm_model", None),
+        catalog=getattr(args, "catalog", True),
         fuzzy_thr=args.fuzzy_thr, out_bib=None, out_ris=None,
         out_json=os.path.join(work, "books_candidates.json"),
         out_md=os.path.join(work, "books_candidates.md")))
@@ -257,6 +273,8 @@ def main(argv=None):
                         "need more RAM (chunked, so ~1 GB ok for 'small')")
     s.add_argument("--beam-size", type=int, default=1,
                    help="beam >1 improves garbled titles at ~beam x runtime")
+    s.add_argument("--language", default="en", help="audio language (e.g. en)")
+    s.add_argument("--word-timestamps", action="store_true", help="extract word-level timestamps")
     s.set_defaults(fn=_audio)
 
     s = sub.add_parser("captions", help="parse a YouTube VTT into audio-schema segments")
@@ -281,6 +299,8 @@ def main(argv=None):
     s.add_argument("--min-len", type=int, default=3)
     s.add_argument("--min-focus", type=float, default=0.0,
                    help="minimum shelf crop sharpness; skips bokeh/blurred footage")
+    s.add_argument("--vertical-pass", action="store_true",
+                   help="run 90° rotated passes to detect vertical spine typography")
     s.set_defaults(fn=_spines)
 
     s = sub.add_parser("compile", help="merge artifacts into candidate book list")
@@ -293,6 +313,12 @@ def main(argv=None):
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--llm-titles", action="store_true",
                    help="route transcript/spine phrases through the optional LLM gate (LLM_API_KEY)")
+    s.add_argument("--llm-fixture", help="path to JSON fixture with pre-computed mentions/corrections for headless CI")
+    s.add_argument("--llm-api-key", help="API key for OpenAI-compatible LLM")
+    s.add_argument("--llm-base-url", help="base URL for OpenAI-compatible LLM")
+    s.add_argument("--llm-model", help="model name for OpenAI-compatible LLM")
+    s.add_argument("--no-catalog", dest="catalog", action="store_false",
+                   help="disable offline SQLite catalogue lookup")
     s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
 
@@ -337,6 +363,8 @@ def main(argv=None):
     s.add_argument("--skip-pdf", action="store_true")
     s.add_argument("--audio", help="audio file (opus/m4a/wav) to ASR")
     s.add_argument("--audio-model", default="base")
+    s.add_argument("--audio-language", default="en", help="audio language for ASR")
+    s.add_argument("--audio-word-timestamps", action="store_true", help="extract word-level timestamps")
     s.add_argument("--spines-start", type=float); s.add_argument("--spines-end", type=float)
     s.add_argument("--spines-roi"); s.add_argument("--spines-band", type=float, default=0.22)
     s.add_argument("--spines-upscale", type=int, default=4,
@@ -345,12 +373,20 @@ def main(argv=None):
     s.add_argument("--spines-stack", action="store_true")
     s.add_argument("--spines-min-focus", type=float, default=0.0,
                    help="minimum shelf crop sharpness; skips bokeh/blurred footage")
+    s.add_argument("--spines-vertical-pass", action="store_true",
+                   help="run 90° rotated passes to detect vertical spine typography")
     s.add_argument("--gazetteer", action="store_true")
     s.add_argument("--max-queries", type=int, default=250,
                    help="OpenLibrary query budget; spine-dense shelves need hundreds")
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
     s.add_argument("--llm-titles", action="store_true",
                    help="route transcript/spine phrases through the optional LLM gate (LLM_API_KEY)")
+    s.add_argument("--llm-fixture", help="path to JSON fixture with pre-computed mentions/corrections for headless CI")
+    s.add_argument("--llm-api-key", help="API key for OpenAI-compatible LLM")
+    s.add_argument("--llm-base-url", help="base URL for OpenAI-compatible LLM")
+    s.add_argument("--llm-model", help="model name for OpenAI-compatible LLM")
+    s.add_argument("--no-catalog", dest="catalog", action="store_false",
+                   help="disable offline SQLite catalogue lookup")
     s.add_argument("--resume", action="store_true",
                    help="skip stages whose artifacts already exist in --workdir")
     s.set_defaults(fn=_run)

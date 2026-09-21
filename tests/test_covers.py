@@ -40,3 +40,33 @@ def test_attach_panel_text_picks_caption_band():
     attach_panel_text(man, ocr)
     assert "Some Book Title" in man[0]["text"]
     assert "unrelated" not in man[0]["text"]
+
+
+def test_extract_spines_vertical_pass(tmp_path):
+    from PIL import Image, ImageDraw, ImageFont
+    from booksnap.spines import extract_spines
+    img = Image.new("RGB", (600, 300), (40, 30, 20))
+    draw = ImageDraw.Draw(img)
+    # Horizontal book
+    draw.rectangle([50, 50, 150, 250], fill=(150, 50, 50))
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 16)
+    draw.text((60, 100), "SAPIENS", font=font, fill=(255, 255, 255))
+    # Vertical book (top-to-bottom)
+    draw.rectangle([250, 50, 320, 250], fill=(50, 100, 150))
+    txt = "ANTIFRAGILE"
+    bbox = font.getbbox(txt)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    txt_img = Image.new("RGBA", (tw + 10, th + 4), (0, 0, 0, 0))
+    ImageDraw.Draw(txt_img).text((5, 2), txt, font=font, fill=(255, 255, 255, 255))
+    rot_txt = txt_img.rotate(-90, expand=True)
+    img.paste(rot_txt, (265, 70), rot_txt)
+
+    img_p = tmp_path / "shelf.png"
+    out_json = tmp_path / "spines.json"
+    img.save(str(img_p))
+
+    reads = extract_spines(str(img_p), str(out_json), band=1.0, upscale=1,
+                           vertical_pass=True)
+    texts = {r["text"] for r in reads}
+    assert "SAPIENS" in texts
+    assert "ANTIFRAGILE" in texts

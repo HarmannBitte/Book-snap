@@ -18,10 +18,11 @@ import tempfile
 from .ffmpeg_utils import ffmpeg_bin, probe
 
 
-def transcribe(video: str, out_json: str, model_size: str = "tiny",
+def transcribe(video: str, out_json: str, model_size: str = "base",
                device: str = "cpu", compute_type: str = "int8",
                vad_filter: bool = True, chunk_s: float = 300.0,
-               beam_size: int = 1):
+               beam_size: int = 1, language: str = "en",
+               word_timestamps: bool = False):
     from faster_whisper import WhisperModel
     model = WhisperModel(model_size, device=device, compute_type=compute_type)
     total = float(probe(video).get("duration") or 0.0)
@@ -34,15 +35,26 @@ def transcribe(video: str, out_json: str, model_size: str = "tiny",
         subprocess.run([ffmpeg_bin(), "-v", "error", "-ss", f"{start}",
                         "-t", f"{dur}", "-i", video, "-ac", "1", "-ar", "16000",
                         tmp, "-y"], check=True)
-        segs, info = model.transcribe(tmp, vad_filter=vad_filter,
+        segs, info = model.transcribe(tmp, language=language,
+                                      vad_filter=vad_filter,
                                       beam_size=beam_size,
+                                      word_timestamps=word_timestamps,
                                       condition_on_previous_text=False)
         for s in segs:
-            out.append(dict(start=round(start + float(s.start), 1),
+            seg_dict = dict(start=round(start + float(s.start), 1),
                             end=round(start + float(s.end), 1),
-                            text=s.text.strip()))
+                            text=s.text.strip())
+            if word_timestamps and hasattr(s, "words") and s.words:
+                seg_dict["words"] = [
+                    dict(word=w.word.strip(),
+                         start=round(start + float(w.start), 2),
+                         end=round(start + float(w.end), 2),
+                         probability=round(float(w.probability), 2))
+                    for w in s.words if w.word.strip()
+                ]
+            out.append(seg_dict)
         os.unlink(tmp)
-    json.dump(dict(language=None, segments=out), open(out_json, "w"), indent=1)
+    json.dump(dict(language=language, segments=out), open(out_json, "w"), indent=1)
     return out
 
 

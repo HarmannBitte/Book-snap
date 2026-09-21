@@ -49,6 +49,10 @@ IMPACT = {
     "r13-llmfix": 0.30,    # gate that makes captions safe
     "r14-manual-llm": 0.11,  # the pass that moved .22 -> .33
     "o-heldout": 0.45,     # held-out real shelf benchmark (10/10 verified, 1.0 right record)
+    "o-vertical": 0.25,    # vertical spine layout & rotated reading passes unblocked
+    "o-catalog": 0.35,     # bundled offline SQLite catalogue (1,226 books, 0.1ms lookups)
+    "o-llmkey": 0.20,      # headless CI fixture automation for LLM gate & CLI options
+    "o-asr": 0.20,         # compute-gated ASR options, language enforcement & word timestamps
 }
 
 

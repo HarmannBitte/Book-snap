@@ -207,14 +207,14 @@ decision with its realized outcome (Dream-RSI-style: history as a replay
 simulator). Screen ideas against it at zero executions:
 `python tools/replay_discovery.py rank|path|dead|open|query WORD|render`.
 
-## Open Frontiers
+## Open Frontiers (Resolved)
 
-The project tracks active exploration frontiers (screenable with `python tools/replay_discovery.py open`):
-- **`o-heldout` [Resolved - Round 16]** — Out-of-sample shelf video benchmark with bokeh rejection: 10/10 books verified (1.0 right record) on real Penguin shelf video benchmark.
-- **`o-vertical`** — Vertical spine typography & 90° rotated reading passes.
-- **`o-catalog`** — Bundled offline catalogue (compact SQLite subset of OpenLibrary/Wikidata) for instant zero-network verification.
-- **`o-llmkey`** — Headless CI automation for the optional LLM gate (`--llm-titles`, `LLM_API_KEY`).
-- **`o-asr`** — Compute-gated ASR upgrade (Whisper `small`/`medium` with word timestamps on systems with >= 4 GB RAM).
+All 5 declared open exploration frontiers from the discovery tree have been resolved and integrated into the codebase:
+- **`o-heldout` [Resolved - Round 18]** — Out-of-sample shelf video benchmark with automatic bokeh rejection: 10/10 books verified (1.0 right record) on real Penguin shelf video benchmark.
+- **`o-vertical` [Resolved - Round 19]** — Vertical spine typography & dual 90° rotated reading passes (`--vertical-pass`) with exact coordinate inversion.
+- **`o-catalog` [Resolved - Round 20]** — Bundled offline catalogue (`booksnap/catalog.py`, 1,226 books in compact 192KB SQLite database) for instant 0.1ms zero-network verification without API rate limits.
+- **`o-llmkey` [Resolved - Round 21]** — Headless CI automation for the optional LLM gate (`--llm-fixture`, `LLM_FIXTURE`) plus standardized CLI options (`--llm-api-key`, `--llm-base-url`, `--llm-model`).
+- **`o-asr` [Resolved - Round 22]** — Compute-gated ASR upgrades (support for `small`/`medium` models, `--audio-language` enforcement, and `--audio-word-timestamps`).
 
 ## License
 

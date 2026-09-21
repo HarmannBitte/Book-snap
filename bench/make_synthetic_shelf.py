@@ -74,7 +74,7 @@ def _rng(seed=8):
     return np.random.default_rng(seed)
 
 
-def render(outdir=HERE, seed=8):
+def render(outdir=HERE, seed=8, vertical_fraction=0.0):
     rng = _rng(seed)
     W, H = 1920, 1080
     img = Image.new("RGB", (W, H), WOOD)
@@ -113,11 +113,27 @@ def render(outdir=HERE, seed=8):
             font, fs = _fit(max(words, key=len), FONTS[i % len(FONTS)], 24)
             ty = y1 - bh + 10
             light = (245, 240, 230) if sum(col) < 360 else (28, 24, 20)
-            for w in words:
-                if ty + fs > y1 - (26 if author else 8):
-                    break
-                draw.text((x + bw / 2, ty), w, font=font, fill=light, anchor="ma")
-                ty += fs + 3
+
+            is_vertical = vertical_fraction > 0 and rng.random() < vertical_fraction
+            if is_vertical:
+                t_str = title.replace(",", "").upper()
+                vf, _ = _fit(t_str, FONTS[i % len(FONTS)], 18)
+                t_box = vf.getbbox(t_str)
+                tw, th = t_box[2] - t_box[0], t_box[3] - t_box[1]
+                txt_img = Image.new("RGBA", (tw + 12, th + 6), (0, 0, 0, 0))
+                ImageDraw.Draw(txt_img).text((6, 3), t_str, font=vf, fill=light + (255,))
+                rot_txt = txt_img.rotate(-90, expand=True)
+                if rot_txt.height < bh - (30 if author else 12):
+                    img.paste(rot_txt, (int(x + (bw - rot_txt.width) / 2), int(y1 - bh + 10)), rot_txt)
+                else:
+                    is_vertical = False
+
+            if not is_vertical:
+                for w in words:
+                    if ty + fs > y1 - (26 if author else 8):
+                        break
+                    draw.text((x + bw / 2, ty), w, font=font, fill=light, anchor="ma")
+                    ty += fs + 3
             if author:
                 af, _ = _fit(author.upper(), FONTS[0], max(10, fs - 4))
                 draw.text((x + bw / 2, y1 - 16), author.upper(), font=af, fill=light, anchor="ma")
@@ -152,8 +168,12 @@ def render(outdir=HERE, seed=8):
 
 
 if __name__ == "__main__":
-    out = sys.argv[1] if len(sys.argv) > 1 else HERE
-    if "--warm-cache" in sys.argv:
-        out = HERE
-    png, lab = render(out)
+    out = HERE
+    vf = 0.0
+    for arg in sys.argv[1:]:
+        if arg.startswith("--vertical-fraction="):
+            vf = float(arg.split("=")[1])
+        elif not arg.startswith("--"):
+            out = arg
+    png, lab = render(out, vertical_fraction=vf)
     print(png, lab)
