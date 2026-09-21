@@ -1,0 +1,43 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest -q
+      # offline regression gate 1: the labelled real shelf must stay at least
+      # as readable as when it was labelled (no network, no video needed)
+      - name: bench-spines regression (real shelf)
+        run: |
+          python -m booksnap.cli bench-spines \
+            bench/spine_labels_v2.json examples/spines1080.json \
+            examples/books_spines1080.json > bench.json
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("bench.json"))
+          print(d["recall_surface"], d["recall_verified"], d["recall_right_record"])
+          sys.exit(0 if d["recall_verified"] >= 0.2 else 1)
+          PY
+      # offline regression gate 2: synthetic shelf, end to end through OCR and
+      # the gazetteer (committed OpenLibrary cache keeps it network-free)
+      - name: bench-spines regression (synthetic shelf)
+        run: |
+          python bench/make_synthetic_shelf.py synth
+          python -m booksnap.cli spines synth/synth_shelf.png synth/spines.json \
+            --roi 0,0,1920,1080 --band 1.0 --upscale 2 --presets unsharp,clahe
+          cp bench/synth_olcache.json synth/books_synth.json.olcache.json
+          python -m booksnap.cli compile --spines synth/spines.json \
+            --out-json synth/books_synth.json --gazetteer --max-queries 60
+          python -m booksnap.cli bench-spines \
+            bench/spine_labels_synth.json synth/spines.json synth/books_synth.json \
+            > synth_bench.json
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("synth_bench.json"))
+          print(d["recall_surface"], d["recall_verified"], d["recall_right_record"])
+          sys.exit(0 if d["recall_verified"] >= 0.6 else 1)
+          PY
