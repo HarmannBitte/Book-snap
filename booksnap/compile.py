@@ -451,7 +451,7 @@ def cluster_spines(shown, thr=0.92):
 def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                   out_json, out_md, audio_json=None, spines_json=None,
                   gazetteer=False, max_queries=250, fuzzy_thr=0.86,
-                  out_bib=None, out_ris=None):
+                  out_bib=None, out_ris=None, llm_titles=False):
     ocr = json.load(open(ocr_json)) if ocr_json else {}
     manifest = json.load(open(cover_manifest_json)) if cover_manifest_json else []
     cover_ocr = json.load(open(cover_ocr_json)) if cover_ocr_json else {}
@@ -499,6 +499,12 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
         # Cue-detected titles ("...his book Facing Reality...") are the highest
         # quality spoken evidence, so they lead the spoken queue ahead of the
         # frequency-sorted n-gram scan.
+        if llm_titles:  # captions/ASR through the constrained LLM gate
+            from . import llmfix
+            got = llmfix.extract_titles(audio)
+            if got:
+                audio_cands = [dict(phrase=g["title"], t=g.get("t") or 0)
+                               for g in got]
         cued = [dict(phrase=a["phrase"], freq=0, cued=True) for a in audio_cands]
         seen_cued = {c["phrase"].lower() for c in cued}
         spoken = cued + [c for c in title_candidates(audio)
@@ -524,6 +530,12 @@ def compile_books(ocr_json, cover_manifest_json, cover_ocr_json, scroll_json,
                                conf=s_.get("conf") or 0.0))
         # multi-word phrases are title-like; single tokens (often junk or
         # author bands) must not burn the shared alt-query budget first
+        if llm_titles:  # spelling-only LLM repair as first alt per spine
+            from . import llmfix
+            fixed = llmfix.correct_phrases([v["phrase"] for v in visual])
+            for v, f in zip(visual, fixed):
+                if f and f != v["phrase"]:
+                    v["alts"] = [f] + (v.get("alts") or [])
         visual.sort(key=lambda v: (-len(v["phrase"].split()), -v["conf"]))
         seen = {v["phrase"].lower() for v in visual}
         spoken = [c for c in spoken if c["phrase"].lower() not in seen]

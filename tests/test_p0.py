@@ -580,3 +580,36 @@ def test_weak_records_are_not_verified_recall():
               open(bk, "w"))
     d = score(lab, sp, bk)
     assert d["recall_surface"] == 1.0 and d["recall_verified"] == 0.0
+
+
+def test_llmfix_extract_and_correct(monkeypatch):
+    from booksnap import llmfix as L
+    monkeypatch.setenv("LLM_API_KEY", "test")
+
+    class R:
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+        def read(self):
+            return json.dumps({"choices": [{"message": {"content": self.payload}}]}).encode()
+    import urllib.request
+    calls = []
+    def fake_urlopen(req, timeout=None):
+        r = R()
+        body = json.loads(req.data)
+        r.payload = json.dumps([{"phrase": "his book Facing Reality",
+                                 "title": "Facing Reality", "t": 12}]) \
+            if "BOOK TITLES" in body["messages"][0]["content"] \
+            else json.dumps(["Losing the Race", "Barack Obama"])
+        calls.append(body)
+        return r
+    monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
+    got = L.extract_titles([{"t": 12, "text": "his book Facing Reality ..."}])
+    assert got == [{"phrase": "his book Facing Reality",
+                    "title": "Facing Reality", "t": 12}]
+    assert L.correct_phrases(["LOSINC THE RACE", "GARACK OBAMA"]) == \
+        ["Losing the Race", "Barack Obama"]
+    monkeypatch.delenv("LLM_API_KEY")
+    assert L.extract_titles([{"t": 0, "text": "x"}]) == []
+    assert L.correct_phrases(["A"]) == ["A"]  # no key -> passthrough

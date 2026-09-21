@@ -123,6 +123,7 @@ def _compile(args):
                          args.out_json, args.out_md,
                          audio_json=args.audio, spines_json=args.spines,
                          gazetteer=args.gazetteer, max_queries=args.max_queries,
+                                   llm_titles=args.llm_titles,
                          fuzzy_thr=args.fuzzy_thr,
                          out_bib=args.out_bib, out_ris=args.out_ris)
     tiers = {}
@@ -253,6 +254,10 @@ def main(argv=None):
                    help="beam >1 improves garbled titles at ~beam x runtime")
     s.set_defaults(fn=_audio)
 
+    s = sub.add_parser("captions", help="parse a YouTube VTT into audio-schema segments")
+    s.add_argument("vtt"); s.add_argument("out")
+    s.set_defaults(fn=lambda a: __import__("booksnap.captions", fromlist=["main"]).main(a.vtt, a.out))
+
     s = sub.add_parser("spines", help="extract book-spine text from shelf footage")
     s.add_argument("video"); s.add_argument("out")
     s.add_argument("--start", type=float); s.add_argument("--end", type=float)
@@ -279,6 +284,8 @@ def main(argv=None):
     s.add_argument("--max-queries", type=int, default=250,
                    help="OpenLibrary query budget; spine-dense shelves need hundreds")
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
+    s.add_argument("--llm-titles", action="store_true",
+                   help="route transcript/spine phrases through the optional LLM gate (LLM_API_KEY)")
     s.add_argument("--out-bib"); s.add_argument("--out-ris")
     s.set_defaults(fn=_compile)
 

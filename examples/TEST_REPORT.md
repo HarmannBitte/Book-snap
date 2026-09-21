@@ -372,3 +372,29 @@ is not a guaranteed holdout. Artifact: examples/heldout_coleman_klein_spines.jso
 Status: search gate GONE (documented recipe: deno + --js-runtimes), focus
 gate remains the selector for future held-out shelves. Benches and code
 unchanged this round; tests 56.
+
+## Round 13 - YouTube captions + optional LLM correction gate (2026-09-21)
+
+Question: skip local Whisper and use YouTube's transcript, LLM-corrected?
+Measured answer: captions yes, raw no, LLM-gated yes.
+
+booksnap/captions.py (stage 9b) parses roll-up VTT (yt-dlp --write-auto-subs)
+into the audio schema; `booksnap captions in.vtt out.json`. On the labelled
+podcast captions spell proper nouns Whisper base garbled: "Ethnic Dilemma"
+(vs DeLema), "Jason Arday" (vs Arde), "Thomas Sowell" (vs Sol).
+
+But captions fed raw into the spoken n-gram scan collapse precision:
+23 gazetteer hits of which 18 "verified" non-books ("Soviet Union",
+"Hillary Clinton", "Steven Pinker", "World War II"...) - the noisy Whisper
+transcript had been an accidental precision filter. So captions enter only
+through booksnap/llmfix.py (optional, env-gated like the VLM reviewer:
+LLM_API_KEY/LLM_BASE_URL/LLM_MODEL): extract_titles() = constrained
+"which BOOK TITLES are mentioned, spelling corrected" extraction;
+correct_phrases() = spelling-only repair offered as first spine alt.
+compile --llm-titles wires both; absent key or any error -> classic path.
+Tests 57 (mocked completion + no-key passthrough).
+
+Verdict: Whisper stays the default (works on any local file, no platform
+tie-in); captions + LLM gate are the YouTube-side upgrade once a key exists.
+Bench numbers unchanged (v2 0.56/0.22/0.22, synth 0.79) - the LLM stage is
+off by default and never overrides the gazetteer.
