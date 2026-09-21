@@ -184,7 +184,8 @@ def _run(args):
         _spines(argparse.Namespace(video=args.video, out=os.path.join(work, "spines.json"),
                                    start=args.spines_start, end=args.spines_end,
                                    step=1.0, topk=3, roi=args.spines_roi,
-                                   band=args.spines_band, upscale=4,
+                                   band=args.spines_band,
+                                   upscale=getattr(args, "spines_upscale", 4),
                                    presets=args.spines_presets, stack=args.spines_stack,
                                    min_len=3, panorama=args.spines_stack))
     _compile(argparse.Namespace(
@@ -195,6 +196,7 @@ def _run(args):
         audio=os.path.join(work, "transcript.json") if args.audio else None,
         spines=os.path.join(work, "spines.json") if args.spines_start is not None else None,
         gazetteer=args.gazetteer, max_queries=args.max_queries,
+        llm_titles=getattr(args, "llm_titles", False),
         fuzzy_thr=args.fuzzy_thr, out_bib=None, out_ris=None,
         out_json=os.path.join(work, "books_candidates.json"),
         out_md=os.path.join(work, "books_candidates.md")))
@@ -332,12 +334,16 @@ def main(argv=None):
     s.add_argument("--audio-model", default="base")
     s.add_argument("--spines-start", type=float); s.add_argument("--spines-end", type=float)
     s.add_argument("--spines-roi"); s.add_argument("--spines-band", type=float, default=0.22)
+    s.add_argument("--spines-upscale", type=int, default=4,
+                   help="OCR upscale factor; use 2-3 on 1080p band crops to stay in RAM budget")
     s.add_argument("--spines-presets", default="unsharp")
     s.add_argument("--spines-stack", action="store_true")
     s.add_argument("--gazetteer", action="store_true")
     s.add_argument("--max-queries", type=int, default=250,
                    help="OpenLibrary query budget; spine-dense shelves need hundreds")
     s.add_argument("--fuzzy-thr", type=float, default=0.86)
+    s.add_argument("--llm-titles", action="store_true",
+                   help="route transcript/spine phrases through the optional LLM gate (LLM_API_KEY)")
     s.add_argument("--resume", action="store_true",
                    help="skip stages whose artifacts already exist in --workdir")
     s.set_defaults(fn=_run)
